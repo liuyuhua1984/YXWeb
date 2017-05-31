@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>game_analyze</display-name>
+
+    <!-- session超时定义,单位为分钟 -->
+    <session-config>
+        <session-timeout>100</session-timeout>
+    </session-config>
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>webName.root</param-value>
+  </context-param>
+    <!-- 默认首页定义 -->
+    <welcome-file-list>
+        <welcome-file>index.shtml</welcome-file>
+    </welcome-file-list>
+
+    <!--错误页面的定义-->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/page/commons/error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/page/commons/404.html</location>
+    </error-page>
+ <context-param>
+    <param-name>logbackConfigLocation</param-name>
+    <param-value>/config/logback.xml</param-value>
+  </context-param>
+  
+    <!-- log4j 启动配置 -->
+ <listener>
+    <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+  </listener>
+    <!--加载配置文件-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:config/*-context.xml</param-value>
+    </context-param>
+    <distributable/>
+
+    <!--添加字符编码过滤-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <!-- spring 启动配置，注意servlet-name关联到web-inf下的配置文件-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <!--  前置控制器 -->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
+    <!--资源访问保护设置-->
+    <security-constraint>
+        <display-name>Tomcat Server Configuration Security Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Area</web-resource-name>
+            <!-- Define the context-relative URL(s) to be protected -->
+            <url-pattern>*.jsp</url-pattern>
+            <!--<url-pattern>*.do</url-pattern>-->
+            <!--<url-pattern>/images/*</url-pattern>-->
+        </web-resource-collection>
+        <auth-constraint>
+            <!-- Anyone with one of the listed roles may access this area -->
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <!-- 配合访问权限，跳转对应的页面 -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Tomcat Server Configuration Form-Based Authentication Area</realm-name>
+        <form-login-config>
+            <form-login-page>/page/commons/403.html</form-login-page>
+            <form-error-page>/page/commons/403.html</form-error-page>
+        </form-login-config>
+    </login-config>
+    <!-- Security roles referenced by this web application -->
+    <security-role>
+        <description>
+            The role that is required to log in to the Administration Application
+        </description>
+        <role-name>admin</role-name>
+    </security-role>
+
+
+    <!--处理后台权限问题-->
+    <filter>
+        <filter-name>gmtFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>gmtFilter</filter-name>
+        <url-pattern>/gmt/*</url-pattern>
+        <!--<url-pattern>/sys/*</url-pattern>-->
+        <url-pattern>/oss/*</url-pattern>
+        <url-pattern>/apps/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

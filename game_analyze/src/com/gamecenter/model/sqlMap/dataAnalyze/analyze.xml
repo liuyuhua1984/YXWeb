@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.AnalyzeDataMapper">
+
+    <!--在线人数分析-->
+    <insert id="onlineNum" parameterType="java.lang.String">
+        INSERT into op_oss_online_dayreport(appid,worldid,ctime,maxval,minval,avgval)
+        SELECT t3.appid,t2.* from (
+        SELECT  t1.worldid,SUBSTRING(t1.addtime,1,13) as ctime,
+        MAX(t1.onlinenum) as maxval,MIN(t1.onlinenum) as minval,ROUND(AVG(t1.onlinenum),0)as avgval from op_oss_qlz_onlinecur_log t1
+        where t1.addtime like #{time} GROUP BY t1.worldid,ctime
+        ) t2 LEFT JOIN op_gameworld t3 on t2.worldid = t3.worldid
+    </insert>
+
+    <!--玩家在线日报-->
+    <insert id="userDayReport" parameterType="java.lang.String">
+        INSERT INTO op_oss_user_dayreport(appid,worldid,ctime,pcu,acu,regnum,createnum,dau,newdau,maxtime,avgtime,avglogin,createper)
+
+        SELECT t13.appid,t12.* from (
+        SELECT t10.*,t11.maxtime,t11.avgtime,t11.avglogin,ROUND(t10.createnum/t10.regnum,2) as createper from (
+        SELECT t8.*,t9.newdau from (
+        SELECT t6.*,t7.dau from (
+        SELECT t4.*,t5.createnum from (
+        SELECT t2.*,t3.regnum from (
+        SELECT t1.worldid,SUBSTRING(t1.ctime,1,10) as ctime,MAX(t1.maxval) as pcu,ROUND(AVG(t1.avgval),0) as acu
+        from op_oss_online_dayreport t1 where t1.ctime like #{time} GROUP BY t1.worldid
+        ) t2
+
+        LEFT JOIN
+
+        (
+        -- 注册
+        SELECT t1.worldid,count(t1.openid) as regnum
+        from op_oss_qlz_passport_reg t1 where t1.info like #{time} GROUP BY t1.worldid
+        ) t3 on t2.worldid = t3.worldid
+        ) t4
+        LEFT JOIN
+        (
+        -- 创建
+        SELECT t1.worldid,count(t1.openid) as createnum
+        from op_oss_qlz_passport t1 where t1.regtime like #{time} GROUP BY t1.worldid
+        ) t5 on t4.worldid = t5.worldid
+        ) t6
+        LEFT JOIN
+        (
+        -- 活跃
+        SELECT t1.worldid,count(DISTINCT t1.openid) as dau from op_oss_qlz_login_log t1 where
+        t1.logintime like #{time} group by t1.worldid
+        ) t7 on t6.worldid = t7.worldid
+        ) t8
+        LEFT JOIN
+        (
+        -- 新增活跃
+        SELECT t1.worldid,count(t1.openid) as newdau
+        from op_oss_qlz_passport t1 where t1.fristlogintime like #{time} GROUP BY t1.worldid
+        ) t9 on t8.worldid = t9.worldid
+        ) t10
+        LEFT JOIN
+        (
+        -- 在线时长  最大 平均
+        SELECT t2.worldid,MAX(t2.xx1) as maxtime,ROUND(AVG(t2.xx1),0) as avgtime,ROUND(AVG(t2.xx2),0) as avglogin from (
+        SELECT t1.worldid,t1.openid,SUM(t1.onlinetime) as xx1,COUNT(*) as xx2
+        from op_oss_qlz_out_log t1 where t1.outtime like #{time} group by t1.worldid,t1.openid
+        ) t2 GROUP BY t2.worldid
+        ) t11 on t10.worldid = t11.worldid
+        ) t12 LEFT JOIN op_gameworld t13 on t12.worldid = t13.worldid
+
+    </insert>
+
+    <!--收入统计日报-->
+    <insert id="payDayReport" parameterType="java.lang.String">
+
+       -- INSERT INTO op_oss_pay_dayreport(appid,worldid,ctime,apa,newapa,total,maxpay,paycount,arpu,payper)
+       INSERT INTO op_oss_pay_dayreport(appid,worldid,ctime,newapa,total,maxpay,paycount,apa,arpu,payper)
+
+        SELECT t13.appid,t12.* from (
+
+        SELECT t8.*,ROUND(t8.total/t8.apa,2) as arpu,ROUND(t8.apa/t9.dau,2) as payper from (
+        SELECT t6.*,t7.total,t7.maxpay,t7.paycount,t7.apa from (
+        SELECT t2.*,t5.newapa from (
+        -- pcu acu
+        SELECT t1.worldid,SUBSTRING(t1.ctime,1,10) as ctime
+        from op_oss_online_dayreport t1 where t1.ctime like #{time} GROUP BY t1.worldid
+        ) t2
+        LEFT JOIN
+        (
+        -- 新增付费人数
+        SELECT t1.worldid,count(t1.openid) as newapa
+        from op_oss_qlz_passport t1 where t1.fristpaytime like #{time} GROUP BY t1.worldid
+        ) t5 on t2.worldid = t5.worldid
+        ) t6
+        LEFT JOIN
+        (
+        -- 总额
+        SELECT t1.worldid,ROUND(sum(t1.moneyadd)/5,2) as total,COUNT(t1.did) as paycount,ROUND(MAX(t1.moneyadd)/5,2) as maxpay,COUNT(DISTINCT t1.openid) apa
+        from op_oss_qlz_recharge_log t1 where t1.time like #{time} and t1.billon NOT LIKE '%reku%'  GROUP BY t1.worldid
+        ) t7 on t6.worldid = t7.worldid
+        ) t8
+        LEFT JOIN
+        (
+        -- 活跃
+        SELECT t1.worldid, count(DISTINCT t1.openid) as dau from op_oss_qlz_login_log t1 where
+        t1.logintime like #{time} group by t1.worldid
+        ) t9 on t8.worldid = t9.worldid
+
+        ) t12 LEFT JOIN op_gameworld t13 on t12.worldid = t13.worldid
+    </insert>
+
+    <!--用户留存计算-->
+    <select id="remainUser" resultType="java.lang.Double" parameterType="java.util.HashMap">
+        SELECT IFNULL(ROUND(t3.lc/t3.dau,2),0) from (
+        SELECT
+        (SELECT count(DISTINCT t1.openid) from op_oss_qlz_login_log t1 where
+        CONCAT(t1.openid,t1.worldid) in (SELECT t2.openid from op_oss_qlz_passport t2 where t2.fristlogintime like ${goalTime} and t2.worldid=${worldid})
+        and t1.logintime LIKE ${targetTime} and t1.worldid=${worldid}) as lc,
+        (SELECT count(t2.openid) from op_oss_qlz_passport t2 where t2.fristlogintime like ${goalTime} and t2.worldid=${worldid}) as dau from dual
+        ) t3
+    </select>
+
+    <!--消费日报 分析-->
+    <insert id="consumeDayReport" parameterType="java.lang.String">
+        insert into op_oss_consume_dayreport(appid,worldid,ctime,itemtype,itemname,itemnum,usernum,money)
+        SELECT t3.appid,t2.* from (
+        SELECT t1.worldid,SUBSTRING(t1.time,1,10) as timex,t1.itemtype,t1.itemname,SUM(t1.itemnum) as itemnum,COUNT(DISTINCT t1.openid) as usernum,
+        SUM(t1.lostmoney) as lostmoney  from op_oss_qlz_consume_log t1 where t1.time like #{time} GROUP BY timex,t1.itemtype
+        ) t2 LEFT JOIN op_gameworld t3 on t2.worldid= t3.worldid
+    </insert>
+
+</mapper>

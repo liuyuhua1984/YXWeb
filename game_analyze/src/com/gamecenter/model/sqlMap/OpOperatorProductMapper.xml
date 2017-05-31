@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpOperatorProductMapper">
+    <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOperatorProduct">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="optid" property="optid" jdbcType="INTEGER"/>
+        <result column="appid" property="appid" jdbcType="VARCHAR"/>
+        <result column="appkey" property="appkey" jdbcType="VARCHAR"/>
+        <result column="checkip" property="checkip" jdbcType="VARCHAR"/>
+        <result column="pfurl" property="pfurl" jdbcType="VARCHAR"/>
+        <result column="wnum" property="wnum" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="info" property="info" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, optid, appid, appkey, checkip, pfurl, wnum, status, info
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.gamecenter.model.OpOperatorProductExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from op_operator_product
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from op_operator_product
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from op_operator_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOperatorProductExample">
+        delete from op_operator_product
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.gamecenter.model.OpOperatorProduct">
+    insert into op_operator_product (id, optid, appid, 
+      appkey, checkip, pfurl, 
+      wnum, status, info)
+    values (#{id,jdbcType=INTEGER}, #{optid,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, 
+      #{appkey,jdbcType=VARCHAR}, #{checkip,jdbcType=VARCHAR}, #{pfurl,jdbcType=VARCHAR}, 
+      #{wnum,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.gamecenter.model.OpOperatorProduct">
+        insert into op_operator_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="optid != null">
+                optid,
+            </if>
+            <if test="appid != null">
+                appid,
+            </if>
+            <if test="appkey != null">
+                appkey,
+            </if>
+            <if test="checkip != null">
+                checkip,
+            </if>
+            <if test="pfurl != null">
+                pfurl,
+            </if>
+            <if test="wnum != null">
+                wnum,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="info != null">
+                info,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="optid != null">
+                #{optid,jdbcType=INTEGER},
+            </if>
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="appkey != null">
+                #{appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="checkip != null">
+                #{checkip,jdbcType=VARCHAR},
+            </if>
+            <if test="pfurl != null">
+                #{pfurl,jdbcType=VARCHAR},
+            </if>
+            <if test="wnum != null">
+                #{wnum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="info != null">
+                #{info,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.gamecenter.model.OpOperatorProductExample"
+            resultType="java.lang.Integer">
+        select count(*) from op_operator_product
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update op_operator_product
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.optid != null">
+                optid = #{record.optid,jdbcType=INTEGER},
+            </if>
+            <if test="record.appid != null">
+                appid = #{record.appid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.appkey != null">
+                appkey = #{record.appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="record.checkip != null">
+                checkip = #{record.checkip,jdbcType=VARCHAR},
+            </if>
+            <if test="record.pfurl != null">
+                pfurl = #{record.pfurl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.wnum != null">
+                wnum = #{record.wnum,jdbcType=INTEGER},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=VARCHAR},
+            </if>
+            <if test="record.info != null">
+                info = #{record.info,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update op_operator_product
+        set id = #{record.id,jdbcType=INTEGER},
+        optid = #{record.optid,jdbcType=INTEGER},
+        appid = #{record.appid,jdbcType=VARCHAR},
+        appkey = #{record.appkey,jdbcType=VARCHAR},
+        checkip = #{record.checkip,jdbcType=VARCHAR},
+        pfurl = #{record.pfurl,jdbcType=VARCHAR},
+        wnum = #{record.wnum,jdbcType=INTEGER},
+        status = #{record.status,jdbcType=VARCHAR},
+        info = #{record.info,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOperatorProduct">
+        update op_operator_product
+        <set>
+            <if test="optid != null">
+                optid = #{optid,jdbcType=INTEGER},
+            </if>
+            <if test="appid != null">
+                appid = #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="appkey != null">
+                appkey = #{appkey,jdbcType=VARCHAR},
+            </if>
+            <if test="checkip != null">
+                checkip = #{checkip,jdbcType=VARCHAR},
+            </if>
+            <if test="pfurl != null">
+                pfurl = #{pfurl,jdbcType=VARCHAR},
+            </if>
+            <if test="wnum != null">
+                wnum = #{wnum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="info != null">
+                info = #{info,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOperatorProduct">
+    update op_operator_product
+    set optid = #{optid,jdbcType=INTEGER},
+      appid = #{appid,jdbcType=VARCHAR},
+      appkey = #{appkey,jdbcType=VARCHAR},
+      checkip = #{checkip,jdbcType=VARCHAR},
+      pfurl = #{pfurl,jdbcType=VARCHAR},
+      wnum = #{wnum,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectList" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOperatorProductExample">
+
+        select t3.*,t4.appname from (
+        select t1.*,t2.optname from (
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from op_operator_product
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        ) t1 left join op_operator t2 on t1.optid = t2.optid
+        ) t3 left join op_gameapp t4 on t3.appid = t4.appid
+
+    </select>
+
+
+    <select id="selectOperatorListByAppId" parameterType="java.lang.String"
+            resultType="com.gamecenter.model.OpOperator">
+        SELECT * FROM op_operator t2 where t2.optid in (SELECT t1.optid from op_operator_product t1 where t1.appid=#{appid})
+    </select>
+
+    <!--获取运营商对于产品的配置信息-->
+    <select id="getOpObj" parameterType="java.util.HashMap" resultType="com.gamecenter.parBean.vo.Par_OperatorMsg">
+        SELECT t5.*,t6.opcode,t6.optname from (
+        SELECT t3.number,t4.optid,t4.appkey,t4.checkip,t4.pfurl,t4.`status` from (
+        SELECT t2.optid,t2.number from op_operator_world t2 where t2.wid = (SELECT wid from op_gameworld t1 where t1.worldid =${worldid} )
+        ) t3 LEFT JOIN op_operator_product t4 on t3.optid =t4.optid  where t4.appid = ${appid}
+        ) t5 LEFT JOIN op_operator t6 on t5.optid = t6.optid
+    </select>
+</mapper>

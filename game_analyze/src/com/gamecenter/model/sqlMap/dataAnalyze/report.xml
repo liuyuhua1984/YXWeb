@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.ReportMapper">
+
+    <!-- 概况分析汇总 -->
+    <select id="getSurvey" parameterType="java.lang.String" resultType="com.gamecenter.parBean.report.DayAllSurvey">
+        SELECT sum(t3.newdau) as newdau,sum(t3.dau) as dau,sum(t3.apa) as apa,sum(t3.total) as totalpay,
+        t3.ctime as time, ROUND(sum(t3.apa)/sum(t3.dau),2) as payper,ROUND(sum(t3.total)/sum(t3.apa),2) as arpu FROM (
+        SELECT t1.dau,t1.newdau,t2.apa,t2.total,t1.ctime from op_oss_user_dayreport t1 LEFT JOIN op_oss_pay_dayreport t2
+        ON (t1.worldid = t2.worldid and t1.ctime = t2.ctime)
+        ) t3  where t3.ctime = #{time}
+    </select>
+
+    <!--今日实时概况 汇总-->
+    <select id="getCurSurvey" parameterType="com.gamecenter.parBean.report.Par_survey" resultType="com.gamecenter.parBean.report.DayCurSurvey">
+         SELECT
+        (
+        SELECT count(*) as chuangjue from op_oss_qlz_passport t1 where t1.regtime like #{time}
+        <if test="worldid !=null"> and worldid =#{worldid} </if>
+        ) as chuangjue,
+        (SELECT count(*) from op_oss_qlz_passport t1 where t1.lastlogintime like #{time}
+        <if test="worldid !=null"> and worldid =#{worldid} </if>) as dau,
+        (SELECT count(DISTINCT t2.openid) as apa from op_oss_qlz_recharge_tx t2 where t2.addtime like #{time}
+        <if test="worldid !=null"> and zoneid =#{worldid} </if>) as apa,
+        (SELECT ROUND(sum(t2.amt/10+t2.payamt_coins+t2.pubacct_payamt_coins)/10,2) as paysum from op_oss_qlz_recharge_tx t2 where t2.addtime like #{time}
+        <if test="worldid !=null"> and zoneid =#{worldid} </if>) as paysum  from DUAL
+    </select>
+
+
+    <!--综合日报查询-->
+    <select id="getDayReport" resultType="com.gamecenter.parBean.report.DayReport" parameterType="java.lang.String">
+        SELECT t4.*,t5.wname from (
+        SELECT t3.appid,t3.worldid,t3.ctime,t3.regnum,t3.createnum,t3.dau,t3.newdau,t3.acu,t3.pcu,
+        t3.apa,t3.newapa,t3.total,t3.payper,t3.arpu from (
+        SELECT t1.*,t2.apa,t2.arpu,t2.newapa,t2.payper,t2.total from op_oss_user_dayreport t1 LEFT JOIN op_oss_pay_dayreport t2
+        ON (t1.worldid = t2.worldid and t1.ctime = t2.ctime)
+        ) t3 where  t3.ctime=#{time}
+        ) t4 LEFT JOIN op_gameworld t5 on t4.worldid = t5.worldid
+    </select>
+
+    <!--用户实时新增监控-->
+    <select id="monitorNewUser" resultType="com.gamecenter.parBean.report.NewUserMonitor" parameterType="java.util.HashMap">
+        SELECT t4.*,t5.newdau,ROUND(t4.createnum/t4.regnum,2) as czper,ROUND(t5.newdau/t4.createnum,2) as jcper  FROM(
+        SELECT t2.*,t3.createnum from (
+        -- 注册
+        SELECT SUBSTRING(t1.info,1,13) as timex,count(t1.openid) as regnum
+        from op_oss_qlz_passport_reg t1 where t1.info like ${time} and t1.worldid=${worldid} GROUP BY timex
+        ) t2
+        LEFT JOIN
+        (
+        -- 创建
+        SELECT SUBSTRING(t1.regtime,1,13) as timex,count(t1.openid) as createnum
+        from op_oss_qlz_passport t1 where t1.regtime like ${time} and t1.worldid=${worldid} GROUP BY timex
+        ) t3 on t2.timex = t3.timex
+        ) t4
+        LEFT JOIN
+        (
+        -- 新增活跃
+        SELECT SUBSTRING(t1.fristlogintime,1,13) as timex,count(t1.openid) as newdau
+        from op_oss_qlz_passport t1 where t1.fristlogintime like ${time} and t1.worldid=${worldid} GROUP BY timex
+        ) t5 on t4.timex = t5.timex   ORDER BY t4.timex desc
+    </select>
+
+      <!--充值排行（含内充）-->
+    <select id="paytop" parameterType="java.lang.String" resultType="com.gamecenter.parBean.report.Paytop">
+        SELECT t3.*,IFNULL(ROUND((t3.totalmoney/t3.paycount)/10,2),0) as avgpay from (
+        SELECT t1.openid,t1.rolename,t1.worldid,ROUND(t1.totalmoney/10,2) as totalmoney,t1.totalconsume,t1.lastpaytime,t1.fristpaytime,t1.grade,t1.curmoney,
+        (SELECT COUNT(t2.did) from op_oss_qlz_recharge_log t2 where CONCAT(t2.openid,t2.worldid) = t1.openid) as paycount
+         from op_oss_qlz_passport t1  where t1.worldid = #{worldid} and t1.totalmoney>0
+        ORDER BY t1.totalmoney desc limit 100
+        ) t3
+    </select>
+
+    <!--服务习惯统计列表  op_oss_qlz_recharge_log-->
+    <select id="payhabitlist" resultType="com.gamecenter.parBean.report.Payhabit" parameterType="java.util.HashMap">
+        <![CDATA[
+        SELECT
+        t2.worldid,SUM(t2.paytotal) as paytotal,SUM(t2.usernum) as usernum ,SUM(t2.paycount) as paycount, ROUND(SUM(t2.paytotal)/SUM(t2.usernum),2) as arpu,
+        GROUP_CONCAT(t2.moneyarea,',',t2.paytotal,',',t2.usernum,',',t2.paycount,',',ROUND(t2.paytotal/t2.usernum,2) separator "#") as info
+        from (
+
+        SELECT
+        (case
+        when (t1.moneyadd>0 and t1.moneyadd<=100) then 's1'
+        when (t1.moneyadd>100 and t1.moneyadd<=500) then 's2'
+        when (t1.moneyadd>500 and t1.moneyadd<=1000) then 's3'
+        when (t1.moneyadd>1000 and t1.moneyadd<=2000) then 's4'
+        when (t1.moneyadd>2000 and t1.moneyadd<=5000) then 's5'
+        when (t1.moneyadd>5000 and t1.moneyadd<=1000) then 's6'
+        else  's7'  end ) as moneyarea, SUM(t1.moneyadd) as paytotal, COUNT(DISTINCT t1.openid) as usernum, COUNT(*) as paycount, t1.worldid
+
+        from (SELECT t5.worldid,ROUND((t5.moneyadd/10),2) as moneyadd,t5.openid,t5.time,t5.billon from op_oss_qlz_recharge_log t5) t1
+
+        where (t1.billon not like '%reku%') and t1.worldid in (${worldids}) and  t1.time between ${begintime} and ${endtime} GROUP BY t1.worldid,moneyarea ORDER BY moneyarea asc
+        ) t2 group by t2.worldid
+        ]]>
+    </select>
+
+    <!--用户在线报表-->
+    <select id="userOnlineReport" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OpOssOnlineDayreport">
+        SELECT t1.appid,t1.worldid,SUBSTRING(t1.ctime,1,10) as ctime,MAX(t1.maxval) as maxval,MIN(t1.minval) as minval,
+        ROUND(AVG(t1.avgval),0) as avgval from op_oss_online_dayreport t1 where ${worldids}
+        t1.ctime BETWEEN ${begintime} and  ${endtime} GROUP BY  SUBSTRING(t1.ctime,1,10)
+    </select>
+
+    <!--用户在线报表  指定天 小时 -->
+    <select id="userOnlineReportByhour" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OpOssOnlineDayreport">
+        SELECT t1.appid,t1.worldid,t1.ctime,MAX(t1.maxval) as maxval,MIN(t1.minval) as minval,
+        ROUND(AVG(t1.avgval),0) as avgval from op_oss_online_dayreport t1 where ${worldids}
+        t1.ctime like ${time} GROUP BY  ctime ORDER BY ctime asc
+    </select>
+
+    <!--用户等级 详细 -->
+    <select id="usergradedetail" parameterType="java.lang.String" resultType="com.gamecenter.parBean.report.UserGradeDetail">
+        SELECT t1.worldid,t1.grade,COUNT(DISTINCT t1.openid) as num,SUM(t1.totalmoney) as totalmoney,
+        sum( case when t1.totalmoney >0 THEN 1 ELSE 0 end) as paynum
+         from op_oss_qlz_passport t1 where t1.worldid =#{worldid}
+        GROUP by t1.grade ORDER BY t1.grade desc
+    </select>
+
+    <!--用户等级 分布 -->
+    <select id="usergrade" parameterType="java.lang.String" resultType="com.gamecenter.parBean.report.UserGrade">
+        SELECT t1.worldid,t1.grade,COUNT(DISTINCT t1.openid) as num from op_oss_qlz_passport t1 where t1.worldid =#{worldid}
+        GROUP by t1.grade ORDER BY t1.grade desc
+    </select>
+
+    <!--用户等级 范围分布 -->
+    <select id="usergradescope" parameterType="java.lang.String" resultType="com.gamecenter.parBean.report.UserGrade">
+        <![CDATA[
+        select
+        (case
+        when (t2.grade>=1 and t2.grade<10) then '1-10'
+        when (t2.grade>=10 and t2.grade<20) then '10-20'
+        when (t2.grade>=20 and t2.grade<30) then '20-30'
+        when (t2.grade>=30 and t2.grade<40) then '30-40'
+        when (t2.grade>=40 and t2.grade<50) then '40-50'
+        when (t2.grade>=50 and t2.grade<60) then '50-60'
+        when (t2.grade>=60 and t2.grade<70) then '60-70'
+        when (t2.grade>=70 and t2.grade<80) then '70-80'
+        else  '80-'  end ) as grade, count(*) as  num ,t2.worldid
+        from (
+
+        SELECT t3.worldid,t3.grade from op_oss_qlz_passport t3  where t3.worldid =#{worldid}
+
+        ) t2  group by case
+        when (t2.grade>=1 and t2.grade<10) then '1-10'
+        when (t2.grade>=10 and t2.grade<20) then '10-20'
+        when (t2.grade>=20 and t2.grade<30) then '20-30'
+        when (t2.grade>=30 and t2.grade<40) then '30-40'
+        when (t2.grade>=40 and t2.grade<50) then '40-50'
+        when (t2.grade>=50 and t2.grade<60) then '50-60'
+        when (t2.grade>=60 and t2.grade<70) then '60-70'
+        when (t2.grade>=70 and t2.grade<80) then '70-80'
+        else  '80-'  end
+        ]]>
+    </select>
+
+    <!--获取消费日报-->
+    <select id="consumeDayReport" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OpOssConsumeDayreport" >
+        SELECT t1.worldid,t1.itemtype,t1.itemname,SUM(t1.itemnum) as itemnum,SUM(t1.usernum) as usernum ,SUM(t1.money) as money
+         from op_oss_consume_dayreport t1 where t1.worldid = ${worldid}
+        and t1.ctime BETWEEN ${begintime} and ${endtime} GROUP BY t1.itemtype ORDER BY t1.money asc
+    </select>
+
+
+    <!--用户等级流失统计-->
+    <select id="usergradels" parameterType="java.util.HashMap" resultType="com.gamecenter.parBean.report.UserGradeLs">
+        SELECT t2.grade,t2.zs,t2.sy,(t2.zs-t2.sy) as ls  from (
+        SELECT t1.grade ,count(t1.openid) as zs,sum(case when t1.lastlogintime>=${time} then 1 else 0 end) as sy
+        from op_oss_qlz_passport t1 where t1.lastloginip != '123.146.248.186'
+        and (t1.lastloginip is not null) AND t1.worldid =${worldid}  GROUP BY t1.grade
+        ) t2  ORDER BY t2.grade asc
+    </select>
+</mapper>

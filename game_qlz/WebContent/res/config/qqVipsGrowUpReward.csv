@@ -1,0 +1,8 @@
+﻿特权的类型（1表示黄钻）,角色等级,游戏币（品质）,阅历（品质）,声望（品质）,道具
+type,level,money,scene,prestige,items
+1,10,300000#3#money,40000#4#scene,,17001*1
+1,20,450000#3#money,60000#4#scene,60#5#prestige,
+1,30,600000#3#money,80000#4#scene,80#5#prestige,
+1,40,750000#3#money,100000#4#scene,100#5#prestige,
+1,50,1200000#3#money,150000#4#scene,150#5#prestige,
+1,60,1500000#3#money,200000#4#scene,200#5#prestige,

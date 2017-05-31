@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpOssQlzOnlinecurLogMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOssQlzOnlinecurLog" >
+    <id column="did" property="did" jdbcType="INTEGER" />
+    <result column="worldid" property="worldid" jdbcType="VARCHAR" />
+    <result column="onlinenum" property="onlinenum" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    did, worldid, onlinenum, addtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_onlinecur_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_onlinecur_log
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from op_oss_qlz_onlinecur_log
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLogExample" >
+    delete from op_oss_qlz_onlinecur_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLog" >
+    insert into op_oss_qlz_onlinecur_log (did, worldid, onlinenum, 
+      addtime)
+    values (#{did,jdbcType=INTEGER}, #{worldid,jdbcType=VARCHAR}, #{onlinenum,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLog" >
+    insert into op_oss_qlz_onlinecur_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="worldid != null" >
+        worldid,
+      </if>
+      <if test="onlinenum != null" >
+        onlinenum,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="worldid != null" >
+        #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinenum != null" >
+        #{onlinenum,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLogExample" resultType="java.lang.Integer" >
+    select count(*) from op_oss_qlz_onlinecur_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_oss_qlz_onlinecur_log
+    <set >
+      <if test="record.did != null" >
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.worldid != null" >
+        worldid = #{record.worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onlinenum != null" >
+        onlinenum = #{record.onlinenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_oss_qlz_onlinecur_log
+    set did = #{record.did,jdbcType=INTEGER},
+      worldid = #{record.worldid,jdbcType=VARCHAR},
+      onlinenum = #{record.onlinenum,jdbcType=INTEGER},
+      addtime = #{record.addtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLog" >
+    update op_oss_qlz_onlinecur_log
+    <set >
+      <if test="worldid != null" >
+        worldid = #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinenum != null" >
+        onlinenum = #{onlinenum,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOssQlzOnlinecurLog" >
+    update op_oss_qlz_onlinecur_log
+    set worldid = #{worldid,jdbcType=VARCHAR},
+      onlinenum = #{onlinenum,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+
+    <!--按天汇总数据-->
+   <select id="selectOnlineDataByDay" resultType="com.gamecenter.parBean.vo.OnlineDataByDay" parameterType="java.util.HashMap">
+       SELECT MAX(t1.onlinenum) as maxNum,MIN(t1.onlinenum) as minNum,ROUND(AVG(t1.onlinenum),0) as avgNum,count(t1.did) as getNum
+       from op_oss_qlz_onlinecur_log t1 where t1.addtime like ${time} and t1.worldid= ${worldid}
+   </select>
+
+    <!--按小时汇总每日数据-->
+   <select id="selectOnlineDataByHour" resultType="com.gamecenter.parBean.vo.OnlineDataByHour" parameterType="java.util.HashMap">
+       SELECT SUBSTRING(t1.addtime,12,2) as timex,max(t1.onlinenum) as nums from op_oss_qlz_onlinecur_log t1
+       where t1.addtime like ${time} and t1.worldid = ${worldid} GROUP BY timex ORDER BY timex asc
+   </select>
+
+</mapper>

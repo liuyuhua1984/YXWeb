@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpOssQlzPassportMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOssQlzPassport" >
+    <id column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="worldid" property="worldid" jdbcType="VARCHAR" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="curmoney" property="curmoney" jdbcType="DOUBLE" />
+    <result column="totalmoney" property="totalmoney" jdbcType="DOUBLE" />
+    <result column="career" property="career" jdbcType="INTEGER" />
+    <result column="isonline" property="isonline" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="lastloginip" property="lastloginip" jdbcType="VARCHAR" />
+    <result column="logincount" property="logincount" jdbcType="INTEGER" />
+    <result column="fristlogintime" property="fristlogintime" jdbcType="VARCHAR" />
+    <result column="lastlogintime" property="lastlogintime" jdbcType="VARCHAR" />
+    <result column="regtime" property="regtime" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="totalonline" property="totalonline" jdbcType="INTEGER" />
+    <result column="totalconsume" property="totalconsume" jdbcType="DOUBLE" />
+    <result column="vipgrade" property="vipgrade" jdbcType="INTEGER" />
+    <result column="fristpaytime" property="fristpaytime" jdbcType="VARCHAR" />
+    <result column="lastpaytime" property="lastpaytime" jdbcType="VARCHAR" />
+    <result column="optid" property="optid" jdbcType="VARCHAR" />
+    <result column="guidenum" property="guidenum" jdbcType="VARCHAR" />
+    <result column="sfrom" property="sfrom" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    openid, worldid, rolename, grade, curmoney, totalmoney, career, isonline, status, 
+    lastloginip, logincount, fristlogintime, lastlogintime, regtime, info, totalonline, 
+    totalconsume, vipgrade, fristpaytime, lastpaytime, optid, guidenum, sfrom
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOssQlzPassportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_passport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_passport
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from op_oss_qlz_passport
+    where openid = #{openid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOssQlzPassportExample" >
+    delete from op_oss_qlz_passport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpOssQlzPassport" >
+    insert into op_oss_qlz_passport (openid, worldid, rolename, 
+      grade, curmoney, totalmoney, 
+      career, isonline, status, 
+      lastloginip, logincount, fristlogintime, 
+      lastlogintime, regtime, info, 
+      totalonline, totalconsume, vipgrade, 
+      fristpaytime, lastpaytime, optid, 
+      guidenum, sfrom)
+    values (#{openid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=INTEGER}, #{curmoney,jdbcType=DOUBLE}, #{totalmoney,jdbcType=DOUBLE}, 
+      #{career,jdbcType=INTEGER}, #{isonline,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{lastloginip,jdbcType=VARCHAR}, #{logincount,jdbcType=INTEGER}, #{fristlogintime,jdbcType=VARCHAR}, 
+      #{lastlogintime,jdbcType=VARCHAR}, #{regtime,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, 
+      #{totalonline,jdbcType=INTEGER}, #{totalconsume,jdbcType=DOUBLE}, #{vipgrade,jdbcType=INTEGER}, 
+      #{fristpaytime,jdbcType=VARCHAR}, #{lastpaytime,jdbcType=VARCHAR}, #{optid,jdbcType=VARCHAR}, 
+      #{guidenum,jdbcType=VARCHAR}, #{sfrom,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssQlzPassport" >
+    insert into op_oss_qlz_passport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="worldid != null" >
+        worldid,
+      </if>
+      <if test="rolename != null" >
+        rolename,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="curmoney != null" >
+        curmoney,
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney,
+      </if>
+      <if test="career != null" >
+        career,
+      </if>
+      <if test="isonline != null" >
+        isonline,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastloginip != null" >
+        lastloginip,
+      </if>
+      <if test="logincount != null" >
+        logincount,
+      </if>
+      <if test="fristlogintime != null" >
+        fristlogintime,
+      </if>
+      <if test="lastlogintime != null" >
+        lastlogintime,
+      </if>
+      <if test="regtime != null" >
+        regtime,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="totalonline != null" >
+        totalonline,
+      </if>
+      <if test="totalconsume != null" >
+        totalconsume,
+      </if>
+      <if test="vipgrade != null" >
+        vipgrade,
+      </if>
+      <if test="fristpaytime != null" >
+        fristpaytime,
+      </if>
+      <if test="lastpaytime != null" >
+        lastpaytime,
+      </if>
+      <if test="optid != null" >
+        optid,
+      </if>
+      <if test="guidenum != null" >
+        guidenum,
+      </if>
+      <if test="sfrom != null" >
+        sfrom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="curmoney != null" >
+        #{curmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalmoney != null" >
+        #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="career != null" >
+        #{career,jdbcType=INTEGER},
+      </if>
+      <if test="isonline != null" >
+        #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastloginip != null" >
+        #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="fristlogintime != null" >
+        #{fristlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogintime != null" >
+        #{lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        #{regtime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="totalonline != null" >
+        #{totalonline,jdbcType=INTEGER},
+      </if>
+      <if test="totalconsume != null" >
+        #{totalconsume,jdbcType=DOUBLE},
+      </if>
+      <if test="vipgrade != null" >
+        #{vipgrade,jdbcType=INTEGER},
+      </if>
+      <if test="fristpaytime != null" >
+        #{fristpaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastpaytime != null" >
+        #{lastpaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="optid != null" >
+        #{optid,jdbcType=VARCHAR},
+      </if>
+      <if test="guidenum != null" >
+        #{guidenum,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrom != null" >
+        #{sfrom,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpOssQlzPassportExample" resultType="java.lang.Integer" >
+    select count(*) from op_oss_qlz_passport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_oss_qlz_passport
+    <set >
+      <if test="record.openid != null" >
+        openid = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldid != null" >
+        worldid = #{record.worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rolename != null" >
+        rolename = #{record.rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.curmoney != null" >
+        curmoney = #{record.curmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.totalmoney != null" >
+        totalmoney = #{record.totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.career != null" >
+        career = #{record.career,jdbcType=INTEGER},
+      </if>
+      <if test="record.isonline != null" >
+        isonline = #{record.isonline,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastloginip != null" >
+        lastloginip = #{record.lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logincount != null" >
+        logincount = #{record.logincount,jdbcType=INTEGER},
+      </if>
+      <if test="record.fristlogintime != null" >
+        fristlogintime = #{record.fristlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastlogintime != null" >
+        lastlogintime = #{record.lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regtime != null" >
+        regtime = #{record.regtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalonline != null" >
+        totalonline = #{record.totalonline,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalconsume != null" >
+        totalconsume = #{record.totalconsume,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vipgrade != null" >
+        vipgrade = #{record.vipgrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.fristpaytime != null" >
+        fristpaytime = #{record.fristpaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastpaytime != null" >
+        lastpaytime = #{record.lastpaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optid != null" >
+        optid = #{record.optid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guidenum != null" >
+        guidenum = #{record.guidenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfrom != null" >
+        sfrom = #{record.sfrom,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_oss_qlz_passport
+    set openid = #{record.openid,jdbcType=VARCHAR},
+      worldid = #{record.worldid,jdbcType=VARCHAR},
+      rolename = #{record.rolename,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      curmoney = #{record.curmoney,jdbcType=DOUBLE},
+      totalmoney = #{record.totalmoney,jdbcType=DOUBLE},
+      career = #{record.career,jdbcType=INTEGER},
+      isonline = #{record.isonline,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      lastloginip = #{record.lastloginip,jdbcType=VARCHAR},
+      logincount = #{record.logincount,jdbcType=INTEGER},
+      fristlogintime = #{record.fristlogintime,jdbcType=VARCHAR},
+      lastlogintime = #{record.lastlogintime,jdbcType=VARCHAR},
+      regtime = #{record.regtime,jdbcType=VARCHAR},
+      info = #{record.info,jdbcType=VARCHAR},
+      totalonline = #{record.totalonline,jdbcType=INTEGER},
+      totalconsume = #{record.totalconsume,jdbcType=DOUBLE},
+      vipgrade = #{record.vipgrade,jdbcType=INTEGER},
+      fristpaytime = #{record.fristpaytime,jdbcType=VARCHAR},
+      lastpaytime = #{record.lastpaytime,jdbcType=VARCHAR},
+      optid = #{record.optid,jdbcType=VARCHAR},
+      guidenum = #{record.guidenum,jdbcType=VARCHAR},
+      sfrom = #{record.sfrom,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOssQlzPassport" >
+    update op_oss_qlz_passport
+    <set >
+      <if test="worldid != null" >
+        worldid = #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        rolename = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="curmoney != null" >
+        curmoney = #{curmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="career != null" >
+        career = #{career,jdbcType=INTEGER},
+      </if>
+      <if test="isonline != null" >
+        isonline = #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastloginip != null" >
+        lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        logincount = #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="fristlogintime != null" >
+        fristlogintime = #{fristlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogintime != null" >
+        lastlogintime = #{lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        regtime = #{regtime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="totalonline != null" >
+        totalonline = #{totalonline,jdbcType=INTEGER},
+      </if>
+      <if test="totalconsume != null" >
+        totalconsume = #{totalconsume,jdbcType=DOUBLE},
+      </if>
+      <if test="vipgrade != null" >
+        vipgrade = #{vipgrade,jdbcType=INTEGER},
+      </if>
+      <if test="fristpaytime != null" >
+        fristpaytime = #{fristpaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastpaytime != null" >
+        lastpaytime = #{lastpaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="optid != null" >
+        optid = #{optid,jdbcType=VARCHAR},
+      </if>
+      <if test="guidenum != null" >
+        guidenum = #{guidenum,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrom != null" >
+        sfrom = #{sfrom,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where openid = #{openid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOssQlzPassport" >
+    update op_oss_qlz_passport
+    set worldid = #{worldid,jdbcType=VARCHAR},
+      rolename = #{rolename,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      curmoney = #{curmoney,jdbcType=DOUBLE},
+      totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      career = #{career,jdbcType=INTEGER},
+      isonline = #{isonline,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      logincount = #{logincount,jdbcType=INTEGER},
+      fristlogintime = #{fristlogintime,jdbcType=VARCHAR},
+      lastlogintime = #{lastlogintime,jdbcType=VARCHAR},
+      regtime = #{regtime,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      totalonline = #{totalonline,jdbcType=INTEGER},
+      totalconsume = #{totalconsume,jdbcType=DOUBLE},
+      vipgrade = #{vipgrade,jdbcType=INTEGER},
+      fristpaytime = #{fristpaytime,jdbcType=VARCHAR},
+      lastpaytime = #{lastpaytime,jdbcType=VARCHAR},
+      optid = #{optid,jdbcType=VARCHAR},
+      guidenum = #{guidenum,jdbcType=VARCHAR},
+      sfrom = #{sfrom,jdbcType=VARCHAR}
+    where openid = #{openid,jdbcType=VARCHAR}
+  </update>
+  
+   
+  <!--分页获取-->
+    <select id="getPageList" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOssQlzPassportExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from op_oss_qlz_passport
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        limit #{beginNum},#{endNum}
+    </select>
+
+    <!--新增登陆次数-->
+    <update id="addLoginCount" parameterType="java.lang.String">
+        update op_oss_qlz_passport t1 set t1.logincount= t1.logincount+1 WHERE t1.openid = #{openid}
+    </update>
+
+    <!--累计在线时长-->
+    <update id="addOnlineTime" parameterType="java.util.HashMap">
+        update op_oss_qlz_passport t1 set t1.totalonline= t1.totalonline+${time} WHERE t1.openid = ${openid}
+    </update>
+
+    <!--充值金币的累计-->
+    <update id="addTotalMoney" parameterType="java.util.HashMap">
+        update op_oss_qlz_passport t1 set t1.totalmoney= t1.totalmoney+${money} WHERE t1.openid = ${openid}
+    </update>
+
+    <!--消耗金币的累计-->
+    <update id="addConsumeMoney" parameterType="java.util.HashMap">
+        update op_oss_qlz_passport t1 set t1.totalconsume= t1.totalconsume+${money} WHERE t1.openid = ${openid}
+    </update>
+
+    <!--获取账号openids列表-->
+    <select id="getPassportIdsStr" resultType="java.lang.String" parameterType="java.lang.String">
+        select t1.openid from op_oss_qlz_passport t1 where t1.worldid = #{wid}
+    </select>
+
+
+    <select id="getActivePassportList" parameterType="java.lang.String" resultType="com.gamecenter.model.OpOssQlzPassport">
+        SELECT t2.* from (
+        SELECT * from op_oss_qlz_passport t1 where t1.lastlogintime > #{time}
+        ) t2 LEFT JOIN op_gameworld t3 on t2.worldid = t3.worldid where t3.`status`=1
+    </select>
+</mapper>

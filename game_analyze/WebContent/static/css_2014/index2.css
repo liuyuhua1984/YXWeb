@@ -1,0 +1,288 @@
+/*----------index----------*/
+/**/
+.mainer .head {
+    background: url(../images_2014/sd.png) no-repeat bottom center;
+    padding-bottom: 16px;
+}
+
+.mainer .head .banner {
+    height: 400px;
+}
+
+.mainer .page {
+
+}
+
+.mainer .page .md {
+
+}
+
+.mainer .page .md .hd {
+    height: 30px;
+    background: url(../images_2014/line.png) repeat-x bottom left;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+}
+
+.mainer .page .md .hd p {
+    line-height: 30px;
+}
+
+.mainer .page .md .hd p span {
+    line-height: 30px;
+    height: 30px;
+    background: url(../images_2014/tri_tt.png) no-repeat 0 50%;
+    padding-left: 12px;
+    color: #4c4c4c;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mainer .page .md .hd p span i {
+    font-weight: normal;
+    font-style: normal;
+    color: #a1a1a1;
+    font-family: Arial;
+    margin-left: 5px;
+}
+
+.mainer .page .md .hd p a {
+    display: inline-block;
+    height: 30px;
+    width: 31px;
+    background: url(../images_2014/more.png) no-repeat center;
+    float: right;
+}
+
+.mainer .page .md .hd p a:hover {
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+}
+
+.mainer .page .md .hd p em {
+    display: inline-block;
+    width: 91px;
+    height: 32px;
+    background: url(../images_2014/tab.png);
+    padding-bottom: 7px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    color: #fff;
+}
+
+.mainer .page .md .ct {
+
+}
+
+.mainer .page .dl {
+    width: 625px;
+    float: left;
+}
+
+.mainer .page .dl > .a {
+    height: 223px;
+}
+
+.mainer .page .dl > .a .cnt1 {
+
+}
+
+.mainer .page .dl > .a .cnt1 .list {
+
+}
+
+.mainer .page .dl > .a .cnt1 .list .i {
+    display: inline-block;
+    width: 200px;
+    float: left;
+    margin-right: 12px;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .img {
+    width: 200px;
+    height: 145px;
+    position: relative;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .img a {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images_2014/opa_b50.png);
+    display: none;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .img a:hover {
+    text-decoration: none;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .img:hover a {
+    display: block;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .img a p {
+    padding: 15px;
+    color: #e0e3ec;
+    line-height: 30px;
+    text-indent: 2em;
+    font-size: 14px;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .txt {
+    height: 35px;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .txt p {
+    line-height: 35px;
+    text-align: center;
+    color: #615f60;
+}
+
+.mainer .page .dl > .a .cnt1 .list .i .txt p a {
+    color: #615f60;
+}
+
+.mainer .page .dl > .b {
+    margin-top: 20px;
+    height: 207px;
+}
+
+.mainer .page .dl > .b > .l {
+    float: left;
+    width: 295px;
+}
+
+.mainer .page .dl > .b > .l .cnt2 {
+
+}
+
+.mainer .page .dl > .b > .l .cnt2 .item {
+
+}
+
+.mainer .page .dl > .b > .l .cnt2 .item img {
+    width: 113px;
+    height: 79px;
+    border: 1px solid #c6c6c6;
+    padding: 1px;
+    background: #fff;
+    float: left;
+    margin-right: 10px;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .item p.p1 {
+    color: #0c6ebc;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .item p.p1 a {
+    color: #0c6ebc;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .item p.p2 {
+    color: #615f60;
+    line-height: 20px;
+    text-indent: 2em;
+    margin-top: 8px;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .list {
+    border-top: 1px dotted #919191;
+    margin-top: 10px;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .list p {
+    height: 33px;
+    line-height: 33px;
+    border-bottom: 1px dotted #919191;
+    color: #615f60;
+    background: url(../images_2014/shape_dot.png) no-repeat 0 50%;
+    padding-left: 15px;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .list p a {
+    color: #615f60;
+}
+
+.mainer .page .dl > .b > .l .cnt2 .list p span {
+    line-height: 33px;
+    float: right;
+    color: #615f60;
+}
+
+.mainer .page .dl > .b > .r {
+    float: right;
+    width: 295px;
+}
+
+.mainer .page .dl > .b > .r .cnt3 {
+
+}
+
+.mainer .page .dl > .b > .r .cnt3 .slider {
+    width: 289px;
+    height: 164px;
+}
+
+.mainer .page .dr {
+    width: 340px;
+    float: right;
+}
+
+.mainer .page .dr > .a {
+    height: 223px;
+}
+
+.mainer .page .dr > .a .cnt4 {
+
+}
+
+.mainer .page .dr > .a .cnt4 .v {
+    width: 326px;
+    height: 180px;
+}
+
+.mainer .page .dr > .b {
+    margin-top: 20px;
+    height: 207px;
+}
+
+.mainer .page .dr > .b .cnt5 {
+
+}
+
+.mainer .page .dr > .b .cnt5 .cont {
+    width: 348px;
+    height: 180px;
+    background: url(../images_2014/contactus.jpg);
+    position: relative;
+}
+
+.mainer .page .dr > .b .cnt5 .cont a.more {
+    display: inline-block;
+    width: 84px;
+    height: 22px;
+    background: url(../images_2014/btn_be.png);
+    line-height: 22px;
+    text-align: center;
+    color: #fff;
+    font-family: 微 软 雅 黑;
+    position: absolute;
+    top: 120px;
+    left: 10px;
+}
+
+.mainer .page .dr > .b .cnt5 .cont img.tel {
+    width: 210px;
+    height: 23px;
+    position: absolute;
+    top: 68px;
+    left: 3px;
+}

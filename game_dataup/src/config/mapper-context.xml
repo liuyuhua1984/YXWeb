@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="useGoldLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.UseGoldLogMapper"/>
+    </bean>
+
+    <bean id="registerLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.RegisterLogMapper"/>
+    </bean>
+
+    <bean id="rechargeLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.RechargeLogMapper"/>
+    </bean>
+    <bean id="onlineNumLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OnlineNumLogMapper"/>
+    </bean>
+    <bean id="loginOutLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.LoginOutLogMapper"/>
+    </bean>
+    <bean id="loginLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.LoginLogMapper"/>
+    </bean>
+    <bean id="createRoleLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.CreateRoleLogMapper"/>
+    </bean>
+
+</beans>

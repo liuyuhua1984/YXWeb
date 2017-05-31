@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://127.0.0.1:61616"/>
+    </bean>
+
+    <!--消息类别列表定义-->
+    <bean id="statusMsg" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0">
+            <value>statusMsg</value>
+        </constructor-arg>
+    </bean>
+    <bean id="gamedata" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0">
+            <value>gamedata</value>
+        </constructor-arg>
+    </bean>
+
+    <!--核心JmsTemplate-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="statusMsg"/>
+    </bean>
+
+    <!--JMS事务-->
+    <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="jmsTransactionManager"/>
+
+
+    <!--订阅主题-->
+    <bean id="statusCon" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="statusCon"></constructor-arg>
+    </bean>
+    <!-- 信息监听接受-->
+    <!--<jms:listener-container connection-factory="connectionFactory">-->
+        <!--<jms:listener destination="statusCon" ref="upStatusHandler"/>-->
+    <!--</jms:listener-container>-->
+    <bean id="topicConsumerA" class="com.gamecenter.common.jms.TopicConsumerA"/>
+    <bean id="topicListenerA" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+        <constructor-arg ref="topicConsumerA"/>
+        <!--  may be other method -->
+        <property name="defaultListenerMethod" value="receive"/>
+        <!-- custom MessageConverter define -->
+        <property name="messageConverter" ref="defaultMessageConverter"/>
+    </bean>
+    <bean id="defaultMessageConverter" class="com.gamecenter.common.jms.DefaultMessageConverter"/>
+
+    <bean id="topicListenerContainerA" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="statusCon"/>
+        <property name="messageListener" ref="topicListenerA"/>
+    </bean>
+</beans>

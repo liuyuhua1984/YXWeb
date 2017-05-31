@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--By Supcan TreeList -->
+<TreeList>
+    <Properties editAble="true" id="orders">
+    </Properties>
+    <Cols>
+        <!--<Col name="mname" width="80" align="center" isKey="true" nullAble="false">计量器具名称</Col>-->
+        <!--<Col name="fname" width="110" edittype="droplist" droplistID="country">生产厂名称</Col>-->
+        <!--<Col name="CustomerID" width="240" edittype="droptreelist" droplistID="customer">客户</Col>-->
+        <!--<Col name="OrderDate" width="100" datatype="date" isHide="true">销售日期</Col>-->
+        <!--<Col name="Freight" width="90" datatype="double" decimal="2">货重</Col>-->
+        <!--<Col name="ShipCity" width="150" edittype="droptreelist" droplistID="city">城市</Col>-->
+        <!--<Col name="PassCity" width="200" edittype="droptreelist" droplistID="citys">货运途经城市</Col>-->
+
+
+        <Col name="id" width="25" align="center" isHide="true" isKey="true" nullAble="false">编号</Col>
+        <!--<Col name="typecode"  width="25" align="center" isHide="true" nullAble="false">类别</Col>-->
+        <Col name="mname" width="163" align="center">计量器具名称</Col>
+        <Col name="fname" width="80" align="center" editAble="true" edittype="droplist" droplistID="country">生产厂名称</Col>
+        <Col name="number" width="80" align="center">编号</Col>
+        <Col name="model" width="80" align="center">规格型号</Col>
+        <Col name="mnum" width="100" align="center">器号</Col>
+        <Col name="precisionx" width="100" align="center">精度</Col>
+        <Col name="checkorg" width="105" align="center">检定单位</Col>
+        <Col name="checkperiod" width="100" align="center">检定周期</Col>
+        <Col name="mlevel" width="105" align="center">管理级别</Col>
+        <Col name="userteam" width="100" align="center">使用班组</Col>
+        <Col name="positionx" width="100" align="center">使用部位</Col>
+        <Col name="validity" width="100" align="center">有效期</Col>
+        <Col name="checkdate" width="100" align="center">检查日期</Col>
+        <Col name="application" width="100" align="center" isHide="true">用途</Col>
+        <Col name="meterscope" width="100" align="center">测量范围</Col>
+        <!--<Col name="commentx" width="100" align="center" isHide="true">备注</Col>-->
+
+    </Cols>
+
+
+    <DropLists>
+        <DropList id="city" treelist="city.xml" DataCol="city" DisplayCol="city"/>
+        <DropList id="citys" treelist="city.xml" DataCol="city" DisplayCol="city" isMultiSelectAble="true"/>
+        <DropList id="customer" treelist="customer.xml" DataCol="customerid" DisplayCol="companyname"/>
+        <DropList id="country">
+            <item key="1">France</item>
+            <item key="2">Germany</item>
+            <item key="3">Brazil</item>
+            <item key="4">Belgium</item>
+            <item key="8">Switzerland</item>
+            <item key="11">Venezuela</item>
+            <item key="23">Austria</item>
+            <item key="21">Mexico</item>
+            <item key="9">USA</item>
+            <item key="0">Sweden</item>
+            <item key="34">Finland</item>
+        </DropList>
+    </DropLists>
+</TreeList>

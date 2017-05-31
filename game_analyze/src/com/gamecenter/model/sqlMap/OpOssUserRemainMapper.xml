@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpOssUserRemainMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOssUserRemain" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="worldid" property="worldid" jdbcType="VARCHAR" />
+    <result column="goaltime" property="goaltime" jdbcType="VARCHAR" />
+    <result column="lc2" property="lc2" jdbcType="DOUBLE" />
+    <result column="lc3" property="lc3" jdbcType="DOUBLE" />
+    <result column="lc7" property="lc7" jdbcType="DOUBLE" />
+    <result column="lc30" property="lc30" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, appid, worldid, goaltime, lc2, lc3, lc7, lc30
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOssUserRemainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_oss_user_remain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_oss_user_remain
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from op_oss_user_remain
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOssUserRemainExample" >
+    delete from op_oss_user_remain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpOssUserRemain" >
+    insert into op_oss_user_remain (id, appid, worldid, 
+      goaltime, lc2, lc3, lc7, 
+      lc30)
+    values (#{id,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, 
+      #{goaltime,jdbcType=VARCHAR}, #{lc2,jdbcType=DOUBLE}, #{lc3,jdbcType=DOUBLE}, #{lc7,jdbcType=DOUBLE}, 
+      #{lc30,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssUserRemain" >
+    insert into op_oss_user_remain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="worldid != null" >
+        worldid,
+      </if>
+      <if test="goaltime != null" >
+        goaltime,
+      </if>
+      <if test="lc2 != null" >
+        lc2,
+      </if>
+      <if test="lc3 != null" >
+        lc3,
+      </if>
+      <if test="lc7 != null" >
+        lc7,
+      </if>
+      <if test="lc30 != null" >
+        lc30,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="goaltime != null" >
+        #{goaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="lc2 != null" >
+        #{lc2,jdbcType=DOUBLE},
+      </if>
+      <if test="lc3 != null" >
+        #{lc3,jdbcType=DOUBLE},
+      </if>
+      <if test="lc7 != null" >
+        #{lc7,jdbcType=DOUBLE},
+      </if>
+      <if test="lc30 != null" >
+        #{lc30,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpOssUserRemainExample" resultType="java.lang.Integer" >
+    select count(*) from op_oss_user_remain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_oss_user_remain
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldid != null" >
+        worldid = #{record.worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goaltime != null" >
+        goaltime = #{record.goaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lc2 != null" >
+        lc2 = #{record.lc2,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lc3 != null" >
+        lc3 = #{record.lc3,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lc7 != null" >
+        lc7 = #{record.lc7,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lc30 != null" >
+        lc30 = #{record.lc30,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_oss_user_remain
+    set id = #{record.id,jdbcType=INTEGER},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      worldid = #{record.worldid,jdbcType=VARCHAR},
+      goaltime = #{record.goaltime,jdbcType=VARCHAR},
+      lc2 = #{record.lc2,jdbcType=DOUBLE},
+      lc3 = #{record.lc3,jdbcType=DOUBLE},
+      lc7 = #{record.lc7,jdbcType=DOUBLE},
+      lc30 = #{record.lc30,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOssUserRemain" >
+    update op_oss_user_remain
+    <set >
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        worldid = #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="goaltime != null" >
+        goaltime = #{goaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="lc2 != null" >
+        lc2 = #{lc2,jdbcType=DOUBLE},
+      </if>
+      <if test="lc3 != null" >
+        lc3 = #{lc3,jdbcType=DOUBLE},
+      </if>
+      <if test="lc7 != null" >
+        lc7 = #{lc7,jdbcType=DOUBLE},
+      </if>
+      <if test="lc30 != null" >
+        lc30 = #{lc30,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOssUserRemain" >
+    update op_oss_user_remain
+    set appid = #{appid,jdbcType=VARCHAR},
+      worldid = #{worldid,jdbcType=VARCHAR},
+      goaltime = #{goaltime,jdbcType=VARCHAR},
+      lc2 = #{lc2,jdbcType=DOUBLE},
+      lc3 = #{lc3,jdbcType=DOUBLE},
+      lc7 = #{lc7,jdbcType=DOUBLE},
+      lc30 = #{lc30,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+    <select id="getList" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OpOssUserRemain">
+        SELECT * from op_oss_user_remain t1
+        where t1.worldid in (${worldids}) and t1.goaltime BETWEEN ${begintime} and ${endtime} ORDER BY t1.goaltime asc,t1.worldid asc
+    </select>
+</mapper>

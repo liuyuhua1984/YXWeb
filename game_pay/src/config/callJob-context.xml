@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- 订单处理 -->
+    <bean id="job" class="com.gamecenter.service.tasks.PayHandle" init-method="init"></bean>
+    <bean id="jobtask"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="job" />
+
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <bean id="pay" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="jobtask" />
+        <property name="cronExpression">
+            <value>0/2 * * * * ?</value>
+        </property>
+    </bean>
+
+
+    <!-- 订单确认 -->
+    <bean id="jobconfirm" class="com.gamecenter.service.tasks.PayConfirm"></bean>
+    <bean id="confirmjobtask"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jobconfirm" />
+      
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <bean id="confirm" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="confirmjobtask"/>
+        </property>
+        <property name="cronExpression">
+            <value>0/5 * * * * ?</value>
+        </property>
+    </bean>
+
+
+    <!-- 总管理 -->
+    <bean autowire="no"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean ="pay"/>
+                <ref bean="confirm"/>
+            </list>
+        </property>
+    </bean>
+</beans>

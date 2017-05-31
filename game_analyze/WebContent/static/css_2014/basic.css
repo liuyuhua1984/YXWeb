@@ -1,0 +1,46 @@
+/*----------basic----------*/
+/**/
+body {
+    font-size: 12px;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.opac:hover {
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+}
+
+div.clear {
+    clear: both;
+}
+
+div.fwrap {
+    width: 105%;
+}
+
+.ie-radius {
+    border-radius: 5px;
+    behavior: url(css/ie-css3.htc);
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+h2, h3, input {
+    padding: 0;
+    margin: 0;
+}
+
+/*----------plugin----------*/

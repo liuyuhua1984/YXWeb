@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--By Supcan TreeList -->
+<TreeList>
+    <Properties Title="周检计划" HeaderFontIndex="2"></Properties>
+    <Properties editAble="true" id="orders"/>
+
+    <Cols>
+        <!--<Col name="id"  width="25" align="center">编号</Col>-->
+        <Col name="mname" width="163" align="center" editAble="true" edittype="edit">计量器具名称</Col>
+        <Col name="fname" width="80" align="center" editAble="true" edittype="droplist" droplistID="country">生产厂名称</Col>
+        <Col name="number" width="80" align="center">编号</Col>
+        <Col name="model" width="80" align="center">规格型号</Col>
+        <Col name="mnum" width="100" align="center">器号</Col>
+        <Col name="precisionx" width="100" align="center">精度</Col>
+        <Col name="checkorg" width="105" align="center">检定单位</Col>
+        <Col name="checkperiod" width="100" align="center">检定周期</Col>
+        <Col name="mlevel" width="105" align="center">管理级别</Col>
+        <Col name="userteam" width="100" align="center">使用班组</Col>
+        <Col name="positionx" width="100" align="center">使用部位</Col>
+        <Col name="validity" width="100" align="center">有效期</Col>
+        <Col name="checkdate" width="100" align="center">检查日期</Col>
+        <!--<Col name="application" width="100" align="center" >用途</Col>-->
+        <Col name="meterscope" width="100" align="center">测量范围</Col>
+        <!--<Col name="commentx" width="100" align="center" >备注</Col>-->
+    </Cols>
+    <DropLists>
+        <DropList id="city" treelist="city.xml" DataCol="city" DisplayCol="city"/>
+        <DropList id="citys" treelist="city.xml" DataCol="city" DisplayCol="city" isMultiSelectAble="true"/>
+        <DropList id="customer" treelist="customer.xml" DataCol="customerid" DisplayCol="companyname"/>
+        -
+        <DropList id="country">
+            <item key="1">France</item>
+            <item key="2">Germany</item>
+            <item key="3">Brazil</item>
+            <item key="4">Belgium</item>
+            <item key="8">Switzerland</item>
+            <item key="11">Venezuela</item>
+            <item key="23">Austria</item>
+            <item key="21">Mexico</item>
+            <item key="9">USA</item>
+            <item key="0">Sweden</item>
+            <item key="34">Finland</item>
+        </DropList>
+    </DropLists>
+
+
+</TreeList>

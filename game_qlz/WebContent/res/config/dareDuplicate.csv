@@ -1,0 +1,3 @@
+﻿id,icon,soloScene,soloMoney,soloSense,soloProps,soloPropsList,multiplayerMoney,multiplayerSense,multiplayerProps,multiplayerName,multiplayerLeaderName,multiplayerMonsterLv,multiplayerMonsterNum,minMultiplayer,maxMultiplayer
+1,1,1,888,888,1001,"1001,2001,3001",999,999,1001,火焰山,牛魔王,100,8,2,5
+2,2,2,888,888,1001,"1001,2001,3001",999,999,1001,水帘洞,孙悟空,120,10,3,4

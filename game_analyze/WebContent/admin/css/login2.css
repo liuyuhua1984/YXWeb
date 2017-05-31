@@ -1,0 +1,164 @@
+html {
+    border: 0 none;
+    height: 100%;
+    direction: ltr;
+}
+
+body {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border: 0 none;
+    color: #444444;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body, input, textarea, select, button {
+    font-family: Tahoma, SimSun, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+body, td, textarea {
+    line-height: 1.4;
+}
+
+div, p, table, th, td, font {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: inherit;
+}
+
+div, blockquote, q, iframe, form, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/*body的背景部分*/
+.loginBody {
+    background: url("../images/login/loginbodybg.gif") repeat-x scroll left center #D6DEDF;
+}
+
+/*login背景图片部分*/
+.loginBg {
+    background: url("../images/login/loginimgbg.jpg") no-repeat scroll center center transparent;
+    height: 100%;
+}
+
+/*logo部分*/
+.loginLogo {
+/*background: url("../images/login/logo_login.png") repeat scroll 0 0 transparent;*/
+    margin: 0 auto;
+    height: 45px;
+    width: 266px;
+}
+
+/*welcome部分*/
+.welcome {
+    color: #2477B3;
+    font-family: "微软雅黑", Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 10px 0 6px 20px;
+    text-align: center;
+}
+
+/*form部分*/
+.loginFrame {
+    font-size: 14px;
+    padding-left: 50px;
+    padding-top: 65px;
+    width: 345px;
+}
+
+/*用户名*/
+.filedInput {
+    height: 30px;
+    overflow: hidden;
+    padding-top: 25px;
+    text-align: left;
+    width: 300px;
+}
+
+/*输入框前面的标签*/
+.lable {
+    color: #333333;
+    float: left;
+    padding: 3px;
+    font-size: 14px;
+    text-align: right;
+    width: 90px;
+}
+
+/*输入框的背景图片*/
+.inputBg {
+    background: url("../images/login/loginInputWrapbg.gif") no-repeat scroll left center transparent;
+    border: medium none;
+    float: left;
+    height: 28px;
+    line-height: 16px;
+    width: 200px;
+}
+
+/*这里是修饰input框中的文本*/
+input.inputText {
+    font-size: 14px;
+    height: 20px;
+    margin-top: 0;
+    padding-left: 6px;
+    padding-top: 4px;
+    width: 192px;
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+}
+
+input[type="text"], input[type="password"] {
+    color: #336699;
+    vertical-align: middle;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    box-shadow: 0 0 5px rgba(255, 255, 0, 1);
+    -webkit-box-shadow: 0 0 5px rgba(255, 255, 0, 1);
+    -moz-box-shadow: 0 0 5px rgba(255, 255, 0, 1);
+}
+
+/*登陆*/
+#loginBtnWrap {
+    padding: 25px 0 10px 130px;
+    width: 100px;
+}
+
+#loginBtn {
+    background: url("../images/login/loginbtn.gif") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 34px;
+    letter-spacing: 6px;
+    line-height: 32px;
+    text-align: center;
+    width: 100px;
+    word-spacing: 1px;
+}
+
+/*修饰登陆按钮*/
+.inline-block {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+a {
+    background-color: transparent;
+    border: 0 none;
+    color: #0088DD;
+    text-decoration: none;
+}
+
+.copyright {
+    padding-top: 10px;
+    text-align: center;
+}
+

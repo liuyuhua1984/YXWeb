@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery 背景图渐显</title>
+
+<style type="text/css">
+ body{
+  padding-top:100px;
+  text-align:center;
+ }
+ 
+ #logo{
+  margin:0 auto;
+  position:relative;/*相对定位,为了下面hover的绝对定位*/
+  background:url(11111.png) left top no-repeat;/*设置背景图*/
+  width:781px;
+  height:263px;/*注意这里高度*/
+  display:block;
+  text-indent:-9999px;
+ }
+ 
+ #logo .hover{/*为JQ准备*/
+  background:url(11111.png) left bottom no-repeat;/*background-position和上面不同*/
+  position:absolute;/*为了使两张图片重叠在一起*/
+  top:0;
+  left:0;
+  height:40px;
+  width:150px;
+ }
+</style>
+</head>
+<body>
+
+<div id="logo"></div>
+
+<script type="text/javascript">
+    $("#logo").css("")
+</script>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpGmtForbidmsgMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpGmtForbidmsg" >
+    <id column="did" property="did" jdbcType="INTEGER" />
+    <result column="ptype" property="ptype" jdbcType="INTEGER" />
+    <result column="passport" property="passport" jdbcType="VARCHAR" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="worldid" property="worldid" jdbcType="INTEGER" />
+    <result column="opttype" property="opttype" jdbcType="INTEGER" />
+    <result column="forbidtime" property="forbidtime" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="msg" property="msg" jdbcType="VARCHAR" />
+    <result column="optres" property="optres" jdbcType="VARCHAR" />
+    <result column="opttime" property="opttime" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    did, ptype, passport, appid, worldid, opttype, forbidtime, ip, msg, optres, opttime, 
+    username
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpGmtForbidmsgExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_gmt_forbidmsg
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_gmt_forbidmsg
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from op_gmt_forbidmsg
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpGmtForbidmsgExample" >
+    delete from op_gmt_forbidmsg
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpGmtForbidmsg" >
+    insert into op_gmt_forbidmsg (did, ptype, passport, 
+      appid, worldid, opttype, 
+      forbidtime, ip, msg, 
+      optres, opttime, username
+      )
+    values (#{did,jdbcType=INTEGER}, #{ptype,jdbcType=INTEGER}, #{passport,jdbcType=VARCHAR}, 
+      #{appid,jdbcType=VARCHAR}, #{worldid,jdbcType=INTEGER}, #{opttype,jdbcType=INTEGER}, 
+      #{forbidtime,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{msg,jdbcType=VARCHAR}, 
+      #{optres,jdbcType=VARCHAR}, #{opttime,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpGmtForbidmsg" >
+    insert into op_gmt_forbidmsg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="ptype != null" >
+        ptype,
+      </if>
+      <if test="passport != null" >
+        passport,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="worldid != null" >
+        worldid,
+      </if>
+      <if test="opttype != null" >
+        opttype,
+      </if>
+      <if test="forbidtime != null" >
+        forbidtime,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="msg != null" >
+        msg,
+      </if>
+      <if test="optres != null" >
+        optres,
+      </if>
+      <if test="opttime != null" >
+        opttime,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="ptype != null" >
+        #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="passport != null" >
+        #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        #{worldid,jdbcType=INTEGER},
+      </if>
+      <if test="opttype != null" >
+        #{opttype,jdbcType=INTEGER},
+      </if>
+      <if test="forbidtime != null" >
+        #{forbidtime,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null" >
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="optres != null" >
+        #{optres,jdbcType=VARCHAR},
+      </if>
+      <if test="opttime != null" >
+        #{opttime,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpGmtForbidmsgExample" resultType="java.lang.Integer" >
+    select count(*) from op_gmt_forbidmsg
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_gmt_forbidmsg
+    <set >
+      <if test="record.did != null" >
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptype != null" >
+        ptype = #{record.ptype,jdbcType=INTEGER},
+      </if>
+      <if test="record.passport != null" >
+        passport = #{record.passport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldid != null" >
+        worldid = #{record.worldid,jdbcType=INTEGER},
+      </if>
+      <if test="record.opttype != null" >
+        opttype = #{record.opttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.forbidtime != null" >
+        forbidtime = #{record.forbidtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.ip != null" >
+        ip = #{record.ip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msg != null" >
+        msg = #{record.msg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optres != null" >
+        optres = #{record.optres,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opttime != null" >
+        opttime = #{record.opttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_gmt_forbidmsg
+    set did = #{record.did,jdbcType=INTEGER},
+      ptype = #{record.ptype,jdbcType=INTEGER},
+      passport = #{record.passport,jdbcType=VARCHAR},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      worldid = #{record.worldid,jdbcType=INTEGER},
+      opttype = #{record.opttype,jdbcType=INTEGER},
+      forbidtime = #{record.forbidtime,jdbcType=INTEGER},
+      ip = #{record.ip,jdbcType=VARCHAR},
+      msg = #{record.msg,jdbcType=VARCHAR},
+      optres = #{record.optres,jdbcType=VARCHAR},
+      opttime = #{record.opttime,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpGmtForbidmsg" >
+    update op_gmt_forbidmsg
+    <set >
+      <if test="ptype != null" >
+        ptype = #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="passport != null" >
+        passport = #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        worldid = #{worldid,jdbcType=INTEGER},
+      </if>
+      <if test="opttype != null" >
+        opttype = #{opttype,jdbcType=INTEGER},
+      </if>
+      <if test="forbidtime != null" >
+        forbidtime = #{forbidtime,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null" >
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="optres != null" >
+        optres = #{optres,jdbcType=VARCHAR},
+      </if>
+      <if test="opttime != null" >
+        opttime = #{opttime,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpGmtForbidmsg" >
+    update op_gmt_forbidmsg
+    set ptype = #{ptype,jdbcType=INTEGER},
+      passport = #{passport,jdbcType=VARCHAR},
+      appid = #{appid,jdbcType=VARCHAR},
+      worldid = #{worldid,jdbcType=INTEGER},
+      opttype = #{opttype,jdbcType=INTEGER},
+      forbidtime = #{forbidtime,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      msg = #{msg,jdbcType=VARCHAR},
+      optres = #{optres,jdbcType=VARCHAR},
+      opttime = #{opttime,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+
+
+    <select id="selectList" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpGmtForbidmsgExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from op_gmt_forbidmsg
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        limit 100
+    </select>
+
+</mapper>
