@@ -17,7 +17,7 @@
             <value>work</value>
         </property>
     </bean>
-    <bean id="upload" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <bean id="upload" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="sendmsg" />
           
         <property name="cronExpression">
@@ -30,7 +30,7 @@
           class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-                <!--<ref local="upload"/>-->
+                <ref bean="upload"/>
             </list>
         </property>
     </bean>

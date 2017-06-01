@@ -18,7 +18,7 @@
 <body>
 
 <div style=" border: 0px solid red; width:250px;  margin: auto; margin-top: 200px;">
-    <form action="/game/into" method="post">
+    <form action="game/into" method="post">
         <table border="1">
             <tr>
                 <td align="center">联运版测试入口</td>

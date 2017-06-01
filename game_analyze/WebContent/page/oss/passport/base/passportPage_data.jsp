@@ -18,7 +18,7 @@
 <table class="ttt">
     <tr>
         <td width="10%" bgcolor="#f5f5dc">游戏</td>
-        <td width="40%">热血七龙珠</td>
+        <td width="40%">元</td>
         <td width="10%" bgcolor="#f5f5dc">区服</td>
         <td width="40%">${obj.worldid}</td>
     </tr>

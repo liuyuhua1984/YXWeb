@@ -50,7 +50,7 @@ public class Notice_list_Controller {
 		List<OpGmtNotice> list = gmtNoticeService.getNoticList();
 		for (OpGmtNotice obj : list) {
 			obj.setOptname("公告");
-			obj.setAppname("热血七龙珠");
+			obj.setAppname("元");
 			obj.setWorldname("测试服");
 		}
 		

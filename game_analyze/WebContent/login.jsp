@@ -5,7 +5,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>热酷游戏经营分析系统</title>
+    <title>元巫科技经营分析系统</title>
     <link href="/images/login/favicon.ico" rel="Shortcut Icon">
     <script type="text/javascript" src="/js/jquery.js"></script>
     <link href="/admin/css/login2.css" rel="stylesheet" type="text/css"/>
@@ -22,7 +22,7 @@
     <%--登陆框--%>
     <div style="width: 442px; height: 440px; margin: 0 auto; margin-top: -260px;">
         <div class="loginLogo"></div>
-        <div class="welcome">热酷游戏经营分析系统</div>
+        <div class="welcome">元巫科技经营分析系统</div>
         <div id="loginFrame" class="loginFrame">
             <form id="loginForm" name="loginForm" method="post" onsubmit="return false;">
                 <div class="">
@@ -106,7 +106,7 @@
     function shoucang() {
 //        alert(document.URL);
         //window.external.addFavorite('http://你的网址','你的网站名称');
-        AddFavorite(document.URL, '热血七龙珠');
+        AddFavorite(document.URL, '元巫科技');
     }
 
     function AddFavorite(sURL, sTitle) {

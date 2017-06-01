@@ -17,7 +17,7 @@
             <value>work</value>
         </property>
     </bean>
-    <bean id="pay" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <bean id="pay" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" >
         <property name="jobDetail" ref="jobtask" />
         <property name="cronExpression">
             <value>0/2 * * * * ?</value>
@@ -35,10 +35,8 @@
             <value>work</value>
         </property>
     </bean>
-    <bean id="confirm" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail">
-            <ref bean="confirmjobtask"/>
-        </property>
+    <bean id="confirm" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="confirmjobtask" />
         <property name="cronExpression">
             <value>0/5 * * * * ?</value>
         </property>

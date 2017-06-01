@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <HTML>
 <head>
-<TITLE>热血七龙珠--热酷网络 </TITLE>
+<TITLE>我们 </TITLE>
 <META name="google" value="notranslate">
 <META content="text/html; charset=utf-8" http-equiv="Content-Type">
 <STYLE type="text/css" media="screen">
@@ -87,16 +87,16 @@ function exitGame(title, url) {
 </head>
 
 <BODY style="overflow-x: hidden; overflow-y: hidden;" onload="doResize()">
-<SCRIPT type="text/javascript" src="/swfobject.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="swfobject.js"></SCRIPT>
 
-<SCRIPT type="text/javascript" src="/doResize.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="doResize.js"></SCRIPT>
 
 
 <SCRIPT type="text/javascript">
     // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection.
     var swfVersionStr = "10.2.0";
     // To use express install, set to playerProductInstall.swf, otherwise the empty string.
-    var xiSwfUrlStr = "/game/DragonBall.swf?v=1.0.0.201406060222";
+    var xiSwfUrlStr = "game/DragonBall.swf?v=1.0.0.201406060222";
     var flashvars = "openid=${openid}&worldid=${worldid}&time=${time}&fcm=${fcm}&flag=${flag}&sig=${sig}";
     var params = {};
     params.flashvars = flashvars;
@@ -109,7 +109,7 @@ function exitGame(title, url) {
     attributes.name = "loading";
     attributes.align = "middle";
     swfobject.embedSWF(
-            "/game/DragonBall.swf?v=1.0.0.201406060222", "flashContent",
+            "game/DragonBall.swf?v=1.0.0.201406060222", "flashContent",
             "1260", "660",
             swfVersionStr, xiSwfUrlStr,
             flashvars, params, attributes);
@@ -164,7 +164,7 @@ function exitGame(title, url) {
         <tr>
             <td>
                 <span>您的平台ID：<?php echo $openid ?></span> |
-                <span>声明：《热血七龙珠》应用是"重庆热酷网络"提供,若您在游戏中遇到问题，请进入 </span>
+                <span>声明：《元巫》应用是"元巫科技"提供,若您在游戏中遇到问题，请进入 </span>
             </td>
             <td>
                 <a id='forum' onmouseover="this.style.backgroundPosition='0px -30px';"
@@ -193,7 +193,7 @@ function exitGame(title, url) {
 
     function fshoucang() {
         //window.external.addFavorite('http://你的网址','你的网站名称');
-        AddFavorite(document.URL, '热血七龙珠');
+        AddFavorite(document.URL, '元巫科技');
     }
 
     function AddFavorite(sURL, sTitle) {

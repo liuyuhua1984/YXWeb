@@ -5,10 +5,7 @@
     <session-config>
         <session-timeout>100</session-timeout>
     </session-config>
-  <context-param>
-    <param-name>webAppRootKey</param-name>
-    <param-value>webName.root</param-value>
-  </context-param>
+
     <!-- 默认首页定义 -->
     <welcome-file-list>
         <welcome-file>index.shtml</welcome-file>
@@ -29,6 +26,14 @@
     </error-page>
 
     <!--加载配置文件-->
+      <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>webName.root.qlz</param-value>
+  </context-param>
+   <context-param>
+    <param-name>logbackConfigLocation</param-name>
+    <param-value>/config/logback.xml</param-value>
+  </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:config/*-context.xml</param-value>
@@ -54,12 +59,9 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-
- <context-param>
-    <param-name>logbackConfigLocation</param-name>
-    <param-value>/config/logback.xml</param-value>
-  </context-param>
-  
+  <listener>
+  <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+ </listener>
     <!-- log4j 启动配置 -->
  <listener>
     <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>

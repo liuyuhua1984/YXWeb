@@ -39,8 +39,8 @@
                             <ol>
                                 <li><a url-data="player-new" class="hover" href="/sys/module" target="mainFrame">模块管理</a></li>
                                 <li><a url-data="player-new" class="hover" href="/sys/role" target="mainFrame">角色管理</a></li>
-                                <li><a url-data="player-new" class="hover" href="/sys/permit/permitSetting?actionCode=see" target="mainFrame">系统设置</a></li>
-
+                                <li><a url-data="player-new" class="hover" href="/sys/set" target="mainFrame">系统设置</a></li>
+	                              <!-- /sys/permit/permitSetting?actionCode=see -->
                             </ol>
                         </li>
 

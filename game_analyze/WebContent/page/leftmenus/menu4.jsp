@@ -23,7 +23,7 @@
                     <ul>
 
                         <li>
-                            <a url-data="summary-index" class="navigate Dashboard" href="/apps/game/list"
+                            <a url-data="summary-index" class="navigate Dashboard" href="/apps/game"
                                target="mainFrame">
                                 <span>游戏产品管理</span>
                             </a>
@@ -45,7 +45,7 @@
 
                         </li>
                         <li>
-                            <a url-data="" class="more_icon Players" href="/apps/world/list" target="mainFrame">
+                            <a url-data="" class="more_icon Players" href="/apps/world" target="mainFrame">
                                 <span>游戏区服管理</span>
                             </a>
                         </li>
@@ -56,8 +56,8 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned" href="/oss/activity/activitypage" target="mainFrame">活动信息</a></li>
-                                <li><a url-data="player-new" href="/oss/activity/cdkpage" target="mainFrame">卡密信息</a></li>
+                                <li><a url-data="player-churned" href="/oss/activity" target="mainFrame">活动信息</a></li>
+                                <li><a url-data="player-new" href="/oss/activity/card" target="mainFrame">卡密信息</a></li>
                                 <li><a url-data="player-new">物品道具</a></li>
                                 <li><a url-data="player-new">使用记录</a></li>
                             </ol>
@@ -74,7 +74,7 @@
 </div>
 
 <script type="text/javascript">
-    window.parent.goinitpage("/apps/game/list");
+    window.parent.goinitpage("/apps/game");
 </script>
 </body>
 </html>

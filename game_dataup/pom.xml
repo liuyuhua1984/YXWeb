@@ -96,7 +96,8 @@
 		<okio.version>1.12.0</okio.version>
 		<elasticsearch.version>5.4.0</elasticsearch.version>
 		<springfox-swagger.version>2.6.1</springfox-swagger.version>
-		<activemq-all.version>5.14.5</activemq-all.version>
+		<activemq-pool.version>5.14.5</activemq-pool.version>
+		<activemq-core.version>5.7.0</activemq-core.version>
 		<quartz.version>2.3.0</quartz.version>
 		<opencsv.version>3.9</opencsv.version>
 		<httpclient.version>4.5.3</httpclient.version>
@@ -670,10 +671,16 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox-swagger.version}</version>
 		</dependency>
+			<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>${activemq-core.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-all</artifactId>
-			<version>${activemq-all.version}</version>
+			<artifactId>activemq-pool</artifactId>
+			<version>${activemq-pool.version}</version>
 		</dependency>
 
 		<dependency>

@@ -83,10 +83,10 @@
           class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-                <!--<ref local="online"/>-->
-                <!--<ref local="cycleNoticetaskgo"/>-->
-                <!--<ref local="checkUpNode"/>-->
-                <!--<ref local="dataAnalyzeCronTrigger"/>-->
+                <!--<ref bean="online"/>-->
+                <!--<ref bean="cycleNoticetaskgo"/>-->
+                <!--<ref bean="checkUpNode"/>-->
+                <!--<ref bean="dataAnalyze"/>-->
             </list>
         </property>
     </bean>

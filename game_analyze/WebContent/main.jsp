@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>热酷网络运营支撑系统</title>
+    <title>元巫科技运营支撑系统</title>
     <link rel="stylesheet" href="/static/css/css.css"/>
     <link rel="stylesheet" href="/static/css/css_invite.css">
 

@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>game_qlz</groupId>
-  <artifactId>game_qlz</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <!-- 项目属性 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>game_qlz</groupId>
+	<artifactId>game_qlz</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 项目属性 -->
 	<properties>
 		<webVersion>3.1</webVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -95,7 +96,8 @@
 		<okio.version>1.12.0</okio.version>
 		<elasticsearch.version>5.4.0</elasticsearch.version>
 		<springfox-swagger.version>2.6.1</springfox-swagger.version>
-		<activemq-all.version>5.14.5</activemq-all.version>
+		<activemq-pool.version>5.14.5</activemq-pool.version>
+		<activemq-core.version>5.7.0</activemq-core.version>
 		<quartz.version>2.3.0</quartz.version>
 		<opencsv.version>3.9</opencsv.version>
 		<httpclient.version>4.5.3</httpclient.version>
@@ -669,10 +671,17 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox-swagger.version}</version>
 		</dependency>
+		
+		<dependency>
+  			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>${activemq-core.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-all</artifactId>
-			<version>${activemq-all.version}</version>
+			<artifactId>activemq-pool</artifactId>
+			<version>${activemq-pool.version}</version>
 		</dependency>
 
 		<dependency>
@@ -704,26 +713,26 @@
 			<version>excel-read</version> <scope>system</scope> <systemPath> ${basedir}/WebContent/WEB-INF/lib/game-lib.jar 
 			</systemPath> </dependency> -->
 	</dependencies>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-    </resources>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <packaging>war</packaging>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<packaging>war</packaging>
 </project>

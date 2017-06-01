@@ -50,7 +50,7 @@
                 <div class="path">
 					<span>您当前的位置：
 						<a href="/">首页</a>&nbsp;>>
-						<a href="/about.shtml">关于我们</a>&nbsp;>>
+						<a href="about.shtml">关于我们</a>&nbsp;>>
 						<a href="#">公司简介</a>
 					</span>
 
@@ -71,20 +71,20 @@
                             <p class="p2">About Us</p>
                         </div>
                         <div class="ct">
-                            <p><a href="/about.shtml" class="on">公司简介</a></p>
+                            <p><a href="about.shtml" class="on">公司简介</a></p>
 
                             <!--<p><a href="/about.shtml">企业文化</a></p>-->
 
                             <!--<p><a href="/about.shtml">公司愿景</a></p>-->
 
-                            <p><a href="/job.shtml">人才招聘</a></p>
+                            <p><a href="job.shtml">人才招聘</a></p>
                         </div>
                     </div>
                     <div class="adlk">
                         <a href="business_js.shtml"><img src="/static/images_2014/ad_b1.jpg" alt=""></a>
                     </div>
                     <div class="adlk">
-                        <a href="/service.shtml"><img src="/static/images_2014/ad_b2.jpg" alt=""></a>
+                        <a href="service.shtml"><img src="/static/images_2014/ad_b2.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="dr">

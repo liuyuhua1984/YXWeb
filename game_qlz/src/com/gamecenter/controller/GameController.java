@@ -17,10 +17,9 @@ import com.gamecenter.service.RunLog;
  * 进入游戏 Created with IntelliJ IDEA. User: gsb Date: 14-7-14 Time: 下午2:11 To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping(value = "/game/into")
 public class GameController {
 	
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(value = "/game/into", method = RequestMethod.POST)
 	public ModelAndView game(HttpSession session, HttpServletResponse response, HttpServletRequest request) {
 		String openid = request.getParameter("passport");
 		String worldid = request.getParameter("worldid").trim();

@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>热酷网络运营支撑系统</title>
+    <title>元巫科技运营支撑系统</title>
     <link rel="stylesheet" href="/static/css/css.css"/>
     <link rel="stylesheet" href="/static/css/css_invite.css">
 
@@ -28,11 +28,11 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned" href="/oss/dayreport/survey"
+                                <li><a url-data="player-churned" href="/oss/survey/gather"
                                        target="mainFrame">汇总概况</a>
                                 </li>
 
-                                <li><a url-data="player-new" href="/oss/dayreport/reportpage"
+                                <li><a url-data="player-new" href="/oss/survey/report"
                                        target="mainFrame">综合日报</a></li>
                             </ol>
 
@@ -44,32 +44,32 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned" href="/oss/passport/page" target="mainFrame">基础</a>
+                                <li><a url-data="player-churned" href="/oss/gameuser/base" target="mainFrame">基础</a>
                                 </li>
 
-                                <li><a url-data="player-new" href="/oss/au/newusermonitor" target="mainFrame">新增</a></li>
+                                <li><a url-data="player-new" href="/oss/gameuser/new" target="mainFrame">新增</a></li>
 
-                                <li class=""><a url-data="player-active" href="/oss/au/page" target="mainFrame">活跃</a></li>
+                                <li class=""><a url-data="player-active" href="/oss/gameuser/active" target="mainFrame">活跃</a></li>
 
-                                <li><a url-data="player-retention" href="/oss/remain/page" target="mainFrame">留存</a></li>
+                                <li><a url-data="player-retention" href="/oss/gameuser/remain" target="mainFrame">留存</a></li>
 
-                                <li><a url-data="player-churned">流失</a></li>
+                               <!--   <li><a url-data="player-churned">流失</a></li>-->
 
                             </ol>
 
                         </li>
 
                         <li>
-                            <a url-data="concurrent" class="concurrentUser" href="/oss/online/chartPage"
+                            <a url-data="concurrent" class="concurrentUser" href="/oss/online/now"
                                target="mainFrame">
                                 <span>在线分析</span>
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned" href="/oss/online/chartPage"
+                                <li><a url-data="player-churned" href="/oss/online/now"
                                        target="mainFrame">实时在线</a>
                                 </li>
-                                <li><a url-data="player-new" href="/oss/online/daypage"
+                                <li><a url-data="player-new" href="/oss/online/history"
                                        target="mainFrame">每日在线</a></li>
                             </ol>
 
@@ -81,11 +81,11 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="level-distribute" href="/oss/grade/fenbupage"
+                                <li><a url-data="level-distribute" href="/oss/grade/scope"
                                        target="mainFrame">等级分布</a></li>
 
-                                <li><a url-data="level-detail" href="/oss/grade/detailpage"
-                                       target="mainFrame">等级详解</a></li>
+                                <li><a url-data="level-detail" href="/oss/grade/detail"
+                                       target="mainFrame">等级明细</a></li>
 
                             </ol>
 
@@ -98,8 +98,8 @@
 
                             <ol>
                                 <li><a url-data="level-detail" href="/oss/pay/dayreport" target="mainFrame">充值日报</a></li>
-                                <li><a url-data="level-detail" href="/oss/pay/paytop" target="mainFrame">充值排行</a></li>
-                                <li><a url-data="level-distribute" href="/oss/pay/payhabit" target="mainFrame">付费习惯</a></li>
+                                <li><a url-data="level-detail" href="/oss/pay/top" target="mainFrame">充值排行</a></li>
+                                <li><a url-data="level-distribute" href="/oss/pay/habit" target="mainFrame">付费习惯</a></li>
                             </ol>
 
                         </li>
@@ -110,7 +110,7 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="level-detail" href="/oss/consume/dayreport" target="mainFrame">消费点分析</a></li>
+                                <li><a url-data="level-detail" href="/oss/consume/report" target="mainFrame">消费点分析</a></li>
                             </ol>
 
                         </li>
@@ -124,7 +124,7 @@
 
 </div>
 <script>
-    window.parent.goinitpage("/oss/dayreport/survey");
+    window.parent.goinitpage("/oss/survey/gather");
 
 </script>
 

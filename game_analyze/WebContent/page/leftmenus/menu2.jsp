@@ -28,11 +28,11 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="player-new" class="hover" href="/gmt/forbid/words" target="mainFrame">账号禁言</a>
+                                <li><a url-data="player-new" class="hover" href="/gmt/forbid/wordsforpassport" target="mainFrame">账号禁言</a>
                                 </li>
-                                <li class=""><a url-data="player-active" href="/gmt/forbid/wordsForIp" target="mainFrame">IP禁言</a></li>
+                                <li class=""><a url-data="player-active" href="/gmt/forbid/wordsforip" target="mainFrame">IP禁言</a></li>
                                 <li class=""><a url-data="player-active" href="/gmt/forbid/passport" target="mainFrame">封号</a></li>
-                                <li class=""><a url-data="player-active" href="/gmt/forbid/player" target="mainFrame">踢人</a></li>
+                                <li class=""><a url-data="player-active" href="/gmt/forbid/tiren" target="mainFrame">踢人</a></li>
                                 <li class=""><a url-data="player-active" href="/gmt/forbid/msglist" target="mainFrame">封禁历史</a>
                                 </li>
                             </ol>
@@ -45,8 +45,8 @@
 
                             <ol>
 
-                                <li><a url-data="player-new" href="/gmt/notice/sendpage" target="mainFrame">发送</a></li>
-                                <li><a url-data="player-new" href="/gmt/notice/cycleNoticeList" target="mainFrame">循环</a></li>
+                                <li><a url-data="player-new" href="/gmt/notice/send" target="mainFrame">发送</a></li>
+                                <li><a url-data="player-new" href="/gmt/notice/cyclelist" target="mainFrame">循环</a></li>
                                 <li class=""><a url-data="player-active" href="/gmt/notice/list" target="mainFrame">记录</a></li>
 
                             </ol>
@@ -57,8 +57,8 @@
                                 <span>玩家查询</span>
                             </a>
                             <ol>
-                                <li><a url-data="player-new" href="/gmt/passport/msgpage" target="mainFrame">账号信息</a></li>
-                                <li><a url-data="player-new" href="/gmt/passport/allowpage" target="mainFrame">账号白名单</a></li>
+                                <li><a url-data="player-new" href="/gmt/passport/select" target="mainFrame">账号信息</a></li>
+                                <li><a url-data="player-new" href="/gmt/passport/allow" target="mainFrame">账号白名单</a></li>
                             </ol>
                         </li>
 
@@ -67,10 +67,10 @@
                                 <span>金币发放</span>
                             </a>
                             <ol>
-                                <li><a url-data="player-new" href="/gmt/money/applypage" target="mainFrame">发放申请</a></li>
+                                <li><a url-data="player-new" href="/gmt/money/apply" target="mainFrame">发放申请</a></li>
                                 <li><a url-data="player-new" href="/gmt/money/applyList" target="mainFrame">申请列表</a></li>
-                                <li><a url-data="player-new" href="/gmt/money/sendLogList" target="mainFrame">发放记录</a></li>
-                                <li><a url-data="player-new" href="/gmt/money/getmoneypage" target="mainFrame">内充记录</a></li>
+                                <li><a url-data="player-new" href="/gmt/money/sendLog" target="mainFrame">发放记录</a></li>
+                                <li><a url-data="player-new" href="/gmt/money/getmoney" target="mainFrame">内充记录</a></li>
                             </ol>
                         </li>
 
@@ -85,7 +85,7 @@
                                 <span>充值记录</span>
                             </a>
                             <ol>
-                                <li><a url-data="player-new" href="/gmt/recharge/txpage" target="mainFrame">腾讯充值</a></li>
+                                <li><a url-data="player-new" href="/gmt/recharge" target="mainFrame">充值记录</a></li>
                             </ol>
                         </li>
 
@@ -104,7 +104,7 @@
         $(this).addClass("hover");
     });
 
-    window.parent.goinitpage("/gmt/forbid/words");
+    window.parent.goinitpage("/gmt/forbid/wordsforpassport");
 
 </script>
 </body>

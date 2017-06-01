@@ -62,7 +62,7 @@ public class Forbid_msgList_Controller {
 			} else if (obj.getOpttype() == 5070) {
 				obj.setOptname("踢人");
 			}
-			obj.setAppname("热血七龙珠");
+			obj.setAppname("元巫科技");
 			obj.setWorldname("测试服");
 			obj.setMsg(obj.getIp() + ";" + obj.getForbidtime() + ";" + obj.getMsg());
 		}
