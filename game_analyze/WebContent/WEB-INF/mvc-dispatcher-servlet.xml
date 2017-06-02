@@ -13,8 +13,38 @@
     <context:component-scan base-package="com.gamecenter"/>
     <context:annotation-config/>
 
-    <mvc:annotation-driven/>
-    <mvc:default-servlet-handler/>
+<!-- 访问静态资源 标签配置静态资源文件不需要走控制器，直接映射到mapping -->
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/static/**" location="/static/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/admin/**" location="/admin/" />
+	<!-- or <mvc:default-servlet-handler/> 与上面mvc:resources标签选其一即可,这里如果配置，必须配置<mvc:annotation-driven/>其他controller才可正常工作 -->
+	<!-- 解决@ResponseBody注解直接返回对象并转换成JSON时出现406问题，同时解决了返回String类型乱码的问题 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/plain;charset=UTF-8</value>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			<!-- org.springframework.http.converter.json.MappingJackson2HttpMessageConverter -->
+
+			<bean
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>text/json;charset=UTF-8</value>
+						<value>application/json; charset=UTF-8</value>
+						<value>application/x-www-form-urlencoded; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
     <!--<mvc:view-controller path="/header" view-name="/admin/themes/header"/>-->
 
@@ -23,16 +53,16 @@
     </mvc:interceptors>
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
 
-    <!--配置视图-->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
-        </property>
-    </bean>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+		<!-- 注意JSP的这个视图解析器order必须在最后 -->
+		<property name="order" value="0" />
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="10000000"/>
