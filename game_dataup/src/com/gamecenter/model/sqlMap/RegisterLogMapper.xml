@@ -242,11 +242,11 @@
   </update>
 
     <!--上报数据提取-->
-    <select id="getLastDate" resultType="com.gamecenter.model.RegisterLog" parameterType="java.lang.String">
-        <![CDATA[
-         SELECT * from register_log t1 where (t1.isup = '0' or t1.isup is NULL)  and createTime<=#{time} ORDER BY t1.createTime asc;
-            ]]>
+    <select id="getLastDate"   resultType="com.gamecenter.model.RegisterLog"  parameterType="java.lang.String" >
+        select * from register_log t1 where (t1.isup = '0' or t1.isup is NULL)  and createTime &lt;= #{time} ORDER BY t1.createTime asc;
+       
     </select>
+    
     <update id="act" parameterType="java.util.HashMap">
           UPDATE register_log set isup = '1' where id in(${ids})
     </update>

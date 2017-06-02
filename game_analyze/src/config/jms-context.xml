@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-		
+
     <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="tcp://127.0.0.1:61616"/>
     </bean>
@@ -55,8 +55,8 @@
 
     <!-- 信息监听接受-->
     <jms:listener-container connection-factory="targetConnectionFactory">
-        <!--<jms:listener destination="gamedata" ref="logicHandler"/>-->
-        <!--<jms:listener destination="statusMsg" ref="statusHandler"/>-->
+        <jms:listener destination="gamedata" ref="logicHandler"/>
+        <jms:listener destination="statusMsg" ref="statusHandler"/>
     </jms:listener-container>
 
 

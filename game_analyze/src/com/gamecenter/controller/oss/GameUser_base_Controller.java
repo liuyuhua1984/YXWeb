@@ -39,7 +39,7 @@ public class GameUser_base_Controller {
 			worldList = worldService.getWorldListByAppId(appList.get(0).getAppid());
 		}
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("page/oss/passport/base/passportPage");
+		modelAndView.setViewName("/page/oss/passport/base/passportPage");
 		modelAndView.addObject("appList", appList);
 		modelAndView.addObject("worldList", worldList);
 		return modelAndView;

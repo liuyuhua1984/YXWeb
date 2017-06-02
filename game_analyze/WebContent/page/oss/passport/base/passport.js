@@ -56,6 +56,9 @@ require(['jquery', 'dialog'], function ($, dialog) {
     }
 
     function getPage(pid) {
+    	if (pid == undefined){
+    		return;
+    	}
         curpage = pid;
         var appid = $("#appid").val();
         var openid = $("#openid").val();

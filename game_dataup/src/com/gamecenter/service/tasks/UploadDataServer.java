@@ -217,7 +217,9 @@ public class UploadDataServer {
 		int res = 0;
 		// 抓取数据
 		List<OnlineNumLog> onlineNumLogs = dataService.onlineNumList(timeslice);
-		
+		if (onlineNumLogs == null){
+			return -1;
+		}
 		for (OnlineNumLog onlineNumLog : onlineNumLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(7);
@@ -235,7 +237,9 @@ public class UploadDataServer {
 		int res = 0;
 		// 抓取数据
 		List<LoginLog> loginLogs = dataService.loginList(timeslice);
-		
+		if (loginLogs == null){
+			return -1;
+		}
 		for (LoginLog loginLog : loginLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(3);
@@ -253,7 +257,9 @@ public class UploadDataServer {
 		int res = 0;
 		
 		List<LoginOutLog> loginOutLogs = dataService.loginOutList(timeslice);
-		
+		if (loginOutLogs == null){
+			return -1;
+		}
 		for (LoginOutLog registerLog : loginOutLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(4);
@@ -272,7 +278,9 @@ public class UploadDataServer {
 		int res = 0;
 		// 抓取数据
 		List<RegisterLog> registerLogs = dataService.registerList(timeslice);
-		
+		if(registerLogs == null ){
+			return -1;
+		}
 		for (RegisterLog registerLog : registerLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(1);
@@ -291,7 +299,9 @@ public class UploadDataServer {
 		int res = 0;
 		// 抓取数据
 		List<CreateRoleLog> createRoleLogs = dataService.createList(timeslice);
-		
+		if (createRoleLogs == null){
+			return -1;
+		}
 		for (CreateRoleLog registerLog : createRoleLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(2);
@@ -310,7 +320,9 @@ public class UploadDataServer {
 		int res = 0;
 		// 抓取数据
 		List<RechargeLog> rechargeLogs = dataService.rechargeList(timeslice);
-		
+		if (rechargeLogs == null){
+			return -1;
+		}
 		for (RechargeLog rechargeLog : rechargeLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(5);
@@ -329,6 +341,9 @@ public class UploadDataServer {
 		int res = 0;
 		// 抓取数据
 		List<UseGoldLog> useGoldLogs = dataService.useGoldList(timeslice);
+		if (useGoldLogs == null){
+			return -1;
+		}
 		for (UseGoldLog registerLog : useGoldLogs) {
 			DataObj dataObj = new DataObj();
 			dataObj.setType(6);

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.gamecenter.model.LoginLog;
 
-@Aspect
+//@Aspect
 @Service
 public class UserServiceInterceptor {
 	
