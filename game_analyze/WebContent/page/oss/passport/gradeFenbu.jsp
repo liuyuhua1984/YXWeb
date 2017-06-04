@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>等级分布</title>
@@ -128,8 +128,8 @@
 </div>
 
 
-<script src="/js/highchart/highcharts.js"></script>
-<script src="/js/highchart/modules/exporting.js"></script>
+<script  type="text/javascript"  src="${ctxPage}/js/highchart/highcharts.js"></script>
+<script  type="text/javascript"  src="${ctxPage}/js/highchart/modules/exporting.js"></script>
 
 
 <script type="text/javascript">
@@ -138,7 +138,7 @@
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
 
-        var htmlobj = $.ajax({url: "/oss/grade/scope/fenbulist?worldid=" + worldid + "&appid=" + appid, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/grade/scope/fenbulist?worldid=" + worldid + "&appid=" + appid, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         $("#msg").html("");
         gradescope();
@@ -160,7 +160,7 @@
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         $.ajax({
-            url: "/oss/grade/scope/gradescope",
+            url: "${ctxPage}/oss/grade/scope/gradescope",
             type: 'POST',
             data: {
                 appid: appid,
@@ -218,7 +218,7 @@
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         $.ajax({
-            url: "/oss/grade/scope/gradeList",
+            url: "${ctxPage}/oss/grade/scope/gradeList",
             type: 'POST',
             data: {
                 appid: appid,
@@ -278,7 +278,7 @@
 
 
 </script>
-<script type="text/javascript" src="/js/highchart/themes/sand-signika.js"></script>
+<script type="text/javascript" src="${ctxPage}/js/highchart/themes/sand-signika.js"></script>
 
 <!-- end row-fluid -->
 </body>

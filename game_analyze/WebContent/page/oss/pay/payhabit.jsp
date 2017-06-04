@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>付费习惯</title>
@@ -175,8 +175,8 @@
 <%--<script src="/static/js/include/jquery.flot.fillbetween.min.js"></script>--%>
 <%--<script src="/static/js/include/jquery.flot.pie.min.js"></script>--%>
 
-<script src="/js/highchart/highcharts.js"></script>
-<script src="/js/highchart/modules/exporting.js"></script>
+<script  type="text/javascript"  src="${ctxPage}/js/highchart/highcharts.js"></script>
+<script  type="text/javascript"  src="${ctxPage}/js/highchart/modules/exporting.js"></script>
 
 
 <script type="text/javascript">
@@ -189,7 +189,7 @@
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
 
-        var htmlobj = $.ajax({url: "/oss/pay/habit/payhabitList?worldid=" + worldid + "&appid=" + appid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/pay/habit/payhabitList?worldid=" + worldid + "&appid=" + appid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         $("#msg").html("");
     }

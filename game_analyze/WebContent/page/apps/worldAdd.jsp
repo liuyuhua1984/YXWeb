@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsb
-  Date: 14-4-24
-  Time: 下午5:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -21,7 +15,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2>添加游戏服务区信息【<a href="/apps/world">返回列表</a>】</h2>
+                <h2>添加游戏服务区信息【<a href="${ctxPage}/apps/world">返回列表</a>】</h2>
             </header>
             <!-- wrap div -->
             <div>
@@ -218,7 +212,7 @@
         mark = 1;
 
         $.ajax({
-            url: "/apps/world/savedata",
+            url: "${ctxPage}/apps/world/savedata",
             type: 'POST',
             data: jsonInfro,
             dataType: 'json',
@@ -248,7 +242,7 @@
         function selectOperatorByAppId(appid) {
             $("#optid").empty();
             $.ajax({
-                url: "/apps/operator/product/selectOperatorByAppId",
+                url: "${ctxPage}/apps/operator/product/selectOperatorByAppId",
                 type: 'POST',
                 data: {appid: appid},
                 dataType: 'json',

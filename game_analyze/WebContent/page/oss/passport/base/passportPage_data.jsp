@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <style type="text/css">
     .ttt {
         width: 100%;
@@ -92,7 +92,7 @@
 <script type="text/javascript">
     function fahuo(billno) {
         $.ajax({
-            url: "/gmt/recharge/fahuo",
+            url: "${ctxPage}/gmt/recharge/fahuo",
             type: 'POST',
             data: {
                 billno: billno

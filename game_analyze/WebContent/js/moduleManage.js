@@ -1,10 +1,5 @@
-/**
- * Created with IntelliJ IDEA.
- * User: gsb
- * Date: 14-6-30
- * Time: 下午3:04
- * To change this template use File | Settings | File Templates.
- */
+var localObj = window.location;
+var ctxPage = "/"+localObj.pathname.split("/")[1];
 
 require.config({
     /**基础文件的路径*/
@@ -12,11 +7,11 @@ require.config({
 
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery: '/js/artDialog6/lib/jquery-1.10.2',
-        ztree: '/js/ztree/jquery.ztree.all-3.5.min',
-        dialog: '/js/artDialog6/src/dialog',
-        popup: '/js/artDialog6/src/popup',
-        "dialog-config": '/js/artDialog6/src/dialog-config'
+        jquery:ctxPage + '/js/artDialog6/lib/jquery-1.10.2',
+        ztree: ctxPage+'/js/ztree/jquery.ztree.all-3.5.min',
+        dialog: ctxPage+'/js/artDialog6/src/dialog',
+        popup: ctxPage+'/js/artDialog6/src/popup',
+        "dialog-config":ctxPage+ '/js/artDialog6/src/dialog-config'
     },
 
     /**定义模块依赖（为那些没有使用define()来声明依赖关系、设置模块的"浏览器全局变量注入"型脚本做依赖和导出配置。）**/
@@ -64,7 +59,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
     var setting2 = {
         async: {
             enable: true,
-            url: "/sys/module/getmoduletree",
+            url: ctxPage+"/sys/module/getmoduletree",
             autoParam: ["id", "name=n", "level=lv"],
             otherParam: {"otherParam": "zTreeAsyncTest"},
             dataFilter: filter
@@ -225,7 +220,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
      */
     function initmodule() {
         $.ajax({
-            url: "/sys/module/getmoduletree",
+            url: ctxPage+"/sys/module/getmoduletree",
             type: "POST",
             cache: false,
             data: {
@@ -260,7 +255,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
         $("#moduleForm textarea").attr("disabled", "disabled");
 
         $.ajax({
-            url: "/sys/module/getmoduleById",
+            url: ctxPage+"/sys/module/getmoduleById",
             type: "POST",
             cache: false,
             data: {
@@ -349,7 +344,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
             return;
         }
         $.ajax({
-            url: "/sys/module/delmodule",
+            url: ctxPage+"/sys/module/delmodule",
             type: "POST",
             cache: false,
             data: {mid: mid},
@@ -367,7 +362,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
 //获取模块的功能列表
     function getActionList(mid) {
         var htmlobj = $.ajax({
-            url: "/sys/module/actionList",
+            url: ctxPage+"/sys/module/actionList",
             type: "POST",
             cache: false, async: false,
             data: {mid: mid},
@@ -384,7 +379,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
     function saveModule() {
         var jsonInfro = $("#moduleForm").serializeArray();
         $.ajax({
-            url: "/sys/module/savemodule",
+            url: ctxPage+"/sys/module/savemodule",
             type: "POST",
             cache: false,
             data: jsonInfro,
@@ -417,7 +412,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
         });
 
         d.show();
-        var htmlobjxx = $.ajax({url: "/sys/module/addaction?mid=" + mid, cache: false, async: false});
+        var htmlobjxx = $.ajax({url: ctxPage+"/sys/module/addaction?mid=" + mid, cache: false, async: false});
         dialog.get('demox').content(htmlobjxx.responseText);
         $("#saveaction").bind("click", saveaction);
 
@@ -459,7 +454,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
 
         d.show();
         var id = $(this).attr("val");
-        var htmlobjxx = $.ajax({url: "/sys/module/addaction?aid=" + aid, cache: false, async: false});
+        var htmlobjxx = $.ajax({url: ctxPage+"/sys/module/addaction?aid=" + aid, cache: false, async: false});
         dialog.get('demox').content(htmlobjxx.responseText);
         $("#saveaction").bind("click", saveaction);
 
@@ -487,7 +482,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
         var mid = $("#mid").val();
 
         $.ajax({
-            url: "/sys/module/delaction",
+            url: ctxPage+"/sys/module/delaction",
             type: "POST",
             cache: false,
             async: false,
@@ -507,7 +502,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
     function saveaction() {
         var jsonInfro = $("#actionmsg").serializeArray();
         $.ajax({
-            url: "/sys/module/saveaction",
+            url: ctxPage+"/sys/module/saveaction",
             type: "POST",
             cache: false,
             async: false,
@@ -535,7 +530,7 @@ require(['jquery', 'ztree', 'dialog'], function ($, _, dialog) {
         });
 
         d.show();
-        var htmlobjxx = $.ajax({url: "/sys/module/detaillist", cache: false, async: false});
+        var htmlobjxx = $.ajax({url: ctxPage+"/sys/module/detaillist", cache: false, async: false});
         dialog.get('demox').content(htmlobjxx.responseText);
     }
 });

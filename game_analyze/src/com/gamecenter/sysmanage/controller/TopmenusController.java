@@ -71,7 +71,7 @@ public class TopmenusController {
 		UserMsg userMsg = (UserMsg) session.getAttribute("UserMsg");
 		
 		ModelAndView modelAndView = new ModelAndView();
-		if (userMsg.getPassport().equals("admin")) {
+		if (userMsg != null && userMsg.getPassport().equals("admin")) {
 			modelAndView.setViewName("/page/leftmenus/menu1");
 		} else {
 			modelAndView.setViewName("/page/leftmenus/menu");

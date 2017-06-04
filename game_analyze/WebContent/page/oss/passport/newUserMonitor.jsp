@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>新增用户监控</title>
@@ -82,7 +82,7 @@
         var time = $("#time").val();
         var worldid = $("#worldid").val();
         if(time=="" || worldid=="")return;
-        var htmlobj = $.ajax({url: "/oss/gameuser/new/newuserList?time=" + time+"&worldid="+worldid, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/gameuser/new/newuserList?time=" + time+"&worldid="+worldid, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
 
         setTimeout(getPage, 5000);

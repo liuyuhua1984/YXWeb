@@ -1,11 +1,5 @@
-/**
- * Created with IntelliJ IDEA.
- * User: gsb
- * Date: 14-4-29
- * Time: 下午8:29
- * To change this template use File | Settings | File Templates.
- */
-
+var localObj = window.location;
+var ctxPage = "/"+localObj.pathname.split("/")[1];
 /**
  * 限制数字输入
  * @param obj
@@ -23,7 +17,7 @@ function clearNoNum(obj) {
  */
 function changeWorld(appid) {
     $.ajax({
-        url: "/apps/world/changeWorld",
+        url: ctxPage+"/apps/world/changeWorld",
         type: 'POST',
         data: {
             appid: appid
@@ -52,7 +46,7 @@ function changeWorld(appid) {
  */
 function changeWorldType2(appid) {
     $.ajax({
-        url: "/apps/world/changeWorld",
+        url: ctxPage+"/apps/world/changeWorld",
         type: 'POST',
         data: {
             appid: appid
@@ -80,7 +74,7 @@ function changeWorldType2(appid) {
  */
 function gameSelectList(par, selectId) {
     $.ajax({
-        url: "/apps/game/getJsonList",
+        url: ctxPage+"/apps/game/getJsonList",
         type: 'POST',
         data: {
             par: par
@@ -108,7 +102,7 @@ function gameSelectList(par, selectId) {
  */
 function operatorSelectList(appid, selectId) {
     $.ajax({
-        url: "/apps/operator/product/selectOperatorByAppId",
+        url: ctxPage+"/apps/operator/product/selectOperatorByAppId",
         type: 'POST',
         data: {
             appid: appid

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -104,7 +105,7 @@
         mark = 1;
 
         $.ajax({
-            url: "/gmt/money/apply/applySave",
+            url: "${ctxPage}/gmt/money/apply/applySave",
             type: 'POST',
             data: {
                 content: content,

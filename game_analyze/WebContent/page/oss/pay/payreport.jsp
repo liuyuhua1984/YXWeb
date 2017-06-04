@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>充值日报</title>
@@ -88,7 +88,7 @@
         var endtime = $("#endtime").val();
         var worldid = $("#worldid").val();
 
-        var htmlobj = $.ajax({url: "/oss/pay/dayreport/reportList?begintime=" + begintime + "&endtime=" + endtime + "&worldid=" + worldid, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/pay/dayreport/reportList?begintime=" + begintime + "&endtime=" + endtime + "&worldid=" + worldid, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
     }
     getPage();

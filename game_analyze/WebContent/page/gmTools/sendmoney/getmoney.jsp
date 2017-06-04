@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -157,7 +158,7 @@
         var endtime = $("#endtime").val();
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
-        var htmlobj = $.ajax({url: "/gmt/money/getmoney/getmoneyList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/gmt/money/getmoney/getmoneyList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
 
         paycount();
@@ -174,7 +175,7 @@
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         var htmlobj = $.ajax(
-                {url: "/gmt/money/getmoney/getpaycount?appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: true,
+                {url: "${ctxPage}/gmt/money/getmoney/getpaycount?appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: true,
                     success: function (data) {
                         $("#paycount").html(data);
                     }}

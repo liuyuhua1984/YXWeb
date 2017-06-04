@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -154,7 +155,7 @@
         act = 1;
         $("#msg").html("数据分析中....");
         $.ajax({
-            url: "/sys/analyzeset/reanalyze",
+            url: "${ctxPage}/sys/analyzeset/reanalyze",
             type: "POST",
             cache: false,
             data: {

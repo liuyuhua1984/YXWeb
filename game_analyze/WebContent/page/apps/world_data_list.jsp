@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsb
-  Date: 14-4-24
-  Time: 下午5:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <table class="table table-striped table-bordered responsive"
        id="dtable">
@@ -60,7 +54,7 @@
             </td>
             <td>${item.opentime}</td>
             <td style="text-align: center"><a
-                    href="/apps/world/update?wid=${item.wid}">修改</a>/
+                    href="${ctxPage}/apps/world/update?wid=${item.wid}">修改</a>/
                 <a href="javascript:void(0);"
                    onclick='$("#act${item.wid}").attr("checked", "checked");delobj();'>删除</a>
             </td>

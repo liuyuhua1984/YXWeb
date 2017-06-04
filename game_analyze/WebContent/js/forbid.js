@@ -1,10 +1,12 @@
+var localObj = window.location;
+var ctxPage = "/"+localObj.pathname.split("/")[1];
 require.config({
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery: '/js/artDialog6/lib/jquery-1.10.2',
-        dialog: '/js/artDialog6/src/dialog',
-        popup: '/js/artDialog6/src/popup',
-        "dialog-config": '/js/artDialog6/src/dialog-config'
+        jquery:ctxPage+ '/js/artDialog6/lib/jquery-1.10.2',
+        dialog: ctxPage+'/js/artDialog6/src/dialog',
+        popup: ctxPage+'/js/artDialog6/src/popup',
+        "dialog-config": ctxPage+'/js/artDialog6/src/dialog-config'
     },
 
     /**定义模块依赖（为那些没有使用define()来声明依赖关系、设置模块的"浏览器全局变量注入"型脚本做依赖和导出配置。）**/
@@ -32,7 +34,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
         var type = $(this).attr("par");
         var url;
         if(type=="passportword"){
-            url = "/gmt/forbid/words"
+            url = ctxPage+"/gmt/forbid/words"
         }
 
         var d = dialog({
@@ -74,11 +76,13 @@ require(['jquery', 'dialog'], function ($, dialog) {
         var openid = $("#openid").val();
         var rolename = $("#rolename").val();
         var wid = $("#wid").val();
-        var htmlobj = $.ajax({url: "/oss/gameuser/base/dataList?page=" + pid + "&appid=" + appid + "&wid=" + wid + "&openid=" + openid + "&rolename=" + rolename + "&sort=" + sort, cache: false, async: false})
+        var htmlobj = $.ajax({url: ctxPage+"/oss/gameuser/base/dataList?page=" + pid + "&appid=" + appid + "&wid=" + wid + "&openid=" + openid + "&rolename=" + rolename + "&sort=" + sort, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         $(".detail").bind("click", openmsg);
     }
-
+	if (curpage==undefined){
+		return;
+	}
     getPage(curpage);
 
 

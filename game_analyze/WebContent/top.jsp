@@ -1,17 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" /> 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>元巫科技运营支撑系统</title>
-    <link rel="stylesheet" href="/static/css/css.css"/>
-    <link rel="stylesheet" href="/static/css/css_invite.css">
+    <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
-    <script type="text/javascript" src="/static/js/min.js"></script>
-    <script type="text/javascript" src="/static/js/left_nav.js"></script>
-    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/min.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/left_nav.js"></script>
+    <script type="text/javascript" src="${ctxPage}/js/jquery-1.7.2.min.js"></script>
     <style type="text/css">
         #tabs2 {
             float: left;
@@ -35,7 +35,7 @@
 
         #tabs2 a {
             float: left;
-            background: url("/static/images/tableft2.gif") no-repeat left top;
+            background: url("${ctxPage}/static/images/tableft2.gif") no-repeat left top;
             margin: 0;
             padding: 0 0 0 4px;
             text-decoration: none;
@@ -44,7 +44,7 @@
         #tabs2 a span {
             float: left;
             display: block;
-            background: url("/static/images/tabright2.gif") no-repeat right top;
+            background: url("${ctxPage}/static/images/tabright2.gif") no-repeat right top;
             padding: 5px 15px 4px 6px;
             color: #84776B;
         }
@@ -89,12 +89,12 @@
 <div style="z-index:99999;" id="topBanner" class="top">
     <div class="header">
         <div class="logo l">
-            <a href="#"><img title="" alt="" src="/static/gameLogo.png" height="48" width="100"></a>
+            <a href="#"><img title="" alt="" src="${ctxPage}/static/gameLogo.png" height="48" width="100"></a>
         </div>
         <div class="nav r">
             <font id="noticeTips" class="Information tip"></font>
             <font class="user">欢迎您，${UserMsg.name}</font>
-            <font><a class="logout" id="logout" href="/loginOut/out">注销</a></font>
+            <font><a class="logout" id="logout" href="${ctxPage}/loginOut/out">注销</a></font>
 
         </div>
     </div>
@@ -108,12 +108,12 @@
         <div style="width: 900px; height: 40px; border: 0px solid #ff0000; float: left;margin-top: 6px;">
             <div id="tabs2">
                 <ul>
-                    <li class="onOver"><a href="/topmenus/menu1" title="运营管理" target="leftFrame"><span>运营管理</span></a>
+                    <li class="onOver"><a href="${ctxPage}/topmenus/menu1" title="运营管理" target="leftFrame"><span>运营管理</span></a>
                     </li>
-                    <li><a href="/topmenus/menu2" title="客户管理" target="leftFrame"><span>客服管理</span></a></li>
-                    <li><a href="/topmenus/menu3" title="运维管理" target="leftFrame"><span>运维管理</span></a></li>
-                    <li><a href="/topmenus/menu4" title="支撑管理" target="leftFrame"><span>支撑管理</span></a></li>
-                    <li><a href="/topmenus/menu5" title="系统管理" target="leftFrame"><span>系统管理</span></a></li>
+                    <li><a href="${ctxPage}/topmenus/menu2" title="客户管理" target="leftFrame"><span>客服管理</span></a></li>
+                    <li><a href="${ctxPage}/topmenus/menu3" title="运维管理" target="leftFrame"><span>运维管理</span></a></li>
+                    <li><a href="${ctxPage}/topmenus/menu4" title="支撑管理" target="leftFrame"><span>支撑管理</span></a></li>
+                    <li><a href="${ctxPage}/topmenus/menu5" title="系统管理" target="leftFrame"><span>系统管理</span></a></li>
                 </ul>
             </div>
         </div>
@@ -131,7 +131,7 @@
     });
 
     <c:if test="${UserMsg.passport ne 'admin'}">
-    var htmlobjxx = $.ajax({url: "/sys/permit/topMenu", cache: false, async: false});
+    var htmlobjxx = $.ajax({url: "${ctxPage}/sys/permit/topMenu", cache: false, async: false});
     $('#tabs2').html(htmlobjxx.responseText);
     var myLink = document.getElementById("menu0");//定位元素为“myLink”
     myLink.click();//模拟click动作

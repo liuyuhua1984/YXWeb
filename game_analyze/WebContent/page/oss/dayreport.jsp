@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>综合日报</title>
@@ -84,7 +84,7 @@
 <script type="text/javascript">
     function getPage() {
         var time = $("#time").val();
-        var htmlobj = $.ajax({url: "/oss/survey/report/reportList?time=" + time, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/survey/report/reportList?time=" + time, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
     }
     getPage();

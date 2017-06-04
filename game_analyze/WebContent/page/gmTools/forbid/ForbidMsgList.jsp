@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
     <title>封禁历史</title>
     <c:import url="/headmsg"></c:import>
-    <script src="/js/artDialog6/lib/require.js" data-main="/page/gmTools/forbid/forbid" defer async="true"></script>
+    <script  type="text/javascript"  src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/forbid" defer async="true"></script>
 </head>
 <body>
 

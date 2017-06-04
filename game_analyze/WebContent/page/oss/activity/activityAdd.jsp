@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -22,7 +23,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2>添加活动信息【<a href="/apps/world/list">返回列表</a>】</h2>
+                <h2>添加活动信息【<a href="${ctxPage}/apps/world/list">返回列表</a>】</h2>
             </header>
             <!-- wrap div -->
             <div>
@@ -253,7 +254,7 @@
         mark = 1;
 
         $.ajax({
-            url: "/oss/activity/saveActivity",
+            url: "${ctxPage}/oss/activity/saveActivity",
             type: 'POST',
             data: jsonInfro,
             dataType: 'json',

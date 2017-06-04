@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -22,7 +23,7 @@
                     <a href="#" class="button-icon jarviswidget-edit-btn"><span
                             class="pencil-10 "></span></a>
 
-                    <a href="/oss/activity/activityadd" class="button-icon"><span class="plus-10"></span></a>
+                    <a href="${ctxPage}/oss/activity/activityadd" class="button-icon"><span class="plus-10"></span></a>
                 </div>
                 <span class="jarviswidget-loader"></span>
             </header>
@@ -103,7 +104,7 @@
 //
         //发起请求 提交数据
         $.ajax({
-            url: "/apps/game/del",
+            url: "${ctxPage}/apps/game/del",
             type: "POST",
             cache: false,
             data: query,

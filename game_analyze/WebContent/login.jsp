@@ -1,18 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>元巫科技经营分析系统</title>
     <link href="/images/login/favicon.ico" rel="Shortcut Icon">
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <link href="/admin/css/login2.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="${ctxPage}/js/jquery.js"></script>
+    <link href="${ctxPage}/admin/css/login2.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <c:if test="${not empty act}">
-    <script>parent.location.href = "/loginOut/page";</script>
+    <script>parent.location.href = "${ctxPage}/loginOut/page";</script>
 </c:if>
 
 <base target="_top">
@@ -75,7 +75,7 @@
         mark=1;
 
         $.ajax({
-            url: "/loginOut/check",
+            url: "${ctxPage}/loginOut/check",
             type: 'POST',
             data: {
                 userName: name,
@@ -90,7 +90,7 @@
             },
             success: function (data) {
                 if (data.res == "1") {
-                    location= "/";
+                    location= "${ctxPage}/";
                 } else if(data.res == "-100"){
                     alert('非法请求!');
                     window.location.reload();

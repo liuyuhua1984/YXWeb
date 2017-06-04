@@ -1,31 +1,22 @@
-/**
- *
- * （1）实现js文件的异步加载，避免网页失去响应；
-   （2）管理模块之间的依赖性，便于代码的编写和维护。
- * Created with IntelliJ IDEA.
- * User: gsb
- * Date: 14-6-26
- * Time: 下午4:33
- * To change this template use File | Settings | File Templates.
- */
-
+var localObj = window.location;
+var ctxPage = localObj.pathname.split("/")[1];
 require.config({
     /**基础文件的路径*/
     //baseUrl: '/test/js',
 
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery: '/test/js/jquery-1.10.2',
+        jquery:ctxPage+ '/test/js/jquery-1.10.2',
 //        jquery: [
 //            '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js',
 //            'lib/jquery'
 //        ]
-        ttt: '/test/js/t1',
-        funt: '/test/js/funt',
-        ztree:'/js/ztree/jquery.ztree.all-3.5.min',
-        dialog: '/js/artDialog6/src/dialog',
-        popup: '/js/artDialog6/src/popup',
-        "dialog-config": '/js/artDialog6/src/dialog-config'
+        ttt: ctxPage+'/test/js/t1',
+        funt: ctxPage+'/test/js/funt',
+        ztree:ctxPage+'/js/ztree/jquery.ztree.all-3.5.min',
+        dialog: ctxPage+'/js/artDialog6/src/dialog',
+        popup: ctxPage+'/js/artDialog6/src/popup',
+        "dialog-config": ctxPage+'/js/artDialog6/src/dialog-config'
     },
 
     /**定义模块依赖（为那些没有使用define()来声明依赖关系、设置模块的"浏览器全局变量注入"型脚本做依赖和导出配置。）**/
@@ -83,7 +74,7 @@ require(['jquery', 'ttt', 'funt3','ztree','dialog'], function ($, t, f,_,Backbon
     var setting2 = {
         async: {
             enable: true,
-            url: "/sys/module/getmoduletree",
+            url: ctxPage+"/sys/module/getmoduletree",
             autoParam: ["id", "name=n", "level=lv"],
             otherParam: {"otherParam": "zTreeAsyncTest"},
             dataFilter: filter

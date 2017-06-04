@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" /> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>元巫科技运营支撑系统</title>
-    <link rel="stylesheet" href="/static/css/css.css"/>
-    <link rel="stylesheet" href="/static/css/css_invite.css">
+    <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
-    <script type="text/javascript" src="/static/js/min.js"></script>
-    <script type="text/javascript" src="/static/js/left_nav.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/min.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/left_nav.js"></script>
 
 
     <style type="text/css">
@@ -77,7 +77,7 @@
 <div style="z-index:99999;" id="topBanner" class="top">
     <div class="header">
         <div class="logo l">
-            <a href="/index/index.jsp"><img title="Talking Game" alt="Talking Game" src="/static/images/logo.png"></a>
+            <a href="/index/index.jsp"><img title="Talking Game" alt="Talking Game" src="${ctxPage}/static/images/logo.png"></a>
         </div>
         <div class="nav r">
             <font id="noticeTips" class="Information tip"></font>

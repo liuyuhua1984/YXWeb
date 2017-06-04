@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsb
-  Date: 14-4-24
-  Time: 下午5:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -52,7 +46,7 @@
                        class="button-icon jarviswidget-delete-btn"><span
                             class="trashcan-10"></span></a>
 
-                    <a href="/apps/world/add" class="button-icon"><span class="plus-10"></span></a>
+                    <a href="${ctxPage}/apps/world/add" class="button-icon"><span class="plus-10"></span></a>
 
                 </div>
                 <span class="jarviswidget-loader"></span>
@@ -79,7 +73,7 @@
     var curpage = 1;
     function getPage(pid) {
         curpage = pid;
-        var htmlobj = $.ajax({url: "/apps/world/dataList?page=" + pid + "&appid=" + appid + "&optid=" + optid, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/apps/world/dataList?page=" + pid + "&appid=" + appid + "&optid=" + optid, cache: false, async: false})
         $("#dataList").html(htmlobj.responseText);
     }
     getPage(curpage);
@@ -104,7 +98,7 @@
 
         //发起请求 提交数据
         $.ajax({
-            url: "/apps/world/del",
+            url: "${ctxPage}/apps/world/del",
             type: "POST",
             cache: false,
             data: query,
@@ -131,7 +125,7 @@
      */
     function upstatus(worldid, act) {
         $.ajax({
-            url: "/apps/world/upstatus",
+            url: "${ctxPage}/apps/world/upstatus",
             type: "POST",
             cache: false,
             data: {worldid: worldid, act: act},
@@ -157,7 +151,7 @@
      */
     function invitestatus(worldid, act) {
         $.ajax({
-            url: "/apps/world/invite",
+            url: "${ctxPage}/apps/world/invite",
             type: "POST",
             cache: false,
             data: {worldid: worldid, act: act},

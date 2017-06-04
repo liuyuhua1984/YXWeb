@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsb
-  Date: 14-4-24
-  Time: 下午5:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -27,7 +21,7 @@
                        class="button-icon jarviswidget-delete-btn"><span
                             class="trashcan-10"></span></a>
 
-                    <a href="/apps/game/add" class="button-icon"><span class="plus-10"></span></a>
+                    <a href="${ctxPage}/apps/game/add" class="button-icon"><span class="plus-10"></span></a>
                 </div>
                 <span class="jarviswidget-loader"></span>
             </header>
@@ -59,7 +53,7 @@
                                 <td>1</td>
                                 <td>${item.info}</td>
                                 <td style="text-align: center">
-                                    <a href="/apps/game/edit?id=${item.appid}">修改</a>
+                                    <a href="${ctxPage}/apps/game/edit?id=${item.appid}">修改</a>
                                     /
                                     <a href="javascript:void(0);"
                                        onclick='$("#act${item.id}").attr("checked", "checked");delobj();'>删除</a>
@@ -97,7 +91,7 @@
 
         //发起请求 提交数据
         $.ajax({
-            url: "/apps/game/del",
+            url: "${ctxPage}/apps/game/del",
             type: "POST",
             cache: false,
             data: query,

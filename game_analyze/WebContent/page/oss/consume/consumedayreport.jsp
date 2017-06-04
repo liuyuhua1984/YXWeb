@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>消费日报</title>
@@ -105,8 +105,8 @@
 </div>
 
 
-<script src="/js/highchart/highcharts.js"></script>
-<script src="/js/highchart/modules/exporting.js"></script>
+<script type="text/javascript"  src="${ctxPage}/js/highchart/highcharts.js"></script>
+<script  type="text/javascript"  src="${ctxPage}/js/highchart/modules/exporting.js"></script>
 
 
 
@@ -116,7 +116,7 @@
         var endtime = $("#endtime").val();
         var worldid = $("#worldid").val();
 
-        var htmlobj = $.ajax({url: "/oss/consume/report/reportList?begintime=" + begintime + "&endtime=" + endtime + "&worldid=" + worldid, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/consume/report/reportList?begintime=" + begintime + "&endtime=" + endtime + "&worldid=" + worldid, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         consumeList();
     }
@@ -139,7 +139,7 @@
         var worldid = $("#worldid").val();
 
         $.ajax({
-            url: "/oss/consume/report/consumeList",
+            url: "${ctxPage}/oss/consume/report/consumeList",
             type: 'POST',
             data: {
                 begintime: begintime,
@@ -200,7 +200,7 @@
 
 
 </script>
-<script type="text/javascript" src="/js/highchart/themes/sand-signika.js"></script>
+<script type="text/javascript" src="${ctxPage}/js/highchart/themes/sand-signika.js"></script>
 
 <!-- end row-fluid -->
 </body>

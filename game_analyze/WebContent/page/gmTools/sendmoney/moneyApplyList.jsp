@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsb
-  Date: 14-4-24
-  Time: 下午5:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -75,7 +69,7 @@
                                 </td>
                                 <td>${item.addtime}</td>
                                 <td class="center">${item.username}</td>
-                                <td align="center"><a>查看</a>/审核/<a href="/gmt/money/applyList/sendpage?applyid=${item.applyid}">发放</a></td>
+                                <td align="center"><a>查看</a>/审核/<a href="${ctxPage}/gmt/money/applyList/sendpage?applyid=${item.applyid}">发放</a></td>
                             </tr>
                         </c:forEach>
 

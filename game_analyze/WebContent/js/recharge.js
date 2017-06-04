@@ -1,10 +1,12 @@
+var localObj = window.location;
+var ctxPage = "/"+localObj.pathname.split("/")[1];
 require.config({
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery: '/js/artDialog6/lib/jquery-1.10.2',
-        dialog: '/js/artDialog6/src/dialog',
-        popup: '/js/artDialog6/src/popup',
-        "dialog-config": '/js/artDialog6/src/dialog-config'
+        jquery: ctxPage+'/js/artDialog6/lib/jquery-1.10.2',
+        dialog: ctxPage+'/js/artDialog6/src/dialog',
+        popup: ctxPage+'/js/artDialog6/src/popup',
+        "dialog-config": ctxPage+'/js/artDialog6/src/dialog-config'
     },
 
     /**定义模块依赖（为那些没有使用define()来声明依赖关系、设置模块的"浏览器全局变量注入"型脚本做依赖和导出配置。）**/
@@ -44,7 +46,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
         var endtime = $("#endtime").val();
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
-        var htmlobj = $.ajax({url: "/gmt/recharge/dataList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
+        var htmlobj = $.ajax({url: ctxPage+"/gmt/recharge/dataList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
 
         $('.sendmoney').on('click', openMsg);
@@ -65,7 +67,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         var htmlobj = $.ajax(
-            {url: "/gmt/recharge/paycount?appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: true,
+            {url: ctxPage+"/gmt/recharge/paycount?appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: true,
                 success: function (data) {
                     $("#paycount").html(data);
                 }}
@@ -94,7 +96,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
         d.show();
 
         var id = $(this).attr("val");
-        var htmlobjxx = $.ajax({url: "/gmt/recharge/datamsg?id=" + id, cache: false, async: false});
+        var htmlobjxx = $.ajax({url: ctxPage+"/gmt/recharge/datamsg?id=" + id, cache: false, async: false});
         dialog.get('demox').content(htmlobjxx.responseText);
 
         d.onclose = function () {

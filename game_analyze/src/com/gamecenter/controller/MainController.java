@@ -48,4 +48,14 @@ public class MainController {
 		modelAndView.setViewName("/top");
 		return modelAndView;
 	}
+	
+	@RequestMapping("/buttom")
+	public String getButtom(){
+		return "/buttom";
+	}
+	
+	@RequestMapping("/content")
+	public String getContent(){
+		return "content";
+	}
 }

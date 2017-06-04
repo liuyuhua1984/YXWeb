@@ -14,19 +14,19 @@
 </head>
 
 <c:if test="${empty sessionScope.UserMsg}">
-    <script>window.location.href = "${ctxPage}/loginOut/page";</script>
+    <script type="text/javascript"  >window.location.href = "${ctxPage}/loginOut/page";</script>
 </c:if>
 
 <frameset rows="104,*,30" cols="*"  frameborder="no" border="0" framespacing="0">
-    <frame src="./top.html" name="topFrame" scrolling="no" noresize="noresize" id="topFrame"/>
+    <frame src="${ctxPage}/top.html" name="topFrame" scrolling="no" noresize="noresize" id="topFrame"/>
 
     <frameset id="bodyFrameset" cols="190,*" rows ="*" frameborder="no" border="0" framespacing="0">
-        <frame src="/topmenus/menu1" name="leftFrame" id="leftFrame" noresize="noresize" scrolling="no"/>
-            <frame src="./content.html" name="mainFrame" id="mainFrame" frameborder="no" scrolling-="yes" marginwidth="0"
+        <frame src="${ctxPage}/topmenus/menu1" name="leftFrame" id="leftFrame" noresize="noresize" scrolling="no"/>
+            <frame src="${ctxPage}/content" name="mainFrame" id="mainFrame" frameborder="no" scrolling-="yes" marginwidth="0"
                marginheight="0"/>
     </frameset>
 
-    <frame src="./buttom.html" name="bottomFrame" scrolling="no" noresize="noresize"/>
+    <frame src="${ctxPage}/buttom" name="bottomFrame" scrolling="no" noresize="noresize"/>
 </frameset>
 <noframes>
     <body style="padding:0">

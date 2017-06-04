@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>充值排行</title>
@@ -91,7 +91,7 @@
 //        var endtime = $("#endtime").val();
         var worldid = $("#worldid").val();
 
-        var htmlobj = $.ajax({url: "/oss/pay/top/paytopList?worldid=" + worldid, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/pay/top/paytopList?worldid=" + worldid, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         $("#msg").html("");
     }

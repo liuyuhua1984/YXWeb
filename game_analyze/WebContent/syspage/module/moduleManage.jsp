@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
     <title>模块管理</title>
     <c:import url="/headmsg"></c:import>
-    <link rel="stylesheet" href="/js/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-    <script src="/js/artDialog6/lib/require.js" data-main="/syspage/module/moduleManage" defer async="true"></script>
+    <link rel="stylesheet" href="${ctxPage}/js/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script  type="text/javascript"  src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/moduleManage" defer async="true"></script>
 </head>
 <body>
 

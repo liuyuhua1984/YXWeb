@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
     <title>用户管理</title>
     <c:import url="/headmsg"></c:import>
-    <script src="/js/artDialog6/lib/require.js" data-main="/syspage/user/user" defer async="true"></script>
+    <script  type="text/javascript"  src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/user" defer async="true"></script>
 
 </head>
 <body>
@@ -105,7 +105,7 @@
 
         //发起请求 提交数据
         $.ajax({
-            url: "/sys/user/del",
+            url: "${ctxPage}/sys/user/del",
             type: "POST",
             cache: false,
             data: query,

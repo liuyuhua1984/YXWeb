@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -83,7 +84,7 @@
     function save() {
         var jsonInfro = $("#permitform").serializeArray();
         $.ajax({
-            url: "/sys/permit/save",
+            url: "${ctxPage}/sys/permit/save",
             type: "POST",
             cache: false,
             data: jsonInfro,

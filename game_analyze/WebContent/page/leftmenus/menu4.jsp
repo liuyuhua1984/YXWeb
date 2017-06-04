@@ -1,16 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link rel="stylesheet" href="/static/css/css.css"/>
-    <link rel="stylesheet" href="/static/css/css_invite.css">
+    <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
-    <script type="text/javascript" src="/static/js/min.js"></script>
-    <script type="text/javascript" src="/static/js/left_nav.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/min.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/left_nav.js"></script>
 </head>
 <body>
 
@@ -23,7 +24,7 @@
                     <ul>
 
                         <li>
-                            <a url-data="summary-index" class="navigate Dashboard" href="/apps/game"
+                            <a url-data="summary-index" class="navigate Dashboard" href="${ctxPage}/apps/game"
                                target="mainFrame">
                                 <span>游戏产品管理</span>
                             </a>
@@ -45,7 +46,7 @@
 
                         </li>
                         <li>
-                            <a url-data="" class="more_icon Players" href="/apps/world" target="mainFrame">
+                            <a url-data="" class="more_icon Players" href="${ctxPage}/apps/world" target="mainFrame">
                                 <span>游戏区服管理</span>
                             </a>
                         </li>
@@ -56,8 +57,8 @@
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned" href="/oss/activity" target="mainFrame">活动信息</a></li>
-                                <li><a url-data="player-new" href="/oss/activity/card" target="mainFrame">卡密信息</a></li>
+                                <li><a url-data="player-churned" href="${ctxPage}/oss/activity" target="mainFrame">活动信息</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/oss/activity/card" target="mainFrame">卡密信息</a></li>
                                 <li><a url-data="player-new">物品道具</a></li>
                                 <li><a url-data="player-new">使用记录</a></li>
                             </ol>
@@ -74,7 +75,7 @@
 </div>
 
 <script type="text/javascript">
-    window.parent.goinitpage("/apps/game");
+    window.parent.goinitpage("${ctxPage}/apps/game");
 </script>
 </body>
 </html>

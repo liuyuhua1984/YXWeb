@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gsb
-  Date: 14-4-24
-  Time: 下午5:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title></title>
@@ -23,7 +16,7 @@
             <header>
                 <h2>
                     <c:choose><c:when test="${flag eq 'add'}">新增</c:when><c:when
-                            test="${flag eq 'edit'}">编辑</c:when></c:choose>运营商 [<a href="/apps/operator">返回列表</a>]
+                            test="${flag eq 'edit'}">编辑</c:when></c:choose>运营商 [<a href="${ctxPage}/apps/operator">返回列表</a>]
                 </h2>
             </header>
             <!-- wrap div -->
@@ -118,7 +111,7 @@
         var jsonInfro = $("#form").serializeArray();
 
         $.ajax({
-            url: "/apps/operator/savedata",
+            url: "${ctxPage}/apps/operator/savedata",
             type: 'POST',
             data: jsonInfro,
             dataType: 'json',

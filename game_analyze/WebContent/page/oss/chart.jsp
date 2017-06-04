@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,54 +17,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <%--公共功能--%>
-    <script type="text/javascript" src="/static/js/common.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/common.js"></script>
 
     <!--// OPTIONAL & CONDITIONAL CSS FILES //-->
     <!-- date picker css -->
-    <link rel="stylesheet" href="/static/css/datepicker.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/datepicker.css?v=1"/>
     <!-- full calander css -->
-    <link rel="stylesheet" href="/static/css/fullcalendar.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/fullcalendar.css?v=1"/>
     <!-- data tables extended CSS -->
-    <link rel="stylesheet" href="/static/css/TableTools.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/TableTools.css?v=1"/>
     <!-- bootstrap wysimhtml5 editor -->
-    <link rel="stylesheet" href="/static/css/bootstrap-wysihtml5.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/wysiwyg-color.css"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/bootstrap-wysihtml5.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/wysiwyg-color.css"/>
     <!-- custom/responsive growl messages -->
-    <link rel="stylesheet" href="/static/css/toastr.custom.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/toastr-responsive.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/jquery.jgrowl.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/toastr.custom.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/toastr-responsive.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/jquery.jgrowl.css?v=1"/>
 
     <!-- // DO NOT REMOVE OR CHANGE ORDER OF THE FOLLOWING // -->
     <!-- bootstrap default css (DO NOT REMOVE) -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/bootstrap-responsive.min.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/bootstrap.min.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/bootstrap-responsive.min.css?v=1"/>
     <!-- font awsome and custom icons -->
-    <link rel="stylesheet" href="/static/css/font-awesome.min.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/cus-icons.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/font-awesome.min.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/cus-icons.css?v=1"/>
     <!-- jarvis widget css -->
-    <link rel="stylesheet" href="/static/css/jarvis-widgets.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/jarvis-widgets.css?v=1"/>
     <!-- Data tables, normal tables and responsive tables css -->
-    <link rel="stylesheet" href="/static/css/DT_bootstrap.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/responsive-tables.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/DT_bootstrap.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/responsive-tables.css?v=1"/>
     <!-- used where radio, select and form elements are used -->
-    <link rel="stylesheet" href="/static/css/uniform.default.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/select2.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/uniform.default.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/select2.css?v=1"/>
     <!-- main theme files -->
-    <link rel="stylesheet" href="/static/css/theme.css?v=1"/>
-    <link rel="stylesheet" href="/static/css/theme-responsive.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/theme.css?v=1"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/theme-responsive.css?v=1"/>
 
     <!-- // THEME CSS changed by javascript: the CSS link below will override the rules above // -->
     <!-- For more information, please see the documentation for "THEMES" -->
-    <link rel="stylesheet" id="switch-theme-js" href="/static/css/themes/default.css?v=1"/>
+    <link rel="stylesheet" id="switch-theme-js" href="${ctxPage}/static/css/themes/default.css?v=1"/>
     <!-- To switch to full width -->
-    <link rel="stylesheet" id="switch-width" href="/static/css/full-width.css?v=1"/>
+    <link rel="stylesheet" id="switch-width" href="${ctxPage}/static/css/full-width.css?v=1"/>
 
 
-    <link rel="stylesheet" href="/static/css/css.css"/>
-    <link rel="stylesheet" href="/static/css/css_invite.css">
+    <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
+    <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
-    <script type="text/javascript" src="/static/js/min.js"></script>
-    <script type="text/javascript" src="/static/js/left_nav.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/min.js"></script>
+    <script type="text/javascript" src="${ctxPage}/static/js/left_nav.js"></script>
 </head>
 
 <body>
@@ -206,25 +206,25 @@
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>--%>
-<script src="/static/js/libs/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/static/js/libs/jquery.min.js"><\/script>')</script>
+<script type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.min.js"><\/script>')</script>
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>--%>
-<script src="/static/js/libs/jquery.ui.min.js"></script>
-<script>window.jQuery.ui || document.write('<script src="/static/js/libs/jquery.ui.min.js"><\/script>')</script>
+<script  type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
+<script>window.jQuery.ui || document.write('<script type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.ui.min.js"><\/script>')</script>
 
 
 <!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
-<script src="/static/js/include/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.ui.touch-punch.min.js"></script>
 
 <!-- REQUIRED: Datatable components -->
-<script src="/static/js/include/jquery.accordion.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.accordion.min.js"></script>
 
 <!-- REQUIRED: Toastr & Jgrowl notifications  -->
-<script src="/static/js/include/toastr.min.js"></script>
-<script src="/static/js/include/jquery.jgrowl.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/toastr.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.jgrowl.min.js"></script>
 
 <!-- REQUIRED: Sleek scroll UI  -->
-<script src="/static/js/include/slimScroll.min.js"></script>
+<script  type="text/javascript"  src="${ctxPage}/static/js/include/slimScroll.min.js"></script>
 
 <!-- REQUIRED: Datatable components -->
 <!-- DISABLED <script src="/static/js/include/jquery.dataTables.min.js"></script> -->
@@ -242,14 +242,14 @@
         /*-- document.write('<script src="/static/js/include/TableTools.min.js"><\/script>'); --*/
         /*-- document.write('<script src="/static/js/include/jquery.uniform.min.js"><\/script>'); --*/
         /*-- document.write('<script src="/static/js/include/select2.min.js"><\/script>'); --*/
-        document.write('<script src="/static/js/include/jquery.excanvas.min.js"><\/script>');
-        document.write('<script src="/static/js/include/jquery.placeholder.min.js"><\/script>');
+        document.write('<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.excanvas.min.js"><\/script>');
+        document.write('<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.placeholder.min.js"><\/script>');
     } else {
 
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
 
-        document.write('<script src="/static/js/include/selectnav.min.js"><\/script>');
-        document.write('<script src="/static/js/include/responsive-tables.min.js"><\/script>');
+        document.write('<script type="text/javascript"  src="${ctxPage}/static/js/include/selectnav.min.js"><\/script>');
+        document.write('<script type="text/javascript"  src="${ctxPage}/static/js/include/responsive-tables.min.js"><\/script>');
     }
 </script>
 
@@ -257,31 +257,31 @@
 <!-- DISABLED <script src="/static/js/include/jquery.ibutton.min.js"></script> -->
 
 <!-- REQUIRED: Justgage animated charts -->
-<script src="/static/js/include/justgage.min.js"></script>
-<script src="/static/js/include/raphael.2.1.0.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/justgage.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/raphael.2.1.0.min.js"></script>
 
 <!-- REQUIRED: Animated pie chart -->
-<script src="/static/js/include/jquery.easy-pie-chart.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.easy-pie-chart.min.js"></script>
 
 <!--&lt;!&ndash; REQUIRED: Functional Widgets &ndash;&gt;-->
 <!--控制了title的名称-->
 <!--<script src="/static/js/include/jarvis.widget.min.js"></script>-->
-<script src="/static/js/include/mobiledevices.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/mobiledevices.min.js"></script>
 <!-- DISABLED (only needed for IE7 <script src="/static/js/include/json2.js"></script> -->
 
 <!-- REQUIRED: Full Calendar -->
 <!-- DISABLED <script src="/static/js/include/jquery.fullcalendar.min.js"></script>	-->
 
 <!-- REQUIRED: Flot Chart Engine -->
-<script src="/static/js/include/jquery.flot.cust.min.js"></script>
-<script src="/static/js/include/jquery.flot.resize.min.js"></script>
-<script src="/static/js/include/jquery.flot.tooltip.min.js"></script>
-<script src="/static/js/include/jquery.flot.orderBar.min.js"></script>
-<script src="/static/js/include/jquery.flot.fillbetween.min.js"></script>
-<script src="/static/js/include/jquery.flot.pie.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.flot.cust.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.flot.resize.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.flot.tooltip.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.flot.orderBar.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.flot.fillbetween.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.flot.pie.min.js"></script>
 
 <!-- REQUIRED: Sparkline Charts -->
-<script src="/static/js/include/jquery.sparkline.min.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/include/jquery.sparkline.min.js"></script>
 
 <!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
 <!-- DISABLED  <script src="/static/js/include/jquery.inbox.slashc.sliding-menu.js"></script> -->
@@ -318,7 +318,7 @@
 <!--<script src="/static/js/include/bootstrap.min.js"></script>-->
 
 <!-- DO NOT REMOVE: Theme Config file -->
-<script src="/static/js/config.js"></script>
+<script type="text/javascript"  src="${ctxPage}/static/js/config.js"></script>
 
 <!-- d3 library placed at the bottom for better performance -->
 <!-- DISABLED  <script src="/static/js/include/d3.v3.min.js"></script> -->
@@ -330,8 +330,8 @@
 <!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
 <!-- DISABLED <script src="/static/js/include/adv_charts/geochart.js"></script> -->
 
-<script src="/js/highchart/highcharts.js"></script>
-<script src="/js/highchart/modules/exporting.js"></script>
+<script type="text/javascript"  src="${ctxPage}/js/highchart/highcharts.js"></script>
+<script type="text/javascript"  src="${ctxPage}/js/highchart/modules/exporting.js"></script>
 
 
 <script type="text/javascript">
@@ -341,7 +341,7 @@
         function getOnline() {
             var tempdata = [];
             $.ajax({
-                url: "/oss/online/now/online",
+                url: "${ctxPage}/oss/online/now/online",
                 type: 'POST',
                 data: {
                     wid: $("#wid").val()
@@ -446,7 +446,7 @@
      */
     function hourData() {
         $.ajax({
-            url: "/oss/online/now/onlineDayByHour",
+            url: "${ctxPage}/oss/online/now/onlineDayByHour",
             type: 'POST',
             data: {
                 wid: $("#wid").val()
@@ -503,7 +503,7 @@
     }
     hourData();
 </script>
-<script type="text/javascript" src="/js/highchart/themes/sand-signika.js"></script>
+<script type="text/javascript" src="${ctxPage}/js/highchart/themes/sand-signika.js"></script>
 
 </body>
 </html>

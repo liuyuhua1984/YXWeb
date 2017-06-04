@@ -1,31 +1,144 @@
-jQuery(function($) {
-    $(".module-item").change(function() {
-        var parent = $(this).parent().parent().parent().parent();
-        if (this.checked) {
-            $('.select-all,.action-item', parent).attr({'disabled':true,'checked':false});
-        }
-        else {
-            $('.select-all,.action-item', parent).attr({'disabled':false});
-        }
-    });
+var localObj = window.location;
+var ctxPage = "/"+localObj.pathname.split("/")[1];
+require.config({
+    /**基础文件的路径*/
+//    baseUrl: '/js',
 
-    $(".select-all").change(function() {
-        var parent = $(this).parent().parent().parent();
-        if (this.checked) {
-            $('.action-item', parent).attr({'checked':true});
-        }
-        else {
-            $('.action-item', parent).attr({'checked':false});
-        }
-    });
+    /**模块及源文件的路径隐射*/
+    paths: {
+        jquery: ctxPage+'/js/artDialog6/lib/jquery-1.10.2',
+        dialog: ctxPage+'/js/artDialog6/src/dialog',
+        popup: ctxPage+'/js/artDialog6/src/popup',
+        "dialog-config": ctxPage+'/js/artDialog6/src/dialog-config'
+    },
 
-    $(".action-item").change(function() {
-        var parent = $(this).parent().parent().parent();
-        if ($(".action-item:not([checked])", parent).length == 0) {
-            $('.select-all', parent).attr({'checked':true});
+    /**定义模块依赖（为那些没有使用define()来声明依赖关系、设置模块的"浏览器全局变量注入"型脚本做依赖和导出配置。）**/
+    shim: {
+        "dialog": {
+            deps: ["jquery", "popup", "dialog-config"],
+            exports: 'Backbone'
+        },
+        "ztree": {
+            deps: ["jquery"]
         }
-        else {
-            $('.select-all', parent).attr({'checked':false});
-        }
-    });
+    }
 });
+
+
+require(['jquery', 'dialog'], function ($, dialog) {
+
+    $("#addrole").bind("click", addrole);
+    $("#delobj").bind("click", delobj);
+    $(".quxian").bind("click", moduleactionlist);
+
+    /**
+     * 新增功能
+     */
+    function addrole() {
+        var d = dialog({
+            id: 'demox',
+            width: 500,
+            height: 300,
+            title: '添加功能',
+            content: '数据加载...'
+        });
+
+        d.show();
+        var htmlobjxx = $.ajax({url: ctxPage+"/sys/role/add", cache: false, async: false});
+        dialog.get('demox').content(htmlobjxx.responseText);
+        $("#saverole").bind("click", saverole);
+
+
+        d.onclose = function () {
+            //异步刷新
+            setTimeout(function () {
+                location.reload();
+            }, 1000);
+            $("#saverole").unbind("click", saverole);
+        };
+    }
+
+    /**
+     * 保存节点
+     */
+    function saverole() {
+        var jsonInfro = $("#rolemsgform").serializeArray();
+        $.ajax({
+            url: ctxPage+"/sys/role/save",
+            type: "POST",
+            cache: false,
+            data: jsonInfro,
+            dataType: "json",
+            success: function (result) {
+                dialog.get('demox').close().remove();
+            },
+            error: function () {
+                alert("请求异常");
+            }
+        });
+    }
+
+    /**
+     * 功能列表
+     */
+    function moduleactionlist() {
+        var roleid = $(this).attr('str');
+        d = dialog({
+            id: 'demox',
+            width: 800,
+            height: 400,
+            title: '模块列表',
+            content: '模块列表'
+        });
+
+        d.show();
+        var htmlobjxx = $.ajax({url: ctxPage+"/sys/permit/permitList?type=2&sourceid=" + roleid, cache: false, async: false});
+        dialog.get('demox').content(htmlobjxx.responseText);
+    }
+
+    /**
+     * 删除角色
+     * @return {boolean}
+     */
+    function delobj() {
+        var ids = new Array();
+        $("input:checked[name='ids']").each(function () {
+            ids.push(this.value);
+        });
+        ids = ids.join(',');  //用户‘，’号连接id串
+        if (ids == '')
+            return false;
+
+        if (!window.confirm("危险操作，你确定删除吗？"))   //确定是否删除
+            return false;
+        var query = new Object();
+        query.ids = ids;
+
+        //发起请求 提交数据
+        $.ajax({
+            url: ctxPage+"/sys/role/del",
+            type: "POST",
+            cache: false,
+            data: query,
+            dataType: "json",
+            success: function (result) {
+                if (result == '-1') {
+                    alert("删除异常！");
+                }
+                else {
+                    alert("成功，删除" + result + "个！")
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("请求异常");
+            }
+        });
+    }
+});
+
+
+
+
+
+

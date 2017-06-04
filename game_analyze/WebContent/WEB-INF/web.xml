@@ -15,11 +15,11 @@
     <!--错误页面的定义-->
     <error-page>
         <error-code>500</error-code>
-        <location>/page/commons/error.html</location>
+        <location>/page/commons/error.jsp</location>
     </error-page>
     <error-page>
         <error-code>404</error-code>
-        <location>/page/commons/404.html</location>
+        <location>/page/commons/404.jsp</location>
     </error-page>
 
   

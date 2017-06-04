@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <html>
 <head>
     <title>用户活跃</title>
@@ -91,7 +91,7 @@
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
 
-        var htmlobj = $.ajax({url: "/oss/gameuser/active/list?worldid=" + worldid + "&appid=" + appid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/gameuser/active/list?worldid=" + worldid + "&appid=" + appid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         $("#msg").html("");
     }

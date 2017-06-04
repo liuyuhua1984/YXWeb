@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -15,7 +16,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2>卡密添加【<a href="/oss/activity/cdkpage">返回列表</a>】</h2>
+                <h2>卡密添加【<a href="${ctxPage}/oss/activity/cdkpage">返回列表</a>】</h2>
             </header>
             <!-- wrap div -->
             <div>
@@ -100,7 +101,7 @@
         mark = 1;
 
         $.ajax({
-            url: "/oss/activity/card/createCdk",
+            url: "${ctxPage}/oss/activity/card/createCdk",
             type: 'POST',
             data: {
                 type: type,

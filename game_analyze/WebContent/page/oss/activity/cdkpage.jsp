@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -94,7 +95,7 @@
                     <a href="#" class="button-icon jarviswidget-edit-btn"><span
                             class="pencil-10 "></span></a>
 
-                    <a href="/oss/activity/card/addcdkpage" class="button-icon"><span class="plus-10"></span></a>
+                    <a href="${ctxPage}/oss/activity/card/addcdkpage" class="button-icon"><span class="plus-10"></span></a>
                 </div>
                 <span class="jarviswidget-loader"></span>
 
@@ -133,8 +134,11 @@
     function getPage(pid) {
         curpage = pid;
         var aid = $("#aid").val();
+        if (aid == null){
+        return ;
+        }
         var cdkcode = $("#cdkcode").val();
-        var htmlobj = $.ajax({url: "/oss/activity/card/dataList?page=" + pid + "&aid=" + aid + "&cdkcode=" + cdkcode, cache: false, async: false})
+        var htmlobj = $.ajax({url: "${ctxPage}/oss/activity/card/dataList?page=" + pid + "&aid=" + aid + "&cdkcode="+cdkcode, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
     }
     getPage(curpage);
@@ -150,7 +154,7 @@
      *  弹框绑定
      */
     function bandMsg() {
-        seajs.use(['jquery', '/js/artDialog6/src/dialog'], function ($, dialog) {
+        seajs.use(['jquery', '${ctxPage}/js/artDialog6/src/dialog'], function ($, dialog) {
 
             var d = dialog({
                 id: 'demox',
@@ -168,7 +172,7 @@
                 d.show();
 
                 var openid = $(this).attr("val");
-                var htmlobjxx = $.ajax({url: "/oss/activity/card/datamsg?openid=" + openid, cache: false, async: false});
+                var htmlobjxx = $.ajax({url: "${ctxPage}/oss/activity/card/datamsg?openid=" + openid, cache: false, async: false});
                 dialog.get('demox').content(htmlobjxx.responseText);
 
             });
