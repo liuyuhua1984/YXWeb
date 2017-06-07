@@ -21,9 +21,9 @@ public class GameConvertData implements Serializable {
 	private static final long serialVersionUID = -5787349047172892429L;
 	
 	/** id=消息号 **/
-	public long id;
+	private long id;
 	/** 对象转成data **/
-	public String data;
+	private String data;
 	
 	public GameConvertData( DataUpBase dataUpBase) {
 		id = dataUpBase.getMsgCode();

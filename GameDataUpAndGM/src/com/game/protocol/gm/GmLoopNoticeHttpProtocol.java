@@ -1,6 +1,6 @@
 package com.game.protocol.gm;  
 
-import com.lyh.IMsgCode;
+import com.lyh.common.IMsgCode;
 import com.lyh.dataup.log.DataUpBase;
 
 /** 

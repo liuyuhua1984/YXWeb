@@ -1,9 +1,8 @@
 package com.lyh.dataup.log;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
-import com.lyh.IMsgCode;
+import com.lyh.common.IMsgCode;
 
 
 /** 

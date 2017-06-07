@@ -74,7 +74,7 @@ public class BaseApiController {
 		HashMap params = new HashMap<String, String>();
 		params.put("appid", appid);
 		params.put("worldid", worldid);
-	String flag = HttpReq.http(serverUrl, params);
+	        String flag = HttpReq.http(serverUrl, params);
 		
 		try {
 			// 获取的信息解析

@@ -2,7 +2,7 @@ package com.game.protocol.gm;
 
 import java.util.List;
 
-import com.lyh.IMsgCode;
+import com.lyh.common.IMsgCode;
 import com.lyh.dataup.log.DataUpBase;
 
 /**

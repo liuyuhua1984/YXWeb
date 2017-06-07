@@ -1,5 +1,7 @@
 package com.gamecenter.common;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.Random;
 
@@ -34,9 +36,12 @@ public class MD5 {
 		return STR.substring(0, ww);
 	}
 	
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
 		
-		System.out.print("2012.09.20".replace(".", "-"));
+		String msg = URLEncoder.encode("fff=222&gg=你好哦啊", "utf-8");
+		System.out.println(msg);
+		
+		System.out.println(URLDecoder.decode(msg, "utf-8"));
 		
 	}
 }

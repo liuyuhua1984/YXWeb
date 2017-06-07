@@ -17,8 +17,6 @@ import java.util.GregorianCalendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.alibaba.fastjson.JSONObject;
-
 /**
  * 日常工具方法
  */
@@ -48,7 +46,7 @@ public class Tools {
 		try {
 			// 字符串时间转Date
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date d = sdf.parse(time);
+			java.util.Date d = sdf.parse(time);
 			
 			Calendar c = Calendar.getInstance();
 			
@@ -80,7 +78,7 @@ public class Tools {
 		try {
 			// 字符串时间转Date
 			SimpleDateFormat sdf = new SimpleDateFormat(fmt);
-			Date d = sdf.parse(time);
+			java.util.Date d = sdf.parse(time);
 			
 			Calendar c = Calendar.getInstance();
 			
@@ -165,7 +163,7 @@ public class Tools {
 		Date sqlDate = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			Date date = sdf.parse(dates);
+			java.util.Date date = sdf.parse(dates);
 			sqlDate = new Date(date.getTime());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -183,7 +181,7 @@ public class Tools {
 		Date sqlDate = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			Date date = sdf.parse(dates);
+			java.util.Date date = sdf.parse(dates);
 			sqlDate = new Date(date.getTime());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -201,7 +199,7 @@ public class Tools {
 		Date sqlDate = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			Date date = sdf.parse(dates);
+			java.util.Date date = sdf.parse(dates);
 			sqlDate = new Date(date.getTime());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -218,7 +216,7 @@ public class Tools {
 		Timestamp sqlDate = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			Date date = sdf.parse(getNowDate("yyyy-MM-dd HH:mm:ss"));
+			java.util.Date date = sdf.parse(getNowDate("yyyy-MM-dd HH:mm:ss"));
 			sqlDate = new Timestamp(date.getTime());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -412,7 +410,7 @@ public class Tools {
 	 * @param date
 	 * @return
 	 */
-	public static String getDateString(Date date) {
+	public static String getDateString(java.util.Date date) {
 		String str = "";
 		try {
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -810,8 +808,8 @@ public class Tools {
 			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		}
 		try {
-			Date datebegin = sdf.parse(begin);
-			Date daterend = sdf.parse(end);
+			java.util.Date datebegin = sdf.parse(begin);
+			java.util.Date daterend = sdf.parse(end);
 			xx = daterend.getTime() - datebegin.getTime();
 			
 		} catch (Exception e) {
@@ -832,8 +830,8 @@ public class Tools {
 			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		}
 		try {
-			Date datebegin = sdf.parse(begin);
-			Date daterend = sdf.parse(end);
+			java.util.Date datebegin = sdf.parse(begin);
+			java.util.Date daterend = sdf.parse(end);
 			xx = daterend.getTime() - datebegin.getTime();
 			
 		} catch (Exception e) {
@@ -861,18 +859,8 @@ public class Tools {
 	}
 	
 	public static void main(String[] args) {
-		String msg = "{\"ret\" : 100,\"msg\" : \"OK\"}";
 		
-//		JSONObject jo = null;
-//		try {
-//			jo = new JSONObject(msg);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		// 检测ret值
-//		int rc = jo.optInt("ret", 0);
-//		System.out.println(rc);
+		System.out.println("110".substring(2));
 		
 	}
 }

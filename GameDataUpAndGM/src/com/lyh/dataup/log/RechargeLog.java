@@ -1,6 +1,5 @@
 package com.lyh.dataup.log;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
