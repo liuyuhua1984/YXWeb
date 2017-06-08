@@ -3,9 +3,7 @@ package com.gamecenter.common;
 
 import java.io.UnsupportedEncodingException;
 
-import com.alibaba.fastjson.JSON;
-import com.lyh.common.ConvertMapUitls;
-import com.lyh.dataup.convert.GameConvertData;
+import com.lyh.common.ConvertMapUtils;
 import com.lyh.dataup.log.DataUpBase;
 
 /** 
@@ -31,14 +29,14 @@ public class PlatformToServerConnection {
 	 * @return 
 	 */  
 	public static DataUpBase sendPlatformToServer(String ip,String port,DataUpBase req){
-		GameConvertData cData = new GameConvertData(req);
-		byte data[];
+		byte data[] = null;
 		try {
-			data = JSON.toJSONString(cData).getBytes("UTF-8");
+			String jsonString = ConvertMapUtils.objToString(req);
+			data = jsonString.getBytes("UTF-8");
 			String strResutl = HttpClient.doPost(ip+":"+port+"/platform",data);
-			cData = JSON.parseObject(strResutl,GameConvertData.class);
-			Class<? extends DataUpBase> resp = ConvertMapUitls.getHttpResponseClass(cData.getId());
-			return   JSON.parseObject(cData.getData(), resp);
+			DataUpBase resp = ConvertMapUtils.jsonStringToObj(false, strResutl);
+		
+			return   resp;
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

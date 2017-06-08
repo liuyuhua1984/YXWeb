@@ -3,6 +3,7 @@ package com.lyh.common;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.alibaba.fastjson.JSON;
 import com.game.protocol.gm.GmAddOrDelWhiteNameHttpProtocol;
 import com.game.protocol.gm.GmAddOrDelWhiteNameProtocolRequest;
 import com.game.protocol.gm.GmBlockIPHttpProtocol;
@@ -52,7 +53,7 @@ import com.lyh.dataup.log.DataUpBase;
  * @version   
  * @see       
  */
-public class ConvertMapUitls {
+public class ConvertMapUtils {
 
 	private static Map<Long, Class<? extends DataUpBase>> httpMessageMap = new ConcurrentHashMap<Long, Class<? extends DataUpBase>>();
 	
@@ -219,10 +220,50 @@ public class ConvertMapUitls {
 			}
 			
 			p = httpRqeustMessageMap.get(head);
-			
 		}
 		
 		return p;
 	}
+	
+	/** 
+	 * ObjectToString:(). <br/> 
+	 * TODO().<br/> 
+	 * 对象转换成json格式,并组成发送对象
+	 * @author lyh 
+	 * @param data
+	 * @return 
+	 */  
+	public static String  objToString(DataUpBase data){
+		return data.getMsgCode() +"|"+JSON.toJSONString(data).toString();
+	}
+	
+	/** 
+	 * JsonStringToObj:(). <br/> 
+	 * TODO().<br/> 
+	 * json 字符串转成obj
+	 * @author lyh 
+	 * @param request
+	 * @param jsonString
+	 * @return 
+	 */  
+	public static DataUpBase jsonStringToObj(boolean request,String jsonString){
+		DataUpBase dub = null;
+		String [] array =jsonString.split("\\|");
+		if (array.length > 1){
+			int head = Integer.parseInt(array[0]);
+			Class<? extends DataUpBase> c = null;
+			if (request){
+				 c = getHttpRequestClass(head);
+			}else{
+				 c = getHttpResponseClass(head);
+			}
+			
+			if (c != null){
+				 dub = JSON.parseObject(array[1], c);
+			}
+		}
+		return dub;
+	}
+	
 }
   

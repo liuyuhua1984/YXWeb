@@ -1,6 +1,9 @@
 package com.lyh.dataup.convert;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+
+import javax.annotation.security.DeclareRoles;
 
 import com.alibaba.fastjson.JSON;
 import com.lyh.dataup.log.DataUpBase;
@@ -15,6 +18,7 @@ import com.lyh.dataup.log.DataUpBase;
  * @version
  * @see
  */
+@Deprecated
 public class GameConvertData implements Serializable {
 	
 	/****/
@@ -23,12 +27,16 @@ public class GameConvertData implements Serializable {
 	/** id=消息号 **/
 	private long id;
 	/** 对象转成data **/
-	private String data;
+	private byte data[];
 	
 	public GameConvertData( DataUpBase dataUpBase) {
 		id = dataUpBase.getMsgCode();
 		
-		data = JSON.toJSON(dataUpBase).toString();
+		try {
+			data = JSON.toJSON(dataUpBase).toString().getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public long getId() {
@@ -39,11 +47,11 @@ public class GameConvertData implements Serializable {
 		this.id = id;
 	}
 
-	public String getData() {
+	public byte[] getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(byte[] data) {
 		this.data = data;
 	}
 	
