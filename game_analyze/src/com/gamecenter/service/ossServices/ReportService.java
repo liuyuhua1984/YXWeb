@@ -1,12 +1,20 @@
 package com.gamecenter.service.ossServices;
 
+import java.util.List;
+
 import com.gamecenter.model.OpOssConsumeDayreport;
 import com.gamecenter.model.OpOssOnlineDayreport;
 import com.gamecenter.model.OpOssPayDayreport;
 import com.gamecenter.model.OpOssUserDayreport;
-import com.gamecenter.parBean.report.*;
-
-import java.util.List;
+import com.gamecenter.parBean.report.DayAllSurvey;
+import com.gamecenter.parBean.report.DayCurSurvey;
+import com.gamecenter.parBean.report.DayReport;
+import com.gamecenter.parBean.report.NewUserMonitor;
+import com.gamecenter.parBean.report.Payhabit;
+import com.gamecenter.parBean.report.Paytop;
+import com.gamecenter.parBean.report.UserGrade;
+import com.gamecenter.parBean.report.UserGradeDetail;
+import com.gamecenter.parBean.report.UserGradeLs;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-5-21 Time: 下午2:27 To change this template use File | Settings | File Templates.

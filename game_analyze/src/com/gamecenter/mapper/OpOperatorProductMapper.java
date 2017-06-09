@@ -1,14 +1,14 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpOperator;
-import com.gamecenter.model.OpOperatorProduct;
-import com.gamecenter.model.OpOperatorProductExample;
-
 import java.util.List;
 import java.util.Map;
 
-import com.gamecenter.parBean.vo.Par_OperatorMsg;
 import org.apache.ibatis.annotations.Param;
+
+import com.gamecenter.model.OpOperator;
+import com.gamecenter.model.OpOperatorProduct;
+import com.gamecenter.model.OpOperatorProductExample;
+import com.gamecenter.parBean.vo.Par_OperatorMsg;
 
 public interface OpOperatorProductMapper {
 	int countByExample(OpOperatorProductExample example);

@@ -1,6 +1,5 @@
 package com.gamecenter.service.task.jmsHandler;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

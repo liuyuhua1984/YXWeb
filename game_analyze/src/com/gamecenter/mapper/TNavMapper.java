@@ -1,10 +1,11 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.TNav;
-import com.gamecenter.model.TNavExample;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+import com.gamecenter.model.TNav;
+import com.gamecenter.model.TNavExample;
 
 public interface TNavMapper {
 	int countByExample(TNavExample example);

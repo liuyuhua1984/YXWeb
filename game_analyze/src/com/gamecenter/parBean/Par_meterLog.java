@@ -1,8 +1,8 @@
 package com.gamecenter.parBean;
 
-import com.gamecenter.common.PageListNum;
-
 import java.util.Date;
+
+import com.gamecenter.common.PageListNum;
 
 /**
  * Created by IntelliJ IDEA. User: Administrator Date: 12-5-18 Time: 上午9:41 To change this template use File | Settings | File Templates.

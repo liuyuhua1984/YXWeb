@@ -23,7 +23,7 @@ public class GmCloseButtonProtocolRequest extends DataUpBase implements IMsgCode
 	}
 	
 	/** 结果 **/
-private int type;
+	private int type;
 	
 	private String serverId;
 	

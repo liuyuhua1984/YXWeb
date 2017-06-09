@@ -1,20 +1,21 @@
 package com.gamecenter.service.task;
 
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+import javax.annotation.Resource;
+
+import com.game.protocol.gm.GmOnLineNumHttpProtocol;
+import com.game.protocol.gm.GmOnLineNumProtocolRequest;
+import com.gamecenter.common.PlatformToServerConnection;
 import com.gamecenter.common.Tools;
-import com.gamecenter.common.connect.SendReqToGame;
-import com.gamecenter.common.packets.OnlineNum_request;
-import com.gamecenter.common.packets.PassportMsg_request;
 import com.gamecenter.model.OpGameworld;
 import com.gamecenter.model.OpOssQlzOnlinecurLog;
 import com.gamecenter.parBean.vo.OnlineDataByDay;
 import com.gamecenter.parBean.vo.WorldOnlineData;
 import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.dataUploadServices.WorldOnlineService;
-
-import javax.annotation.Resource;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.gamecenter.service.dataup.WorldOnlineService;
 
 /**
  * 区服实时在线人数 Created by IntelliJ IDEA. User: Administrator Date: 13-8-15 Time: 下午3:38 To change this template use File | Settings | File Templates.
@@ -102,10 +103,15 @@ public class WorldOnlineNum {
 	private int getPersonNum(OpGameworld wobj) {
 		int num = -1;
 		try {
-			OnlineNum_request onlineNum_request = new OnlineNum_request();
-			SendReqToGame.getInstance().init(wobj.getIp(), Integer.parseInt(wobj.getServerurl()));
-			String res = SendReqToGame.getInstance().sendMessage(onlineNum_request, wobj.getWorldid()).toString();
-			num = Integer.parseInt(res);
+			GmOnLineNumProtocolRequest req = new GmOnLineNumProtocolRequest();
+			req.setServerId(wobj.getWorldid());
+		
+			GmOnLineNumHttpProtocol resp = (GmOnLineNumHttpProtocol)PlatformToServerConnection.sendPlatformToServer(wobj.getIp(), wobj.getServerurl(), req);
+//			OnlineNum_request onlineNum_request = new OnlineNum_request();
+//			SendReqToGame.getInstance().init(wobj.getIp(), Integer.parseInt(wobj.getServerurl()));
+//			String res = SendReqToGame.getInstance().sendMessage(onlineNum_request, wobj.getWorldid()).toString();
+		         
+			num = resp.getOnlinenum();
 			if (num < 0) {
 				num = 0;
 			}

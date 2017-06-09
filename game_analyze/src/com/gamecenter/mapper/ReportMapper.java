@@ -1,11 +1,20 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpOssConsumeDayreport;
-import com.gamecenter.model.OpOssOnlineDayreport;
-import com.gamecenter.parBean.report.*;
-
 import java.util.List;
 import java.util.Map;
+
+import com.gamecenter.model.OpOssConsumeDayreport;
+import com.gamecenter.model.OpOssOnlineDayreport;
+import com.gamecenter.parBean.report.DayAllSurvey;
+import com.gamecenter.parBean.report.DayCurSurvey;
+import com.gamecenter.parBean.report.DayReport;
+import com.gamecenter.parBean.report.NewUserMonitor;
+import com.gamecenter.parBean.report.Par_survey;
+import com.gamecenter.parBean.report.Payhabit;
+import com.gamecenter.parBean.report.Paytop;
+import com.gamecenter.parBean.report.UserGrade;
+import com.gamecenter.parBean.report.UserGradeDetail;
+import com.gamecenter.parBean.report.UserGradeLs;
 
 /**
  * 数据分析 Created with IntelliJ IDEA. User: gsb Date: 14-5-20 Time: 下午1:57 To change this template use File | Settings | File Templates.

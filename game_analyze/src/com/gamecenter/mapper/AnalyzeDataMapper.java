@@ -1,7 +1,5 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpGameappExample;
-
 import java.util.Map;
 
 /**

@@ -1,11 +1,11 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameappExample;
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameappExample;
 
 public interface OpGameappMapper {
 	int countByExample(OpGameappExample example);

@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpGmtNoticeCycle;
 import com.gamecenter.model.OpGmtNoticeCycleExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpGmtNoticeCycleMapper {
 	int countByExample(OpGmtNoticeCycleExample example);

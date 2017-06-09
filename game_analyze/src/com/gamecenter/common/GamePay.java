@@ -1,13 +1,13 @@
 package com.gamecenter.common;
 
-import com.gamecenter.common.encrypt.MD5;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import com.gamecenter.common.encrypt.MD5;
 
 /**
  * Created by IntelliJ IDEA. User: juugoo08 Date: 11-8-24 Time: 上午10:19 To change this template use File | Settings | File Templates.

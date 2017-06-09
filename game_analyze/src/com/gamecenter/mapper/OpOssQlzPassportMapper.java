@@ -1,35 +1,36 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpOssQlzPassport;
-import com.gamecenter.model.OpOssQlzPassportExample;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.gamecenter.model.OpOssQlzPassport;
+import com.gamecenter.model.OpOssQlzPassportExample;
+
 public interface OpOssQlzPassportMapper {
-	int countByExample(OpOssQlzPassportExample example);
-	
-	int deleteByExample(OpOssQlzPassportExample example);
-	
-	int deleteByPrimaryKey(String openid);
-	
-	int insert(OpOssQlzPassport record);
-	
-	int insertSelective(OpOssQlzPassport record);
-	
-	List<OpOssQlzPassport> selectByExample(OpOssQlzPassportExample example);
-	
-	OpOssQlzPassport selectByPrimaryKey(String openid);
-	
-	int updateByExampleSelective(@Param("record") OpOssQlzPassport record, @Param("example") OpOssQlzPassportExample example);
-	
-	int updateByExample(@Param("record") OpOssQlzPassport record, @Param("example") OpOssQlzPassportExample example);
-	
-	int updateByPrimaryKeySelective(OpOssQlzPassport record);
-	
-	int updateByPrimaryKey(OpOssQlzPassport record);
-	
+    long countByExample(OpOssQlzPassportExample example);
+
+    int deleteByExample(OpOssQlzPassportExample example);
+
+    int deleteByPrimaryKey(String openid);
+
+    int insert(OpOssQlzPassport record);
+
+    int insertSelective(OpOssQlzPassport record);
+
+    List<OpOssQlzPassport> selectByExample(OpOssQlzPassportExample example);
+
+    OpOssQlzPassport selectByPrimaryKey(String openid);
+
+    int updateByExampleSelective(@Param("record") OpOssQlzPassport record, @Param("example") OpOssQlzPassportExample example);
+
+    int updateByExample(@Param("record") OpOssQlzPassport record, @Param("example") OpOssQlzPassportExample example);
+
+    int updateByPrimaryKeySelective(OpOssQlzPassport record);
+
+    int updateByPrimaryKey(OpOssQlzPassport record);
+
 	/**
 	 * 分页获取
 	 * 

@@ -1,22 +1,14 @@
 package com.gamecenter.service.task;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.common.connect.SendReqToGame;
-import com.gamecenter.common.packets.OnlineNum_request;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpGmtNoticeCycle;
-import com.gamecenter.model.OpOssQlzOnlinecurLog;
-import com.gamecenter.parBean.vo.OnlineDataByDay;
-import com.gamecenter.parBean.vo.WorldOnlineData;
-import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.dataUploadServices.WorldOnlineService;
-import com.gamecenter.service.gmtServices.GmtNoticeService;
-
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+
+import javax.annotation.Resource;
+
+import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpGmtNoticeCycle;
+import com.gamecenter.service.gmt.GmtNoticeService;
 
 /**
  * 发送循环的公告 Created by IntelliJ IDEA. User: Administrator Date: 13-8-15 Time: 下午3:38 To change this template use File | Settings | File Templates.

@@ -1,10 +1,11 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.TRoleAccessExample;
-import com.gamecenter.model.TRoleAccessKey;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+import com.gamecenter.model.TRoleAccessExample;
+import com.gamecenter.model.TRoleAccessKey;
 
 public interface TRoleAccessMapper {
 	int countByExample(TRoleAccessExample example);

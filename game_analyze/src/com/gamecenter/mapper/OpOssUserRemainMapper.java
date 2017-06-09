@@ -1,11 +1,12 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpOssUserRemain;
-import com.gamecenter.model.OpOssUserRemainExample;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+
+import com.gamecenter.model.OpOssUserRemain;
+import com.gamecenter.model.OpOssUserRemainExample;
 
 public interface OpOssUserRemainMapper {
 	int countByExample(OpOssUserRemainExample example);

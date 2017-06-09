@@ -23,7 +23,7 @@ public class OnLineNumLog extends DataUpBase {
 	private static final long serialVersionUID = -3567292500542507409L;
 	
 	/** APPID 应用的惟一标识 **/
-	private long appId;
+	private String appId;
 	
 	/** 服务器ID **/
 	private String serverId;
@@ -43,11 +43,11 @@ public class OnLineNumLog extends DataUpBase {
 	/**记录在线人数时间**/  
 	private long recordTime;
 	
-	public long getAppId() {
+	public String getAppId() {
 		return appId;
 	}
 	
-	public void setAppId(long appId) {
+	public void setAppId(String appId) {
 		this.appId = appId;
 	}
 	

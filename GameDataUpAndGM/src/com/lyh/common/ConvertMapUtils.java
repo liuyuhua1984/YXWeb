@@ -248,6 +248,9 @@ public class ConvertMapUtils {
 	 */  
 	public static DataUpBase jsonStringToObj(boolean request,String jsonString){
 		DataUpBase dub = null;
+		if (jsonString == null){
+			return null;
+		}
 		String [] array =jsonString.split("\\|");
 		if (array.length > 1){
 			int head = Integer.parseInt(array[0]);

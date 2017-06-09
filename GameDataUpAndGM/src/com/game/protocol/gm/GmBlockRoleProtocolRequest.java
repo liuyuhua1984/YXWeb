@@ -54,5 +54,8 @@ public class GmBlockRoleProtocolRequest extends DataUpBase implements IMsgCode {
 		// TODO Auto-generated method stub
 		return serverId;
 	}
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
+	}
 	
 }

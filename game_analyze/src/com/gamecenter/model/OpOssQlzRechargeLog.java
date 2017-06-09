@@ -27,6 +27,10 @@ public class OpOssQlzRechargeLog implements Serializable {
 	
 	private String billon;
 	
+    /**
+     * ”¶”√id
+     */
+    private String appId;
 	private static final long serialVersionUID = 1L;
 	
 	public Integer getDid() {
@@ -125,37 +129,35 @@ public class OpOssQlzRechargeLog implements Serializable {
 		this.billon = billon == null ? null : billon.trim();
 	}
 	
-	@Override
-	public boolean equals(Object that) {
-		if (this == that) {
-			return true;
-		}
-		if (that == null) {
-			return false;
-		}
-		if (getClass() != that.getClass()) {
-			return false;
-		}
-		OpOssQlzRechargeLog other = (OpOssQlzRechargeLog) that;
-		return (this.getDid() == null ? other.getDid() == null : this.getDid().equals(other.getDid())) && (this.getWorldid() == null ? other.getWorldid() == null : this.getWorldid().equals(other.getWorldid())) && (this.getOpenid() == null ? other.getOpenid() == null : this.getOpenid().equals(other.getOpenid())) && (this.getMoneybefore() == null ? other.getMoneybefore() == null : this.getMoneybefore().equals(other.getMoneybefore())) && (this.getMoneyafter() == null ? other.getMoneyafter() == null : this.getMoneyafter().equals(other.getMoneyafter())) && (this.getMoneyadd() == null ? other.getMoneyadd() == null : this.getMoneyadd().equals(other.getMoneyadd())) && (this.getTime() == null ? other.getTime() == null : this.getTime().equals(other.getTime())) && (this.getSfrom() == null ? other.getSfrom() == null : this.getSfrom().equals(other.getSfrom())) && (this.getLevel() == null ? other.getLevel() == null : this.getLevel().equals(other.getLevel())) && (this.getRolename() == null ? other.getRolename() == null : this.getRolename().equals(other.getRolename())) && (this.getAddtime() == null ? other.getAddtime() == null : this.getAddtime().equals(other.getAddtime())) && (this.getBillon() == null ? other.getBillon() == null : this.getBillon().equals(other.getBillon()));
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getDid() == null) ? 0 : getDid().hashCode());
-		result = prime * result + ((getWorldid() == null) ? 0 : getWorldid().hashCode());
-		result = prime * result + ((getOpenid() == null) ? 0 : getOpenid().hashCode());
-		result = prime * result + ((getMoneybefore() == null) ? 0 : getMoneybefore().hashCode());
-		result = prime * result + ((getMoneyafter() == null) ? 0 : getMoneyafter().hashCode());
-		result = prime * result + ((getMoneyadd() == null) ? 0 : getMoneyadd().hashCode());
-		result = prime * result + ((getTime() == null) ? 0 : getTime().hashCode());
-		result = prime * result + ((getSfrom() == null) ? 0 : getSfrom().hashCode());
-		result = prime * result + ((getLevel() == null) ? 0 : getLevel().hashCode());
-		result = prime * result + ((getRolename() == null) ? 0 : getRolename().hashCode());
-		result = prime * result + ((getAddtime() == null) ? 0 : getAddtime().hashCode());
-		result = prime * result + ((getBillon() == null) ? 0 : getBillon().hashCode());
-		return result;
-	}
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId == null ? null : appId.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", did=").append(did);
+        sb.append(", worldid=").append(worldid);
+        sb.append(", openid=").append(openid);
+        sb.append(", moneybefore=").append(moneybefore);
+        sb.append(", moneyafter=").append(moneyafter);
+        sb.append(", moneyadd=").append(moneyadd);
+        sb.append(", time=").append(time);
+        sb.append(", sfrom=").append(sfrom);
+        sb.append(", level=").append(level);
+        sb.append(", rolename=").append(rolename);
+        sb.append(", addtime=").append(addtime);
+        sb.append(", billon=").append(billon);
+        sb.append(", appId=").append(appId);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -52,4 +52,8 @@ public class GmKickRoleProtocolRequest extends DataUpBase implements IMsgCode {
 		return serverId;
 	}
 	
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
+	}
+	
 }

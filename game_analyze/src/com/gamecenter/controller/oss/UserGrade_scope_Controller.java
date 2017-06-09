@@ -1,29 +1,26 @@
 package com.gamecenter.controller.oss;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpOssOnlineDayreport;
-import com.gamecenter.model.OpOssUserRemain;
-import com.gamecenter.parBean.report.LineObj;
-import com.gamecenter.parBean.report.UserGrade;
-import com.gamecenter.parBean.report.UserGradeDetail;
-import com.gamecenter.service.appServices.AppService;
-import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.dataUploadServices.WorldOnlineService;
-import com.gamecenter.service.ossServices.ReportService;
-import com.gamecenter.service.ossServices.UserRemainService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.parBean.report.UserGrade;
+import com.gamecenter.service.appServices.AppService;
+import com.gamecenter.service.appServices.WorldService;
+import com.gamecenter.service.dataup.WorldOnlineService;
+import com.gamecenter.service.ossServices.ReportService;
 
 /**
  * 用户等级 -- 分布范围 Created with IntelliJ IDEA. User: gsb Date: 14-5-24 Time: 下午5:00 To change this template use File | Settings | File Templates.

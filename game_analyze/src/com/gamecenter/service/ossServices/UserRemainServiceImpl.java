@@ -1,16 +1,16 @@
 package com.gamecenter.service.ossServices;
 
-import com.gamecenter.mapper.OpOssQlzPassportMapper;
-import com.gamecenter.mapper.OpOssUserRemainMapper;
-import com.gamecenter.model.OpOssQlzPassportExample;
-import com.gamecenter.model.OpOssUserRemain;
-import com.gamecenter.model.OpOssUserRemainExample;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
+import com.gamecenter.mapper.OpOssUserRemainMapper;
+import com.gamecenter.model.OpOssUserRemain;
+import com.gamecenter.model.OpOssUserRemainExample;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-5-21 Time: 上午9:50 To change this template use File | Settings | File Templates.

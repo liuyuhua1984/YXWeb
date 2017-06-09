@@ -1,12 +1,12 @@
 package com.gamecenter.common.jms;
 
-import org.springframework.jms.core.MessageCreator;
-
-import com.alibaba.fastjson.JSON;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
+
+import org.springframework.jms.core.MessageCreator;
+
+import com.alibaba.fastjson.JSON;
 
 /**
  * 消息的发送器

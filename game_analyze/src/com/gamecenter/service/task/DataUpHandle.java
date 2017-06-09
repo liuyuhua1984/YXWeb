@@ -1,19 +1,13 @@
 package com.gamecenter.service.task;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGmtNoticeCycle;
-import com.gamecenter.model.OpOssQlzPassport;
-import com.gamecenter.model.OpOssQlzPassportReg;
-import com.gamecenter.parBean.vo.WorldOnlineData;
-import com.gamecenter.service.RunLog;
-import com.gamecenter.service.dataUploadServices.DataUpHandleService;
-import com.gamecenter.service.gmtServices.GmtNoticeService;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+
+import com.gamecenter.model.OpOssQlzPassport;
+import com.gamecenter.service.RunLog;
+import com.gamecenter.service.dataup.DataUpHandleService;
 
 /**
  * 上报数据处理 -- 账号数据缓存

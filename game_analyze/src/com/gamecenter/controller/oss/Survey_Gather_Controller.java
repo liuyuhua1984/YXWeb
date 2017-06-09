@@ -1,32 +1,15 @@
 package com.gamecenter.controller.oss;
 
-import com.gamecenter.common.Page;
-import com.gamecenter.common.PageTool;
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpOssQlzPassport;
-import com.gamecenter.model.OpOssQlzRechargeTx;
-import com.gamecenter.parBean.report.DayAllSurvey;
-import com.gamecenter.parBean.report.DayCurSurvey;
-import com.gamecenter.parBean.report.DayReport;
-import com.gamecenter.parBean.vo.GmtForbidBean;
-import com.gamecenter.service.dataUploadServices.DataUpHandleService;
-import com.gamecenter.service.ossServices.ReportService;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.gamecenter.common.Tools;
+import com.gamecenter.parBean.report.DayAllSurvey;
+import com.gamecenter.parBean.report.DayCurSurvey;
+import com.gamecenter.service.ossServices.ReportService;
 
 /**
  * 游戏概况 -- 汇总 Created with IntelliJ IDEA. User: gsb Date: 14-4-24 Time: 下午5:33 To change this template use File | Settings | File Templates.

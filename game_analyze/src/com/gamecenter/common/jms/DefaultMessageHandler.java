@@ -1,8 +1,9 @@
 package com.gamecenter.common.jms;
 
-import javax.jms.*;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
 
-import org.springframework.jms.listener.SessionAwareMessageListener;
 import org.springframework.stereotype.Component;
 
 @Component("defaultMessageHandler")

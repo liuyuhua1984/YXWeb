@@ -4,7 +4,7 @@
  */
 package com.gamecenter.common.txsdk.org.json.tests;
 
-import java.util.*;
+import java.util.ListResourceBundle;
 
 /**
  * The Class SampleResourceBundle_fr.

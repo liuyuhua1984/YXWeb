@@ -53,6 +53,9 @@ public class GmDisblockSayProtocolRequest extends DataUpBase implements IMsgCode
 		return serverId;
 	}
 	
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
+	}
 	// public int getTime() {
 	// return time;
 	// }

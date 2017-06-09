@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpActivity;
 import com.gamecenter.model.OpActivityExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpActivityMapper {
 	int countByExample(OpActivityExample example);

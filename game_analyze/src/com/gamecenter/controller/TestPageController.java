@@ -1,12 +1,12 @@
 package com.gamecenter.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 测试页面入口 Created with IntelliJ IDEA. User: gsb Date: 14-6-26 Time: 下午2:15 To change this template use File | Settings | File Templates.

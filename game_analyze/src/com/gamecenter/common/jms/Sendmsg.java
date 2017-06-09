@@ -1,16 +1,5 @@
 package com.gamecenter.common.jms;
 
-import com.gamecenter.model.OpOssQlzPassportReg;
-
-import org.apache.activemq.command.ActiveMQQueue;
-import org.springframework.jms.core.JmsTemplate;
-
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
 /**
  * 数据上报处理 Created by IntelliJ IDEA. User: Administrator Date: 13-8-15 Time: 下午3:38 To change this template use File | Settings | File Templates.
  */

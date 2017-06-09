@@ -1,19 +1,18 @@
 package com.gamecenter.controller.sys;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.service.task.DataAnalyze;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.gamecenter.common.Tools;
+import com.gamecenter.service.task.DataAnalyze;
 
 /**
  * 数据分析 -- 配置 Created with IntelliJ IDEA. User: gsb Date: 14-5-28 Time: 下午1:44 To change this template use File | Settings | File Templates.

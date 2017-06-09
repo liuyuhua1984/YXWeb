@@ -1,11 +1,13 @@
 package com.gamecenter.common.txsdk;
 
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+
+import org.apache.commons.httpclient.methods.multipart.FilePart;
 
 import com.gamecenter.common.txsdk.com.qq.open.OpenApiV3;
 import com.gamecenter.common.txsdk.com.qq.open.OpensnsException;
-import org.apache.commons.httpclient.methods.multipart.FilePart;
 
 /**
  * OpenAPI V3 SDK 示例代码

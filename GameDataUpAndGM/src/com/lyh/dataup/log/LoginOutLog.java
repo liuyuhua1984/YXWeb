@@ -23,7 +23,7 @@ public class LoginOutLog extends DataUpBase {
 	private static final long serialVersionUID = -3567292500542507409L;
 	
 	/** APPID 应用的惟一标识 **/
-	private long appId;
+	private String appId;
 	
 	/** 用户IP,转化成主机字节序 **/
 	private String userIp;
@@ -61,11 +61,11 @@ public class LoginOutLog extends DataUpBase {
 	/**退出 时间**/  
 	private long loginOutTime;
 	
-	public long getAppId() {
+	public String getAppId() {
 		return appId;
 	}
 	
-	public void setAppId(long appId) {
+	public void setAppId(String appId) {
 		this.appId = appId;
 	}
 	

@@ -1,23 +1,23 @@
 package com.gamecenter.controller.oss;
 
-import com.alibaba.fastjson.JSON;
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.parBean.report.Payhabit;
-import com.gamecenter.parBean.report.Paytop;
-import com.gamecenter.service.appServices.AppService;
-import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.ossServices.ReportService;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
+import com.alibaba.fastjson.JSON;
+import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.parBean.report.Payhabit;
+import com.gamecenter.service.appServices.AppService;
+import com.gamecenter.service.appServices.WorldService;
+import com.gamecenter.service.ossServices.ReportService;
 
 /**
  * 收入分析 -- 排行 Created with IntelliJ IDEA. User: gsb Date: 14-4-24 Time: 下午5:33 To change this template use File | Settings | File Templates.
@@ -60,7 +60,7 @@ public class Pay_habit_Controller {
 		
 		if (worldid.equals("0")) { // 获取区服id串
 			List<OpGameworld> opGameworlds = worldService.getWorldListByAppId(appid);
-			worldid = "";
+		//	worldid = "";
 			for (OpGameworld opGameworld : opGameworlds) {
 				worldid += opGameworld.getWorldid() + "','";
 			}

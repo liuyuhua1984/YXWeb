@@ -1,17 +1,35 @@
 package com.gamecenter.common.connect;
 
-import com.gamecenter.common.encrypt.MD5;
-import com.gamecenter.common.packets.*;
-
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
-import java.nio.ByteBuffer;
+
+import com.gamecenter.common.packets.ForbidKillPlayer_request;
+import com.gamecenter.common.packets.ForbidPassportJie_request;
+import com.gamecenter.common.packets.ForbidPassport_request;
+import com.gamecenter.common.packets.ForbidWordsForIpJie_request;
+import com.gamecenter.common.packets.ForbidWordsForIp_request;
+import com.gamecenter.common.packets.ForbidWordsJie_request;
+import com.gamecenter.common.packets.ForbidWords_request;
+import com.gamecenter.common.packets.Invite_request;
+import com.gamecenter.common.packets.OnlineNum_request;
+import com.gamecenter.common.packets.PassportAllow_request;
+import com.gamecenter.common.packets.PassportMsg_request;
+import com.gamecenter.common.packets.RechargeForTx_request;
+import com.gamecenter.common.packets.Recharge_request;
+import com.gamecenter.common.packets.SendEmail_request;
+import com.gamecenter.common.packets.SendNotice_request;
+import com.gamecenter.common.packets.Txtask_request;
 
 /**
  * sokect 发送短连接请求。
  * 
  * @author Administrator
  */
+@Deprecated
 public class SendReqToGame {
 	private String serverIp;
 	private int port;

@@ -893,50 +893,85 @@ public class OpOssQlzRechargeLogExample {
 			addCriterion("billon not between", value1, value2, "billon");
 			return (Criteria) this;
 		}
-	}
-	
-	public static class Criteria extends GeneratedCriteria {
-		
-		protected Criteria() {
-			super();
-		}
-		
-		public Criteria andWorldidLikeInsensitive(String value) {
-			addCriterion("upper(worldid) like", value.toUpperCase(), "worldid");
-			return this;
-		}
-		
-		public Criteria andOpenidLikeInsensitive(String value) {
-			addCriterion("upper(openid) like", value.toUpperCase(), "openid");
-			return this;
-		}
-		
-		public Criteria andTimeLikeInsensitive(String value) {
-			addCriterion("upper(time) like", value.toUpperCase(), "time");
-			return this;
-		}
-		
-		public Criteria andSfromLikeInsensitive(String value) {
-			addCriterion("upper(sfrom) like", value.toUpperCase(), "sfrom");
-			return this;
-		}
-		
-		public Criteria andRolenameLikeInsensitive(String value) {
-			addCriterion("upper(rolename) like", value.toUpperCase(), "rolename");
-			return this;
-		}
-		
-		public Criteria andAddtimeLikeInsensitive(String value) {
-			addCriterion("upper(addtime) like", value.toUpperCase(), "addtime");
-			return this;
-		}
-		
-		public Criteria andBillonLikeInsensitive(String value) {
-			addCriterion("upper(billon) like", value.toUpperCase(), "billon");
-			return this;
-		}
-	}
-	
+        public Criteria andAppIdIsNull() {
+            addCriterion("app_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdIsNotNull() {
+            addCriterion("app_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdEqualTo(String value) {
+            addCriterion("app_id =", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotEqualTo(String value) {
+            addCriterion("app_id <>", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdGreaterThan(String value) {
+            addCriterion("app_id >", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdGreaterThanOrEqualTo(String value) {
+            addCriterion("app_id >=", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLessThan(String value) {
+            addCriterion("app_id <", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLessThanOrEqualTo(String value) {
+            addCriterion("app_id <=", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLike(String value) {
+            addCriterion("app_id like", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotLike(String value) {
+            addCriterion("app_id not like", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdIn(List<String> values) {
+            addCriterion("app_id in", values, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotIn(List<String> values) {
+            addCriterion("app_id not in", values, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdBetween(String value1, String value2) {
+            addCriterion("app_id between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotBetween(String value1, String value2) {
+            addCriterion("app_id not between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+    }
+    /**
+     * op_oss_qlz_recharge_log
+     */
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
 	public static class Criterion {
 		private String condition;
 		

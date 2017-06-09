@@ -1,8 +1,8 @@
 package com.gamecenter.service.ossServices;
 
-import com.gamecenter.model.OpOssUserRemain;
-
 import java.util.List;
+
+import com.gamecenter.model.OpOssUserRemain;
 
 /**
  * 用户留存 服务 Created with IntelliJ IDEA. User: gsb Date: 14-5-21 Time: 上午9:48 To change this template use File | Settings | File Templates.

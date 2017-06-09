@@ -1,9 +1,9 @@
 package com.gamecenter.model;
 
-import com.gamecenter.common.PageListNum;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.gamecenter.common.PageListNum;
 
 public class OpOssQlzRechargeTxExample extends PageListNum {
 	protected String orderByClause;

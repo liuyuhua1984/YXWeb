@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpOperator;
 import com.gamecenter.model.OpOperatorExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpOperatorMapper {
 	int countByExample(OpOperatorExample example);

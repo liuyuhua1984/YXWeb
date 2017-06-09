@@ -1,19 +1,19 @@
 package com.gamecenter.service.appServices;
 
-import com.gamecenter.mapper.OpOperatorMapper;
-import com.gamecenter.mapper.OpOperatorProductMapper;
-import com.gamecenter.model.OpOperator;
-import com.gamecenter.model.OpOperatorExample;
-import com.gamecenter.model.OpOperatorProduct;
-import com.gamecenter.model.OpOperatorProductExample;
-import com.gamecenter.parBean.vo.Par_OperatorMsg;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
+import com.gamecenter.mapper.OpOperatorProductMapper;
+import com.gamecenter.model.OpOperator;
+import com.gamecenter.model.OpOperatorProduct;
+import com.gamecenter.model.OpOperatorProductExample;
+import com.gamecenter.parBean.vo.Par_OperatorMsg;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-4-26 Time: 上午11:15 To change this template use File | Settings | File Templates.

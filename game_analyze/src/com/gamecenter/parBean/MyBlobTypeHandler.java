@@ -1,10 +1,14 @@
 package com.gamecenter.parBean;
 
-import org.apache.ibatis.type.JdbcType;
-
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
-import java.sql.*;
+import java.sql.Blob;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.ibatis.type.JdbcType;
 
 /**
  * Created by IntelliJ IDEA. User: Administrator Date: 13-2-19 Time: 下午5:08 To change this template use File | Settings | File Templates.

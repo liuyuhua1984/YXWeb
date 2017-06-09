@@ -1,27 +1,25 @@
 package com.gamecenter.controller.oss;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpOssConsumeDayreport;
-import com.gamecenter.model.OpOssPayDayreport;
-import com.gamecenter.parBean.report.Payhabit;
-import com.gamecenter.parBean.report.Paytop;
-import com.gamecenter.parBean.report.UserGrade;
-import com.gamecenter.service.appServices.AppService;
-import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.ossServices.ReportService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.model.OpOssConsumeDayreport;
+import com.gamecenter.service.appServices.AppService;
+import com.gamecenter.service.appServices.WorldService;
+import com.gamecenter.service.ossServices.ReportService;
 
 /**
  * 收入分析 -- 报表 Created with IntelliJ IDEA. User: gsb Date: 14-4-24 Time: 下午5:33 To change this template use File | Settings | File Templates.

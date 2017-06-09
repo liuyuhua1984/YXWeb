@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OpOssQlzPassportRegMapper {
-	int countByExample(OpOssQlzPassportRegExample example);
+    long countByExample(OpOssQlzPassportRegExample example);
 	
 	int deleteByExample(OpOssQlzPassportRegExample example);
 	

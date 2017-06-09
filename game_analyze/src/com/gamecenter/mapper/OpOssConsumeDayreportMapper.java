@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpOssConsumeDayreport;
 import com.gamecenter.model.OpOssConsumeDayreportExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpOssConsumeDayreportMapper {
 	int countByExample(OpOssConsumeDayreportExample example);

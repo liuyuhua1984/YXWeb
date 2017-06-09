@@ -1,12 +1,10 @@
 package com.gamecenter.common.cacheData;
 
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.parBean.SysConf;
-import com.gamecenter.parBean.UserMsg;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.parBean.UserMsg;
 
 /**
  * 全局数据缓存中心 Created by IntelliJ IDEA. User: Administrator Date: 11-7-4 Time: 下午3:50 To change this template use File | Settings | File Templates.

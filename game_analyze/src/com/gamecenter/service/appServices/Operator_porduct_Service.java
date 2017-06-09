@@ -1,10 +1,10 @@
 package com.gamecenter.service.appServices;
 
+import java.util.List;
+
 import com.gamecenter.model.OpOperator;
 import com.gamecenter.model.OpOperatorProduct;
 import com.gamecenter.parBean.vo.Par_OperatorMsg;
-
-import java.util.List;
 
 /**
  * 应用APP管理服务 Created with IntelliJ IDEA. User: gsb Date: 14-4-26 Time: 上午11:12 To change this template use File | Settings | File Templates.

@@ -1,19 +1,28 @@
 package com.gamecenter.service.ossServices;
 
-import com.gamecenter.common.encrypt.MD5;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
 import com.gamecenter.common.Page;
 import com.gamecenter.common.Tools;
+import com.gamecenter.common.encrypt.MD5;
 import com.gamecenter.controller.webservice.cdk.ParCdkCheck;
 import com.gamecenter.controller.webservice.cdk.ParCdkReturn;
 import com.gamecenter.mapper.OpActivityCdkMapper;
 import com.gamecenter.mapper.OpActivityMapper;
 import com.gamecenter.mapper.OpActivityUselogMapper;
 import com.gamecenter.mapper.OpGameGoodsMapper;
-import com.gamecenter.model.*;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
-import java.util.List;
+import com.gamecenter.model.OpActivity;
+import com.gamecenter.model.OpActivityCdk;
+import com.gamecenter.model.OpActivityCdkExample;
+import com.gamecenter.model.OpActivityExample;
+import com.gamecenter.model.OpActivityUselog;
+import com.gamecenter.model.OpActivityUselogExample;
+import com.gamecenter.model.OpGameGoods;
+import com.gamecenter.model.OpGameGoodsExample;
 
 /**
  * 活动服务 Created with IntelliJ IDEA. User: gsb Date: 14-6-5 Time: 下午5:42 To change this template use File | Settings | File Templates.

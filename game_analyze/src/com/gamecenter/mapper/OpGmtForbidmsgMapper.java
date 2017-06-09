@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpGmtForbidmsg;
 import com.gamecenter.model.OpGmtForbidmsgExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpGmtForbidmsgMapper {
 	int countByExample(OpGmtForbidmsgExample example);

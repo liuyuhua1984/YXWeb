@@ -1,22 +1,17 @@
 package com.gamecenter.service.appServices;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.common.cacheData.GlobleData;
-import com.gamecenter.common.connect.SendReqToGame;
-import com.gamecenter.common.packets.SendNotice_request;
-import com.gamecenter.mapper.OpGameappMapper;
-import com.gamecenter.mapper.OpGmtNoticeMapper;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameappExample;
-import com.gamecenter.model.OpGmtNotice;
-import com.gamecenter.model.OpGmtNoticeExample;
-import com.gamecenter.parBean.vo.GmtSendNoticeBean;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
+import com.gamecenter.common.cacheData.GlobleData;
+import com.gamecenter.mapper.OpGameappMapper;
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameappExample;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-4-26 Time: 上午11:15 To change this template use File | Settings | File Templates.

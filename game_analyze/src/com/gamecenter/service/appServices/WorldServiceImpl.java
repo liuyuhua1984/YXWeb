@@ -1,19 +1,22 @@
 package com.gamecenter.service.appServices;
 
-import com.gamecenter.common.cacheData.GlobleData;
-import com.gamecenter.common.connect.SendReqToGame;
-import com.gamecenter.common.packets.Invite_request;
-import com.gamecenter.common.packets.PassportMsg_request;
-import com.gamecenter.mapper.OpGameappMapper;
-import com.gamecenter.mapper.OpGameworldMapper;
-import com.gamecenter.mapper.OpOperatorWorldMapper;
-import com.gamecenter.model.*;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
+import com.game.protocol.gm.GmCloseButtonHttpProtocol;
+import com.game.protocol.gm.GmCloseButtonProtocolRequest;
+import com.gamecenter.common.PlatformToServerConnection;
+import com.gamecenter.common.connect.SendReqToGame;
+import com.gamecenter.mapper.OpGameworldMapper;
+import com.gamecenter.mapper.OpOperatorWorldMapper;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.model.OpGameworldExample;
+import com.gamecenter.model.OpOperatorWorld;
+import com.gamecenter.model.OpOperatorWorldExample;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-4-26 Time: 上午11:15 To change this template use File | Settings | File Templates.
@@ -107,15 +110,18 @@ public class WorldServiceImpl implements WorldService {
 		OpGameworld opGameworld = getWorldByWorldId(worldid);
 		con.init(opGameworld.getIp(), 8005);
 		
-		Invite_request msg = new Invite_request();
-		msg.setType(type + "");
-		Object obj = con.sendMessage(msg, worldid);
+		GmCloseButtonProtocolRequest msg = new GmCloseButtonProtocolRequest();
+		msg.setType(type );
+		msg.setServerId(worldid);
+		GmCloseButtonHttpProtocol resp = (GmCloseButtonHttpProtocol)PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), msg);
 		
-		int res = 0;
-		try {
-			res = Integer.parseInt(obj.toString());
-		} catch (Exception e) {
-		}
-		return res;
+//		Object obj = con.sendMessage(msg, worldid);
+//		
+//		int res = 0;
+//		try {
+//			res = Integer.parseInt(obj.toString());
+//		} catch (Exception e) {
+//		}
+		return resp.getStatus();
 	}
 }

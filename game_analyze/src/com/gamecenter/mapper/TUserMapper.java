@@ -1,11 +1,12 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.TUser;
-import com.gamecenter.parBean.Par_tuser;
-import com.gamecenter.model.TUserExample;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+import com.gamecenter.model.TUser;
+import com.gamecenter.model.TUserExample;
+import com.gamecenter.parBean.Par_tuser;
 
 public interface TUserMapper {
 	int countByExample(TUserExample example);

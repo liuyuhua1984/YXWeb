@@ -1,21 +1,20 @@
 package com.gamecenter.common.txsdk.com.qq.open;
 
+import java.io.UnsupportedEncodingException;
 // urlencode
 import java.net.URLEncoder;
-import java.net.URLDecoder;
-import java.io.UnsupportedEncodingException;
-import java.net.*;
-
-// hmacsha1 
-import java.security.MessageDigest;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 
 import com.gamecenter.common.txsdk.biz.source_code.base64Coder.Base64Coder;
 

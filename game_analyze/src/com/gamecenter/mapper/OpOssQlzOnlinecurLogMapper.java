@@ -1,17 +1,17 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpOssQlzOnlinecurLog;
-import com.gamecenter.model.OpOssQlzOnlinecurLogExample;
-
 import java.util.List;
 import java.util.Map;
 
-import com.gamecenter.parBean.vo.OnlineDataByDay;
-import com.gamecenter.parBean.vo.OnlineDataByHour;
 import org.apache.ibatis.annotations.Param;
 
+import com.gamecenter.model.OpOssQlzOnlinecurLog;
+import com.gamecenter.model.OpOssQlzOnlinecurLogExample;
+import com.gamecenter.parBean.vo.OnlineDataByDay;
+import com.gamecenter.parBean.vo.OnlineDataByHour;
+
 public interface OpOssQlzOnlinecurLogMapper {
-	int countByExample(OpOssQlzOnlinecurLogExample example);
+    long countByExample(OpOssQlzOnlinecurLogExample example);
 	
 	int deleteByExample(OpOssQlzOnlinecurLogExample example);
 	
@@ -33,11 +33,7 @@ public interface OpOssQlzOnlinecurLogMapper {
 	
 	int updateByPrimaryKey(OpOssQlzOnlinecurLog record);
 	
-	/**
-	 * 按天汇总数据
-	 * 
-	 * @return
-	 */
+
 	OnlineDataByDay selectOnlineDataByDay(Map map);
 	
 	/**

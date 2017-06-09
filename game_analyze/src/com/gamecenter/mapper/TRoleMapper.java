@@ -1,11 +1,11 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.TRole;
-import com.gamecenter.model.TRoleExample;
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
+import com.gamecenter.model.TRole;
+import com.gamecenter.model.TRoleExample;
 
 public interface TRoleMapper {
 	int countByExample(TRoleExample example);

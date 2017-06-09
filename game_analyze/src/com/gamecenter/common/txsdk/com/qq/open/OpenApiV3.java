@@ -1,9 +1,10 @@
 package com.gamecenter.common.txsdk.com.qq.open;
 
-import java.util.*;
-import java.net.URLEncoder;
 import java.io.UnsupportedEncodingException;
-import java.net.*;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.apache.commons.httpclient.methods.multipart.FilePart;
 

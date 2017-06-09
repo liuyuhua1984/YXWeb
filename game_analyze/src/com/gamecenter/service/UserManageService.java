@@ -1,9 +1,9 @@
 package com.gamecenter.service;
 
-import com.gamecenter.parBean.Par_tuser;
-import com.gamecenter.model.TUser;
-
 import java.util.List;
+
+import com.gamecenter.model.TUser;
+import com.gamecenter.parBean.Par_tuser;
 
 /**
  * Created by IntelliJ IDEA. User: Administrator Date: 12-4-11 Time: 下午2:16 To change this template use File | Settings | File Templates.

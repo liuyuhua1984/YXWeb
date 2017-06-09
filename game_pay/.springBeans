@@ -8,9 +8,10 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/config/spring-mvc.xml</config>
-		<config>src/config/spring_call_job.xml</config>
+		<config>src/config/spring-call-job.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/config/spring-beans.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

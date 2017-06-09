@@ -1,17 +1,33 @@
 package com.gamecenter.service.ossServices;
 
-import com.gamecenter.mapper.OpOssPayDayreportMapper;
-import com.gamecenter.mapper.OpOssUserDayreportMapper;
-import com.gamecenter.mapper.ReportMapper;
-import com.gamecenter.model.*;
-import com.gamecenter.parBean.report.*;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
+import com.gamecenter.mapper.OpOssPayDayreportMapper;
+import com.gamecenter.mapper.OpOssUserDayreportMapper;
+import com.gamecenter.mapper.ReportMapper;
+import com.gamecenter.model.OpOssConsumeDayreport;
+import com.gamecenter.model.OpOssOnlineDayreport;
+import com.gamecenter.model.OpOssPayDayreport;
+import com.gamecenter.model.OpOssPayDayreportExample;
+import com.gamecenter.model.OpOssUserDayreport;
+import com.gamecenter.model.OpOssUserDayreportExample;
+import com.gamecenter.parBean.report.DayAllSurvey;
+import com.gamecenter.parBean.report.DayCurSurvey;
+import com.gamecenter.parBean.report.DayReport;
+import com.gamecenter.parBean.report.NewUserMonitor;
+import com.gamecenter.parBean.report.Par_survey;
+import com.gamecenter.parBean.report.Payhabit;
+import com.gamecenter.parBean.report.Paytop;
+import com.gamecenter.parBean.report.UserGrade;
+import com.gamecenter.parBean.report.UserGradeDetail;
+import com.gamecenter.parBean.report.UserGradeLs;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-5-21 Time: 下午2:34 To change this template use File | Settings | File Templates.

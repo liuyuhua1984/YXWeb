@@ -65,4 +65,5 @@ public class GmCheckIsFinishProtocolRequest extends DataUpBase implements IMsgCo
 	public void setServerId(String serverId) {
 		this.serverId = serverId;
 	}
+	
 }

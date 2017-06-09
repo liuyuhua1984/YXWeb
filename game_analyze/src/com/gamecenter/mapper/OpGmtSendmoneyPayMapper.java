@@ -1,11 +1,11 @@
 package com.gamecenter.mapper;
 
-import com.gamecenter.model.OpGmtSendmoneyPay;
-import com.gamecenter.model.OpGmtSendmoneyPayExample;
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
+import com.gamecenter.model.OpGmtSendmoneyPay;
+import com.gamecenter.model.OpGmtSendmoneyPayExample;
 
 public interface OpGmtSendmoneyPayMapper {
 	int countByExample(OpGmtSendmoneyPayExample example);

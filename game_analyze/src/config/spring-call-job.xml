@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- 在线人数采集 
+    <bean id="job" class="com.gamecenter.service.task.WorldOnlineNum"></bean>
+    <bean id="jobtask"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="job">
+        </property>
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    
+    <bean id="online" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobtask" />
+        <property name="cronExpression">
+            <value>0/8 * * * * ?</value>
+        </property>
+    </bean>
+-->
+    <!-- 循环公告 -->
+    <bean id="cycleNotice" class="com.gamecenter.service.task.SendNoticeCycle" init-method="initData"></bean>
+    <bean id="cycleNoticetask"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="cycleNotice" />
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <bean id="cycleNoticetaskgo" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="cycleNoticetask" />
+
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
+
+    <!--上报节点状态监测
+    <bean id="upstatus" class="com.gamecenter.service.task.jmsHandler.UpStatusNode"></bean>
+    <bean id="uptask"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="upstatus" />
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <bean id="checkUpNode" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="uptask" />
+        <property name="cronExpression">
+            <value>0/2 * * * * ?</value>
+        </property>
+    </bean>
+
+-->
+    <!-- [重要]数据分析 -->
+    <bean id="dataAnalyze" class="com.gamecenter.service.task.DataAnalyze"></bean>
+    <bean id="analyze"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="dataAnalyze" />
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <bean id="dataAnalyzeCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="analyze" />
+
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+
+    <!--账号数据缓存-->
+    <bean id="dataUpHandle" class="com.gamecenter.service.task.DataUpHandle" init-method="init"></bean>
+
+    <!-- 总管理 -->
+    <bean 
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean"  lazy-init="default">
+        <property name="triggers">
+            <list>
+                <!--<ref bean="online"/>-->
+                <ref bean="cycleNoticetaskgo"/>
+                <!--<ref bean="checkUpNode"/>-->
+                <ref bean="dataAnalyzeCronTrigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>

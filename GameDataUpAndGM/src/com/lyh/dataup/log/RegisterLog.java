@@ -23,7 +23,7 @@ public class RegisterLog extends DataUpBase {
 	private static final long serialVersionUID = -3567292500542507409L;
 	
 	/** APPID 应用的惟一标识 **/
-	private long appId;
+	private String appId;
 	
 	/** 用户IP,转化成主机字节序 **/
 	private String userIp;
@@ -40,14 +40,17 @@ public class RegisterLog extends DataUpBase {
 	/** 服务器IP **/
 	private String serverIp;
 	
+	/**注册时间**/  
+	private long registerTime;
+	
 	/** 是否已上报 **/
 	private String isUp = "0";
 	
-	public long getAppId() {
+	public String getAppId() {
 		return appId;
 	}
 	
-	public void setAppId(long appId) {
+	public void setAppId(String appId) {
 		this.appId = appId;
 	}
 	
@@ -97,6 +100,14 @@ public class RegisterLog extends DataUpBase {
 	
 	public void setIsUp(String isUp) {
 		this.isUp = isUp;
+	}
+
+	public long getRegisterTime() {
+		return registerTime;
+	}
+
+	public void setRegisterTime(long registerTime) {
+		this.registerTime = registerTime;
 	}
 	
 }

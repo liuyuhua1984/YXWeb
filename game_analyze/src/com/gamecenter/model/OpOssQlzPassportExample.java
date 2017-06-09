@@ -1,9 +1,9 @@
 package com.gamecenter.model;
 
-import com.gamecenter.common.PageListNum;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.gamecenter.common.PageListNum;
 
 public class OpOssQlzPassportExample extends PageListNum {
 	protected String orderByClause;
@@ -1615,79 +1615,86 @@ public class OpOssQlzPassportExample extends PageListNum {
 			addCriterion("sfrom not between", value1, value2, "sfrom");
 			return (Criteria) this;
 		}
-	}
-	
-	public static class Criteria extends GeneratedCriteria {
-		
-		protected Criteria() {
-			super();
-		}
-		
-		public Criteria andOpenidLikeInsensitive(String value) {
-			addCriterion("upper(openid) like", value.toUpperCase(), "openid");
-			return this;
-		}
-		
-		public Criteria andWorldidLikeInsensitive(String value) {
-			addCriterion("upper(worldid) like", value.toUpperCase(), "worldid");
-			return this;
-		}
-		
-		public Criteria andRolenameLikeInsensitive(String value) {
-			addCriterion("upper(rolename) like", value.toUpperCase(), "rolename");
-			return this;
-		}
-		
-		public Criteria andLastloginipLikeInsensitive(String value) {
-			addCriterion("upper(lastloginip) like", value.toUpperCase(), "lastloginip");
-			return this;
-		}
-		
-		public Criteria andFristlogintimeLikeInsensitive(String value) {
-			addCriterion("upper(fristlogintime) like", value.toUpperCase(), "fristlogintime");
-			return this;
-		}
-		
-		public Criteria andLastlogintimeLikeInsensitive(String value) {
-			addCriterion("upper(lastlogintime) like", value.toUpperCase(), "lastlogintime");
-			return this;
-		}
-		
-		public Criteria andRegtimeLikeInsensitive(String value) {
-			addCriterion("upper(regtime) like", value.toUpperCase(), "regtime");
-			return this;
-		}
-		
-		public Criteria andInfoLikeInsensitive(String value) {
-			addCriterion("upper(info) like", value.toUpperCase(), "info");
-			return this;
-		}
-		
-		public Criteria andFristpaytimeLikeInsensitive(String value) {
-			addCriterion("upper(fristpaytime) like", value.toUpperCase(), "fristpaytime");
-			return this;
-		}
-		
-		public Criteria andLastpaytimeLikeInsensitive(String value) {
-			addCriterion("upper(lastpaytime) like", value.toUpperCase(), "lastpaytime");
-			return this;
-		}
-		
-		public Criteria andOptidLikeInsensitive(String value) {
-			addCriterion("upper(optid) like", value.toUpperCase(), "optid");
-			return this;
-		}
-		
-		public Criteria andGuidenumLikeInsensitive(String value) {
-			addCriterion("upper(guidenum) like", value.toUpperCase(), "guidenum");
-			return this;
-		}
-		
-		public Criteria andSfromLikeInsensitive(String value) {
-			addCriterion("upper(sfrom) like", value.toUpperCase(), "sfrom");
-			return this;
-		}
-	}
+        public Criteria andAppIdIsNull() {
+            addCriterion("app_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdIsNotNull() {
+            addCriterion("app_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdEqualTo(String value) {
+            addCriterion("app_id =", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotEqualTo(String value) {
+            addCriterion("app_id <>", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdGreaterThan(String value) {
+            addCriterion("app_id >", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdGreaterThanOrEqualTo(String value) {
+            addCriterion("app_id >=", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLessThan(String value) {
+            addCriterion("app_id <", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLessThanOrEqualTo(String value) {
+            addCriterion("app_id <=", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLike(String value) {
+            addCriterion("app_id like", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotLike(String value) {
+            addCriterion("app_id not like", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdIn(List<String> values) {
+            addCriterion("app_id in", values, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotIn(List<String> values) {
+            addCriterion("app_id not in", values, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdBetween(String value1, String value2) {
+            addCriterion("app_id between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotBetween(String value1, String value2) {
+            addCriterion("app_id not between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+    }
+
+    /**
+     * op_oss_qlz_passport
+     */
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
 	
 	public static class Criterion {
 		private String condition;

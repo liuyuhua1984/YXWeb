@@ -1,8 +1,9 @@
 package com.gamecenter.common.txsdk.com.qq.open;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.HashMap;
 
 /**
  * 上报统计类

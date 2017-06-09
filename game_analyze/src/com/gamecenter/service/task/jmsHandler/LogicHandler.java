@@ -1,5 +1,7 @@
 package com.gamecenter.service.task.jmsHandler;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -17,17 +19,17 @@ import com.gamecenter.model.OpOssQlzOutLog;
 import com.gamecenter.model.OpOssQlzPassport;
 import com.gamecenter.model.OpOssQlzPassportReg;
 import com.gamecenter.model.OpOssQlzRechargeLog;
-import com.gamecenter.parBean.updataObj.CreateRoleLog;
-import com.gamecenter.parBean.updataObj.LoginLog;
-import com.gamecenter.parBean.updataObj.LoginOutLog;
-import com.gamecenter.parBean.updataObj.OnlineNumLog;
-import com.gamecenter.parBean.updataObj.RechargeLog;
-import com.gamecenter.parBean.updataObj.RegisterLog;
-import com.gamecenter.parBean.updataObj.UpDataObj;
-import com.gamecenter.parBean.updataObj.UseGoldLog;
 import com.gamecenter.service.RunLog;
-import com.gamecenter.service.dataUploadServices.DataUpHandleService;
+import com.gamecenter.service.dataup.DataUpHandleService;
 import com.gamecenter.service.task.DataUpHandle;
+import com.lyh.common.IMsgCode;
+import com.lyh.dataup.log.CreateRoleLog;
+import com.lyh.dataup.log.LoginLog;
+import com.lyh.dataup.log.LoginOutLog;
+import com.lyh.dataup.log.OnLineNumLog;
+import com.lyh.dataup.log.RechargeLog;
+import com.lyh.dataup.log.RegisterLog;
+import com.lyh.dataup.log.UseGoldLog;
 
 /**
  * 日志上报的处理。。。
@@ -42,42 +44,35 @@ public class LogicHandler implements MessageListener {
 		try {
 			
 			String msg = ((TextMessage) message).getText();
-		
-			UpDataObj obj = JSON.parseObject(msg, UpDataObj.class);
-			
-			if (obj.getType() == 1) {
-				
-				RegisterLog log = JSON.parseObject(obj.getData(), RegisterLog.class);
-				reg(log);
-				
-			} else if (obj.getType() == 2) {
-				 
-				CreateRoleLog log = JSON.parseObject(obj.getData(), CreateRoleLog.class);
-				createRole(log);
-				
-			} else if (obj.getType() == 3) {
-				
-				LoginLog log = JSON.parseObject(obj.getData(), LoginLog.class);
-				login(log);
-				
-			} else if (obj.getType() == 4) {
-				
-				LoginOutLog log = JSON.parseObject(obj.getData(), LoginOutLog.class);
-				out(log);
-				
-			} else if (obj.getType() == 5) {
-				
-				RechargeLog log = JSON.parseObject(obj.getData(), RechargeLog.class);
-				recharge(log);
-				
-			} else if (obj.getType() == 6) {
-				
-				UseGoldLog log = JSON.parseObject(obj.getData(), UseGoldLog.class);
-				consume(log);
-			} else if (obj.getType() == 7) {
-				OnlineNumLog log = JSON.parseObject(obj.getData(), OnlineNumLog.class);
-				online(log);
+			String [] array =msg.split("\\|");
+			if (array.length > 1){
+				int head = Integer.parseInt(array[0]);
+				String data = array[1].toString();
+				if (head == IMsgCode.DATAUP_REGISTER_LOG_HTTP_PROTOCOL){//注册
+					RegisterLog log = JSON.parseObject(data, RegisterLog.class);
+					reg(log);
+				}else if (head == IMsgCode.DATAUP_CREATE_ROLE_LOG_HTTP_PROTOCOL){//创建角色
+					CreateRoleLog log = JSON.parseObject(data, CreateRoleLog.class);
+					createRole(log);
+				}else if (head == IMsgCode.DATAUP_LOGIN_LOG_HTTP_PROTOCOL){//角色登录
+					LoginLog log = JSON.parseObject(data, LoginLog.class);
+					login(log);
+				}else if (head == IMsgCode.DATAUP_LOGIN_OUT_LOG_HTTP_PROTOCOL){//游戏退出
+					
+					LoginOutLog log = JSON.parseObject(data, LoginOutLog.class);
+					out(log);
+				}else if (head == IMsgCode.DATAUP_ONLINE_NUM_LOG_HTTP_PROTOCOL){//在线
+					OnLineNumLog log = JSON.parseObject(data, OnLineNumLog.class);
+					online(log);
+				}else if (head == IMsgCode.DATAUP_RECHARGE_LOG_HTTP_PROTOCOL){//角色充值
+					RechargeLog log = JSON.parseObject(data, RechargeLog.class);
+					recharge(log);
+				}else if(head == IMsgCode.DATAUP_USE_GOLD_LOG_HTTP_PROTOCOL){//使用道具,和金币
+					UseGoldLog log = JSON.parseObject(data, UseGoldLog.class);
+					consume(log);
+				}
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,13 +89,13 @@ public class LogicHandler implements MessageListener {
 		try {
 			// 加注册账号 放弃日志
 			OpOssQlzPassportReg opOssQlzPassportReg = new OpOssQlzPassportReg();
-			opOssQlzPassportReg.setLastlogintime(Tools.getDateString(obj.getCreatetime()));
-			opOssQlzPassportReg.setLastloginip(obj.getUserip());
-			opOssQlzPassportReg.setOpenid(obj.getUsername() + obj.getServerid());
-			
+			opOssQlzPassportReg.setLastlogintime(Tools.getDateString(new Date(obj.getRegisterTime())));
+			opOssQlzPassportReg.setLastloginip(obj.getUserIp());
+			opOssQlzPassportReg.setOpenid(obj.getUserName() + obj.getServerId());
+			opOssQlzPassportReg.setAppId(obj.getAppId());
 			if (DataUpHandle.passports.get(opOssQlzPassportReg.getOpenid()) == null) {
-				opOssQlzPassportReg.setWorldid(obj.getServerid());
-				opOssQlzPassportReg.setInfo(Tools.getDateString(obj.getCreatetime())); // 存储注册时间
+				opOssQlzPassportReg.setWorldid(obj.getServerId());
+				opOssQlzPassportReg.setInfo(Tools.getDateString(obj.getCreateTime())); // 存储注册时间
 				dataUpHandleService.addRegister(opOssQlzPassportReg);
 			} else {
 				dataUpHandleService.updatePassportReg(opOssQlzPassportReg);
@@ -122,19 +117,21 @@ public class LogicHandler implements MessageListener {
 			// 加日志
 			OpOssQlzCreateroleLog opOssQlzCreateroleLog = new OpOssQlzCreateroleLog();
 			opOssQlzCreateroleLog.setAddtime(Tools.getNowDate());
-			opOssQlzCreateroleLog.setRolename(obj.getRolename());
-			opOssQlzCreateroleLog.setOpenid(obj.getUsername());
-			opOssQlzCreateroleLog.setWorldid(obj.getServerid());
-			opOssQlzCreateroleLog.setUserip(obj.getUserip());
-			opOssQlzCreateroleLog.setTime(Tools.getDateString(obj.getCreatetime()));
+			opOssQlzCreateroleLog.setRolename(obj.getRoleName());
+			opOssQlzCreateroleLog.setOpenid(obj.getUserName());
+			opOssQlzCreateroleLog.setWorldid(obj.getServerId());
+			opOssQlzCreateroleLog.setUserip(obj.getUserIp());
+			opOssQlzCreateroleLog.setTime(Tools.getDateString(new Date(obj.getCreateRoleTime())));
+			opOssQlzCreateroleLog.setAppId(obj.getAppId());
 			dataUpHandleService.addCreateRoleLog(opOssQlzCreateroleLog);
 			
 			// 加账号
 			OpOssQlzPassport opOssQlzPassport = new OpOssQlzPassport();
-			opOssQlzPassport.setOpenid(obj.getUsername() + obj.getServerid()); // openid+区服
-			opOssQlzPassport.setRolename(obj.getRolename());
-			opOssQlzPassport.setWorldid(obj.getServerid());
-			opOssQlzPassport.setRegtime(Tools.getDateString(obj.getCreatetime()));
+			opOssQlzPassport.setOpenid(obj.getUserName() + obj.getServerId()); // openid+区服
+			opOssQlzPassport.setRolename(obj.getRoleName());
+			opOssQlzPassport.setWorldid(obj.getServerId());
+			opOssQlzPassport.setAppId(obj.getAppId());
+			opOssQlzPassport.setRegtime(Tools.getDateString(new Date(obj.getCreateRoleTime())));
 			int num = dataUpHandleService.addPassport(opOssQlzPassport);
 			if (num == 1) {
 				DataUpHandle.passports.put(opOssQlzPassport.getOpenid(), opOssQlzPassport);
@@ -156,25 +153,27 @@ public class LogicHandler implements MessageListener {
 			// 加日志
 			OpOssQlzLoginLog opOssQlzLoginLog = new OpOssQlzLoginLog();
 			opOssQlzLoginLog.setAddtime(Tools.getNowDate());
-			opOssQlzLoginLog.setLevel(obj.getRolelevel());
-			opOssQlzLoginLog.setRolename(obj.getRolename());
-			opOssQlzLoginLog.setOpenid(obj.getUsername());
-			opOssQlzLoginLog.setWorldid(obj.getServerid());
-			opOssQlzLoginLog.setUserip(obj.getUserip());
-			opOssQlzLoginLog.setLogintime(Tools.getDateString(obj.getCreatetime()));
+			opOssQlzLoginLog.setLevel(obj.getRoleLevel());
+			opOssQlzLoginLog.setRolename(obj.getRoleName());
+			opOssQlzLoginLog.setOpenid(obj.getUserName());
+			opOssQlzLoginLog.setWorldid(obj.getServerId());
+			opOssQlzLoginLog.setUserip(obj.getUserIp());
+			opOssQlzLoginLog.setLogintime(Tools.getDateString(new Date(obj.getLoginTime())));
+			opOssQlzLoginLog.setAppId(obj.getAppId());
 			dataUpHandleService.addLoginLog(opOssQlzLoginLog);
 			
 			// 账号核实
-			if (DataUpHandle.passports.get(obj.getUsername() + obj.getServerid()) == null) {
-				OpOssQlzPassport opOssQlzPassport = dataUpHandleService.getPassportByOpenid(obj.getUsername() + obj.getServerid());
+			if (DataUpHandle.passports.get(obj.getUserName() + obj.getServerId()) == null) {
+				OpOssQlzPassport opOssQlzPassport = dataUpHandleService.getPassportByOpenid(obj.getUserName() + obj.getServerId());
 				if (opOssQlzPassport != null) {
 					DataUpHandle.passports.put(opOssQlzPassport.getOpenid(), opOssQlzPassport);
 				} else {
 					opOssQlzPassport = new OpOssQlzPassport();
-					opOssQlzPassport.setOpenid(obj.getUsername() + obj.getServerid()); // openid+区服
-					opOssQlzPassport.setRolename(obj.getRolename());
-					opOssQlzPassport.setWorldid(obj.getServerid());
-					opOssQlzPassport.setRegtime(Tools.getDateString(obj.getCreatetime()));
+					opOssQlzPassport.setOpenid(obj.getUserName() + obj.getServerId()); // openid+区服
+					opOssQlzPassport.setRolename(obj.getRoleName());
+					opOssQlzPassport.setWorldid(obj.getServerId());
+					opOssQlzPassport.setAppId(obj.getAppId());
+					opOssQlzPassport.setRegtime(Tools.getDateString(new Date(obj.getLoginTime())));
 					int num = dataUpHandleService.addPassport(opOssQlzPassport);
 					if (num == 1) {
 						DataUpHandle.passports.put(opOssQlzPassport.getOpenid(), opOssQlzPassport);
@@ -184,14 +183,14 @@ public class LogicHandler implements MessageListener {
 			
 			// 更新记录
 			OpOssQlzPassport opOssQlzPassport = new OpOssQlzPassport();
-			opOssQlzPassport.setOpenid(obj.getUsername() + obj.getServerid());
-			opOssQlzPassport.setGrade(obj.getRolelevel());
+			opOssQlzPassport.setOpenid(obj.getUserName() + obj.getServerId());
+			opOssQlzPassport.setGrade(obj.getRoleLevel());
 			opOssQlzPassport.setIsonline(1);
-			opOssQlzPassport.setLastloginip(obj.getUserip());
-			opOssQlzPassport.setLastlogintime(Tools.getDateString(obj.getCreatetime()));
-			
+			opOssQlzPassport.setLastloginip(obj.getUserIp());
+			opOssQlzPassport.setLastlogintime(Tools.getDateString(new Date(obj.getLoginTime())));
+			opOssQlzPassport.setAppId(obj.getAppId());
 			if (DataUpHandle.passports.get(opOssQlzPassport.getOpenid()).getFristlogintime() == null) { // 确定首登时间
-				opOssQlzPassport.setFristlogintime(Tools.getDateString(obj.getCreatetime()));
+				opOssQlzPassport.setFristlogintime(Tools.getDateString(new Date(obj.getLoginTime())));
 			}
 			opOssQlzPassport = dataUpHandleService.updatePassport(opOssQlzPassport, "login");
 			if (opOssQlzPassport != null) {
@@ -208,14 +207,14 @@ public class LogicHandler implements MessageListener {
 			// 计算在线时长
 			int timeOnline = 0;
 			
-			OpOssQlzPassport opOssQlzPassport = DataUpHandle.passports.get(obj.getUsername() + obj.getServerid());
+			OpOssQlzPassport opOssQlzPassport = DataUpHandle.passports.get(obj.getUserName() + obj.getServerId());
 			if (opOssQlzPassport == null) {
-				opOssQlzPassport = dataUpHandleService.getPassportByOpenid(obj.getUsername() + obj.getServerid());
+				opOssQlzPassport = dataUpHandleService.getPassportByOpenid(obj.getUserName() + obj.getServerId());
 			}
 			if (opOssQlzPassport != null) {
 				try {
-					long ms = Tools.timecha(opOssQlzPassport.getLastlogintime(), Tools.getDateString(obj.getCreatetime()));
-					timeOnline = (int) (ms / (1000 * 60));
+					//long ms = Tools.timecha(opOssQlzPassport.getLastlogintime(), Tools.getDateString(new Date(obj.getLoginOutTime())));
+					timeOnline =obj.getOnlineTime();// (int) (ms / (1000 * 60));
 					if (timeOnline == 0) {
 						timeOnline = 1;
 					}
@@ -227,27 +226,29 @@ public class LogicHandler implements MessageListener {
 			// 加日志
 			OpOssQlzOutLog opOssQlzOutLog = new OpOssQlzOutLog();
 			opOssQlzOutLog.setAddtime(Tools.getNowDate());
-			opOssQlzOutLog.setLevel(obj.getRolelevel());
-			opOssQlzOutLog.setRolename(obj.getRolename());
-			opOssQlzOutLog.setOpenid(obj.getUsername());
-			opOssQlzOutLog.setWorldid(obj.getServerid());
-			opOssQlzOutLog.setUserip(obj.getUserip());
+			opOssQlzOutLog.setLevel(obj.getRoleLevel());
+			opOssQlzOutLog.setRolename(obj.getRoleName());
+			opOssQlzOutLog.setOpenid(obj.getUserName());
+			opOssQlzOutLog.setWorldid(obj.getServerId());
+			opOssQlzOutLog.setUserip(obj.getUserIp());
 			opOssQlzOutLog.setOnlinetime(timeOnline); // 在线时长
-			opOssQlzOutLog.setOuttime(Tools.getDateString(obj.getCreatetime()));
-			opOssQlzOutLog.setVipgrade(obj.getViplevel());
-			opOssQlzOutLog.setGuidenum(obj.getNewplayerguild());
+			opOssQlzOutLog.setOuttime(Tools.getDateString(new Date(obj.getLoginOutTime())));
+			opOssQlzOutLog.setVipgrade(obj.getVipLevel());
+			opOssQlzOutLog.setGuidenum(obj.getNewPlayerGuild());
+			opOssQlzOutLog.setAppId(obj.getAppId());
 			dataUpHandleService.addLoginOutLog(opOssQlzOutLog);
 			
 			// 更新记录
-			if (DataUpHandle.passports.get(obj.getUsername() + obj.getServerid()) != null) { // 存在
+			if (DataUpHandle.passports.get(obj.getUserName() + obj.getServerId()) != null) { // 存在
 				// 更新账号
 				opOssQlzPassport = new OpOssQlzPassport();
-				opOssQlzPassport.setOpenid(obj.getUsername() + obj.getServerid());
-				opOssQlzPassport.setGrade(obj.getRolelevel());
+				opOssQlzPassport.setOpenid(obj.getUserName() + obj.getServerId());
+				opOssQlzPassport.setGrade(obj.getRoleLevel());
 				opOssQlzPassport.setIsonline(0);
-				opOssQlzPassport.setVipgrade(obj.getViplevel());
-				opOssQlzPassport.setGuidenum(obj.getNewplayerguild());
+				opOssQlzPassport.setVipgrade(obj.getVipLevel());
+				opOssQlzPassport.setGuidenum(obj.getNewPlayerGuild());
 				opOssQlzPassport.setInfo(timeOnline + ""); // 临时存储
+				opOssQlzPassport.setAppId(obj.getAppId());
 				opOssQlzPassport = dataUpHandleService.updatePassport(opOssQlzPassport, "out");
 				if (opOssQlzPassport != null) {
 					// 更新缓存
@@ -269,31 +270,32 @@ public class LogicHandler implements MessageListener {
 			// 加日志
 			OpOssQlzRechargeLog rechargeLog = new OpOssQlzRechargeLog();
 			rechargeLog.setAddtime(Tools.getNowDate());
-			rechargeLog.setLevel(obj.getRolelevel());
-			rechargeLog.setRolename(obj.getRolename());
-			rechargeLog.setOpenid(obj.getUsername());
-			rechargeLog.setWorldid(obj.getServerid());
-			rechargeLog.setMoneyadd((double) obj.getGoldadd());
-			rechargeLog.setMoneyafter((double) obj.getGoldafter());
-			rechargeLog.setMoneybefore((double) obj.getGoldbefore());
-			rechargeLog.setTime(Tools.getDateString(obj.getCreatetime()));
-			rechargeLog.setSfrom(obj.getRechargechannel() + "");
-			rechargeLog.setBillon(obj.getBillno());
+			rechargeLog.setLevel(obj.getRoleLevel());
+			rechargeLog.setRolename(obj.getRoleName());
+			rechargeLog.setOpenid(obj.getUserName());
+			rechargeLog.setWorldid(obj.getServerId());
+			rechargeLog.setMoneyadd((double) obj.getGoldAdd());
+			rechargeLog.setMoneyafter((double) obj.getGoldAfter());
+			rechargeLog.setMoneybefore((double) obj.getGoldBefore());
+			rechargeLog.setTime(Tools.getDateString(new Date(obj.getPayTime())));
+			rechargeLog.setSfrom(obj.getRechargeChannel());
+			rechargeLog.setBillon(obj.getBillOrder());
+			rechargeLog.setAppId(obj.getAppId());
 			dataUpHandleService.addRechargeLog(rechargeLog);
 			
 			// 更新账户
-			if (DataUpHandle.passports.get(obj.getUsername() + obj.getServerid()) != null) {
+			if (DataUpHandle.passports.get(obj.getUserName() + obj.getServerId()) != null) {
 				OpOssQlzPassport opOssQlzPassport = new OpOssQlzPassport();
-				opOssQlzPassport.setOpenid(obj.getUsername() + obj.getServerid());
-				opOssQlzPassport.setGrade(obj.getRolelevel());
+				opOssQlzPassport.setOpenid(obj.getUserName() + obj.getServerId());
+				opOssQlzPassport.setGrade(obj.getRoleLevel());
 				opOssQlzPassport.setIsonline(1);
-				opOssQlzPassport.setCurmoney((double) obj.getGoldafter());
-				opOssQlzPassport.setInfo(obj.getGoldadd() + "#" + obj.getBillno()); // 临时存储
-				
-				if (obj.getBillno() != null && !obj.getBillno().contains("reku")) { // 排除内部充值
-					opOssQlzPassport.setLastpaytime(Tools.getDateString(obj.getCreatetime()));
+				opOssQlzPassport.setCurmoney((double) obj.getGoldAfter());
+				opOssQlzPassport.setInfo(obj.getGoldAdd() + "#" + obj.getBillOrder()); // 临时存储
+				opOssQlzPassport.setAppId(obj.getAppId());
+				if (obj.getBillOrder() != null && !obj.getBillOrder().contains("lyh")) { // 排除内部充值
+					opOssQlzPassport.setLastpaytime(Tools.getDateString(new Date(obj.getPayTime())));
 					if (DataUpHandle.passports.get(opOssQlzPassport.getOpenid()).getFristpaytime() == null) { // 确定首冲时间
-						opOssQlzPassport.setFristpaytime(Tools.getDateString(obj.getCreatetime()));
+						opOssQlzPassport.setFristpaytime(Tools.getDateString(new Date(obj.getPayTime())));
 					}
 				}
 				opOssQlzPassport = dataUpHandleService.updatePassport(opOssQlzPassport, "recharge");
@@ -314,31 +316,34 @@ public class LogicHandler implements MessageListener {
 	 */
 	private void consume(UseGoldLog obj) {
 		try {
+			
 			// 加日志
 			OpOssQlzConsumeLog opOssQlzConsumeLog = new OpOssQlzConsumeLog();
 			opOssQlzConsumeLog.setAddtime(Tools.getNowDate());
-			opOssQlzConsumeLog.setLevel(obj.getRolelevel());
-			opOssQlzConsumeLog.setRolename(obj.getRolename());
-			opOssQlzConsumeLog.setOpenid(obj.getUsername());
-			opOssQlzConsumeLog.setWorldid(obj.getServerid());
-			opOssQlzConsumeLog.setLostmoney((double) obj.getLostgold());
-			opOssQlzConsumeLog.setMoneyafter((double) obj.getGoldafter());
-			opOssQlzConsumeLog.setMoneybefore((double) obj.getGoldbefore());
-			opOssQlzConsumeLog.setTime(Tools.getDateString(obj.getCreatetime()));
-			opOssQlzConsumeLog.setItemid(obj.getItemid() + "");
-			opOssQlzConsumeLog.setItemname(obj.getItemname());
-			opOssQlzConsumeLog.setItemnum(obj.getItemnum());
-			opOssQlzConsumeLog.setItemtype(obj.getItemtype() + "");
+			opOssQlzConsumeLog.setLevel(obj.getRoleLevel());
+			opOssQlzConsumeLog.setRolename(obj.getRoleName());
+			opOssQlzConsumeLog.setOpenid(obj.getUserName());
+			opOssQlzConsumeLog.setWorldid(obj.getServerId());
+			opOssQlzConsumeLog.setLostmoney((double) obj.getLostGold());
+			opOssQlzConsumeLog.setMoneyafter((double) obj.getGoldAfter());
+			opOssQlzConsumeLog.setMoneybefore((double) obj.getGoldBefore());
+			opOssQlzConsumeLog.setTime(Tools.getDateString(new Date(obj.getUseGoldTime())));
+			opOssQlzConsumeLog.setItemid(obj.getItemId() + "");
+			opOssQlzConsumeLog.setItemname(obj.getItemName());
+			opOssQlzConsumeLog.setItemnum(obj.getItemNum());
+			opOssQlzConsumeLog.setItemtype(obj.getItemType() + "");
+			opOssQlzConsumeLog.setAppId(obj.getAppId());
 			int res = dataUpHandleService.addConsumeLog(opOssQlzConsumeLog);
 			
 			// 更新账户
-			if (DataUpHandle.passports.get(obj.getUsername() + obj.getServerid()) != null) {
+			if (DataUpHandle.passports.get(obj.getUserName() + obj.getServerId()) != null) {
 				OpOssQlzPassport opOssQlzPassport = new OpOssQlzPassport();
-				opOssQlzPassport.setOpenid(obj.getUsername() + obj.getServerid());
-				opOssQlzPassport.setGrade(obj.getRolelevel());
+				opOssQlzPassport.setOpenid(obj.getUserName() + obj.getServerId());
+				opOssQlzPassport.setGrade(obj.getRoleLevel());
 				opOssQlzPassport.setIsonline(1);
-				opOssQlzPassport.setCurmoney((double) obj.getGoldafter());
-				opOssQlzPassport.setInfo(obj.getLostgold() + "");
+				opOssQlzPassport.setAppId(obj.getAppId());
+				opOssQlzPassport.setCurmoney((double) obj.getGoldAfter());
+				opOssQlzPassport.setInfo(obj.getLostGold() + "");
 				opOssQlzPassport = dataUpHandleService.updatePassport(opOssQlzPassport, "consume");
 				if (opOssQlzPassport != null) {
 					// 更新缓存
@@ -350,13 +355,13 @@ public class LogicHandler implements MessageListener {
 		}
 	}
 	
-	private void online(OnlineNumLog obj) {
+	private void online(OnLineNumLog obj) {
 		// 加日志
 		OpOssQlzOnlinecurLog opOssQlzOnlinecurLog = new OpOssQlzOnlinecurLog();
-		opOssQlzOnlinecurLog.setWorldid(obj.getServerid());
-		opOssQlzOnlinecurLog.setAddtime(Tools.getDateString(obj.getCreatetime()));
-		opOssQlzOnlinecurLog.setOnlinenum(obj.getOnlinenum());
-		
+		opOssQlzOnlinecurLog.setWorldid(obj.getServerId());
+		opOssQlzOnlinecurLog.setAddtime(Tools.getDateString(new Date(obj.getRecordTime())));
+		opOssQlzOnlinecurLog.setOnlinenum(obj.getOnlineNum());
+		opOssQlzOnlinecurLog.setAppId(obj.getAppId());
 		int res = dataUpHandleService.addOnlineLog(opOssQlzOnlinecurLog);
 	}
 }

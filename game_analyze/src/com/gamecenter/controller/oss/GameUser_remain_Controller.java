@@ -1,16 +1,12 @@
 package com.gamecenter.controller.oss;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpOssUserRemain;
-import com.gamecenter.parBean.report.NewUserMonitor;
-import com.gamecenter.parBean.report.UserGradeLs;
-import com.gamecenter.service.appServices.AppService;
-import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.ossServices.ReportService;
-import com.gamecenter.service.ossServices.UserRemainService;
-import com.opencsv.CSVWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
+import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.model.OpOssUserRemain;
+import com.gamecenter.parBean.report.UserGradeLs;
+import com.gamecenter.service.appServices.AppService;
+import com.gamecenter.service.appServices.WorldService;
+import com.gamecenter.service.ossServices.ReportService;
+import com.gamecenter.service.ossServices.UserRemainService;
+import com.opencsv.CSVWriter;
 
 /**
  * 游戏玩家 -- 留存 Created with IntelliJ IDEA. User: gsb Date: 14-5-24 Time: 下午5:00 To change this template use File | Settings | File Templates.

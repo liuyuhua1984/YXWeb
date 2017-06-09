@@ -1,8 +1,8 @@
 package com.gamecenter.sysmanage.parBean;
 
-import com.gamecenter.sysmanage.model.OaModule;
-
 import java.util.Comparator;
+
+import com.gamecenter.model.OaModule;
 
 /**
  * Created with IntelliJ IDEA. User: gsb Date: 14-7-8 Time: 下午3:50 To change this template use File | Settings | File Templates.

@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpGameappVersion;
 import com.gamecenter.model.OpGameappVersionExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpGameappVersionMapper {
 	int countByExample(OpGameappVersionExample example);

@@ -1,26 +1,18 @@
 package com.gamecenter.service.task;
 
-import com.gamecenter.common.Tools;
-import com.gamecenter.common.connect.SendReqToGame;
-import com.gamecenter.common.packets.OnlineNum_request;
-import com.gamecenter.mapper.AnalyzeDataMapper;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpOssQlzOnlinecurLog;
-import com.gamecenter.model.OpOssUserRemain;
-import com.gamecenter.parBean.vo.OnlineDataByDay;
-import com.gamecenter.parBean.vo.WorldOnlineData;
-import com.gamecenter.service.RunLog;
-import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.dataUploadServices.AnalyzeDataService;
-import com.gamecenter.service.dataUploadServices.WorldOnlineService;
-import com.gamecenter.service.ossServices.UserRemainService;
-
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+
+import javax.annotation.Resource;
+
+import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.model.OpOssUserRemain;
+import com.gamecenter.service.RunLog;
+import com.gamecenter.service.appServices.WorldService;
+import com.gamecenter.service.dataup.AnalyzeDataService;
+import com.gamecenter.service.ossServices.UserRemainService;
 
 /**
  * 数据分析 -- 任务 Created by IntelliJ IDEA. User: Administrator Date: 13-8-15 Time: 下午3:38 To change this template use File | Settings | File Templates.

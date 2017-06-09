@@ -1,7 +1,5 @@
 package com.gamecenter.common.encrypt;
 
-import org.apache.commons.codec.binary.Hex;
-
 import java.security.Key;
 
 import javax.crypto.Cipher;

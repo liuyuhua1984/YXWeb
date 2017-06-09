@@ -1,6 +1,6 @@
 package com.gamecenter.common.txsdk;
 
-import java.util.*;
+import java.util.HashMap;
 
 import com.gamecenter.common.txsdk.com.qq.open.OpenApiV3;
 import com.gamecenter.common.txsdk.com.qq.open.OpensnsException;
