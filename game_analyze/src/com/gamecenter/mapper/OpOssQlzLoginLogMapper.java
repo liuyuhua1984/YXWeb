@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpOssQlzLoginLog;
 import com.gamecenter.model.OpOssQlzLoginLogExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpOssQlzLoginLogMapper {
     long countByExample(OpOssQlzLoginLogExample example);

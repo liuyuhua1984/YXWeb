@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpOssQlzCreateroleLog;
 import com.gamecenter.model.OpOssQlzCreateroleLogExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpOssQlzCreateroleLogMapper {
     long countByExample(OpOssQlzCreateroleLogExample example);

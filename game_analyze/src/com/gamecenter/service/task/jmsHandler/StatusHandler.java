@@ -2,11 +2,8 @@ package com.gamecenter.service.task.jmsHandler;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
-import javax.jms.TextMessage;
 
 import org.springframework.stereotype.Component;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * 上报的节点心跳
