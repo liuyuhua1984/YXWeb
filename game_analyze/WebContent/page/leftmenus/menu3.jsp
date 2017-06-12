@@ -25,46 +25,48 @@
 
                         <li>
                             <a url-data="summary-index" class="navigate Dashboard">
-                                <span>服务器管理</span>
+                                <span>我的代理</span>
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned">服务器列表</a>
-                                </li>
-
-                                <li><a url-data="player-new">服务节点</a></li>
+                                <li><a url-data="player-churned" href="${ctxPage}/gmt/recharge" target="mainFrame">代理列表</a></li>
+								<li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">代理申请</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">代理审批</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">代理配置</a></li>
                             </ol>
 
                         </li>
 
                         <li>
                             <a url-data="summary-index" class="navigate Dashboard">
-                                <span>版本管理</span>
+                                <span>充值记录</span>
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned">版本列表</a>
-                                </li>
-
-                                <li><a url-data="player-new">更新日志</a></li>
+                                <li><a url-data="player-churned" href="${ctxPage}/gmt/recharge" target="mainFrame">购买记录</a> </li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">出售记录</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">充值申请</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">审批充值</a></li>
                             </ol>
 
                         </li>
 
+	                  <!--  
                         <li>
                             <a url-data="summary-index" class="navigate Dashboard">
-                                <span>状态监控</span>
+                                <span>提现</span>
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned">服务器状态</a>
+                                <li><a url-data="player-churned">提现申请</a>
                                 </li>
-
-                                <li><a url-data="player-new">业务状态</a></li>
+                                <li><a url-data="player-new">提现审核</a></li>
+                                <li><a url-data="player-new">我的提现</a></li>
+                                <li><a url-data="player-new">我的审核</a></li>
                             </ol>
 
                         </li>
-
+						-->
 
 
                     </ul>

@@ -56,7 +56,6 @@
 </div>
 <script type="text/javascript">
     window.parent.goinitpage("${firstUrl}");
-
 </script>
 
 </body>

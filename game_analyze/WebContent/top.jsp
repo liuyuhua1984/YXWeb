@@ -111,7 +111,7 @@
                     <li class="onOver"><a href="${ctxPage}/topmenus/menu1" title="运营管理" target="leftFrame"><span>运营管理</span></a>
                     </li>
                     <li><a href="${ctxPage}/topmenus/menu2" title="客户管理" target="leftFrame"><span>客服管理</span></a></li>
-                    <li><a href="${ctxPage}/topmenus/menu3" title="运维管理" target="leftFrame"><span>运维管理</span></a></li>
+                    <li><a href="${ctxPage}/topmenus/menu3" title="代理管理" target="leftFrame"><span>代理管理</span></a></li>
                     <li><a href="${ctxPage}/topmenus/menu4" title="支撑管理" target="leftFrame"><span>支撑管理</span></a></li>
                     <li><a href="${ctxPage}/topmenus/menu5" title="系统管理" target="leftFrame"><span>系统管理</span></a></li>
                 </ul>

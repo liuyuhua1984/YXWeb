@@ -121,16 +121,13 @@
                         <a url-data="summary-index" class="navigate Dashboard">
                             <span>游戏概况</span>
                         </a>
-
                     </li>
 
                     <li>
                         <a url-data="" class="more_icon Players">
                             <span>游戏玩家</span>
                         </a>
-
                         <ol>
-
                             <li><a url-data="player-new" class="hover">新增</a></li>
 
                             <li class=""><a url-data="player-active">活跃</a></li>
