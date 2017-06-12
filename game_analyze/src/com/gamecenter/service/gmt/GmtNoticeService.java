@@ -36,6 +36,7 @@ public interface GmtNoticeService {
 	 */
 	public int sendCycleNotic(GmtSendNoticeBean gmtSendNoticeBean);
 	
+
 	/**
 	 * 获取循环公告信息
 	 * 

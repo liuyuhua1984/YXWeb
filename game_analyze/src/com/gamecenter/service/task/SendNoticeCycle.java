@@ -7,7 +7,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Resource;
 
 import com.gamecenter.common.Tools;
+import com.gamecenter.mapper.OpGmtNoticeCycleMapper;
 import com.gamecenter.model.OpGmtNoticeCycle;
+import com.gamecenter.model.OpGmtNoticeCycleExample;
 import com.gamecenter.service.gmt.GmtNoticeService;
 
 /**
@@ -22,26 +24,33 @@ public class SendNoticeCycle {
 	
 	@Resource
 	GmtNoticeService gmtNoticeService;
+	@Resource
+	OpGmtNoticeCycleMapper opGmtNoticeCycleMapper;
 	
 	/**
 	 * 发送循环公告 周期10
 	 */
 	public synchronized void work() {
-		System.out.println(">>>>>>>>>发送循环公告 >>>>>>>>>>>>>>>cycleNotices size:" + cycleNotices.size());
+		//System.out.println(">>>>>>>>>发送循环公告 >>>>>>>>>>>>>>>cycleNotices size:" + cycleNotices.size());
 		
 		if (cycleNotices.size() > 0) {
 			for (Map.Entry<Integer, OpGmtNoticeCycle> entry : cycleNotices.entrySet()) {
 				
 				OpGmtNoticeCycle obj = entry.getValue();
-				
-				if (System.currentTimeMillis() - obj.getLastsendtime() > obj.getCycletime() * 60 * 1000) {
-					System.out.println("发起循环公告:" + obj.getDid());
-					// 立即发送
-					gmtNoticeService.sendNotic(obj);
-					// 设置发送时间
-					obj.setLastsendtime(System.currentTimeMillis());
-					obj.setOpttime(Tools.getNowDate());
-					
+				if (obj.getStatus().equals("1")) {
+					if (System.currentTimeMillis() - obj.getLastsendtime() > obj.getCycletime() * 60 * 1000) {
+						System.out.println("发起循环公告:" + obj.getDid());
+						// 设置发送时间
+						obj.setLastsendtime(System.currentTimeMillis());
+						obj.setOpttime(Tools.getNowDate());
+						// OpGmtNoticeCycleExample opGmtNoticeCycleExample = new OpGmtNoticeCycleExample();
+						// OpGmtNoticeCycleExample.Criteria criteria = opGmtNoticeCycleExample.createCriteria();
+						opGmtNoticeCycleMapper.updateByPrimaryKey(obj);
+						// 立即发送
+						gmtNoticeService.sendNotic(obj);
+					} else {
+						gmtNoticeService.stopCycleNotic("" + obj.getDid());
+					}
 				}
 			}
 		}
