@@ -8,15 +8,19 @@ import java.io.Serializable;
  * Created by IntelliJ IDEA. User: Administrator Date: 12-2-17 Time: 上午11:44 To change this template use File | Settings | File Templates.
  */
 public class UserMsg implements Serializable {
-	private int uid;
+	/****/  
+	private static final long serialVersionUID = 5275396851411595990L;
+	private long uid;
 	private String passport;
 	private String name;
+	/**代理**/  
+	private boolean bAgent;
 	
-	public int getUid() {
+	public long getUid() {
 		return uid;
 	}
 	
-	public void setUid(int uid) {
+	public void setUid(long uid) {
 		this.uid = uid;
 	}
 	
@@ -34,5 +38,13 @@ public class UserMsg implements Serializable {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isbAgent() {
+		return bAgent;
+	}
+
+	public void setbAgent(boolean bAgent) {
+		this.bAgent = bAgent;
 	}
 }

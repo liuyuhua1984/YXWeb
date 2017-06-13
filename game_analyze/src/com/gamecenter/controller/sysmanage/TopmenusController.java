@@ -37,7 +37,7 @@ public class TopmenusController {
 	public ModelAndView menus(@PathVariable int mid, HttpSession session) {
 		// 获取用户权限菜单
 		UserMsg userMsg = (UserMsg) session.getAttribute("UserMsg");
-		List<OaModule> oaModules = permitService.getModuleListByUserByPid(userMsg.getUid(), mid);
+		List<OaModule> oaModules = permitService.getModuleListByUserByPid((int)userMsg.getUid(), mid);
 		
 		// 处理二级模块的嵌套处理
 		List<OaModule> oaModule2222 = new ArrayList<OaModule>();

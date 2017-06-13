@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-09 10:32:17
+Date: 2017-06-13 18:37:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -701,6 +701,110 @@ CREATE TABLE `op_activity_uselog` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for op_agent_config
+-- ----------------------------
+DROP TABLE IF EXISTS `op_agent_config`;
+CREATE TABLE `op_agent_config` (
+  `id` bigint(20) NOT NULL,
+  `one_level` varchar(255) DEFAULT NULL COMMENT '一级的充值比例',
+  `two_level` varchar(255) DEFAULT NULL COMMENT '二级充值比例',
+  `three_level` varchar(255) DEFAULT NULL COMMENT '三级充值比例',
+  `none_level` varchar(255) DEFAULT NULL COMMENT '玩家充值比例',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_agent_config
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for op_agent_invite_code
+-- ----------------------------
+DROP TABLE IF EXISTS `op_agent_invite_code`;
+CREATE TABLE `op_agent_invite_code` (
+  `id` bigint(20) NOT NULL,
+  `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
+  `agent_id` bigint(20) DEFAULT NULL,
+  `is_use` tinyint(4) DEFAULT '0' COMMENT '是否已使用,已使用为1',
+  `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `is_put_out` tinyint(4) DEFAULT '0' COMMENT '是否已发放 发放为1',
+  PRIMARY KEY (`id`),
+  KEY `agent_id` (`agent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_agent_invite_code
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for op_agent_list
+-- ----------------------------
+DROP TABLE IF EXISTS `op_agent_list`;
+CREATE TABLE `op_agent_list` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL COMMENT '用户昵称',
+  `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
+  `agent_level` int(11) DEFAULT '0' COMMENT '代理级别,0,1,2,3,',
+  `remain_money` int(11) DEFAULT '0' COMMENT '剩余房卡数',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT '上一级代理id',
+  `wechat_code` varchar(255) DEFAULT NULL COMMENT '微信号',
+  `phone` bigint(20) DEFAULT '0' COMMENT '电话',
+  `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `password` varchar(255) DEFAULT NULL COMMENT '代理密码',
+  `status` tinyint(4) DEFAULT '1' COMMENT '禁用为0,',
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `name` (`name`),
+  KEY `invite_code` (`invite_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_agent_list
+-- ----------------------------
+INSERT INTO `op_agent_list` VALUES ('1', '中国人', '6554', '1', '1000', '4556', '589974', '195225225', '2017-06-13 17:20:11', '123456', '1');
+
+-- ----------------------------
+-- Table structure for op_agent_player_recharge
+-- ----------------------------
+DROP TABLE IF EXISTS `op_agent_player_recharge`;
+CREATE TABLE `op_agent_player_recharge` (
+  `id` bigint(20) NOT NULL,
+  `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
+  `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
+  `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
+  `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
+  `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
+  `operate` int(1) DEFAULT '0' COMMENT '1表示申请,2表示批准,3表示拒绝',
+  PRIMARY KEY (`id`),
+  KEY `agent_name` (`agent_name`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_agent_player_recharge
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for op_agent_reqeust
+-- ----------------------------
+DROP TABLE IF EXISTS `op_agent_reqeust`;
+CREATE TABLE `op_agent_reqeust` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
+  `wechat_code` varchar(255) DEFAULT NULL COMMENT '微信号',
+  `phone` bigint(255) DEFAULT '0' COMMENT '电话',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `parent_id` bigint(20) DEFAULT '0' COMMENT '上级代理',
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_agent_reqeust
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for op_gameapp
 -- ----------------------------
 DROP TABLE IF EXISTS `op_gameapp`;
@@ -802,11 +906,13 @@ CREATE TABLE `op_gmt_forbidmsg` (
   `opttime` varchar(20) DEFAULT NULL,
   `username` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gmt_forbidmsg
 -- ----------------------------
+INSERT INTO `op_gmt_forbidmsg` VALUES ('1', '1', 'test', null, '18', '5050', '100', null, '不想看到他', '成功', '2017-06-09 15:59:24', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('2', '1', 'test', null, '18', '5051', null, null, 'ok', '成功', '2017-06-09 16:01:43', 'admin');
 
 -- ----------------------------
 -- Table structure for op_gmt_notice
@@ -823,11 +929,17 @@ CREATE TABLE `op_gmt_notice` (
   `opttime` varchar(20) DEFAULT NULL,
   `username` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gmt_notice
 -- ----------------------------
+INSERT INTO `op_gmt_notice` VALUES ('1', 'game1001', '18', '2', '我操作', '日', '成功', '2017-06-09 17:18:34', '超级管理员');
+INSERT INTO `op_gmt_notice` VALUES ('2', 'game1001', '18', '2', '大华股份', '在', '成功', '2017-06-09 17:18:38', '超级管理员');
+INSERT INTO `op_gmt_notice` VALUES ('3', 'game1001', '18', '2', 'werqrqw', 'reee', '成功', '2017-06-09 17:18:41', '超级管理员');
+INSERT INTO `op_gmt_notice` VALUES ('4', 'game1001', '18', '2', 'oiuiolu', 'ytty', '成功', '2017-06-09 17:18:53', '超级管理员');
+INSERT INTO `op_gmt_notice` VALUES ('5', 'game1001', '18', '2', '6556dasdfsa', 'ewqrq', '成功', '2017-06-09 17:18:59', '超级管理员');
+INSERT INTO `op_gmt_notice` VALUES ('6', 'game1001', '18', '2', 'dscfsdfs', 'ewqwqrwq', '成功', '2017-06-09 17:19:02', '超级管理员');
 
 -- ----------------------------
 -- Table structure for op_gmt_notice_cycle
@@ -846,11 +958,17 @@ CREATE TABLE `op_gmt_notice_cycle` (
   `settime` varchar(20) DEFAULT NULL,
   `status` varchar(2) DEFAULT '1' COMMENT '1:活跃  0：停止',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gmt_notice_cycle
 -- ----------------------------
+INSERT INTO `op_gmt_notice_cycle` VALUES ('1', 'game1001', '18', '2', '10000', '我操作', '日', '2017-06-12 11:43:27', '超级管理员', '2017-06-09 16:02:11', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('2', 'game1001', '18', '2', '1000', '大华股份', '在', '2017-06-12 11:43:50', '超级管理员', '2017-06-09 16:02:49', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('3', 'game1001', '18', '2', '1000', 'werqrqw', 'reee', '2017-06-12 11:43:59', '超级管理员', '2017-06-09 16:04:08', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('4', 'game1001', '18', '2', '1000', 'oiuiolu', 'ytty', '2017-06-12 11:44:10', '超级管理员', '2017-06-09 16:05:00', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('5', 'game1001', '18', '2', '1000', '6556dasdfsa', 'ewqrq', '2017-06-12 11:45:21', '超级管理员', '2017-06-09 16:06:25', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('6', 'game1001', '18', '2', '1000', 'dscfsdfs', 'ewqwqrwq', '2017-06-12 11:45:22', '超级管理员', '2017-06-09 16:11:49', '0');
 
 -- ----------------------------
 -- Table structure for op_gmt_sendmoney
@@ -1639,7 +1757,7 @@ CREATE TABLE `op_oss_qlz_createrole_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
 
 -- ----------------------------
 -- Records of op_oss_qlz_createrole_log
@@ -1703,6 +1821,9 @@ INSERT INTO `op_oss_qlz_createrole_log` VALUES ('56', '1', '192.168.1.118', '201
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('57', '1', '192.168.1.118', '2014-09-26 09:50:00', '4', '5', '2017-06-02 12:51:08', null);
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('58', '1', '192.168.1.118', '2014-09-26 09:50:44', '5', '4', '2017-06-02 12:52:22', null);
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('59', '1', '192.168.1.118', '2014-09-26 09:53:09', '6', '6', '2017-06-02 12:52:22', null);
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('60', '1', '192.168.0.189', '2017-06-09 15:39:04', 'dsfasf', '无敌', '2017-06-09 15:39:46', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('61', '1', '192.168.0.189', '2017-06-13 16:18:05', 'dsda', '无敌', '2017-06-13 16:48:46', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('62', '1', '192.168.0.189', '2017-06-13 16:23:12', 'dasfasd', '无敌', '2017-06-13 16:48:46', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_login_log
@@ -2868,7 +2989,7 @@ CREATE TABLE `op_oss_qlz_out_log` (
   `guidenum` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=283 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=285 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_out_log
@@ -3155,6 +3276,8 @@ INSERT INTO `op_oss_qlz_out_log` VALUES ('279', '1', '192.168.1.118', '2014-09-2
 INSERT INTO `op_oss_qlz_out_log` VALUES ('280', '1', '192.168.1.118', '2014-09-28 14:23:46', '1', '1', '3', '1', '2017-06-02 12:52:34', '0', '5@0', null);
 INSERT INTO `op_oss_qlz_out_log` VALUES ('281', '1', '192.168.1.118', '2014-09-28 14:30:11', '1', '6', '3', '1', '2017-06-02 12:52:35', '0', '5@0', null);
 INSERT INTO `op_oss_qlz_out_log` VALUES ('282', '1', '192.168.1.118', '2014-09-28 17:39:09', '2', '32', '1', '2', '2017-06-02 12:52:36', '0', '1@0', null);
+INSERT INTO `op_oss_qlz_out_log` VALUES ('283', '1', '', '2017-06-09 15:41:03', 'dsfasf', '1', '1', '无敌', '2017-06-09 15:41:18', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('284', '1', '', '2017-06-13 16:21:16', 'dsda', '1', '1', '无敌', '2017-06-13 16:48:46', '0', null, '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport
@@ -3224,6 +3347,9 @@ INSERT INTO `op_oss_qlz_passport` VALUES ('6game003', 'game003', '哈尔希克�
 INSERT INTO `op_oss_qlz_passport` VALUES ('7game003', 'game003', '卡尔威克利夫', '1', '9799000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:25:01', '2014-08-29 12:34:06', '2014-08-29 12:24:58', '7', '7', '-201000.00', '12', null, null, null, '1@0', null, null);
 INSERT INTO `op_oss_qlz_passport` VALUES ('8game003', 'game003', '哈该利奥波德', '1', '99899000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:25:52', '2014-08-29 12:33:49', '2014-08-29 12:25:49', '6', '6', '-101000.00', '12', null, null, null, '1@0', null, null);
 INSERT INTO `op_oss_qlz_passport` VALUES ('9game003', 'game003', '杰米鲍德温', '1', '99888000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:26:55', '2014-08-29 12:33:27', '2014-08-29 12:26:50', '5', '5', '-112000.00', '12', null, null, null, '1@0', null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('dasfasd1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-13 16:23:12', null, '0', '0.00', '0', null, null, null, null, null, '1');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dsda1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-13 16:18:05', '1', '1', '0.00', '0', null, null, null, null, null, '1');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dsfasf1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-09 15:39:04', '1', '1', '0.00', '0', null, null, null, null, null, '1');
 INSERT INTO `op_oss_qlz_passport` VALUES ('E4EF6792D38354EC67DAB4087245AD96game003', 'game003', '无赖', '70', '0.00', '0.00', null, '0', '1', '192.168.1.118', '4', '2014-09-12 15:51:21', '2014-09-12 15:56:07', '2014-09-12 15:51:21', '2', '4', '0.00', '4', null, null, null, '12@6', null, null);
 INSERT INTO `op_oss_qlz_passport` VALUES ('EA29906FEE97799837A8F0C63035F62Egame003', 'game003', '薇微笑', '1', '0.00', '0.00', null, '0', '1', '192.168.1.128', '7', '2014-08-25 17:51:44', '2014-08-30 16:49:55', '2014-08-25 17:51:44', '1', '4', '0.00', '0', null, null, null, '1@0', null, null);
 INSERT INTO `op_oss_qlz_passport` VALUES ('sa1234567game003', 'game003', '迪福拉瑟福德', '1', '99790688.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 00:49:21', '2014-08-29 00:53:05', '2014-08-29 00:49:21', '2', '2', '-209312.00', '12', null, null, null, '1@0', null, null);

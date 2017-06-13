@@ -46,27 +46,28 @@
                                 <li><a url-data="player-churned" href="${ctxPage}/gmt/recharge" target="mainFrame">购买记录</a> </li>
                                 <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">出售记录</a></li>
                                 <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">充值申请</a></li>
-                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">审批充值</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">充值审批</a></li>
                             </ol>
-
+                            
                         </li>
 
-	                  <!--  
+	              
                         <li>
                             <a url-data="summary-index" class="navigate Dashboard">
-                                <span>提现</span>
+                                <span>我的邀请码</span>
                             </a>
 
                             <ol>
-                                <li><a url-data="player-churned">提现申请</a>
-                                </li>
+                                <li><a url-data="player-churned">剩余邀请码</a></li>
+                                <!--
                                 <li><a url-data="player-new">提现审核</a></li>
                                 <li><a url-data="player-new">我的提现</a></li>
                                 <li><a url-data="player-new">我的审核</a></li>
+                                -->
                             </ol>
 
                         </li>
-						-->
+						
 
 
                     </ul>

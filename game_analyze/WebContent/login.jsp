@@ -39,6 +39,7 @@
                             <input type="password" id="pwd" name="pwd" class="inputText" onfocus="" value=""/>
                         </div>
                     </div>
+                 	 <div class="lable">代理<input  type="checkbox"    name = "lchk"  id="bCheck"/></div>
                     <%--登陆按钮--%>
                     <div id="loginBtnWrap" class="filedInput">
                         <a href="javascript:;" id="loginBtn" class="inline-block" onclick="login();return false;">登陆</a>
@@ -60,6 +61,12 @@
 
         var name = $("#userName").val();
         var pwd = $("#pwd").val();
+        var bCheck =$("#bCheck").attr("checked");
+      
+        var check = 0;
+        if (bCheck){
+        	check = 1;
+        }
         if (name == "") {
             alert("亲爱的用户，请输入帐号！");
             return;
@@ -80,7 +87,8 @@
             data: {
                 userName: name,
                 pwd: pwd,
-                token: token
+                token: token,
+               check: check
             },
             dataType: 'json',
             error: function () {

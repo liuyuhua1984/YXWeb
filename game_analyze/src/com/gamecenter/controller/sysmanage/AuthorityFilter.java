@@ -41,7 +41,7 @@ public class AuthorityFilter implements Filter {
 		HttpSession session = req.getSession();
 		
 		// 登陆验证
-		if (session.getAttribute("UserMsg") == null) {
+		if (session.getAttribute("UserMsg") == null ) {
 			
 			String path = req.getContextPath();
 			String basePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + path + "/";
@@ -67,7 +67,7 @@ public class AuthorityFilter implements Filter {
 				// 校验对应模块的动作码
 				boolean isOk = false;
 				if (!(actionCode == null || actionCode.equals(""))) {
-					isOk = permitService.checkUserPermit(UrlStr, actionCode, userMsg.getUid());
+					isOk = permitService.checkUserPermit(UrlStr, actionCode, (int)userMsg.getUid());
 				}
 				if (!isOk) {
 					// 没有权限的
