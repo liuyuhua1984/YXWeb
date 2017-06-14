@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OpAgentPlayerRechargeExample {
+public class OpAgentRechargeRequestExample {
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     protected String orderByClause;
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     protected boolean distinct;
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     protected List<Criteria> oredCriteria;
 
-    public OpAgentPlayerRechargeExample() {
+    public OpAgentRechargeRequestExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +74,7 @@ public class OpAgentPlayerRechargeExample {
     }
 
     /**
-     * op_agent_player_recharge null
+     * op_agent_recharge_request null
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -556,10 +556,80 @@ public class OpAgentPlayerRechargeExample {
             addCriterion("operate not between", value1, value2, "operate");
             return (Criteria) this;
         }
+
+        public Criteria andOrderIsNull() {
+            addCriterion("order is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderIsNotNull() {
+            addCriterion("order is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderEqualTo(String value) {
+            addCriterion("order =", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNotEqualTo(String value) {
+            addCriterion("order <>", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderGreaterThan(String value) {
+            addCriterion("order >", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderGreaterThanOrEqualTo(String value) {
+            addCriterion("order >=", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderLessThan(String value) {
+            addCriterion("order <", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderLessThanOrEqualTo(String value) {
+            addCriterion("order <=", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderLike(String value) {
+            addCriterion("order like", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNotLike(String value) {
+            addCriterion("order not like", value, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderIn(List<String> values) {
+            addCriterion("order in", values, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNotIn(List<String> values) {
+            addCriterion("order not in", values, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderBetween(String value1, String value2) {
+            addCriterion("order between", value1, value2, "order");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNotBetween(String value1, String value2) {
+            addCriterion("order not between", value1, value2, "order");
+            return (Criteria) this;
+        }
     }
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -569,7 +639,7 @@ public class OpAgentPlayerRechargeExample {
     }
 
     /**
-     * op_agent_player_recharge null
+     * op_agent_recharge_request null
      */
     public static class Criterion {
         private String condition;

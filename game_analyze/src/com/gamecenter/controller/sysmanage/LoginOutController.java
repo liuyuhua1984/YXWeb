@@ -20,7 +20,7 @@ import com.gamecenter.common.cacheData.GlobleData;
 import com.gamecenter.model.OaUser;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.parBean.UserMsg;
-import com.gamecenter.service.agent.AgentService;
+import com.gamecenter.service.agent.AgentListService;
 import com.gamecenter.service.sysmanage.UserService;
 
 /**
@@ -36,7 +36,7 @@ public class LoginOutController {
 	UserService userService;
 	
 	@Resource
-	private AgentService agentService;
+	private AgentListService agentService;
 	
 	/**
 	 * 登陆页面

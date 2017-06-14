@@ -14,8 +14,18 @@ import com.gamecenter.model.OpAgentList;
  * @version   
  * @see       
  */
-public interface AgentService {
+public interface AgentListService {
 	
+	
+	        /** 
+	         * insert:(). <br/> 
+	         * TODO().<br/> 
+	         * 插入
+	         * @author lyh 
+	         * @param agent 
+	         */  
+	        void insert(OpAgentList agent);
+	        
 		/** 
 		 * getOpAgentList:(). <br/> 
 		 * TODO().<br/> 

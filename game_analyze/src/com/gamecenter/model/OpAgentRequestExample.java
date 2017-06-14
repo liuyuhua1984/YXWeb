@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OpAgentReqeustExample {
+public class OpAgentRequestExample {
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     protected String orderByClause;
 
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     protected boolean distinct;
 
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     protected List<Criteria> oredCriteria;
 
-    public OpAgentReqeustExample() {
+    public OpAgentRequestExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +74,7 @@ public class OpAgentReqeustExample {
     }
 
     /**
-     * op_agent_reqeust null
+     * op_agent_request null
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -576,10 +576,70 @@ public class OpAgentReqeustExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andParentIdIsNull() {
+            addCriterion("parent_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdIsNotNull() {
+            addCriterion("parent_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdEqualTo(Long value) {
+            addCriterion("parent_id =", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdNotEqualTo(Long value) {
+            addCriterion("parent_id <>", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdGreaterThan(Long value) {
+            addCriterion("parent_id >", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("parent_id >=", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdLessThan(Long value) {
+            addCriterion("parent_id <", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdLessThanOrEqualTo(Long value) {
+            addCriterion("parent_id <=", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdIn(List<Long> values) {
+            addCriterion("parent_id in", values, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdNotIn(List<Long> values) {
+            addCriterion("parent_id not in", values, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdBetween(Long value1, Long value2) {
+            addCriterion("parent_id between", value1, value2, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdNotBetween(Long value1, Long value2) {
+            addCriterion("parent_id not between", value1, value2, "parentId");
+            return (Criteria) this;
+        }
     }
 
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -589,7 +649,7 @@ public class OpAgentReqeustExample {
     }
 
     /**
-     * op_agent_reqeust null
+     * op_agent_request null
      */
     public static class Criterion {
         private String condition;

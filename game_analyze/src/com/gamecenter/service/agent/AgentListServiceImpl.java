@@ -20,7 +20,7 @@ import com.gamecenter.model.OpAgentListExample;
  * @see       
  */
 @Service
-public class AgentServiceImpl implements AgentService {
+public class AgentListServiceImpl implements AgentListService {
 	@Autowired
 	private  OpAgentListMapper maper;
 	@Override
@@ -61,6 +61,12 @@ public class AgentServiceImpl implements AgentService {
 			 return list.get(0);
 		 }
 		return null;
+	}
+
+	@Override
+	public void insert(OpAgentList agent) {
+		// TODO Auto-generated method stub
+		maper.insert(agent);
 	}
 	
 	

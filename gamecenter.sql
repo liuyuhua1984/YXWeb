@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-13 18:37:35
+Date: 2017-06-14 18:36:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -764,10 +764,30 @@ CREATE TABLE `op_agent_list` (
 INSERT INTO `op_agent_list` VALUES ('1', '中国人', '6554', '1', '1000', '4556', '589974', '195225225', '2017-06-13 17:20:11', '123456', '1');
 
 -- ----------------------------
--- Table structure for op_agent_player_recharge
+-- Table structure for op_agent_recharge
 -- ----------------------------
-DROP TABLE IF EXISTS `op_agent_player_recharge`;
-CREATE TABLE `op_agent_player_recharge` (
+DROP TABLE IF EXISTS `op_agent_recharge`;
+CREATE TABLE `op_agent_recharge` (
+  `id` bigint(20) NOT NULL,
+  `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
+  `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
+  `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
+  `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
+  `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
+  `order` varchar(255) DEFAULT NULL COMMENT '交易号',
+  PRIMARY KEY (`id`),
+  KEY `agent_name` (`agent_name`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_agent_recharge
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for op_agent_recharge_request
+-- ----------------------------
+DROP TABLE IF EXISTS `op_agent_recharge_request`;
+CREATE TABLE `op_agent_recharge_request` (
   `id` bigint(20) NOT NULL,
   `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
   `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
@@ -775,19 +795,20 @@ CREATE TABLE `op_agent_player_recharge` (
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
   `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
   `operate` int(1) DEFAULT '0' COMMENT '1表示申请,2表示批准,3表示拒绝',
+  `order` varchar(255) DEFAULT NULL COMMENT '交易号',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of op_agent_player_recharge
+-- Records of op_agent_recharge_request
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for op_agent_reqeust
+-- Table structure for op_agent_request
 -- ----------------------------
-DROP TABLE IF EXISTS `op_agent_reqeust`;
-CREATE TABLE `op_agent_reqeust` (
+DROP TABLE IF EXISTS `op_agent_request`;
+CREATE TABLE `op_agent_request` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
@@ -801,7 +822,7 @@ CREATE TABLE `op_agent_reqeust` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of op_agent_reqeust
+-- Records of op_agent_request
 -- ----------------------------
 
 -- ----------------------------

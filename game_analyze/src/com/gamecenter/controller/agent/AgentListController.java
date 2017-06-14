@@ -15,9 +15,18 @@ import org.springframework.web.servlet.ModelAndView;
  * @version   
  * @see       
  */
-@Controller("/agent")
-public class AgentController {
+@Controller
+@RequestMapping("/agent")
+public class AgentListController {
 	
+	/** 
+	 * agentList:(). <br/> 
+	 * TODO().<br/> 
+	 * 打开代理列表
+	 * @author lyh 
+	 * @param session
+	 * @return 
+	 */  
 	@RequestMapping("")
 	public ModelAndView agentList(HttpSession session){
 		
