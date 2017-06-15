@@ -3,7 +3,7 @@ package com.gamecenter.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class OpAgentReqeust implements Serializable {
+public class OpAgentRequest implements Serializable {
     /**
      * 
      */
@@ -40,7 +40,12 @@ public class OpAgentReqeust implements Serializable {
     private Date createTime;
 
     /**
-     * op_agent_reqeust
+     * 上级代理
+     */
+    private String parentName;
+
+    /**
+     * op_agent_request
      */
     private static final long serialVersionUID = 1L;
 
@@ -100,6 +105,14 @@ public class OpAgentReqeust implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName == null ? null : parentName.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -113,6 +126,7 @@ public class OpAgentReqeust implements Serializable {
         sb.append(", phone=").append(phone);
         sb.append(", password=").append(password);
         sb.append(", createTime=").append(createTime);
+        sb.append(", parentName=").append(parentName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

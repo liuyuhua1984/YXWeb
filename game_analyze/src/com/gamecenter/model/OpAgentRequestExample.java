@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OpAgentReqeustExample {
+public class OpAgentRequestExample {
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     protected String orderByClause;
 
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     protected boolean distinct;
 
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     protected List<Criteria> oredCriteria;
 
-    public OpAgentReqeustExample() {
+    public OpAgentRequestExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +74,7 @@ public class OpAgentReqeustExample {
     }
 
     /**
-     * op_agent_reqeust null
+     * op_agent_request null
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -576,10 +576,80 @@ public class OpAgentReqeustExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andParentNameIsNull() {
+            addCriterion("parent_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameIsNotNull() {
+            addCriterion("parent_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameEqualTo(String value) {
+            addCriterion("parent_name =", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameNotEqualTo(String value) {
+            addCriterion("parent_name <>", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameGreaterThan(String value) {
+            addCriterion("parent_name >", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameGreaterThanOrEqualTo(String value) {
+            addCriterion("parent_name >=", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameLessThan(String value) {
+            addCriterion("parent_name <", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameLessThanOrEqualTo(String value) {
+            addCriterion("parent_name <=", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameLike(String value) {
+            addCriterion("parent_name like", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameNotLike(String value) {
+            addCriterion("parent_name not like", value, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameIn(List<String> values) {
+            addCriterion("parent_name in", values, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameNotIn(List<String> values) {
+            addCriterion("parent_name not in", values, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameBetween(String value1, String value2) {
+            addCriterion("parent_name between", value1, value2, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameNotBetween(String value1, String value2) {
+            addCriterion("parent_name not between", value1, value2, "parentName");
+            return (Criteria) this;
+        }
     }
 
     /**
-     * op_agent_reqeust
+     * op_agent_request
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -589,7 +659,7 @@ public class OpAgentReqeustExample {
     }
 
     /**
-     * op_agent_reqeust null
+     * op_agent_request null
      */
     public static class Criterion {
         private String condition;

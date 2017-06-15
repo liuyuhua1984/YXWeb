@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gamecenter.mapper.OpAgentReqeustMapper">
-  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentReqeust">
+<mapper namespace="com.gamecenter.mapper.OpAgentRequestMapper">
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentRequest">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
@@ -9,6 +9,7 @@
     <result column="phone" jdbcType="BIGINT" property="phone" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="parent_name" jdbcType="VARCHAR" property="parentName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,16 +70,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, invite_code, wechat_code, phone, password, create_time
+    id, name, invite_code, wechat_code, phone, password, create_time, parent_name
   </sql>
-  <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentReqeustExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRequestExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from op_agent_reqeust
+    from op_agent_request
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,35 +90,35 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from op_agent_reqeust
+    from op_agent_request
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from op_agent_reqeust
+    delete from op_agent_request
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpAgentReqeustExample">
-    delete from op_agent_reqeust
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpAgentRequestExample">
+    delete from op_agent_request
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.gamecenter.model.OpAgentReqeust">
+  <insert id="insert" parameterType="com.gamecenter.model.OpAgentRequest">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into op_agent_reqeust (name, invite_code, wechat_code, 
-      phone, password, create_time
-      )
+    insert into op_agent_request (name, invite_code, wechat_code, 
+      phone, password, create_time, 
+      parent_name)
     values (#{name,jdbcType=VARCHAR}, #{inviteCode,jdbcType=VARCHAR}, #{wechatCode,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
-      )
+      #{phone,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{parentName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentReqeust">
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRequest">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into op_agent_reqeust
+    insert into op_agent_request
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         name,
@@ -136,6 +137,9 @@
       </if>
       <if test="createTime != null">
         create_time,
+      </if>
+      <if test="parentName != null">
+        parent_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -157,16 +161,19 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="parentName != null">
+        #{parentName,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.gamecenter.model.OpAgentReqeustExample" resultType="java.lang.Long">
-    select count(*) from op_agent_reqeust
+  <select id="countByExample" parameterType="com.gamecenter.model.OpAgentRequestExample" resultType="java.lang.Long">
+    select count(*) from op_agent_request
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update op_agent_reqeust
+    update op_agent_request
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -189,26 +196,30 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.parentName != null">
+        parent_name = #{record.parentName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update op_agent_reqeust
+    update op_agent_request
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       invite_code = #{record.inviteCode,jdbcType=VARCHAR},
       wechat_code = #{record.wechatCode,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=BIGINT},
       password = #{record.password,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      parent_name = #{record.parentName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpAgentReqeust">
-    update op_agent_reqeust
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpAgentRequest">
+    update op_agent_request
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -228,17 +239,21 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="parentName != null">
+        parent_name = #{parentName,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentReqeust">
-    update op_agent_reqeust
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentRequest">
+    update op_agent_request
     set name = #{name,jdbcType=VARCHAR},
       invite_code = #{inviteCode,jdbcType=VARCHAR},
       wechat_code = #{wechatCode,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=BIGINT},
       password = #{password,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      parent_name = #{parentName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

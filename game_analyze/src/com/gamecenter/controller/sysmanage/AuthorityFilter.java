@@ -41,7 +41,7 @@ public class AuthorityFilter implements Filter {
 		HttpSession session = req.getSession();
 		
 		// 登陆验证
-		if (session.getAttribute("UserMsg") == null ) {
+		if (session.getAttribute("UserMsg") == null && session.getAttribute("AgentUser") == null ) {
 			
 			String path = req.getContextPath();
 			String basePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + path + "/";
@@ -50,7 +50,7 @@ public class AuthorityFilter implements Filter {
 			((HttpServletResponse) servletResponse).sendRedirect(url);
 			return;
 		}
-		
+	
 		UserMsg userMsg = (UserMsg) session.getAttribute("UserMsg");
 		if (userMsg != null && !userMsg.getPassport().equals("admin")) { // admin时绕开权限验证
 			// 权限验证
@@ -133,6 +133,30 @@ public class AuthorityFilter implements Filter {
 				if (sp.equals("UID")) {
 					
 					Cookie newCookie = new Cookie("UID", null); // 假如要删除名称为username的Cookie
+					
+					newCookie.setMaxAge(0); // 立即删除型
+					// newCookie.setDomain("juugoo.com"); //设置域名
+					
+					newCookie.setPath("/"); // 项目所有目录均有效，这句很关键，否则不敢保证删除
+					
+					response.addCookie(newCookie); // 重新写入，将覆盖之前的
+					
+					System.out.print("删除了cookie：" + sp + ",,值：" + value);
+				}
+			}
+		}
+	}
+	
+	public static void delAgentCookie(HttpServletRequest request, HttpServletResponse response) {
+		
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				String sp = cookies[i].getName();
+				String value = "";
+				if (sp.equals("UID_AGENT")) {
+					
+					Cookie newCookie = new Cookie("UID_AGENT", null); // 假如要删除名称为username的Cookie
 					
 					newCookie.setMaxAge(0); // 立即删除型
 					// newCookie.setDomain("juugoo.com"); //设置域名

@@ -93,27 +93,26 @@
         </div>
         <div class="nav r">
             <font id="noticeTips" class="Information tip"></font>
-            <font class="user">欢迎您，${UserMsg.name}</font>
-            <font><a class="logout" id="logout" href="${ctxPage}/loginOut/out">注销</a></font>
+            <font class="user">欢迎您，${AgentUser.agentName}</font>
+            <font><a class="logout" id="logout" href="${ctxPage}/loginOut/out/agent">注销</a></font>
 
         </div>
     </div>
 
     <div class="toptitle">
         <div class="l" style="border: 0px solid #ff0000">
-            <strong><a href="#productList">数据分析中心</a> </strong>
+            <strong><a href="#productList">代理中心</a> </strong>
             <span></span>
             <span></span>
         </div>
         <div style="width: 900px; height: 40px; border: 0px solid #ff0000; float: left;margin-top: 6px;">
             <div id="tabs2">
+            <!--  
                 <ul>
-                    <li class="onOver"><a href="${ctxPage}/topmenus/menu1" title="运营管理" target="leftFrame"><span>运营管理</span></a>
+                    <li class="onOver"><a href="${ctxPage}/topmenus/menu3" title="代理管理" target="leftFrame"><span>代理管理</span></a>
                     </li>
-                    <li><a href="${ctxPage}/topmenus/menu2" title="客户管理" target="leftFrame"><span>客服管理</span></a></li>
-                    <li><a href="${ctxPage}/topmenus/menu4" title="支撑管理" target="leftFrame"><span>支撑管理</span></a></li>
-                    <li><a href="${ctxPage}/topmenus/menu5" title="系统管理" target="leftFrame"><span>系统管理</span></a></li>
                 </ul>
+                -->
             </div>
         </div>
     </div>
@@ -129,12 +128,7 @@
         });
     });
 
-    <c:if test="${UserMsg.passport ne 'admin'}">
-    var htmlobjxx = $.ajax({url: "${ctxPage}/sys/permit/topMenu", cache: false, async: false});
-    $('#tabs2').html(htmlobjxx.responseText);
-    var myLink = document.getElementById("menu0");//定位元素为“myLink”
-    myLink.click();//模拟click动作
-    </c:if>
+  
 </script>
 
 </body>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamecenter.mapper.OpAgentRechargeRequestMapper">
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentRechargeRequest">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="agent_name" jdbcType="VARCHAR" property="agentName" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="is_agent" jdbcType="TINYINT" property="isAgent" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="operate" jdbcType="INTEGER" property="operate" />
+    <result column="trader_order" jdbcType="VARCHAR" property="traderOrder" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, agent_name, money, is_agent, create_time, name, operate, trader_order
+  </sql>
+  <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRechargeRequestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from op_agent_recharge_request
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from op_agent_recharge_request
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from op_agent_recharge_request
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpAgentRechargeRequestExample">
+    delete from op_agent_recharge_request
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpAgentRechargeRequest">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_agent_recharge_request (agent_name, money, is_agent, 
+      create_time, name, operate, 
+      trader_order)
+    values (#{agentName,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{isAgent,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{operate,jdbcType=INTEGER}, 
+      #{traderOrder,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRechargeRequest">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_agent_recharge_request
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="agentName != null">
+        agent_name,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="isAgent != null">
+        is_agent,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="operate != null">
+        operate,
+      </if>
+      <if test="traderOrder != null">
+        trader_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="agentName != null">
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="isAgent != null">
+        #{isAgent,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="operate != null">
+        #{operate,jdbcType=INTEGER},
+      </if>
+      <if test="traderOrder != null">
+        #{traderOrder,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpAgentRechargeRequestExample" resultType="java.lang.Long">
+    select count(*) from op_agent_recharge_request
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update op_agent_recharge_request
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.agentName != null">
+        agent_name = #{record.agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=INTEGER},
+      </if>
+      <if test="record.isAgent != null">
+        is_agent = #{record.isAgent,jdbcType=TINYINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operate != null">
+        operate = #{record.operate,jdbcType=INTEGER},
+      </if>
+      <if test="record.traderOrder != null">
+        trader_order = #{record.traderOrder,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update op_agent_recharge_request
+    set id = #{record.id,jdbcType=BIGINT},
+      agent_name = #{record.agentName,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=INTEGER},
+      is_agent = #{record.isAgent,jdbcType=TINYINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      name = #{record.name,jdbcType=VARCHAR},
+      operate = #{record.operate,jdbcType=INTEGER},
+      trader_order = #{record.traderOrder,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpAgentRechargeRequest">
+    update op_agent_recharge_request
+    <set>
+      <if test="agentName != null">
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="isAgent != null">
+        is_agent = #{isAgent,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="operate != null">
+        operate = #{operate,jdbcType=INTEGER},
+      </if>
+      <if test="traderOrder != null">
+        trader_order = #{traderOrder,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentRechargeRequest">
+    update op_agent_recharge_request
+    set agent_name = #{agentName,jdbcType=VARCHAR},
+      money = #{money,jdbcType=INTEGER},
+      is_agent = #{isAgent,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      operate = #{operate,jdbcType=INTEGER},
+      trader_order = #{traderOrder,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.gamecenter.mapper.OaModuleMapper;
 import com.gamecenter.mapper.OaPermitDetailMapper;
 import com.gamecenter.mapper.OaRoleMapper;
+import com.gamecenter.mapper.OpAgentListMapper;
 import com.gamecenter.model.OaModule;
 import com.gamecenter.model.OaPermitDetail;
 import com.gamecenter.model.OaPermitDetailExample;
@@ -20,9 +21,7 @@ import com.gamecenter.model.OaUserPermit;
 import com.gamecenter.sysmanage.parBean.PermitAction;
 import com.gamecenter.sysmanage.parBean.PermitSet;
 
-/**
- * Created with IntelliJ IDEA. User: gsb Date: 14-7-3 Time: 上午10:12 To change this template use File | Settings | File Templates.
- */
+
 @Repository
 public class PermitServiceImpl implements PermitService {
 	@Resource
@@ -33,6 +32,8 @@ public class PermitServiceImpl implements PermitService {
 	UserService userService;
 	@Resource
 	OaModuleMapper oaModuleMapper;
+	@Resource
+	private OpAgentListMapper opAgentListMapper;
 	
 	public boolean initUserPermit(int uid) {
 		return false;

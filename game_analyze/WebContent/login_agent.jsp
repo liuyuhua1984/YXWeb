@@ -5,14 +5,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>元巫科技经营分析系统</title>
+    <title>元巫科技代理系统</title>
     <link href="/images/login/favicon.ico" rel="Shortcut Icon">
     <script type="text/javascript" src="${ctxPage}/js/jquery.js"></script>
     <link href="${ctxPage}/admin/css/login2.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<c:if test="${not empty act}">
-    <script>parent.location.href = "${ctxPage}/loginOut/page";</script>
+<c:if test="${not empty act_agent}">
+    <script>parent.location.href = "${ctxPage}/loginOut/page/agent";</script>
 </c:if>
 
 <base target="_top">
@@ -22,7 +22,7 @@
     <%--登陆框--%>
     <div style="width: 442px; height: 440px; margin: 0 auto; margin-top: -260px;">
         <div class="loginLogo"></div>
-        <div class="welcome">元巫科技经营分析系统</div>
+        <div class="welcome">元巫科技代理系统</div>
         <div id="loginFrame" class="loginFrame">
             <form id="loginForm" name="loginForm" method="post" onsubmit="return false;">
                 <div class="">
@@ -39,7 +39,7 @@
                             <input type="password" id="pwd" name="pwd" class="inputText" onfocus="" value=""/>
                         </div>
                     </div>
-                 	
+                    
                     <%--登陆按钮--%>
                     <div id="loginBtnWrap" class="filedInput">
                         <a href="javascript:;" id="loginBtn" class="inline-block" onclick="login();return false;">登陆</a>
@@ -61,7 +61,7 @@
 
         var name = $("#userName").val();
         var pwd = $("#pwd").val();
-     
+
         if (name == "") {
             alert("亲爱的用户，请输入帐号！");
             return;
@@ -77,12 +77,13 @@
         mark=1;
 
         $.ajax({
-            url: "${ctxPage}/loginOut/check",
+            url: "${ctxPage}/loginOut/check/agent",
             type: 'POST',
             data: {
                 userName: name,
                 pwd: pwd,
-                token: token
+                token: token,
+
             },
             dataType: 'json',
             error: function () {
@@ -92,7 +93,7 @@
             },
             success: function (data) {
                 if (data.res == "1") {
-                    location= "${ctxPage}/";
+                    location= "${ctxPage}/agent";
                 } else if(data.res == "-100"){
                     alert('非法请求!');
                     window.location.reload();

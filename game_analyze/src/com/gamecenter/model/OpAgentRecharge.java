@@ -3,7 +3,7 @@ package com.gamecenter.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class OpAgentPlayerRecharge implements Serializable {
+public class OpAgentRecharge implements Serializable {
     /**
      * 
      */
@@ -35,12 +35,12 @@ public class OpAgentPlayerRecharge implements Serializable {
     private String name;
 
     /**
-     * 1表示申请,2表示批准,3表示拒绝
+     * 交易号
      */
-    private Integer operate;
+    private String traderOrder;
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge
      */
     private static final long serialVersionUID = 1L;
 
@@ -92,12 +92,12 @@ public class OpAgentPlayerRecharge implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getOperate() {
-        return operate;
+    public String getTraderOrder() {
+        return traderOrder;
     }
 
-    public void setOperate(Integer operate) {
-        this.operate = operate;
+    public void setTraderOrder(String traderOrder) {
+        this.traderOrder = traderOrder == null ? null : traderOrder.trim();
     }
 
     @Override
@@ -112,7 +112,7 @@ public class OpAgentPlayerRecharge implements Serializable {
         sb.append(", isAgent=").append(isAgent);
         sb.append(", createTime=").append(createTime);
         sb.append(", name=").append(name);
-        sb.append(", operate=").append(operate);
+        sb.append(", traderOrder=").append(traderOrder);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

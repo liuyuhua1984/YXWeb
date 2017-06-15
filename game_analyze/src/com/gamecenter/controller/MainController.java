@@ -30,10 +30,24 @@ public class MainController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/main_agent")
+	public ModelAndView getAgentFooter() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/main_agent");
+		return modelAndView;
+	}
+	
 	@RequestMapping("/headmsg")
 	public ModelAndView headmsg() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/page/commons/headmsg");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/head/agent")
+	public ModelAndView headAgent() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/page/commons/HeadAgent");
 		return modelAndView;
 	}
 	
@@ -49,13 +63,35 @@ public class MainController {
 		return modelAndView;
 	}
 	
+	/**
+	 * 头部页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/top_agent")
+	public ModelAndView topAgentPage() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/top_agent");
+		return modelAndView;
+	}
+	
 	@RequestMapping("/buttom")
 	public String getButtom(){
 		return "/buttom";
 	}
 	
+	@RequestMapping("/buttom_agent")
+	public String getAgentButtom(){
+		return "/buttom_agent";
+	}
+	
 	@RequestMapping("/content")
 	public String getContent(){
 		return "content";
+	}
+	
+	@RequestMapping("/content_agent")
+	public String getAgentContent(){
+		return "content_agent";
 	}
 }

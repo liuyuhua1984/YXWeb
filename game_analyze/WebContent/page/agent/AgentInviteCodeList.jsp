@@ -5,7 +5,7 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>代理列表</title>
+<title>我的邀请码</title>
 <c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
 
@@ -63,7 +63,7 @@
 			<i class="icon-search"></i>
 		</button>
 	</div>
-	<%-- 
+	<!-- 
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<div style="position: absolute;">
 			<div style="margin-top: 8px;float: left">游戏：</div>
@@ -87,14 +87,14 @@
 
 		</div>
 	</div>
- --%>
+ -->
 	<%--列表--%>
 	<div class="row-fluid">
 		<article class="span12">
 			<!-- new widget -->
 			<div class="jarviswidget" id="widget-id-0">
 				<header>
-					<h2>代理列表</h2>
+					<h2>我的邀请码</h2>
 
 					<div class="jarviswidget-ctrls" role="menu">
 						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
@@ -114,37 +114,16 @@
 							<thead>
 								<tr>
 									<th width="100">序</th>
-									<th width="100">代理名</th>
-									<th width="150">邀请码</th>
-									<th width="150">代理级别</th>
-									<th width="100">剩余房卡</th>
-									<%--<th width="100">交易号</th>--%>
-									<th width="80">上级代理</th>
-									<th width="60">微信号</th>
-									<th width="60">电话</th>
-									<th width="60">状态</th>
+									<th width="100">邀请码</th>
+									<th width="80">生成时间</th>
 								</tr>
 							</thead>
 							<tbody id="data">
 								<c:forEach items="${lists}" var="item">
 									<tr>
 										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
-										<td>${item.name}</td>
 										<td>${item.inviteCode}</td>
-										<td>${item.agentLevel}</td>
-										<td>${item.remainMoney}</td>
-										<td>${item.parentId}</td>
-										<td>${item.wechatCode}</td>
-										<td>${item.phone}</td>
-										<td><span style="color: #ff0000;"> <c:choose>
-													<c:when test="${item.status eq '1'}">绑定&nbsp;<a class="btn btn-small" href="javascript:void(0);" onclick="upstatus('${item.id}',0)">解绑</a>
-													</c:when>
-													<c:otherwise>
-														解绑&nbsp;<a class="btn btn-small" href="javascript:void(0);" onclick="upstatus('${item.id}',1)">绑定</a>
-													</c:otherwise>
-												</c:choose>
-										</span></td>
-
+										<td>${item.createTime}</td>
 									</tr>
 								</c:forEach>
 								<tr>

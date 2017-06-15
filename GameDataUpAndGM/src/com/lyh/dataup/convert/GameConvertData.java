@@ -3,7 +3,6 @@ package com.lyh.dataup.convert;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 
-
 import com.alibaba.fastjson.JSON;
 import com.lyh.dataup.log.DataUpBase;
 

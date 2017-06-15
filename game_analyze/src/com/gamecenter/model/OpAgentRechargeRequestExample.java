@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OpAgentPlayerRechargeExample {
+public class OpAgentRechargeRequestExample {
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     protected String orderByClause;
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     protected boolean distinct;
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     protected List<Criteria> oredCriteria;
 
-    public OpAgentPlayerRechargeExample() {
+    public OpAgentRechargeRequestExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +74,7 @@ public class OpAgentPlayerRechargeExample {
     }
 
     /**
-     * op_agent_player_recharge null
+     * op_agent_recharge_request null
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -556,10 +556,80 @@ public class OpAgentPlayerRechargeExample {
             addCriterion("operate not between", value1, value2, "operate");
             return (Criteria) this;
         }
+
+        public Criteria andTraderOrderIsNull() {
+            addCriterion("trader_order is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderIsNotNull() {
+            addCriterion("trader_order is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderEqualTo(String value) {
+            addCriterion("trader_order =", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderNotEqualTo(String value) {
+            addCriterion("trader_order <>", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderGreaterThan(String value) {
+            addCriterion("trader_order >", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderGreaterThanOrEqualTo(String value) {
+            addCriterion("trader_order >=", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderLessThan(String value) {
+            addCriterion("trader_order <", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderLessThanOrEqualTo(String value) {
+            addCriterion("trader_order <=", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderLike(String value) {
+            addCriterion("trader_order like", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderNotLike(String value) {
+            addCriterion("trader_order not like", value, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderIn(List<String> values) {
+            addCriterion("trader_order in", values, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderNotIn(List<String> values) {
+            addCriterion("trader_order not in", values, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderBetween(String value1, String value2) {
+            addCriterion("trader_order between", value1, value2, "traderOrder");
+            return (Criteria) this;
+        }
+
+        public Criteria andTraderOrderNotBetween(String value1, String value2) {
+            addCriterion("trader_order not between", value1, value2, "traderOrder");
+            return (Criteria) this;
+        }
     }
 
     /**
-     * op_agent_player_recharge
+     * op_agent_recharge_request
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -569,7 +639,7 @@ public class OpAgentPlayerRechargeExample {
     }
 
     /**
-     * op_agent_player_recharge null
+     * op_agent_recharge_request null
      */
     public static class Criterion {
         private String condition;

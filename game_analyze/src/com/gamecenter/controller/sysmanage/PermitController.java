@@ -110,6 +110,7 @@ public class PermitController {
 	@RequestMapping("/topMenu")
 	public ModelAndView topMenu(HttpSession session) {
 		UserMsg userMsg = (UserMsg) session.getAttribute("UserMsg");
+		
 		List<OaModule> oaModules = permitService.getModuleListByUser((int)userMsg.getUid(), 1);
 		
 		ModelAndView modelAndView = new ModelAndView();

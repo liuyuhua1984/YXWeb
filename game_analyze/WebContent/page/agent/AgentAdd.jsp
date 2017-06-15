@@ -4,11 +4,10 @@
 
 <html>
 <head>
-<title>添加游戏服务区信息</title>
-<c:import url="/headmsg"></c:import>
+<title>添加游戏代理信息</title>
+<c:import url="/head/agent"></c:import>
 </head>
 <body>
-
 
 	<div class="row-fluid" style="width: 900px;">
 		<article class="span12">
@@ -120,7 +119,11 @@
         $.ajax({
             url: "${ctxPage}/agent/add/agent",
             type: 'POST',
-            data: jsonInfro,
+            data: {name : name,
+            	      password: password,
+            	      inviteCode: inviteCode,
+            	     weChat: weChat,
+            	     phone: phone },
             dataType: 'json',
             error: function () {
                 alert("超时或者系统异常...");
