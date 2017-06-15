@@ -15,7 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
  * @version   
  * @see       
  */
-@Controller("/agent")
+@Controller
+@RequestMapping("/agent")
 public class AgentController {
 	
 	@RequestMapping("")

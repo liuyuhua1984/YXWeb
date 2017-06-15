@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @version   
  * @see       
  */
-@Controller("/agent")
+@Controller
 public class AgentRequestController {
 	
 	@RequestMapping("/add/page")
