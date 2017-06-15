@@ -1,11 +1,14 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.gamecenter.mapper.OpAgentInviteCodeMapper;
 import com.gamecenter.model.OpAgentInviteCode;
+import com.gamecenter.model.OpAgentInviteCodeExample;
 
 /** 
  * ClassName:AgentRechargeService <br/> 
@@ -44,6 +47,15 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 	public OpAgentInviteCode findById(long id) {
 		// TODO Auto-generated method stub
 		return mapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<OpAgentInviteCode> getOpAgentInviteCodeList(long agentId) {
+		// TODO Auto-generated method stub
+		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
+		OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
+		criteria.andAgentIdEqualTo(agentId);
+		return mapper.selectByExample(opAgentInviteCodeExample);
 	}
 	
 }

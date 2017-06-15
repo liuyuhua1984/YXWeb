@@ -5,8 +5,8 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>代理审批</title>
-<c:import url="/headmsg"></c:import>
+<title>充值审批</title>
+<c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
 
 <style type="text/css">
@@ -94,7 +94,7 @@
 			<!-- new widget -->
 			<div class="jarviswidget" id="widget-id-0">
 				<header>
-					<h2>代理审批列表</h2>
+					<h2>充值审批列表</h2>
 
 					<div class="jarviswidget-ctrls" role="menu">
 						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
@@ -114,11 +114,12 @@
 							<thead>
 								<tr>
 									<th width="100">序</th>
-									<th width="100">代理名</th>
-									<th width="150">邀请码</th>
+									<th width="100">交易号</th>
+									<th width="100">用户名</th>
+									<th width="100">用户属性</th>
+									<th width="150">充值金额</th>
 									<%--<th width="100">交易号</th>--%>
-									<th width="60">微信号</th>
-									<th width="60">电话</th>
+									<th width="60">充值时间</th>
 									<th width="60">操作</th>
 								</tr>
 							</thead>
@@ -126,10 +127,19 @@
 								<c:forEach items="${lists}" var="item">
 									<tr>
 										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
+										<td>${item.traderOrder}</td>
 										<td>${item.name}</td>
-										<td>${item.inviteCode}</td>
-										<td>${item.wechatCode}</td>
-										<td>${item.phone}</td>
+										<td>
+										<c:choose>
+											<c:when test="${item.isAgent eq '0'}">玩家</c:when>
+											<c:otherwise>
+												代理
+											</c:otherwise>
+										</c:choose>
+										
+										
+										</td>
+										<td>${item.money}</td>
 										<td style="text-align: center"><a href="javascript:void(0);" onlick="approve(${item.id},1);">同意</a>/ <a href="javascript:void(0);"
 											onclick="approve(${item.id},0);">拒绝</a></td>
 									</tr>

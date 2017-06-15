@@ -1,11 +1,14 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.gamecenter.mapper.OpAgentRequestMapper;
 import com.gamecenter.model.OpAgentRequest;
+import com.gamecenter.model.OpAgentRequestExample;
 
 
 /** 
@@ -44,6 +47,15 @@ public class AgentRequestServiceImpl implements  AgentRequestService {
 	public OpAgentRequest findById(long id) {
 		// TODO Auto-generated method stub
 		return mapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<OpAgentRequest> getAgentRequestList(String agentName) {
+		// TODO Auto-generated method stub
+		OpAgentRequestExample opAgentRequestExample = new OpAgentRequestExample();
+		OpAgentRequestExample.Criteria criteria = opAgentRequestExample.createCriteria();
+		criteria.andParentNameEqualTo(agentName);
+		return mapper.selectByExample(opAgentRequestExample);
 	}
 
 }

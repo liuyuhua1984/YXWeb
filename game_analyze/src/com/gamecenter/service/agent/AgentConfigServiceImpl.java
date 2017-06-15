@@ -1,11 +1,14 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.gamecenter.mapper.OpAgentConfigMapper;
 import com.gamecenter.model.OpAgentConfig;
+import com.gamecenter.model.OpAgentConfigExample;
 
 /** 
  * ClassName:AgentConfigService <br/> 
@@ -42,6 +45,12 @@ public class AgentConfigServiceImpl implements AgentConfigService {
 	public OpAgentConfig findById(long id) {
 		// TODO Auto-generated method stub
 		return mapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<OpAgentConfig> getAgentConfigList() {
+		// TODO Auto-generated method stub
+		return mapper.selectByExample(new OpAgentConfigExample());
 	}
 
 }

@@ -5,8 +5,8 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>代理出售记录</title>
-<c:import url="/headmsg"></c:import>
+<title>代理充值记录</title>
+<c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
 
 <style type="text/css">
@@ -63,7 +63,8 @@
 			<i class="icon-search"></i>
 		</button>
 	</div>
-	<!-- 
+
+	<%--
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<div style="position: absolute;">
 			<div style="margin-top: 8px;float: left">游戏：</div>
@@ -87,14 +88,15 @@
 
 		</div>
 	</div>
- -->
+--%>
+
 	<%--列表--%>
 	<div class="row-fluid">
 		<article class="span12">
 			<!-- new widget -->
 			<div class="jarviswidget" id="widget-id-0">
 				<header>
-					<h2>代理出售记录</h2>
+					<h2>代理充值记录</h2>
 
 					<div class="jarviswidget-ctrls" role="menu">
 						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
@@ -124,13 +126,13 @@
 								<c:forEach items="${lists}" var="item">
 									<tr>
 										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
-							
-									
-										<td>${item.order}</td>
+
+
+										<td>${item.traderOrder}</td>
 										<td>${item.agentName}</td>
 										<td>${item.money}</td>
 										<td>${item.createTime}</td>
-										
+
 									</tr>
 								</c:forEach>
 								<tr>
@@ -151,7 +153,8 @@
     $(document).ready(function () {
         if ($('#begintime').length) {
             $('#begintime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }// end if
+        }
+        
         if ($('#endtime').length) {
             $('#endtime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
         }
@@ -163,25 +166,31 @@
      */
     function upstatus(id, act) {
         $.ajax({
-            url: "${ctxPage}/agent/world/upstatus",
+            url: "
+	${ctxPage}/agent/world/upstatus",
             type: "POST",
             cache: false,
             data: {agentId: id, act: act},
             dataType: "json",
-            success: function (result) {
-                if (result == '1') {
+            success:
+	function (result) {
+                if (result=='1') {
                     alert("消息发送成功！");
                 }
                 else {
                     alert("消息发送失败！");
                 }
             },
-            error: function () {
+            error:function () {
                 alert("请求异常");
             }
         });
     }
     });
-</script>
+
+	
+	</script>
+
+
 </body>
 </html>

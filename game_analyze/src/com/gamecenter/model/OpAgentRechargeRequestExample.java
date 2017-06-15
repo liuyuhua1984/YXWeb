@@ -557,73 +557,73 @@ public class OpAgentRechargeRequestExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderIsNull() {
-            addCriterion("order is null");
+        public Criteria andTraderOrderIsNull() {
+            addCriterion("trader_order is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderIsNotNull() {
-            addCriterion("order is not null");
+        public Criteria andTraderOrderIsNotNull() {
+            addCriterion("trader_order is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderEqualTo(String value) {
-            addCriterion("order =", value, "order");
+        public Criteria andTraderOrderEqualTo(String value) {
+            addCriterion("trader_order =", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotEqualTo(String value) {
-            addCriterion("order <>", value, "order");
+        public Criteria andTraderOrderNotEqualTo(String value) {
+            addCriterion("trader_order <>", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderGreaterThan(String value) {
-            addCriterion("order >", value, "order");
+        public Criteria andTraderOrderGreaterThan(String value) {
+            addCriterion("trader_order >", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderGreaterThanOrEqualTo(String value) {
-            addCriterion("order >=", value, "order");
+        public Criteria andTraderOrderGreaterThanOrEqualTo(String value) {
+            addCriterion("trader_order >=", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLessThan(String value) {
-            addCriterion("order <", value, "order");
+        public Criteria andTraderOrderLessThan(String value) {
+            addCriterion("trader_order <", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLessThanOrEqualTo(String value) {
-            addCriterion("order <=", value, "order");
+        public Criteria andTraderOrderLessThanOrEqualTo(String value) {
+            addCriterion("trader_order <=", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLike(String value) {
-            addCriterion("order like", value, "order");
+        public Criteria andTraderOrderLike(String value) {
+            addCriterion("trader_order like", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotLike(String value) {
-            addCriterion("order not like", value, "order");
+        public Criteria andTraderOrderNotLike(String value) {
+            addCriterion("trader_order not like", value, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderIn(List<String> values) {
-            addCriterion("order in", values, "order");
+        public Criteria andTraderOrderIn(List<String> values) {
+            addCriterion("trader_order in", values, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotIn(List<String> values) {
-            addCriterion("order not in", values, "order");
+        public Criteria andTraderOrderNotIn(List<String> values) {
+            addCriterion("trader_order not in", values, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBetween(String value1, String value2) {
-            addCriterion("order between", value1, value2, "order");
+        public Criteria andTraderOrderBetween(String value1, String value2) {
+            addCriterion("trader_order between", value1, value2, "traderOrder");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotBetween(String value1, String value2) {
-            addCriterion("order not between", value1, value2, "order");
+        public Criteria andTraderOrderNotBetween(String value1, String value2) {
+            addCriterion("trader_order not between", value1, value2, "traderOrder");
             return (Criteria) this;
         }
     }

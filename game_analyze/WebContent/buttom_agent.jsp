@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>元巫科技运营支撑系统</title>
+    <title>元巫科技代理系统</title>
     <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
     <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
@@ -16,7 +16,7 @@
     <div class="bottom" id="bottom">
         <span class="copyright">
             <span class="l"> 元巫科技 </span>
-            <font class="r">Copyright &copy; 2019 &nbsp;京ICP备120005794号 </font>
+            <font class="r">Copyright &copy; 2019 &nbsp;京ICP备120005794号 </font>
         </span>
     </div>
 

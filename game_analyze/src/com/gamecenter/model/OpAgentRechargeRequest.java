@@ -42,7 +42,7 @@ public class OpAgentRechargeRequest implements Serializable {
     /**
      * 交易号
      */
-    private String order;
+    private String traderOrder;
 
     /**
      * op_agent_recharge_request
@@ -105,12 +105,12 @@ public class OpAgentRechargeRequest implements Serializable {
         this.operate = operate;
     }
 
-    public String getOrder() {
-        return order;
+    public String getTraderOrder() {
+        return traderOrder;
     }
 
-    public void setOrder(String order) {
-        this.order = order == null ? null : order.trim();
+    public void setTraderOrder(String traderOrder) {
+        this.traderOrder = traderOrder == null ? null : traderOrder.trim();
     }
 
     @Override
@@ -126,7 +126,7 @@ public class OpAgentRechargeRequest implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", name=").append(name);
         sb.append(", operate=").append(operate);
-        sb.append(", order=").append(order);
+        sb.append(", traderOrder=").append(traderOrder);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>添加充值信息</title>
-<c:import url="/headmsg"></c:import>
+<c:import url="/head/agent"></c:import>
 </head>
 <body>
 

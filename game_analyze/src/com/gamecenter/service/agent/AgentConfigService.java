@@ -1,5 +1,7 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import com.gamecenter.model.OpAgentConfig;
 
 /** 
@@ -13,5 +15,14 @@ import com.gamecenter.model.OpAgentConfig;
  */
 public interface AgentConfigService extends BaseService<OpAgentConfig> {
 
+	
+	/** 
+	 * getAgentConfigList:(). <br/> 
+	 * TODO().<br/> 
+	 * 得到全部的配置文件
+	 * @author lyh 
+	 * @return 
+	 */  
+	List<OpAgentConfig> getAgentConfigList();
 }
   

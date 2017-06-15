@@ -5,10 +5,9 @@
 <html>
 <head>
 <title>添加游戏代理信息</title>
-<c:import url="/headmsg"></c:import>
+<c:import url="/head/agent"></c:import>
 </head>
 <body>
-
 
 	<div class="row-fluid" style="width: 900px;">
 		<article class="span12">

@@ -1,5 +1,8 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
+import com.gamecenter.mapper.OpAgentRechargeMapper;
 import com.gamecenter.model.OpAgentRecharge;
 
 /** 
@@ -12,5 +15,27 @@ import com.gamecenter.model.OpAgentRecharge;
  * @see       
  */
 public interface AgentRechargeService extends BaseService<OpAgentRecharge>{
+	
+
+	/** 
+	 * getOpAgentRechargeBuyList:(). <br/> 
+	 * TODO().<br/> 
+	 * 代理获取自己的购买记录
+	 * @author lyh 
+	 * @param agentName
+	 * @return 
+	 */  
+	public List<OpAgentRecharge> getOpAgentRechargeBuyList(String agentName);
+	
+	/** 
+	 * getOpAgentRechargeSellList:(). <br/> 
+	 * TODO().<br/> 
+	 * 代理获取自己的售卡记录
+	 * @author lyh 
+	 * @param upAgentName
+	 * @return 
+	 */  
+	public List<OpAgentRecharge> getOpAgentRechargeSellList(String upAgentName);
+	
 }
   

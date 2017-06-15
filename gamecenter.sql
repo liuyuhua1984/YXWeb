@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-14 18:36:30
+Date: 2017-06-15 18:36:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -576,7 +576,7 @@ CREATE TABLE `oa_role` (
   `info` varchar(500) DEFAULT NULL,
   `pgids` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`roleid`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='权限组';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='权限组';
 
 -- ----------------------------
 -- Records of oa_role
@@ -586,6 +586,7 @@ INSERT INTO `oa_role` VALUES ('17', '普通客服', '1', '', '');
 INSERT INTO `oa_role` VALUES ('18', '客服主管', '1', '', '');
 INSERT INTO `oa_role` VALUES ('19', '财务管理', '1', '', '');
 INSERT INTO `oa_role` VALUES ('20', '管理员', '1', '', '');
+INSERT INTO `oa_role` VALUES ('21', '代理', '1', null, null);
 
 -- ----------------------------
 -- Table structure for oa_user
@@ -774,7 +775,7 @@ CREATE TABLE `op_agent_recharge` (
   `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
   `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
-  `order` varchar(255) DEFAULT NULL COMMENT '交易号',
+  `trader_order` varchar(255) DEFAULT NULL COMMENT '交易号',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -795,7 +796,7 @@ CREATE TABLE `op_agent_recharge_request` (
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
   `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
   `operate` int(1) DEFAULT '0' COMMENT '1表示申请,2表示批准,3表示拒绝',
-  `order` varchar(255) DEFAULT NULL COMMENT '交易号',
+  `trader_order` varchar(255) DEFAULT NULL COMMENT '交易号',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -816,9 +817,9 @@ CREATE TABLE `op_agent_request` (
   `phone` bigint(255) DEFAULT '0' COMMENT '电话',
   `password` varchar(255) DEFAULT NULL COMMENT '密码',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `parent_id` bigint(20) DEFAULT '0' COMMENT '上级代理',
+  `parent_name` varchar(255) DEFAULT '' COMMENT '上级代理',
   PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`)
+  KEY `parent_id` (`parent_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -842,7 +843,7 @@ CREATE TABLE `op_gameapp` (
 -- Records of op_gameapp
 -- ----------------------------
 INSERT INTO `op_gameapp` VALUES ('1', 'game1001', '棋牌', '棋牌');
-INSERT INTO `op_gameapp` VALUES ('7', 'app1', '蛮荒', '蛮荒');
+INSERT INTO `op_gameapp` VALUES ('2', 'game1002', 'MO', 'MO');
 
 -- ----------------------------
 -- Table structure for op_gameapp_version
@@ -886,7 +887,8 @@ CREATE TABLE `op_gameworld` (
 -- ----------------------------
 -- Records of op_gameworld
 -- ----------------------------
-INSERT INTO `op_gameworld` VALUES ('10', 'game1001', null, '局域网', '1003', '1', '192.168.1.150', '192.168.1.150', '8005', '', '0', null, '2014-06-05');
+INSERT INTO `op_gameworld` VALUES ('10', 'game1001', null, '局域网', 'game003', '1', '192.168.0.189', '192.168.0.189', '3102', '', '0', null, '2014-06-05');
+INSERT INTO `op_gameworld` VALUES ('11', 'game1002', null, '天下', '1004', '1', '192.168.0.189', '192.168.0.189', '3102', null, '0', null, '2014-07-05');
 INSERT INTO `op_gameworld` VALUES ('18', 'game1001', null, '凤飞飞', '1001', '1', '192.168.0.189', '192.168.0.189', '3102', '2222', '0', null, '2014-07-03');
 
 -- ----------------------------

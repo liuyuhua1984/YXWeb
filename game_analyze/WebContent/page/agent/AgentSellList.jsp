@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>代理售卡记录</title>
-<c:import url="/headmsg"></c:import>
+<c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
 
 <style type="text/css">
@@ -63,7 +63,7 @@
 			<i class="icon-search"></i>
 		</button>
 	</div>
-	<!-- 
+	<%--
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<div style="position: absolute;">
 			<div style="margin-top: 8px;float: left">游戏：</div>
@@ -87,7 +87,7 @@
 
 		</div>
 	</div>
- -->
+ --%>
 	<%--列表--%>
 	<div class="row-fluid">
 		<article class="span12">
@@ -127,7 +127,7 @@
 										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
 							
 									
-										<td>${item.order}</td>
+										<td>${item.traderOrder}</td>
 										<td>${item.agentName}</td>
 										<td>${item.money}</td>
 										<td><c:choose>

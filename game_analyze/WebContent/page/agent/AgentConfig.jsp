@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>代理充值比例配置</title>
-<c:import url="/headmsg"></c:import>
+<c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
 
 <style type="text/css">

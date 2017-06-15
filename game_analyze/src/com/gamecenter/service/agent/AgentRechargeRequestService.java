@@ -1,5 +1,8 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
+import com.gamecenter.model.OpAgentRecharge;
 import com.gamecenter.model.OpAgentRechargeRequest;
 
 /** 
@@ -13,5 +16,15 @@ import com.gamecenter.model.OpAgentRechargeRequest;
  */
 public interface AgentRechargeRequestService extends BaseService<OpAgentRechargeRequest>{
 	
+	
+	/** 
+	 * getAgentRechargeRequestList:(). <br/> 
+	 * TODO().<br/> 
+	 *充值请求列表
+	 * @author lyh 
+	 * @param agentName
+	 * @return 
+	 */  
+	public List<OpAgentRechargeRequest> getAgentRechargeRequestList(String agentName);
 }
   

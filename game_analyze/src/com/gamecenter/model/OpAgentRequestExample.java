@@ -577,63 +577,73 @@ public class OpAgentRequestExample {
             return (Criteria) this;
         }
 
-        public Criteria andParentIdIsNull() {
-            addCriterion("parent_id is null");
+        public Criteria andParentNameIsNull() {
+            addCriterion("parent_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdIsNotNull() {
-            addCriterion("parent_id is not null");
+        public Criteria andParentNameIsNotNull() {
+            addCriterion("parent_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdEqualTo(Long value) {
-            addCriterion("parent_id =", value, "parentId");
+        public Criteria andParentNameEqualTo(String value) {
+            addCriterion("parent_name =", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdNotEqualTo(Long value) {
-            addCriterion("parent_id <>", value, "parentId");
+        public Criteria andParentNameNotEqualTo(String value) {
+            addCriterion("parent_name <>", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdGreaterThan(Long value) {
-            addCriterion("parent_id >", value, "parentId");
+        public Criteria andParentNameGreaterThan(String value) {
+            addCriterion("parent_name >", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("parent_id >=", value, "parentId");
+        public Criteria andParentNameGreaterThanOrEqualTo(String value) {
+            addCriterion("parent_name >=", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdLessThan(Long value) {
-            addCriterion("parent_id <", value, "parentId");
+        public Criteria andParentNameLessThan(String value) {
+            addCriterion("parent_name <", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdLessThanOrEqualTo(Long value) {
-            addCriterion("parent_id <=", value, "parentId");
+        public Criteria andParentNameLessThanOrEqualTo(String value) {
+            addCriterion("parent_name <=", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdIn(List<Long> values) {
-            addCriterion("parent_id in", values, "parentId");
+        public Criteria andParentNameLike(String value) {
+            addCriterion("parent_name like", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdNotIn(List<Long> values) {
-            addCriterion("parent_id not in", values, "parentId");
+        public Criteria andParentNameNotLike(String value) {
+            addCriterion("parent_name not like", value, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdBetween(Long value1, Long value2) {
-            addCriterion("parent_id between", value1, value2, "parentId");
+        public Criteria andParentNameIn(List<String> values) {
+            addCriterion("parent_name in", values, "parentName");
             return (Criteria) this;
         }
 
-        public Criteria andParentIdNotBetween(Long value1, Long value2) {
-            addCriterion("parent_id not between", value1, value2, "parentId");
+        public Criteria andParentNameNotIn(List<String> values) {
+            addCriterion("parent_name not in", values, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameBetween(String value1, String value2) {
+            addCriterion("parent_name between", value1, value2, "parentName");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentNameNotBetween(String value1, String value2) {
+            addCriterion("parent_name not between", value1, value2, "parentName");
             return (Criteria) this;
         }
     }

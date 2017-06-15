@@ -1,11 +1,14 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.gamecenter.mapper.OpAgentRechargeRequestMapper;
 import com.gamecenter.model.OpAgentRechargeRequest;
+import com.gamecenter.model.OpAgentRechargeRequestExample;
 
 /** 
  * ClassName:AgentRechargeRequestService <br/> 
@@ -44,6 +47,15 @@ public class AgentRechargeRequestServiceImpl implements AgentRechargeRequestServ
 	public OpAgentRechargeRequest findById(long id) {
 		// TODO Auto-generated method stub
 		return mapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<OpAgentRechargeRequest> getAgentRechargeRequestList(String agentName) {
+		// TODO Auto-generated method stub
+		OpAgentRechargeRequestExample opAgentRechargeRequestExample = new OpAgentRechargeRequestExample();
+		OpAgentRechargeRequestExample.Criteria criteria = opAgentRechargeRequestExample.createCriteria();
+		criteria.andAgentNameEqualTo(agentName);
+		return mapper.selectByExample(opAgentRechargeRequestExample);
 	}
 	
 }

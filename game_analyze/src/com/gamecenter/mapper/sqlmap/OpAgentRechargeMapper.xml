@@ -8,7 +8,7 @@
     <result column="is_agent" jdbcType="TINYINT" property="isAgent" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="order" jdbcType="VARCHAR" property="order" />
+    <result column="trader_order" jdbcType="VARCHAR" property="traderOrder" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, agent_name, money, is_agent, create_time, name, order
+    id, agent_name, money, is_agent, create_time, name, trader_order
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRechargeExample" resultMap="BaseResultMap">
     select
@@ -107,10 +107,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into op_agent_recharge (agent_name, money, is_agent, 
-      create_time, name, order
+      create_time, name, trader_order
       )
     values (#{agentName,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{isAgent,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{order,jdbcType=VARCHAR}
+      #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{traderOrder,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRecharge">
@@ -134,8 +134,8 @@
       <if test="name != null">
         name,
       </if>
-      <if test="order != null">
-        order,
+      <if test="traderOrder != null">
+        trader_order,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -154,8 +154,8 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="order != null">
-        #{order,jdbcType=VARCHAR},
+      <if test="traderOrder != null">
+        #{traderOrder,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -186,8 +186,8 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.order != null">
-        order = #{record.order,jdbcType=VARCHAR},
+      <if test="record.traderOrder != null">
+        trader_order = #{record.traderOrder,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -202,7 +202,7 @@
       is_agent = #{record.isAgent,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       name = #{record.name,jdbcType=VARCHAR},
-      order = #{record.order,jdbcType=VARCHAR}
+      trader_order = #{record.traderOrder,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,8 +225,8 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="order != null">
-        order = #{order,jdbcType=VARCHAR},
+      <if test="traderOrder != null">
+        trader_order = #{traderOrder,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -238,7 +238,7 @@
       is_agent = #{isAgent,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
-      order = #{order,jdbcType=VARCHAR}
+      trader_order = #{traderOrder,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

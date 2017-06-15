@@ -35,7 +35,7 @@
                                             <a url-data="player-churned"
                                                     <c:choose>
                                                         <c:when test="${xxx.moduleurl eq 'xx'}"> href="javascript:void(0);" </c:when>
-                                                        <c:otherwise> href="${xxx.moduleurl}"</c:otherwise>
+                                                        <c:otherwise> href="${ctxPage}${xxx.moduleurl}"</c:otherwise>
                                                     </c:choose>
                                                target="mainFrame">${xxx.modulename}</a>
                                         </li>
@@ -55,7 +55,7 @@
 
 </div>
 <script type="text/javascript">
-    window.parent.goinitpage("${firstUrl}");
+    window.parent.goinitpage("${ctxPage}${firstUrl}");
 </script>
 
 </body>
