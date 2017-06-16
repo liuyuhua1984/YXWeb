@@ -30,6 +30,7 @@ public interface OpOssQlzRechargeTxMapper {
 	
 	int updateByPrimaryKey(OpOssQlzRechargeTx record);
 	
+	
 	/**
 	 * 获取的分页列表数据
 	 * 

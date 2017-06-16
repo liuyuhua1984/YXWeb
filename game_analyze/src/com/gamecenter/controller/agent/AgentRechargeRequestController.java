@@ -41,10 +41,17 @@ public class AgentRechargeRequestController {
 			platformName = userMsg.getAgentName();
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
-		ModelAndView view = new ModelAndView("page/agent/AgentRechargeRequest");
+		ModelAndView view = new ModelAndView("page/agent/AgentRechargeRequestList");
 		List<OpAgentRechargeRequest> list = agentRechargeRequestService.getAgentRechargeRequestList(platformName);
 		view.addObject("lists",list);
 		view.addObject("targetTime", targetTime);
+		return view;
+	}
+	
+	//AgentRechargeRequest
+	@RequestMapping("/recharge/add")
+	public ModelAndView  rechargeRequest(){
+		ModelAndView view = new ModelAndView("page/agent/AgentRechargeRequest");
 		return view;
 	}
 	

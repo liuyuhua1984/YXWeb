@@ -57,6 +57,16 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 		criteria.andAgentIdEqualTo(agentId);
 		return mapper.selectByExample(opAgentInviteCodeExample);
 	}
+
+	@Override
+	public OpAgentInviteCode findOpAgentInviteCodeByCode(String invteCode) {
+		// TODO Auto-generated method stub
+		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
+		OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
+		criteria.andInviteCodeEqualTo(invteCode);
+		List<OpAgentInviteCode> list = mapper.selectByExample(opAgentInviteCodeExample);
+		return list.size() > 0 ? list.get(0): null;
+	}
 	
 }
   

@@ -68,6 +68,32 @@ public class AgentListServiceImpl implements AgentListService {
 		// TODO Auto-generated method stub
 		maper.insert(agent);
 	}
+
+	@Override
+	public OpAgentList findByPhone(long phone) {
+		// TODO Auto-generated method stub
+		OpAgentListExample example = new OpAgentListExample();
+		OpAgentListExample.Criteria criteria = example.createCriteria();
+		criteria.andPhoneEqualTo(phone);
+		 List<OpAgentList> list = maper.selectByExample(example);
+		 if (list != null && list.size() > 0){
+			 return list.get(0);
+		 }
+		return null;
+	}
+
+	@Override
+	public OpAgentList findByWechat(String weChat) {
+		// TODO Auto-generated method stub
+		OpAgentListExample example = new OpAgentListExample();
+		OpAgentListExample.Criteria criteria = example.createCriteria();
+		criteria.andWechatCodeEqualTo(weChat);
+		 List<OpAgentList> list = maper.selectByExample(example);
+		 if (list != null && list.size() > 0){
+			 return list.get(0);
+		 }
+		return null;
+	}
 	
 	
 }
