@@ -55,7 +55,7 @@ public interface AgentListService {
 		 * @param obj
 		 * @return 
 		 */  
-		OpAgentList findByName(String key);
+		OpAgentList findByName(String name);
 		
 		/** 
 		 * update:(). <br/> 
@@ -74,6 +74,27 @@ public interface AgentListService {
 		 * @param agentId 
 		 */  
 		void deleteById(long agentId);
+		
+		
+		/** 
+		 * findByPhone:(). <br/> 
+		 * TODO().<br/> 
+		 * 电话号码查找对象
+		 * @author lyh 
+		 * @param phone
+		 * @return 
+		 */  
+		OpAgentList findByPhone(long phone);
+		
+		/** 
+		 * findByWechat:(). <br/> 
+		 * TODO().<br/> 
+		 * 微信查找对对象
+		 * @author lyh 
+		 * @param weChat
+		 * @return 
+		 */  
+		OpAgentList findByWechat(String weChat);
 		
 		
 }

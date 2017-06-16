@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-15 18:36:34
+Date: 2017-06-16 17:39:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -706,7 +706,7 @@ CREATE TABLE `op_activity_uselog` (
 -- ----------------------------
 DROP TABLE IF EXISTS `op_agent_config`;
 CREATE TABLE `op_agent_config` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `one_level` varchar(255) DEFAULT NULL COMMENT '一级的充值比例',
   `two_level` varchar(255) DEFAULT NULL COMMENT '二级充值比例',
   `three_level` varchar(255) DEFAULT NULL COMMENT '三级充值比例',
@@ -723,26 +723,28 @@ CREATE TABLE `op_agent_config` (
 -- ----------------------------
 DROP TABLE IF EXISTS `op_agent_invite_code`;
 CREATE TABLE `op_agent_invite_code` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
   `agent_id` bigint(20) DEFAULT NULL,
   `is_use` tinyint(4) DEFAULT '0' COMMENT '是否已使用,已使用为1',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `is_put_out` tinyint(4) DEFAULT '0' COMMENT '是否已发放 发放为1',
   PRIMARY KEY (`id`),
-  KEY `agent_id` (`agent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  KEY `agent_id` (`agent_id`),
+  KEY `invite_code` (`invite_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_invite_code
 -- ----------------------------
+INSERT INTO `op_agent_invite_code` VALUES ('1', '5666', '1', '1', '2017-06-16 14:40:12', '0');
 
 -- ----------------------------
 -- Table structure for op_agent_list
 -- ----------------------------
 DROP TABLE IF EXISTS `op_agent_list`;
 CREATE TABLE `op_agent_list` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL COMMENT '用户昵称',
   `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
   `agent_level` int(11) DEFAULT '0' COMMENT '代理级别,0,1,2,3,',
@@ -756,20 +758,23 @@ CREATE TABLE `op_agent_list` (
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`),
   KEY `name` (`name`),
-  KEY `invite_code` (`invite_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  KEY `invite_code` (`invite_code`),
+  KEY `phone` (`phone`),
+  KEY `wechat_code` (`wechat_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_list
 -- ----------------------------
 INSERT INTO `op_agent_list` VALUES ('1', '中国人', '6554', '1', '1000', '4556', '589974', '195225225', '2017-06-13 17:20:11', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('2', '你好', '5666', '1', null, '1', '5888', '13458795411', '2017-06-16 14:40:26', '123456', '1');
 
 -- ----------------------------
 -- Table structure for op_agent_recharge
 -- ----------------------------
 DROP TABLE IF EXISTS `op_agent_recharge`;
 CREATE TABLE `op_agent_recharge` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
   `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
   `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
@@ -789,7 +794,7 @@ CREATE TABLE `op_agent_recharge` (
 -- ----------------------------
 DROP TABLE IF EXISTS `op_agent_recharge_request`;
 CREATE TABLE `op_agent_recharge_request` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
   `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
   `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
@@ -810,7 +815,7 @@ CREATE TABLE `op_agent_recharge_request` (
 -- ----------------------------
 DROP TABLE IF EXISTS `op_agent_request`;
 CREATE TABLE `op_agent_request` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
   `wechat_code` varchar(255) DEFAULT NULL COMMENT '微信号',
@@ -837,7 +842,7 @@ CREATE TABLE `op_gameapp` (
   `info` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `appid` (`appid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gameapp

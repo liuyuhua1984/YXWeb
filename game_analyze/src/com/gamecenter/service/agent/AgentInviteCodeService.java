@@ -24,5 +24,17 @@ public interface AgentInviteCodeService extends BaseService<OpAgentInviteCode>{
 	 * @return 
 	 */  
 	public List<OpAgentInviteCode> getOpAgentInviteCodeList(long agentId);
+	
+	
+	/** 
+	 * findOpAgentInviteCodeByCode:(). <br/> 
+	 * TODO().<br/> 
+	 * 用邀请码查找对象
+	 * @author lyh 
+	 * @param invteCode
+	 * @return 
+	 */  
+	public OpAgentInviteCode findOpAgentInviteCodeByCode(String invteCode);
+	
 }
   

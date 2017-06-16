@@ -25,7 +25,7 @@ var curpage = 1;
 
 require(['jquery', 'dialog'], function ($, dialog) {
 
-    $("#worldid").change(selectMsg);
+   // $("#worldid").change(selectMsg);
     $("#search").bind("click", selectMsg);
 
     function selectMsg() {
@@ -46,13 +46,14 @@ require(['jquery', 'dialog'], function ($, dialog) {
         var endtime = $("#endtime").val();
         var appid = $("#appid").val();
         var worldid = $("#worldid").val();
-        var htmlobj = $.ajax({url: ctxPage+"/gmt/recharge/dataList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
+        var htmlobj = $.ajax(
+        	{url: ctxPage+"/gmt/recharge/dataList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
 
         $('.sendmoney').on('click', openMsg);
         $(".pagerx a").click(getPager);
 
-        paycount();
+       // paycount();
     }
 
     getPage(curpage);

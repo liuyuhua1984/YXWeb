@@ -7,7 +7,7 @@
 <head>
 <title>代理列表</title>
 <c:import url="/head/agent"></c:import>
-<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
+<!--  <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>-->
 
 <style type="text/css">
 .pagerx {
@@ -97,7 +97,7 @@
 					<h2>代理列表</h2>
 
 					<div class="jarviswidget-ctrls" role="menu">
-						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
+						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"> <span
 							class="pencil-10 "></span></a> <a href="#" class="button-icon jarviswidget-fullscreen-btn"><span class="fullscreen-10 "></span></a> <a href="#" class="button-icon  cus-book-next"><span
 							class="min-10 "></span></a>
 						<!--<button type="button" class="btn btn-mini"><i class="icon-download-alt"></i></button>-->
@@ -105,6 +105,7 @@
 					<span class="jarviswidget-loader"></span>
 
 				</header>
+
 				<!-- wrap div -->
 				<div>
 
@@ -147,8 +148,13 @@
 
 									</tr>
 								</c:forEach>
+
 								<tr>
-									<td colspan="11"></td>
+									<td colspan="11">
+									        <div style="float: left">总查询记录数（${count}）条  </div>
+        									<div class="pagerx">${pageTools}</div>
+									
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -162,40 +168,45 @@
 		</article>
 	</div>
 	<script type="text/javascript">
-    $(document).ready(function () {
-        if ($('#begintime').length) {
-            $('#begintime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }// end if
-        if ($('#endtime').length) {
-            $('#endtime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }
-        
-          /**
-     *  上报状态控制
-     * @param worldid
-     * @param act
-     */
-    function upstatus(id, act) {
-        $.ajax({
-            url: "${ctxPage}/agent/world/upstatus",
-            type: "POST",
-            cache: false,
-            data: {agentId: id, act: act},
-            dataType: "json",
-            success: function (result) {
-                if (result == '1') {
-                    alert("消息发送成功！");
-                }
-                else {
-                    alert("消息发送失败！");
-                }
-            },
-            error: function () {
-                alert("请求异常");
-            }
-        });
-    }
-    });
-</script>
+		$(document).ready(function() {
+			if ($('#begintime').length) {
+				$('#begintime').datepicker({
+					format : 'yyyy-mm-dd'
+				}); //显示时间 并格式化
+			}
+			if ($('#endtime').length) {
+				$('#endtime').datepicker({
+					format : 'yyyy-mm-dd'
+				}); //显示时间 并格式化
+			}
+		});
+		/**
+	     *  上报状态控制
+	     * @param worldid
+	     * @param act
+	     */
+		function upstatus(id, act) {
+			$.ajax({
+				url : "${ctxPage}/agent/world/upstatus",
+				type : "POST",
+				cache : false,
+				data : {
+					agentId : id,
+					act : act
+				},
+				dataType : "json",
+				success : function(result) {
+					if (result == '1') {
+						alert("消息发送成功！");
+					} else {
+						alert("消息发送失败！");
+					}
+				},
+				error : function() {
+					alert("请求异常");
+				}
+			});
+		}
+	</script>
 </body>
 </html>
