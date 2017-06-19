@@ -7,7 +7,7 @@
 <head>
 <title>我的邀请码</title>
 <c:import url="/head/agent"></c:import>
-<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
+<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list_invite_code" defer async="true"></script>
 
 <style type="text/css">
 .pagerx {
@@ -62,32 +62,16 @@
 		<button id="search" type="button" class="btn btn-small" style="margin-top: -7px;">
 			<i class="icon-search"></i>
 		</button>
-	</div>
-	<!-- 
-	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
-		<div style="position: absolute;">
-			<div style="margin-top: 8px;float: left">游戏：</div>
-			<div style="float: left">
-				<select id="appid" name="appid" style="width:150px;position: relative;height: 30px;margin-top: 0px;" onchange="changeWorldType2(this.value);">
-					<c:forEach var="item" items="${appList}">
-						<option value="${item.appid}" />
-                    ${item.appname}
-                </c:forEach>
-				</select>
-			</div>
-			<div style="margin-top: 8px;float: left">区服：</div>
-			<div style="float: left">
-				<select id="worldid" name="worldid" style="width:150px;position: relative;height: 30px;margin-top: 0px;">
-					<c:forEach var="item" items="${worldList}">
-						<option value="${item.worldid}" />
-                    ${item.wname}
-                </c:forEach>
-				</select>
-			</div>
 
-		</div>
 	</div>
- -->
+
+	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
+		<button id="create" type="button" class="btn btn-large" style="margin-top: -7px;">
+			<i class="icon-play"></i> 生成邀请码
+		</button>
+
+	</div>
+
 	<%--列表--%>
 	<div class="row-fluid">
 		<article class="span12">
@@ -114,21 +98,13 @@
 							<thead>
 								<tr>
 									<th width="100">序</th>
-									<th width="100">邀请码</th>
-									<th width="80">生成时间</th>
+									<th width="300">邀请码</th>
+									<th width="200">生成时间</th>
+									<th width="80">操作</th>
 								</tr>
 							</thead>
 							<tbody id="data">
-								<c:forEach items="${lists}" var="item">
-									<tr>
-										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
-										<td>${item.inviteCode}</td>
-										<td>${item.createTime}</td>
-									</tr>
-								</c:forEach>
-								<tr>
-									<td colspan="11"></td>
-								</tr>
+
 							</tbody>
 						</table>
 
@@ -141,40 +117,52 @@
 		</article>
 	</div>
 	<script type="text/javascript">
-    $(document).ready(function () {
-        if ($('#begintime').length) {
-            $('#begintime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }// end if
-        if ($('#endtime').length) {
-            $('#endtime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }
-        
-          /**
-     *  上报状态控制
-     * @param worldid
-     * @param act
-     */
-    function upstatus(id, act) {
-        $.ajax({
-            url: "${ctxPage}/agent/world/upstatus",
-            type: "POST",
-            cache: false,
-            data: {agentId: id, act: act},
-            dataType: "json",
-            success: function (result) {
-                if (result == '1') {
-                    alert("消息发送成功！");
-                }
-                else {
-                    alert("消息发送失败！");
-                }
-            },
-            error: function () {
-                alert("请求异常");
-            }
-        });
-    }
-    });
-</script>
+	
+		
+			
+		$(document).ready(function() {
+			if ($('#begintime').length) {
+				$('#begintime').datepicker({
+					format : 'yyyy-mm-dd'
+				}); //显示时间 并格式化
+			} // end if
+			if ($('#endtime').length) {
+				$('#endtime').datepicker({
+					format : 'yyyy-mm-dd'
+				}); //显示时间 并格式化
+			}
+	
+			/**
+		     *  上报状态控制
+		     * @param worldid
+		     * @param act
+		     */
+			function upstatus(id, act) {
+				$.ajax({
+					url : "${ctxPage}/agent/world/upstatus",
+					type : "POST",
+					cache : false,
+					data : {
+						agentId : id,
+						act : act
+					},
+					dataType : "json",
+					success : function(result) {
+						if (result == '1') {
+							alert("消息发送成功！");
+						} else {
+							alert("消息发送失败！");
+						}
+					},
+					error : function() {
+						alert("请求异常");
+					}
+				});
+			}
+	
+		
+	
+		});
+	</script>
 </body>
 </html>

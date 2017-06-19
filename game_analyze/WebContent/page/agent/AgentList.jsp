@@ -7,7 +7,7 @@
 <head>
 <title>代理列表</title>
 <c:import url="/head/agent"></c:import>
-<!--  <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>-->
+<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
 
 <style type="text/css">
 .pagerx {
@@ -58,7 +58,8 @@
 <body>
 
 	<div style="margin-top: 10px;margin-left: 3px;">
-		日期：<input type="text" id="begintime" name="begintime" style="width:150px;" value="${targetTime}" /> 至<input type="text" id="endtime" name="endtime" style="width:150px;" value="${targetTime}" />
+		日期：<input type="text" id="begintime" name="begintime" style="width:150px;" value="${targetTime}" />
+		 至<input type="text" id="endtime" name="endtime" style="width:150px;" value="${targetTime}" />
 		<button id="search" type="button" class="btn btn-small" style="margin-top: -7px;">
 			<i class="icon-search"></i>
 		</button>
@@ -121,41 +122,13 @@
 									<th width="100">剩余房卡</th>
 									<%--<th width="100">交易号</th>--%>
 									<th width="80">上级代理</th>
-									<th width="60">微信号</th>
-									<th width="60">电话</th>
+									<th width="100">微信号</th>
+									<th width="100">电话</th>
 									<th width="60">状态</th>
 								</tr>
 							</thead>
-							<tbody id="data">
-								<c:forEach items="${lists}" var="item">
-									<tr>
-										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
-										<td>${item.name}</td>
-										<td>${item.inviteCode}</td>
-										<td>${item.agentLevel}</td>
-										<td>${item.remainMoney}</td>
-										<td>${item.parentId}</td>
-										<td>${item.wechatCode}</td>
-										<td>${item.phone}</td>
-										<td><span style="color: #ff0000;"> <c:choose>
-													<c:when test="${item.status eq '1'}">绑定&nbsp;<a class="btn btn-small" href="javascript:void(0);" onclick="upstatus('${item.id}',0)">解绑</a>
-													</c:when>
-													<c:otherwise>
-														解绑&nbsp;<a class="btn btn-small" href="javascript:void(0);" onclick="upstatus('${item.id}',1)">绑定</a>
-													</c:otherwise>
-												</c:choose>
-										</span></td>
-
-									</tr>
-								</c:forEach>
-
-								<tr>
-									<td colspan="11">
-									        <div style="float: left">总查询记录数（${count}）条  </div>
-        									<div class="pagerx">${pageTools}</div>
-									
-									</td>
-								</tr>
+							<tbody id="tbtable">
+						
 							</tbody>
 						</table>
 
@@ -179,7 +152,11 @@
 					format : 'yyyy-mm-dd'
 				}); //显示时间 并格式化
 			}
+			
+		//	getPage(1);
 		});
+		
+		
 		/**
 	     *  上报状态控制
 	     * @param worldid

@@ -67,6 +67,15 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 		List<OpAgentInviteCode> list = mapper.selectByExample(opAgentInviteCodeExample);
 		return list.size() > 0 ? list.get(0): null;
 	}
+
+	@Override
+	public long remainInviteCode() {
+		// TODO Auto-generated method stub
+		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
+		OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
+		criteria.andIsUseEqualTo((byte)0);
+		return mapper.countByExample(opAgentInviteCodeExample);
+	}
 	
 }
   
