@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gamecenter.mapper.OpAgentRechargeMapper">
-  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentRecharge">
+<mapper namespace="com.gamecenter.mapper.OpShopMapper">
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpShop">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="agent_name" jdbcType="VARCHAR" property="agentName" />
-    <result column="money" jdbcType="INTEGER" property="money" />
-    <result column="is_agent" jdbcType="TINYINT" property="isAgent" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="gift" jdbcType="INTEGER" property="gift" />
+    <result column="type" jdbcType="INTEGER" property="type" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="trader_order" jdbcType="VARCHAR" property="traderOrder" />
-    <result column="online_pay" jdbcType="INTEGER" property="onlinePay" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,16 +68,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, agent_name, money, is_agent, create_time, name, trader_order, online_pay
+    id, price, num, gift, type, name
   </sql>
-  <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRechargeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gamecenter.model.OpShopExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from op_agent_recharge
+    from op_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -90,114 +88,94 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from op_agent_recharge
+    from op_shop
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from op_agent_recharge
+    delete from op_shop
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpAgentRechargeExample">
-    delete from op_agent_recharge
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpShopExample">
+    delete from op_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.gamecenter.model.OpAgentRecharge">
+  <insert id="insert" parameterType="com.gamecenter.model.OpShop">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into op_agent_recharge (agent_name, money, is_agent, 
-      create_time, name, trader_order, 
-      online_pay)
-    values (#{agentName,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{isAgent,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{traderOrder,jdbcType=VARCHAR}, 
-      #{onlinePay,jdbcType=INTEGER})
+    insert into op_shop (price, num, gift, 
+      type, name)
+    values (#{price,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{gift,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRecharge">
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpShop">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into op_agent_recharge
+    insert into op_shop
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="agentName != null">
-        agent_name,
+      <if test="price != null">
+        price,
       </if>
-      <if test="money != null">
-        money,
+      <if test="num != null">
+        num,
       </if>
-      <if test="isAgent != null">
-        is_agent,
+      <if test="gift != null">
+        gift,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="type != null">
+        type,
       </if>
       <if test="name != null">
         name,
       </if>
-      <if test="traderOrder != null">
-        trader_order,
-      </if>
-      <if test="onlinePay != null">
-        online_pay,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="agentName != null">
-        #{agentName,jdbcType=VARCHAR},
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
       </if>
-      <if test="money != null">
-        #{money,jdbcType=INTEGER},
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
       </if>
-      <if test="isAgent != null">
-        #{isAgent,jdbcType=TINYINT},
+      <if test="gift != null">
+        #{gift,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="traderOrder != null">
-        #{traderOrder,jdbcType=VARCHAR},
-      </if>
-      <if test="onlinePay != null">
-        #{onlinePay,jdbcType=INTEGER},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.gamecenter.model.OpAgentRechargeExample" resultType="java.lang.Long">
-    select count(*) from op_agent_recharge
+  <select id="countByExample" parameterType="com.gamecenter.model.OpShopExample" resultType="java.lang.Long">
+    select count(*) from op_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update op_agent_recharge
+    update op_shop
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.agentName != null">
-        agent_name = #{record.agentName,jdbcType=VARCHAR},
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=INTEGER},
       </if>
-      <if test="record.money != null">
-        money = #{record.money,jdbcType=INTEGER},
+      <if test="record.num != null">
+        num = #{record.num,jdbcType=INTEGER},
       </if>
-      <if test="record.isAgent != null">
-        is_agent = #{record.isAgent,jdbcType=TINYINT},
+      <if test="record.gift != null">
+        gift = #{record.gift,jdbcType=INTEGER},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.traderOrder != null">
-        trader_order = #{record.traderOrder,jdbcType=VARCHAR},
-      </if>
-      <if test="record.onlinePay != null">
-        online_pay = #{record.onlinePay,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -205,55 +183,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update op_agent_recharge
+    update op_shop
     set id = #{record.id,jdbcType=BIGINT},
-      agent_name = #{record.agentName,jdbcType=VARCHAR},
-      money = #{record.money,jdbcType=INTEGER},
-      is_agent = #{record.isAgent,jdbcType=TINYINT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      name = #{record.name,jdbcType=VARCHAR},
-      trader_order = #{record.traderOrder,jdbcType=VARCHAR},
-      online_pay = #{record.onlinePay,jdbcType=INTEGER}
+      price = #{record.price,jdbcType=INTEGER},
+      num = #{record.num,jdbcType=INTEGER},
+      gift = #{record.gift,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpAgentRecharge">
-    update op_agent_recharge
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpShop">
+    update op_shop
     <set>
-      <if test="agentName != null">
-        agent_name = #{agentName,jdbcType=VARCHAR},
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
       </if>
-      <if test="money != null">
-        money = #{money,jdbcType=INTEGER},
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
       </if>
-      <if test="isAgent != null">
-        is_agent = #{isAgent,jdbcType=TINYINT},
+      <if test="gift != null">
+        gift = #{gift,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="traderOrder != null">
-        trader_order = #{traderOrder,jdbcType=VARCHAR},
-      </if>
-      <if test="onlinePay != null">
-        online_pay = #{onlinePay,jdbcType=INTEGER},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentRecharge">
-    update op_agent_recharge
-    set agent_name = #{agentName,jdbcType=VARCHAR},
-      money = #{money,jdbcType=INTEGER},
-      is_agent = #{isAgent,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      name = #{name,jdbcType=VARCHAR},
-      trader_order = #{traderOrder,jdbcType=VARCHAR},
-      online_pay = #{onlinePay,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpShop">
+    update op_shop
+    set price = #{price,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER},
+      gift = #{gift,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

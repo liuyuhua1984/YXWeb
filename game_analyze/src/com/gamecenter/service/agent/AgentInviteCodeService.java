@@ -36,5 +36,15 @@ public interface AgentInviteCodeService extends BaseService<OpAgentInviteCode>{
 	 */  
 	public OpAgentInviteCode findOpAgentInviteCodeByCode(String invteCode);
 	
+	/** 
+	 * remainInviteCode:(). <br/> 
+	 * TODO().<br/> 
+	 * 剩余数量
+	 * @author lyh 
+	 * @return 
+	 */  
+	public long  remainInviteCode();
+		
+	
 }
   

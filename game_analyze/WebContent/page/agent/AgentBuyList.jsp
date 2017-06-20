@@ -5,9 +5,9 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>代理充值记录</title>
+<title>我的充值记录</title>
 <c:import url="/head/agent"></c:import>
-<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
+<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_recharge_buy" defer async="true"></script>
 
 <style type="text/css">
 .pagerx {
@@ -96,7 +96,7 @@
 			<!-- new widget -->
 			<div class="jarviswidget" id="widget-id-0">
 				<header>
-					<h2>代理充值记录</h2>
+					<h2>我的充值记录</h2>
 
 					<div class="jarviswidget-ctrls" role="menu">
 						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
@@ -117,27 +117,13 @@
 								<tr>
 									<th width="100">序</th>
 									<th width="100">交易号</th>
-									<th width="80">用户昵称</th>
+									<th width="80">上级昵称</th>
 									<th width="80">充值金额</th>
 									<th width="80">充值时间</th>
 								</tr>
 							</thead>
 							<tbody id="data">
-								<c:forEach items="${lists}" var="item">
-									<tr>
-										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
-
-
-										<td>${item.traderOrder}</td>
-										<td>${item.agentName}</td>
-										<td>${item.money}</td>
-										<td>${item.createTime}</td>
-
-									</tr>
-								</c:forEach>
-								<tr>
-									<td colspan="11"></td>
-								</tr>
+								
 							</tbody>
 						</table>
 

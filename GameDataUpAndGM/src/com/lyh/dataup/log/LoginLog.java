@@ -51,7 +51,8 @@ public class LoginLog extends DataUpBase {
 	
 	/**登录时间**/  
 	private long loginTime;
-	
+	/**邀请码**/  
+	private String inviteCode;
 	public String getAppId() {
 		return appId;
 	}
@@ -130,6 +131,14 @@ public class LoginLog extends DataUpBase {
 
 	public void setLoginTime(long loginTime) {
 		this.loginTime = loginTime;
+	}
+
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
 	}
 	
 }

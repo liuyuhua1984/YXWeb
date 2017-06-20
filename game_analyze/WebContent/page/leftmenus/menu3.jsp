@@ -47,7 +47,7 @@
 							</a>
 
 								<ol>
-									<li><a url-data="player-churned" href="${ctxPage}/agent/invite/code/list" target="mainFrame">剩余邀请码</a></li>
+									<li><a url-data="player-churned" href="${ctxPage}/agent/invite/code/list" target="mainFrame">我的邀请码</a></li>
 									<!--
                                 <li><a url-data="player-new">提现审核</a></li>
                                 <li><a url-data="player-new">我的提现</a></li>

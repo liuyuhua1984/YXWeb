@@ -31,8 +31,12 @@ require(['jquery', 'dialog'], function ($, dialog) {
     function selectMsg() {
         getPage(1);
     }
+    
     function getPager() {
         var num = $(this).attr("num");
+		if (num == undefined) {
+			return;
+		}
         getPage(num);
     }
 
@@ -42,17 +46,18 @@ require(['jquery', 'dialog'], function ($, dialog) {
      */
     function getPage(pid) {
         curpage = pid;
-        var begintime = $("#begintime").val();
-        var endtime = $("#endtime").val();
-        var appid = $("#appid").val();
+     //   var begintime = $("#begintime").val();
+     //   var endtime = $("#endtime").val();
+   //     var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         var htmlobj = $.ajax(
-        	{url: ctxPage+"/gmt/recharge/dataList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
-        $("#data").html(htmlobj.responseText);
-
-        $('.sendmoney').on('click', openMsg);
-        $(".pagerx a").click(getPager);
-
+        	{url: ctxPage+"/agent/page/list?page=" + pid, cache: false, async: false})
+        	
+        $("#tbtable").html(htmlobj.responseText);
+		  $(".pagerx a").click(getPager);
+       /** $('.sendmoney').on('click', openMsg);**/
+      /** 	 $("a[num]").click(getPager);**/
+/**	$(".on").click(getPager)**/
        // paycount();
     }
 

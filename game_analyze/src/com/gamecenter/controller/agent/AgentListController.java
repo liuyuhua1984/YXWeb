@@ -52,16 +52,49 @@ public class AgentListController {
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
 		ModelAndView view = new ModelAndView("/page/agent/AgentList");
-		PageHelper.startPage(curPage, 10);
+//		PageHelper.startPage(curPage, 10);
+//		List<OpAgentList> list = agentListService.getNextOpAgentList(agentId);
+//		PageInfo<OpAgentList> pageInfo=new PageInfo<OpAgentList>(list); 
+//		Page page = new Page(curPage, (int)pageInfo.getTotal(), pageInfo.getPages(), pageInfo.getList());
+//	
+//
+//		PageTool3 pt = new PageTool3();
+//		String pageStr = pt.getPageStringForjs("",page);
+//		//view.addObject("lists", list);
+		view.addObject("targetTime", targetTime);
+//		view.addObject("pageTools", pageStr);
+//		view.addObject("count", pageInfo.getTotal());
+		return view;
+		
+	}
+	
+	/** 
+	 * agentListPage:(). <br/> 
+	 * TODO().<br/> 
+	 * 分页列表
+	 * @author lyh 
+	 * @param session
+	 * @param curPage
+	 * @return 
+	 */  
+	@RequestMapping("/page/list")
+	public ModelAndView agentListPage(HttpSession session,@RequestParam(value="page", defaultValue="1") int curPage){
+		AgentUser userMsg= (AgentUser)session.getAttribute("AgentUser");
+		long agentId = 0;
+		if (userMsg != null){
+			agentId = userMsg.getId();
+		}
+		//String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
+		ModelAndView view = new ModelAndView("/page/agent/AgentListPage");
+		PageHelper.startPage(curPage, 5);
 		List<OpAgentList> list = agentListService.getNextOpAgentList(agentId);
 		PageInfo<OpAgentList> pageInfo=new PageInfo<OpAgentList>(list); 
-		Page page = new Page(curPage, (int)pageInfo.getTotal(), pageInfo.getPages(), pageInfo.getList());
+		Page page = new Page(curPage, (int)pageInfo.getTotal(), pageInfo.getPageSize(), pageInfo.getList());
 	
-
 		PageTool3 pt = new PageTool3();
 		String pageStr = pt.getPageStringForjs("",page);
 		view.addObject("lists", list);
-		view.addObject("targetTime", targetTime);
+		//view.addObject("targetTime", targetTime);
 		view.addObject("pageTools", pageStr);
 		view.addObject("count", pageInfo.getTotal());
 		return view;

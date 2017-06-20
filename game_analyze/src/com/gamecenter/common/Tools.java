@@ -26,6 +26,8 @@ import com.gamecenter.common.encrypt.MD5;
  * 日常工具方法
  */
 public class Tools {
+	
+	public static final int PAGE_SIZE = 10;
 	private Calendar calendar = null;
 	private int minus = 0;
 	

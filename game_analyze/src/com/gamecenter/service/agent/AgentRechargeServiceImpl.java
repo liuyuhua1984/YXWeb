@@ -66,6 +66,7 @@ public class AgentRechargeServiceImpl implements AgentRechargeService {
 		criteria.andAgentNameEqualTo(upAgentName);
 		return mapper.selectByExample(opAgentRechargeExample);
 	}
+
 	
 }
   

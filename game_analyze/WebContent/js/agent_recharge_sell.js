@@ -25,15 +25,17 @@ var curpage = 1;
 
 require(['jquery', 'dialog'], function ($, dialog) {
 
-    $("#worldid").change(selectMsg);
+   // $("#worldid").change(selectMsg);
     $("#search").bind("click", selectMsg);
-
+    $("#recharge").bind("click", pay);
+    
     function selectMsg() {
         getPage(1);
     }
+    
     function getPager() {
         var num = $(this).attr("num");
-        if (num == undefined) {
+       if (num == undefined) {
 			return;
 		}
         getPage(num);
@@ -45,17 +47,15 @@ require(['jquery', 'dialog'], function ($, dialog) {
      */
     function getPage(pid) {
         curpage = pid;
-        var begintime = $("#begintime").val();
-        var endtime = $("#endtime").val();
-        var appid = $("#appid").val();
-        var worldid = $("#worldid").val();
-        var htmlobj = $.ajax({url: ctxPage+"/gmt/recharge/dataList?page=" + pid + "&appid=" + appid + "&worldid=" + worldid + "&begintime=" + begintime + "&endtime=" + endtime, cache: false, async: false})
+     //   var begintime = $("#begintime").val();
+     //   var endtime = $("#endtime").val();
+   //     var appid = $("#appid").val();
+   //     var worldid = $("#worldid").val();
+        var htmlobj = $.ajax(
+        	{url: ctxPage+"/agent/sell/list/page?page=" + pid, cache: false, async: false})
+        	
         $("#data").html(htmlobj.responseText);
-
-        $('.sendmoney').on('click', openMsg);
-        $(".pagerx a").click(getPager);
-
-        paycount();
+		 $(".pagerx a").click(getPager);
     }
 
     getPage(curpage);
@@ -64,7 +64,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
     /**
      * 金额汇总
      */
-    function paycount() {
+    function pay() {
         var begintime = $("#begintime").val();
         var endtime = $("#endtime").val();
         var appid = $("#appid").val();

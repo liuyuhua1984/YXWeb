@@ -54,6 +54,17 @@ public class CreateRoleLog extends DataUpBase {
 	/**创建角色时间**/  
 	private long createRoleTime;
 	
+	/**邀请码**/  
+	private String inviteCode;
+	
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
+
 	public String getAppId() {
 		return appId;
 	}

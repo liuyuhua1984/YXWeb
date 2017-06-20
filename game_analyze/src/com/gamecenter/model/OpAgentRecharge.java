@@ -40,6 +40,11 @@ public class OpAgentRecharge implements Serializable {
     private String traderOrder;
 
     /**
+     * 是否在线充值 1为在线充
+     */
+    private Integer onlinePay;
+
+    /**
      * op_agent_recharge
      */
     private static final long serialVersionUID = 1L;
@@ -100,6 +105,14 @@ public class OpAgentRecharge implements Serializable {
         this.traderOrder = traderOrder == null ? null : traderOrder.trim();
     }
 
+    public Integer getOnlinePay() {
+        return onlinePay;
+    }
+
+    public void setOnlinePay(Integer onlinePay) {
+        this.onlinePay = onlinePay;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -113,6 +126,7 @@ public class OpAgentRecharge implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", name=").append(name);
         sb.append(", traderOrder=").append(traderOrder);
+        sb.append(", onlinePay=").append(onlinePay);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -26,6 +26,7 @@
     <result column="guidenum" jdbcType="VARCHAR" property="guidenum" />
     <result column="sfrom" jdbcType="VARCHAR" property="sfrom" />
     <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -88,7 +89,8 @@
   <sql id="Base_Column_List">
     openid, worldid, rolename, grade, curmoney, totalmoney, career, isonline, status, 
     lastloginip, logincount, fristlogintime, lastlogintime, regtime, info, totalonline, 
-    totalconsume, vipgrade, fristpaytime, lastpaytime, optid, guidenum, sfrom, app_id
+    totalconsume, vipgrade, fristpaytime, lastpaytime, optid, guidenum, sfrom, app_id, 
+    invite_code
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpOssQlzPassportExample" resultMap="BaseResultMap">
     select
@@ -129,8 +131,8 @@
       lastlogintime, regtime, info, 
       totalonline, totalconsume, vipgrade, 
       fristpaytime, lastpaytime, optid, 
-      guidenum, sfrom, app_id
-      )
+      guidenum, sfrom, app_id, 
+      invite_code)
     values (#{openid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
       #{grade,jdbcType=INTEGER}, #{curmoney,jdbcType=DOUBLE}, #{totalmoney,jdbcType=DOUBLE}, 
       #{career,jdbcType=INTEGER}, #{isonline,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
@@ -138,8 +140,8 @@
       #{lastlogintime,jdbcType=VARCHAR}, #{regtime,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, 
       #{totalonline,jdbcType=INTEGER}, #{totalconsume,jdbcType=DOUBLE}, #{vipgrade,jdbcType=INTEGER}, 
       #{fristpaytime,jdbcType=VARCHAR}, #{lastpaytime,jdbcType=VARCHAR}, #{optid,jdbcType=VARCHAR}, 
-      #{guidenum,jdbcType=VARCHAR}, #{sfrom,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}
-      )
+      #{guidenum,jdbcType=VARCHAR}, #{sfrom,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{inviteCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssQlzPassport">
     insert into op_oss_qlz_passport
@@ -216,6 +218,9 @@
       <if test="appId != null">
         app_id,
       </if>
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="openid != null">
@@ -289,6 +294,9 @@
       </if>
       <if test="appId != null">
         #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -373,6 +381,9 @@
       <if test="record.appId != null">
         app_id = #{record.appId,jdbcType=VARCHAR},
       </if>
+      <if test="record.inviteCode != null">
+        invite_code = #{record.inviteCode,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -403,7 +414,8 @@
       optid = #{record.optid,jdbcType=VARCHAR},
       guidenum = #{record.guidenum,jdbcType=VARCHAR},
       sfrom = #{record.sfrom,jdbcType=VARCHAR},
-      app_id = #{record.appId,jdbcType=VARCHAR}
+      app_id = #{record.appId,jdbcType=VARCHAR},
+      invite_code = #{record.inviteCode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -480,6 +492,9 @@
       <if test="appId != null">
         app_id = #{appId,jdbcType=VARCHAR},
       </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
     </set>
     where openid = #{openid,jdbcType=VARCHAR}
   </update>
@@ -507,7 +522,8 @@
       optid = #{optid,jdbcType=VARCHAR},
       guidenum = #{guidenum,jdbcType=VARCHAR},
       sfrom = #{sfrom,jdbcType=VARCHAR},
-      app_id = #{appId,jdbcType=VARCHAR}
+      app_id = #{appId,jdbcType=VARCHAR},
+      invite_code = #{inviteCode,jdbcType=VARCHAR}
     where openid = #{openid,jdbcType=VARCHAR}
   </update>
   
