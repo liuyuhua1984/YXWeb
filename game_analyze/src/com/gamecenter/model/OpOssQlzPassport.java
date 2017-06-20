@@ -119,9 +119,14 @@ public class OpOssQlzPassport implements Serializable {
     private String sfrom;
 
     /**
-     * Ӧ��id
+     * 应用id
      */
     private String appId;
+
+    /**
+     * 邀请码
+     */
+    private String inviteCode;
 
     /**
      * op_oss_qlz_passport
@@ -320,6 +325,14 @@ public class OpOssQlzPassport implements Serializable {
         this.appId = appId == null ? null : appId.trim();
     }
 
+    public String getInviteCode() {
+        return inviteCode;
+    }
+
+    public void setInviteCode(String inviteCode) {
+        this.inviteCode = inviteCode == null ? null : inviteCode.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -350,6 +363,7 @@ public class OpOssQlzPassport implements Serializable {
         sb.append(", guidenum=").append(guidenum);
         sb.append(", sfrom=").append(sfrom);
         sb.append(", appId=").append(appId);
+        sb.append(", inviteCode=").append(inviteCode);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

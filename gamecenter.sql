@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-16 17:39:18
+Date: 2017-06-20 19:10:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -732,12 +732,113 @@ CREATE TABLE `op_agent_invite_code` (
   PRIMARY KEY (`id`),
   KEY `agent_id` (`agent_id`),
   KEY `invite_code` (`invite_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_invite_code
 -- ----------------------------
 INSERT INTO `op_agent_invite_code` VALUES ('1', '5666', '1', '1', '2017-06-16 14:40:12', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('103', '1876719652854562816', '1', '0', '2017-06-19 16:33:49', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('104', '1876719659456397312', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('105', '1876719659603197952', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('106', '1876719659800330240', '1', '0', '2017-06-19 16:33:50', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('107', '1876719659917770752', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('108', '1876719660051988480', '1', '0', '2017-06-19 16:33:50', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('109', '1876719660165234688', '1', '0', '2017-06-19 16:33:50', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('110', '1876719660291063808', '1', '0', '2017-06-19 16:33:50', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('111', '1876719660412698624', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('112', '1876719660538527744', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('113', '1876719660655968256', '1', '0', '2017-06-19 16:33:50', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('114', '1876719660781797376', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('115', '1876719660907626496', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('116', '1876719661037649920', '1', '0', '2017-06-19 16:33:51', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('117', '1876719661146701824', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('118', '1876719661297696768', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('119', '1876719661423525888', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('120', '1876719661557743616', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('121', '1876719661721321472', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('122', '1876719661876510720', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('123', '1876719662128168960', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('124', '1876719662602125312', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('125', '1876719663155773440', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('126', '1876719663264825344', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('127', '1876719663403237376', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('128', '1876719663516483584', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('129', '1876719663650701312', '1', '0', '2017-06-19 16:33:51', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('130', '1876719663755558912', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('131', '1876719663856222208', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('132', '1876719663969468416', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('133', '1876719664065937408', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('134', '1876719664174989312', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('135', '1876719664275652608', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('136', '1876719664493756416', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('137', '1876719664644751360', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('138', '1876719664766386176', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('139', '1876719664854466560', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('140', '1876719664980295680', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('141', '1876719665064181760', '1', '0', '2017-06-19 16:33:51', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('142', '1876719665190010880', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('143', '1876719665311645696', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('144', '1876719665441669120', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('145', '1876719665592664064', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('146', '1876719665714298880', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('147', '1876719665831739392', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('148', '1876719666007900160', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('149', '1876719666242781184', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('150', '1876719666360221696', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('151', '1876719666502828032', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('152', '1876719666637045760', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('153', '1876719666762874880', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('154', '1876719666880315392', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('155', '1876719667010338816', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('156', '1876719667169722368', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('157', '1876719667291357184', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('158', '1876719667412992000', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('159', '1876719667534626816', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('160', '1876719667660455936', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('161', '1876719667777896448', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('162', '1876719668046331904', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('163', '1876719668914552832', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('164', '1876719669048770560', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('165', '1876719669174599680', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('166', '1876719669300428800', '1', '0', '2017-06-19 16:33:52', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('167', '1876719669422063616', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('168', '1876719669803745280', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('169', '1876719669896019968', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('170', '1876719670013460480', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('171', '1876719670193815552', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('172', '1876719670382559232', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('173', '1876719670504194048', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('174', '1876719670625828864', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('175', '1876719670713909248', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('176', '1876719670839738368', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('177', '1876719670957178880', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('178', '1876719671041064960', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('179', '1876719671129145344', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('180', '1876719671405969408', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('181', '1876719671640850432', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('182', '1876719671724736512', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('183', '1876719671812816896', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('184', '1876719671896702976', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('185', '1876719671988977664', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('186', '1876719672072863744', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('187', '1876719672160944128', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('188', '1876719672244830208', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('189', '1876719672341299200', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('190', '1876719672458739712', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('191', '1876719672584568832', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('192', '1876719672706203648', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('193', '1876719672832032768', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('194', '1876719672949473280', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('195', '1876719673180160000', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('196', '1876719673297600512', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('197', '1876719673389875200', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('198', '1876719673507315712', '1', '0', '2017-06-19 16:33:53', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('199', '1876719673633144832', '1', '0', '2017-06-19 16:33:54', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('200', '1876719673754779648', '1', '0', '2017-06-19 16:33:54', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('201', '1876719673847054336', '1', '0', '2017-06-19 16:33:54', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('202', '1876719673964494848', '1', '0', '2017-06-19 16:33:54', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('203', '1876719674090323968', '1', '0', '2017-06-19 16:33:54', '0');
 
 -- ----------------------------
 -- Table structure for op_agent_list
@@ -761,13 +862,20 @@ CREATE TABLE `op_agent_list` (
   KEY `invite_code` (`invite_code`),
   KEY `phone` (`phone`),
   KEY `wechat_code` (`wechat_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_list
 -- ----------------------------
 INSERT INTO `op_agent_list` VALUES ('1', '中国人', '6554', '1', '1000', '4556', '589974', '195225225', '2017-06-13 17:20:11', '123456', '1');
-INSERT INTO `op_agent_list` VALUES ('2', '你好', '5666', '1', null, '1', '5888', '13458795411', '2017-06-16 14:40:26', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('2', '你好', '5666', '1', '0', '1', '5888', '13458795411', '2017-06-19 11:18:00', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('3', '大人', '5666', '1', '0', '1', '5889', '74125896323', '2017-06-19 11:19:44', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('4', '大人1', '5666', '1', '0', '1', '58810', '32145678954', '2017-06-19 11:19:47', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('5', '大人2', '5666', '1', '0', '1', '58811', '98523698769', '2017-06-19 11:19:50', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('6', '大人3', '5666', '1', '0', '1', '588812', '13125869746', '2017-06-19 11:19:53', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('7', '大人4', '5666', '1', '0', '1', '588813', '96855418228', '2017-06-19 11:19:56', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('8', '大人5', '5666', '1', '0', '1', '588814', '87456123584', '2017-06-19 11:20:00', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('9', '大人6', '5666', '1', '0', '1', '588845', '98753159827', '2017-06-19 11:20:03', '123456', '1');
 
 -- ----------------------------
 -- Table structure for op_agent_recharge
@@ -781,6 +889,7 @@ CREATE TABLE `op_agent_recharge` (
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
   `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
   `trader_order` varchar(255) DEFAULT NULL COMMENT '交易号',
+  `online_pay` int(11) DEFAULT NULL COMMENT '是否在线充值 1为在线充',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -3336,64 +3445,65 @@ CREATE TABLE `op_oss_qlz_passport` (
   `guidenum` varchar(50) DEFAULT NULL,
   `sfrom` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
+  `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
   PRIMARY KEY (`openid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='热血七龙珠账号表';
 
 -- ----------------------------
 -- Records of op_oss_qlz_passport
 -- ----------------------------
-INSERT INTO `op_oss_qlz_passport` VALUES ('0game003', 'game003', '霍普鲁道夫', '1', '9800000.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-08-29 12:38:15', '2014-09-03 14:12:21', '2014-08-29 12:38:10', '3', '5', '-200000.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('10game003', 'game003', '罗斯克洛宁', '1', '9880000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:27:58', '2014-08-29 12:33:10', '2014-08-29 12:27:55', '4', '4', '-120000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('11', '1', '1', '3', '102.00', '0.00', null, '0', '1', '192.168.1.118', '10', '2014-09-26 09:47:07', '2014-09-28 14:24:04', '2014-09-26 09:47:03', '6', '13', '-3496.00', '0', null, null, null, '5@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('11game003', 'game003', '休爱迪生', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '8', '2014-09-17 16:55:28', '2014-09-22 14:03:25', '2014-09-17 16:55:23', '1', '4', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('12900game003', 'game003', '拉金罗伯逊', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '2', '2014-08-25 14:56:03', '2014-08-25 14:56:03', '2014-08-25 14:56:00', '2', '2', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('1290game003', 'game003', '瓦特普赖斯', '70', '99990000.00', '0.00', null, '0', '1', '192.168.1.118', '40', '2014-08-22 12:26:25', '2014-08-26 16:54:05', '2014-08-22 12:26:20', '1', '106', '-25084.00', '8', null, null, null, '9@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('129game003', 'game003', '萨利道格拉斯', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '2', '2014-08-22 11:51:08', '2014-08-22 11:51:08', '2014-08-22 11:51:03', '1', '1', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('12game003', 'game003', '迈卡斯梯尔', '3', '7663610.00', '0.00', null, '1', '1', '192.168.1.150', '8', '2014-08-22 11:25:16', '2014-08-28 22:56:46', '2014-08-22 11:25:09', '-100000', '2', '-401000.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('145F6553D8D8EBF6130EDC73B4017B5Agame003', 'game003', '亚当福克斯', '1', '893784.00', '0.00', null, '0', '1', '192.168.1.128', '69', '2014-08-21 18:04:00', '2014-09-22 14:43:10', '2014-08-21 18:03:57', '1', '173', '-118203.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('14game003', 'game003', '芬恩布赖斯', '8', '0.00', '0.00', null, '0', '1', '192.168.1.118', '6', '2014-09-11 17:58:23', '2014-09-12 12:03:15', '2014-09-11 17:58:19', '144', '153', '0.00', '0', null, null, null, '9@5', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('1game003', 'game003', '凯雷朗费罗', '45', '95278.00', '0.00', null, '0', '1', '192.168.1.118', '15', '2014-08-29 12:08:29', '2014-09-16 10:18:53', '2014-08-29 12:08:26', '108', '7473', '-206106.00', '9', null, null, null, '2@1', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('2033648game003', 'game003', '科菲莫特利', '35', '1908.00', '0.00', null, '0', '1', '192.168.1.241', '3', '2014-09-04 18:35:09', '2014-09-04 18:35:42', '2014-09-04 18:35:09', '2', '3', '-10.00', '3', null, null, null, '(*Guide_Over*)', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('2035942game003', 'game003', '李慢慢', '48', '245.00', '0.00', null, '1', '1', '192.168.1.118', '2', '2014-09-04 18:05:57', '2014-09-04 18:05:57', '2014-09-04 18:05:57', '-42', '0', '-142.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('20394271', '1', '兰登亚当斯', '1', '998202.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-09-26 09:35:14', '2014-09-26 09:36:17', '2014-09-26 09:35:14', '-1798', '0', '-1798.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('2039427game003', 'game003', '田小官', '69', '0.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-09-22 17:37:31', '2014-09-22 18:25:05', '2014-09-22 17:37:31', '5', '22', '0.00', '4', null, null, null, '(*Guide_Over*)', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('21', '1', '2', '1', '102.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-09-26 09:48:21', '2014-09-28 17:06:34', '2014-09-26 09:48:16', '32', '32', '-5294.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('234game003', 'game003', '摩利安東尼', '1', '0.00', '0.00', null, '0', '1', '192.168.1.128', '12', '2014-08-30 16:16:27', '2014-08-30 17:09:20', '2014-08-30 16:16:23', '1', '28', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('2game003', 'game003', '哈该哈伯德', '1', '9898000.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-08-29 12:15:34', '2014-09-16 10:12:30', '2014-08-29 12:15:34', '447', '463', '-102000.00', '0', null, null, null, '1@2', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('31', '1', '3', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:49:20', '2014-09-26 10:35:56', '2014-09-26 09:49:15', '-1798', '0', '-5394.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('3game003', 'game003', '乔丹白壁德', '1', '999894000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:17:16', '2014-08-29 12:35:11', '2014-08-29 12:17:13', '14', '14', '-106000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('41', '1', '5', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:50:04', '2014-09-26 10:35:20', '2014-09-26 09:50:00', '-1798', '0', '-3596.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('43game003', 'game003', '贾德鲍德温', '1', '0.00', '0.00', null, '0', '1', '192.168.1.88', '2', '2014-09-04 19:07:02', '2014-09-04 19:07:02', '2014-09-04 19:06:57', '1', '1', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('4455game003', 'game003', '劳里普里策', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '2', '2014-09-04 11:52:29', '2014-09-04 11:52:29', '2014-09-04 11:52:13', null, '0', '0.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('4545645game003', 'game003', '斯托克罗夫特', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '2', '2014-09-11 17:58:01', '2014-09-11 17:58:01', '2014-09-11 17:58:01', '2', '2', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('459742game003', 'game003', '媽媽咪呀', '58', '2256.00', '0.00', null, '1', '1', '192.168.1.118', '5', '2014-09-19 11:47:47', '2014-09-19 15:11:50', '2014-09-19 11:47:47', '1', '1', '-20.00', '6', null, null, null, '(*Guide_Over*)', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('4game003', 'game003', '鲍勃托因比', '1', '999800000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:20:45', '2014-08-29 12:34:54', '2014-08-29 12:20:42', '11', '11', '-200000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('51', '1', '4', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:50:47', '2014-09-26 10:34:45', '2014-09-26 09:50:44', '-1798', '0', '-5294.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('5game003', 'game003', '卡特霍尔特', '1', '99800000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:22:37', '2014-08-29 12:34:38', '2014-08-29 12:22:34', '9', '9', '-200000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('61', '1', '6', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:53:14', '2014-09-26 10:33:55', '2014-09-26 09:53:09', '-1798', '0', '-5194.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('6game003', 'game003', '哈尔希克斯', '1', '99799000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:24:09', '2014-08-29 12:34:23', '2014-08-29 12:24:05', '8', '8', '-201000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('7game003', 'game003', '卡尔威克利夫', '1', '9799000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:25:01', '2014-08-29 12:34:06', '2014-08-29 12:24:58', '7', '7', '-201000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('8game003', 'game003', '哈该利奥波德', '1', '99899000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:25:52', '2014-08-29 12:33:49', '2014-08-29 12:25:49', '6', '6', '-101000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('9game003', 'game003', '杰米鲍德温', '1', '99888000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:26:55', '2014-08-29 12:33:27', '2014-08-29 12:26:50', '5', '5', '-112000.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('dasfasd1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-13 16:23:12', null, '0', '0.00', '0', null, null, null, null, null, '1');
-INSERT INTO `op_oss_qlz_passport` VALUES ('dsda1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-13 16:18:05', '1', '1', '0.00', '0', null, null, null, null, null, '1');
-INSERT INTO `op_oss_qlz_passport` VALUES ('dsfasf1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-09 15:39:04', '1', '1', '0.00', '0', null, null, null, null, null, '1');
-INSERT INTO `op_oss_qlz_passport` VALUES ('E4EF6792D38354EC67DAB4087245AD96game003', 'game003', '无赖', '70', '0.00', '0.00', null, '0', '1', '192.168.1.118', '4', '2014-09-12 15:51:21', '2014-09-12 15:56:07', '2014-09-12 15:51:21', '2', '4', '0.00', '4', null, null, null, '12@6', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('EA29906FEE97799837A8F0C63035F62Egame003', 'game003', '薇微笑', '1', '0.00', '0.00', null, '0', '1', '192.168.1.128', '7', '2014-08-25 17:51:44', '2014-08-30 16:49:55', '2014-08-25 17:51:44', '1', '4', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('sa1234567game003', 'game003', '迪福拉瑟福德', '1', '99790688.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 00:49:21', '2014-08-29 00:53:05', '2014-08-29 00:49:21', '2', '2', '-209312.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('sa123456game003', 'game003', '拉金詹姆斯', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '11', '2014-08-29 00:04:19', '2014-08-29 00:48:50', '2014-08-29 00:04:19', '1', '13', '0.00', '12', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('sa123game003', 'game003', '洛克福开森', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '2', '2014-08-28 23:28:28', '2014-08-28 23:28:28', '2014-08-28 23:28:28', null, '0', '0.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('sa1game003', 'game003', 'sa1', '40', '7594779.00', '0.00', null, '1', '1', '192.168.1.118', '8', '2014-08-28 21:52:10', '2014-08-28 22:55:39', '2014-08-28 21:52:10', '-1000', '9', '-1308000.00', '9', null, null, null, '(*Guide_Over*)', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('sadgame003', 'game003', 'sad', '1', '98869.00', '0.00', null, '0', '1', '192.168.1.128', '42', '2014-08-22 13:38:51', '2014-09-22 17:38:29', '2014-08-22 10:11:28', '1', '70', '-2030.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('sagame003', 'game003', '巴尼比勒尔', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '2', '2014-08-30 16:04:59', '2014-08-30 16:04:59', '2014-08-30 16:04:55', '1', '1', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('Soul2222121game003', 'game003', '杜邦森次巴立', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '2', '2014-08-22 11:09:44', '2014-08-22 11:09:44', '2014-08-22 11:09:40', '1', '1', '0.00', '0', null, null, null, '1@0', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('Soul222c1111game003', 'game003', '鲍尔马歇尔', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '2', '2014-08-22 12:56:55', '2014-08-22 12:56:55', '2014-08-22 11:20:41', '1', '2', '0.00', '0', null, null, null, '16@1', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('Soul222c11game003', 'game003', '梅格魏克利夫', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2014-08-22 11:16:18', null, '0', '0.00', '0', null, null, null, null, null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('Soulgame003', 'game003', '朗伯斯梅德利', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '10', '2014-08-21 17:59:39', '2014-08-22 13:55:12', '2014-08-21 17:59:32', '1', '54', '0.00', '0', null, null, null, '16@1', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('test10game003', 'game003', '福特邓洛普', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2014-08-22 09:42:26', '1', '1', '0.00', '0', null, null, null, '', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('test11game003', 'game003', '乔尔贝西墨', '21', '0.00', '0.00', null, '0', '1', '192.168.9.238', '2', '2014-08-22 15:54:01', '2014-08-22 15:54:01', '2014-08-22 15:53:58', '79', '79', '0.00', '0', null, null, null, '(*Guide_Over*)', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('testgame003', 'game003', '佩恩塔特爾', '1', '4328.00', '0.00', null, '0', '1', '192.168.1.241', '44', '2014-08-21 17:56:28', '2014-09-04 18:34:25', '2014-08-21 17:45:36', '1', '132', '-10202.00', '0', null, null, null, '(*Guide_Over*)', null, null);
-INSERT INTO `op_oss_qlz_passport` VALUES ('yuchangmei12game003', 'game003', '罗素佩兴斯', '35', '8996575.00', '0.00', null, '1', '1', '192.168.1.118', '6', '2014-08-28 22:18:24', '2014-08-28 22:54:57', '2014-08-28 22:18:24', '-1000', '3', '-401000.00', '12', null, null, null, '(*Guide_Over*)', null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('0game003', 'game003', '霍普鲁道夫', '1', '9800000.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-08-29 12:38:15', '2014-09-03 14:12:21', '2014-08-29 12:38:10', '3', '5', '-200000.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('10game003', 'game003', '罗斯克洛宁', '1', '9880000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:27:58', '2014-08-29 12:33:10', '2014-08-29 12:27:55', '4', '4', '-120000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('11', '1', '1', '3', '102.00', '0.00', null, '0', '1', '192.168.1.118', '10', '2014-09-26 09:47:07', '2014-09-28 14:24:04', '2014-09-26 09:47:03', '6', '13', '-3496.00', '0', null, null, null, '5@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('11game003', 'game003', '休爱迪生', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '8', '2014-09-17 16:55:28', '2014-09-22 14:03:25', '2014-09-17 16:55:23', '1', '4', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('12900game003', 'game003', '拉金罗伯逊', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '2', '2014-08-25 14:56:03', '2014-08-25 14:56:03', '2014-08-25 14:56:00', '2', '2', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('1290game003', 'game003', '瓦特普赖斯', '70', '99990000.00', '0.00', null, '0', '1', '192.168.1.118', '40', '2014-08-22 12:26:25', '2014-08-26 16:54:05', '2014-08-22 12:26:20', '1', '106', '-25084.00', '8', null, null, null, '9@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('129game003', 'game003', '萨利道格拉斯', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '2', '2014-08-22 11:51:08', '2014-08-22 11:51:08', '2014-08-22 11:51:03', '1', '1', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('12game003', 'game003', '迈卡斯梯尔', '3', '7663610.00', '0.00', null, '1', '1', '192.168.1.150', '8', '2014-08-22 11:25:16', '2014-08-28 22:56:46', '2014-08-22 11:25:09', '-100000', '2', '-401000.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('145F6553D8D8EBF6130EDC73B4017B5Agame003', 'game003', '亚当福克斯', '1', '893784.00', '0.00', null, '0', '1', '192.168.1.128', '69', '2014-08-21 18:04:00', '2014-09-22 14:43:10', '2014-08-21 18:03:57', '1', '173', '-118203.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('14game003', 'game003', '芬恩布赖斯', '8', '0.00', '0.00', null, '0', '1', '192.168.1.118', '6', '2014-09-11 17:58:23', '2014-09-12 12:03:15', '2014-09-11 17:58:19', '144', '153', '0.00', '0', null, null, null, '9@5', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('1game003', 'game003', '凯雷朗费罗', '45', '95278.00', '0.00', null, '0', '1', '192.168.1.118', '15', '2014-08-29 12:08:29', '2014-09-16 10:18:53', '2014-08-29 12:08:26', '108', '7473', '-206106.00', '9', null, null, null, '2@1', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('2033648game003', 'game003', '科菲莫特利', '35', '1908.00', '0.00', null, '0', '1', '192.168.1.241', '3', '2014-09-04 18:35:09', '2014-09-04 18:35:42', '2014-09-04 18:35:09', '2', '3', '-10.00', '3', null, null, null, '(*Guide_Over*)', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('2035942game003', 'game003', '李慢慢', '48', '245.00', '0.00', null, '1', '1', '192.168.1.118', '2', '2014-09-04 18:05:57', '2014-09-04 18:05:57', '2014-09-04 18:05:57', '-42', '0', '-142.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('20394271', '1', '兰登亚当斯', '1', '998202.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-09-26 09:35:14', '2014-09-26 09:36:17', '2014-09-26 09:35:14', '-1798', '0', '-1798.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('2039427game003', 'game003', '田小官', '69', '0.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-09-22 17:37:31', '2014-09-22 18:25:05', '2014-09-22 17:37:31', '5', '22', '0.00', '4', null, null, null, '(*Guide_Over*)', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('21', '1', '2', '1', '102.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-09-26 09:48:21', '2014-09-28 17:06:34', '2014-09-26 09:48:16', '32', '32', '-5294.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('234game003', 'game003', '摩利安東尼', '1', '0.00', '0.00', null, '0', '1', '192.168.1.128', '12', '2014-08-30 16:16:27', '2014-08-30 17:09:20', '2014-08-30 16:16:23', '1', '28', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('2game003', 'game003', '哈该哈伯德', '1', '9898000.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-08-29 12:15:34', '2014-09-16 10:12:30', '2014-08-29 12:15:34', '447', '463', '-102000.00', '0', null, null, null, '1@2', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('31', '1', '3', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:49:20', '2014-09-26 10:35:56', '2014-09-26 09:49:15', '-1798', '0', '-5394.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('3game003', 'game003', '乔丹白壁德', '1', '999894000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:17:16', '2014-08-29 12:35:11', '2014-08-29 12:17:13', '14', '14', '-106000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('41', '1', '5', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:50:04', '2014-09-26 10:35:20', '2014-09-26 09:50:00', '-1798', '0', '-3596.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('43game003', 'game003', '贾德鲍德温', '1', '0.00', '0.00', null, '0', '1', '192.168.1.88', '2', '2014-09-04 19:07:02', '2014-09-04 19:07:02', '2014-09-04 19:06:57', '1', '1', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('4455game003', 'game003', '劳里普里策', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '2', '2014-09-04 11:52:29', '2014-09-04 11:52:29', '2014-09-04 11:52:13', null, '0', '0.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('4545645game003', 'game003', '斯托克罗夫特', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '2', '2014-09-11 17:58:01', '2014-09-11 17:58:01', '2014-09-11 17:58:01', '2', '2', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('459742game003', 'game003', '媽媽咪呀', '58', '2256.00', '0.00', null, '1', '1', '192.168.1.118', '5', '2014-09-19 11:47:47', '2014-09-19 15:11:50', '2014-09-19 11:47:47', '1', '1', '-20.00', '6', null, null, null, '(*Guide_Over*)', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('4game003', 'game003', '鲍勃托因比', '1', '999800000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:20:45', '2014-08-29 12:34:54', '2014-08-29 12:20:42', '11', '11', '-200000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('51', '1', '4', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:50:47', '2014-09-26 10:34:45', '2014-09-26 09:50:44', '-1798', '0', '-5294.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('5game003', 'game003', '卡特霍尔特', '1', '99800000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:22:37', '2014-08-29 12:34:38', '2014-08-29 12:22:34', '9', '9', '-200000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('61', '1', '6', '1', '2.00', '0.00', null, '1', '1', '192.168.1.118', '4', '2014-09-26 09:53:14', '2014-09-26 10:33:55', '2014-09-26 09:53:09', '-1798', '0', '-5194.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('6game003', 'game003', '哈尔希克斯', '1', '99799000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:24:09', '2014-08-29 12:34:23', '2014-08-29 12:24:05', '8', '8', '-201000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('7game003', 'game003', '卡尔威克利夫', '1', '9799000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:25:01', '2014-08-29 12:34:06', '2014-08-29 12:24:58', '7', '7', '-201000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('8game003', 'game003', '哈该利奥波德', '1', '99899000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:25:52', '2014-08-29 12:33:49', '2014-08-29 12:25:49', '6', '6', '-101000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('9game003', 'game003', '杰米鲍德温', '1', '99888000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:26:55', '2014-08-29 12:33:27', '2014-08-29 12:26:50', '5', '5', '-112000.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('dasfasd1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-13 16:23:12', null, '0', '0.00', '0', null, null, null, null, null, '1', null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('dsda1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-13 16:18:05', '1', '1', '0.00', '0', null, null, null, null, null, '1', null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('dsfasf1', '1', '无敌', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-09 15:39:04', '1', '1', '0.00', '0', null, null, null, null, null, '1', null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('E4EF6792D38354EC67DAB4087245AD96game003', 'game003', '无赖', '70', '0.00', '0.00', null, '0', '1', '192.168.1.118', '4', '2014-09-12 15:51:21', '2014-09-12 15:56:07', '2014-09-12 15:51:21', '2', '4', '0.00', '4', null, null, null, '12@6', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('EA29906FEE97799837A8F0C63035F62Egame003', 'game003', '薇微笑', '1', '0.00', '0.00', null, '0', '1', '192.168.1.128', '7', '2014-08-25 17:51:44', '2014-08-30 16:49:55', '2014-08-25 17:51:44', '1', '4', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('sa1234567game003', 'game003', '迪福拉瑟福德', '1', '99790688.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 00:49:21', '2014-08-29 00:53:05', '2014-08-29 00:49:21', '2', '2', '-209312.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('sa123456game003', 'game003', '拉金詹姆斯', '1', '0.00', '0.00', null, '0', '1', '192.168.1.118', '11', '2014-08-29 00:04:19', '2014-08-29 00:48:50', '2014-08-29 00:04:19', '1', '13', '0.00', '12', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('sa123game003', 'game003', '洛克福开森', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '2', '2014-08-28 23:28:28', '2014-08-28 23:28:28', '2014-08-28 23:28:28', null, '0', '0.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('sa1game003', 'game003', 'sa1', '40', '7594779.00', '0.00', null, '1', '1', '192.168.1.118', '8', '2014-08-28 21:52:10', '2014-08-28 22:55:39', '2014-08-28 21:52:10', '-1000', '9', '-1308000.00', '9', null, null, null, '(*Guide_Over*)', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('sadgame003', 'game003', 'sad', '1', '98869.00', '0.00', null, '0', '1', '192.168.1.128', '42', '2014-08-22 13:38:51', '2014-09-22 17:38:29', '2014-08-22 10:11:28', '1', '70', '-2030.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('sagame003', 'game003', '巴尼比勒尔', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '2', '2014-08-30 16:04:59', '2014-08-30 16:04:59', '2014-08-30 16:04:55', '1', '1', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('Soul2222121game003', 'game003', '杜邦森次巴立', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '2', '2014-08-22 11:09:44', '2014-08-22 11:09:44', '2014-08-22 11:09:40', '1', '1', '0.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('Soul222c1111game003', 'game003', '鲍尔马歇尔', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '2', '2014-08-22 12:56:55', '2014-08-22 12:56:55', '2014-08-22 11:20:41', '1', '2', '0.00', '0', null, null, null, '16@1', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('Soul222c11game003', 'game003', '梅格魏克利夫', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2014-08-22 11:16:18', null, '0', '0.00', '0', null, null, null, null, null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('Soulgame003', 'game003', '朗伯斯梅德利', '1', '0.00', '0.00', null, '0', '1', '192.168.1.241', '10', '2014-08-21 17:59:39', '2014-08-22 13:55:12', '2014-08-21 17:59:32', '1', '54', '0.00', '0', null, null, null, '16@1', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('test10game003', 'game003', '福特邓洛普', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2014-08-22 09:42:26', '1', '1', '0.00', '0', null, null, null, '', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('test11game003', 'game003', '乔尔贝西墨', '21', '0.00', '0.00', null, '0', '1', '192.168.9.238', '2', '2014-08-22 15:54:01', '2014-08-22 15:54:01', '2014-08-22 15:53:58', '79', '79', '0.00', '0', null, null, null, '(*Guide_Over*)', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('testgame003', 'game003', '佩恩塔特爾', '1', '4328.00', '0.00', null, '0', '1', '192.168.1.241', '44', '2014-08-21 17:56:28', '2014-09-04 18:34:25', '2014-08-21 17:45:36', '1', '132', '-10202.00', '0', null, null, null, '(*Guide_Over*)', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('yuchangmei12game003', 'game003', '罗素佩兴斯', '35', '8996575.00', '0.00', null, '1', '1', '192.168.1.118', '6', '2014-08-28 22:18:24', '2014-08-28 22:54:57', '2014-08-28 22:18:24', '-1000', '3', '-401000.00', '12', null, null, null, '(*Guide_Over*)', null, null, null);
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport_reg
@@ -3567,6 +3677,29 @@ CREATE TABLE `op_oss_user_remain` (
 -- ----------------------------
 -- Records of op_oss_user_remain
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for op_shop
+-- ----------------------------
+DROP TABLE IF EXISTS `op_shop`;
+CREATE TABLE `op_shop` (
+  `id` bigint(20) NOT NULL COMMENT 'id',
+  `price` int(11) DEFAULT '0' COMMENT '价格(RMB)',
+  `num` int(11) DEFAULT '0' COMMENT '钻的数量',
+  `gift` int(11) DEFAULT '0' COMMENT '赠送',
+  `type` int(11) DEFAULT '0' COMMENT '充值类型0为全部,1为玩家2.为代理',
+  `name` varchar(255) DEFAULT NULL COMMENT '商品名称',
+  PRIMARY KEY (`id`),
+  KEY `price` (`price`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of op_shop
+-- ----------------------------
+INSERT INTO `op_shop` VALUES ('1', '1', '10', '0', '0', '钻1');
+INSERT INTO `op_shop` VALUES ('2', '5', '11', '0', '0', '钻2');
+INSERT INTO `op_shop` VALUES ('3', '10', '30', '0', '0', '钻3');
+INSERT INTO `op_shop` VALUES ('4', '100', '30', '0', '0', '钻4');
 
 -- ----------------------------
 -- Table structure for op_tx_task

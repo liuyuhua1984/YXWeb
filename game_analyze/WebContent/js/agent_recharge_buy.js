@@ -51,9 +51,9 @@ require(['jquery', 'dialog'], function ($, dialog) {
    //     var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         var htmlobj = $.ajax(
-        	{url: ctxPage+"/agent/page/list?page=" + pid, cache: false, async: false})
+        	{url: ctxPage+"/agent/buy/list/page?page=" + pid, cache: false, async: false})
         	
-        $("#tbtable").html(htmlobj.responseText);
+        $("#data").html(htmlobj.responseText);
 		  $(".pagerx a").click(getPager);
        /** $('.sendmoney').on('click', openMsg);**/
       /** 	 $("a[num]").click(getPager);**/

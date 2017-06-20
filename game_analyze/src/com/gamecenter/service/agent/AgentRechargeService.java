@@ -37,5 +37,27 @@ public interface AgentRechargeService extends BaseService<OpAgentRecharge>{
 	 */  
 	public List<OpAgentRecharge> getOpAgentRechargeSellList(String upAgentName);
 	
+	
+//	/** 
+//	 * getOpAgentRechargeSellListByAgentId:(). <br/> 
+//	 * TODO().<br/> 
+//	 * 通过代理id获取房卡记录
+//	 * @author lyh 
+//	 * @param parentId
+//	 * @return 
+//	 */  
+//	public List<OpAgentRecharge> getOpAgentRechargeSellListByAgentId(long parentId);
+//	
+//	/** 
+//	 * getOpAgentRechargeBuyListByAgentId:(). <br/> 
+//	 * TODO().<br/> 
+//	 * 自己的购买记录
+//	 * @author lyh 
+//	 * @param myId
+//	 * @return 
+//	 */  
+//	public List<OpAgentRecharge> getOpAgentRechargeBuyListByAgentId(long myId);
+
+	
 }
   

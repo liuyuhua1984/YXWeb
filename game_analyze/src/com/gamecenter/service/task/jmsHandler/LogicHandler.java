@@ -131,6 +131,7 @@ public class LogicHandler implements MessageListener {
 			opOssQlzPassport.setRolename(obj.getRoleName());
 			opOssQlzPassport.setWorldid(obj.getServerId());
 			opOssQlzPassport.setAppId(obj.getAppId());
+			opOssQlzPassport.setInviteCode(obj.getInviteCode());
 			opOssQlzPassport.setRegtime(Tools.getDateString(new Date(obj.getCreateRoleTime())));
 			int num = dataUpHandleService.addPassport(opOssQlzPassport);
 			if (num == 1) {
@@ -174,6 +175,7 @@ public class LogicHandler implements MessageListener {
 					opOssQlzPassport.setWorldid(obj.getServerId());
 					opOssQlzPassport.setAppId(obj.getAppId());
 					opOssQlzPassport.setRegtime(Tools.getDateString(new Date(obj.getLoginTime())));
+					opOssQlzPassport.setInviteCode(obj.getInviteCode());
 					int num = dataUpHandleService.addPassport(opOssQlzPassport);
 					if (num == 1) {
 						DataUpHandle.passports.put(opOssQlzPassport.getOpenid(), opOssQlzPassport);

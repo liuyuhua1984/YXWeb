@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSON;
 import com.gamecenter.common.Page;
+import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.Tools;
 import com.gamecenter.common.jms.DataMessageCreator;
 import com.gamecenter.mapper.OpOssQlzConsumeLogMapper;
@@ -227,6 +228,19 @@ public class DataUpHandleServiceImpl implements DataUpHandleService {
 	
 	public List<OpOssQlzPassportReg> regLastList() {
 		return null; // To change body of implemented methods use File | Settings | File Templates.
+	}
+
+	@Override
+	public OpOssQlzPassport getPassportByName(String name, String worldId) {
+		// TODO Auto-generated method stub
+		OpOssQlzPassportExample  opOssQlzPassportExample = new OpOssQlzPassportExample();
+		OpOssQlzPassportExample.Criteria criteria = opOssQlzPassportExample.createCriteria();
+		criteria.andRolenameEqualTo(name);
+		if (!ToolUtils.isStringNull(worldId)){
+			criteria.andWorldidEqualTo(worldId);
+		}
+		List<OpOssQlzPassport> list = opOssQlzPassportMapper.selectByExample(opOssQlzPassportExample);
+		return list.size() > 0 ?list.get(0) : null;
 	}
 	
 }

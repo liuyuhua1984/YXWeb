@@ -1,26 +1,25 @@
 package com.gamecenter.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class OpAgentRechargeExample {
+public class OpShopExample {
     /**
-     * op_agent_recharge
+     * op_shop
      */
     protected String orderByClause;
 
     /**
-     * op_agent_recharge
+     * op_shop
      */
     protected boolean distinct;
 
     /**
-     * op_agent_recharge
+     * op_shop
      */
     protected List<Criteria> oredCriteria;
 
-    public OpAgentRechargeExample() {
+    public OpShopExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +73,7 @@ public class OpAgentRechargeExample {
     }
 
     /**
-     * op_agent_recharge null
+     * op_shop null
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -177,253 +176,243 @@ public class OpAgentRechargeExample {
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameIsNull() {
-            addCriterion("agent_name is null");
+        public Criteria andPriceIsNull() {
+            addCriterion("price is null");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameIsNotNull() {
-            addCriterion("agent_name is not null");
+        public Criteria andPriceIsNotNull() {
+            addCriterion("price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameEqualTo(String value) {
-            addCriterion("agent_name =", value, "agentName");
+        public Criteria andPriceEqualTo(Integer value) {
+            addCriterion("price =", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameNotEqualTo(String value) {
-            addCriterion("agent_name <>", value, "agentName");
+        public Criteria andPriceNotEqualTo(Integer value) {
+            addCriterion("price <>", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameGreaterThan(String value) {
-            addCriterion("agent_name >", value, "agentName");
+        public Criteria andPriceGreaterThan(Integer value) {
+            addCriterion("price >", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameGreaterThanOrEqualTo(String value) {
-            addCriterion("agent_name >=", value, "agentName");
+        public Criteria andPriceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("price >=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameLessThan(String value) {
-            addCriterion("agent_name <", value, "agentName");
+        public Criteria andPriceLessThan(Integer value) {
+            addCriterion("price <", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameLessThanOrEqualTo(String value) {
-            addCriterion("agent_name <=", value, "agentName");
+        public Criteria andPriceLessThanOrEqualTo(Integer value) {
+            addCriterion("price <=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameLike(String value) {
-            addCriterion("agent_name like", value, "agentName");
+        public Criteria andPriceIn(List<Integer> values) {
+            addCriterion("price in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameNotLike(String value) {
-            addCriterion("agent_name not like", value, "agentName");
+        public Criteria andPriceNotIn(List<Integer> values) {
+            addCriterion("price not in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameIn(List<String> values) {
-            addCriterion("agent_name in", values, "agentName");
+        public Criteria andPriceBetween(Integer value1, Integer value2) {
+            addCriterion("price between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameNotIn(List<String> values) {
-            addCriterion("agent_name not in", values, "agentName");
+        public Criteria andPriceNotBetween(Integer value1, Integer value2) {
+            addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameBetween(String value1, String value2) {
-            addCriterion("agent_name between", value1, value2, "agentName");
+        public Criteria andNumIsNull() {
+            addCriterion("num is null");
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameNotBetween(String value1, String value2) {
-            addCriterion("agent_name not between", value1, value2, "agentName");
+        public Criteria andNumIsNotNull() {
+            addCriterion("num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyIsNull() {
-            addCriterion("money is null");
+        public Criteria andNumEqualTo(Integer value) {
+            addCriterion("num =", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyIsNotNull() {
-            addCriterion("money is not null");
+        public Criteria andNumNotEqualTo(Integer value) {
+            addCriterion("num <>", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyEqualTo(Integer value) {
-            addCriterion("money =", value, "money");
+        public Criteria andNumGreaterThan(Integer value) {
+            addCriterion("num >", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotEqualTo(Integer value) {
-            addCriterion("money <>", value, "money");
+        public Criteria andNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("num >=", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyGreaterThan(Integer value) {
-            addCriterion("money >", value, "money");
+        public Criteria andNumLessThan(Integer value) {
+            addCriterion("num <", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("money >=", value, "money");
+        public Criteria andNumLessThanOrEqualTo(Integer value) {
+            addCriterion("num <=", value, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLessThan(Integer value) {
-            addCriterion("money <", value, "money");
+        public Criteria andNumIn(List<Integer> values) {
+            addCriterion("num in", values, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLessThanOrEqualTo(Integer value) {
-            addCriterion("money <=", value, "money");
+        public Criteria andNumNotIn(List<Integer> values) {
+            addCriterion("num not in", values, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyIn(List<Integer> values) {
-            addCriterion("money in", values, "money");
+        public Criteria andNumBetween(Integer value1, Integer value2) {
+            addCriterion("num between", value1, value2, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotIn(List<Integer> values) {
-            addCriterion("money not in", values, "money");
+        public Criteria andNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("num not between", value1, value2, "num");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyBetween(Integer value1, Integer value2) {
-            addCriterion("money between", value1, value2, "money");
+        public Criteria andGiftIsNull() {
+            addCriterion("gift is null");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotBetween(Integer value1, Integer value2) {
-            addCriterion("money not between", value1, value2, "money");
+        public Criteria andGiftIsNotNull() {
+            addCriterion("gift is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentIsNull() {
-            addCriterion("is_agent is null");
+        public Criteria andGiftEqualTo(Integer value) {
+            addCriterion("gift =", value, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentIsNotNull() {
-            addCriterion("is_agent is not null");
+        public Criteria andGiftNotEqualTo(Integer value) {
+            addCriterion("gift <>", value, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentEqualTo(Byte value) {
-            addCriterion("is_agent =", value, "isAgent");
+        public Criteria andGiftGreaterThan(Integer value) {
+            addCriterion("gift >", value, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentNotEqualTo(Byte value) {
-            addCriterion("is_agent <>", value, "isAgent");
+        public Criteria andGiftGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gift >=", value, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentGreaterThan(Byte value) {
-            addCriterion("is_agent >", value, "isAgent");
+        public Criteria andGiftLessThan(Integer value) {
+            addCriterion("gift <", value, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentGreaterThanOrEqualTo(Byte value) {
-            addCriterion("is_agent >=", value, "isAgent");
+        public Criteria andGiftLessThanOrEqualTo(Integer value) {
+            addCriterion("gift <=", value, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentLessThan(Byte value) {
-            addCriterion("is_agent <", value, "isAgent");
+        public Criteria andGiftIn(List<Integer> values) {
+            addCriterion("gift in", values, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentLessThanOrEqualTo(Byte value) {
-            addCriterion("is_agent <=", value, "isAgent");
+        public Criteria andGiftNotIn(List<Integer> values) {
+            addCriterion("gift not in", values, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentIn(List<Byte> values) {
-            addCriterion("is_agent in", values, "isAgent");
+        public Criteria andGiftBetween(Integer value1, Integer value2) {
+            addCriterion("gift between", value1, value2, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentNotIn(List<Byte> values) {
-            addCriterion("is_agent not in", values, "isAgent");
+        public Criteria andGiftNotBetween(Integer value1, Integer value2) {
+            addCriterion("gift not between", value1, value2, "gift");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentBetween(Byte value1, Byte value2) {
-            addCriterion("is_agent between", value1, value2, "isAgent");
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsAgentNotBetween(Byte value1, Byte value2) {
-            addCriterion("is_agent not between", value1, value2, "isAgent");
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("create_time is null");
+        public Criteria andTypeEqualTo(Integer value) {
+            addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("create_time is not null");
+        public Criteria andTypeNotEqualTo(Integer value) {
+            addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("create_time =", value, "createTime");
+        public Criteria andTypeGreaterThan(Integer value) {
+            addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("create_time <>", value, "createTime");
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("create_time >", value, "createTime");
+        public Criteria andTypeLessThan(Integer value) {
+            addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("create_time >=", value, "createTime");
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("create_time <", value, "createTime");
+        public Criteria andTypeIn(List<Integer> values) {
+            addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("create_time <=", value, "createTime");
+        public Criteria andTypeNotIn(List<Integer> values) {
+            addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("create_time in", values, "createTime");
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
+            addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("create_time not in", values, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("create_time not between", value1, value2, "createTime");
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
 
@@ -496,140 +485,10 @@ public class OpAgentRechargeExample {
             addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
-
-        public Criteria andTraderOrderIsNull() {
-            addCriterion("trader_order is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderIsNotNull() {
-            addCriterion("trader_order is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderEqualTo(String value) {
-            addCriterion("trader_order =", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotEqualTo(String value) {
-            addCriterion("trader_order <>", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderGreaterThan(String value) {
-            addCriterion("trader_order >", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderGreaterThanOrEqualTo(String value) {
-            addCriterion("trader_order >=", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderLessThan(String value) {
-            addCriterion("trader_order <", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderLessThanOrEqualTo(String value) {
-            addCriterion("trader_order <=", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderLike(String value) {
-            addCriterion("trader_order like", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotLike(String value) {
-            addCriterion("trader_order not like", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderIn(List<String> values) {
-            addCriterion("trader_order in", values, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotIn(List<String> values) {
-            addCriterion("trader_order not in", values, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderBetween(String value1, String value2) {
-            addCriterion("trader_order between", value1, value2, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotBetween(String value1, String value2) {
-            addCriterion("trader_order not between", value1, value2, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayIsNull() {
-            addCriterion("online_pay is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayIsNotNull() {
-            addCriterion("online_pay is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayEqualTo(Integer value) {
-            addCriterion("online_pay =", value, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayNotEqualTo(Integer value) {
-            addCriterion("online_pay <>", value, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayGreaterThan(Integer value) {
-            addCriterion("online_pay >", value, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayGreaterThanOrEqualTo(Integer value) {
-            addCriterion("online_pay >=", value, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayLessThan(Integer value) {
-            addCriterion("online_pay <", value, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayLessThanOrEqualTo(Integer value) {
-            addCriterion("online_pay <=", value, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayIn(List<Integer> values) {
-            addCriterion("online_pay in", values, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayNotIn(List<Integer> values) {
-            addCriterion("online_pay not in", values, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayBetween(Integer value1, Integer value2) {
-            addCriterion("online_pay between", value1, value2, "onlinePay");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnlinePayNotBetween(Integer value1, Integer value2) {
-            addCriterion("online_pay not between", value1, value2, "onlinePay");
-            return (Criteria) this;
-        }
     }
 
     /**
-     * op_agent_recharge
+     * op_shop
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -639,7 +498,7 @@ public class OpAgentRechargeExample {
     }
 
     /**
-     * op_agent_recharge null
+     * op_shop null
      */
     public static class Criterion {
         private String condition;

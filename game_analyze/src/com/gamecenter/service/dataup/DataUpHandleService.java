@@ -57,6 +57,16 @@ public interface DataUpHandleService {
 	
 	public OpOssQlzPassport getPassportByOpenid(String openid);
 	
+	/** 
+	 * getPassportByName:(). <br/> 
+	 * TODO().<br/> 
+	 * 用名字找到对象
+	 * @author lyh 
+	 * @param name
+	 * @return 
+	 */  
+	public OpOssQlzPassport getPassportByName(String name,String worldId);
+	
 	public Page getPassportList(OpOssQlzPassport obj, int pageSize, int pageNumber);
 	
 	public List<OpOssQlzPassport> getPassportList(String worldid);
