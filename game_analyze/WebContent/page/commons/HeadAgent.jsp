@@ -91,4 +91,4 @@
 <script language="javascript" type="text/javascript" src="${ctxPage}/js/json.min.js"></script>
 <script language="javascript" type="text/javascript" src="${ctxPage}/js/jquery.json-2.2.min.js"></script>
 
-<script language="javascript" type="text/javascript" src="${ctxPage}/js/ZeroClipboard.js"></script>
+<script language="javascript" type="text/javascript" src="${ctxPage}/js/clipboard.js"></script>

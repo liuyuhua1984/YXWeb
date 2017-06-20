@@ -42,6 +42,7 @@ public class AgentInviteCodeController {
 	@Autowired
 	private AgentInviteCodeService agentInviteCodeService;
 	
+	public static final int PAGE_SIZE = 10;
 	/**
 	 * getAgentInviteCodeList:(). <br/>
 	 * TODO().<br/>
@@ -59,7 +60,7 @@ public class AgentInviteCodeController {
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
 		ModelAndView view = new ModelAndView("/page/agent/AgentInviteCodeList");
-		List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
+		//List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
 		// view.addObject("lists", list);
 		view.addObject("targetTime", targetTime);
 		return view;
@@ -84,7 +85,7 @@ public class AgentInviteCodeController {
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
 		ModelAndView view = new ModelAndView("/page/agent/AgentInviteCodeListPage");
-		PageHelper.startPage(curPage, 5);
+		PageHelper.startPage(curPage, PAGE_SIZE);
 		List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
 		PageInfo<OpAgentInviteCode> pageInfo = new PageInfo<OpAgentInviteCode>(list);
 		Page page = new Page(curPage, (int) pageInfo.getTotal(), pageInfo.getPageSize(), pageInfo.getList());
@@ -117,7 +118,7 @@ public class AgentInviteCodeController {
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
 		ModelAndView view = new ModelAndView("/page/agent/AgentInviteCodeListPage");
-		PageHelper.startPage(curPage, 5);
+		PageHelper.startPage(curPage, PAGE_SIZE);
 		List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
 		PageInfo<OpAgentInviteCode> pageInfo = new PageInfo<OpAgentInviteCode>(list);
 		Page page = new Page(curPage, (int) pageInfo.getTotal(), pageInfo.getPageSize(), pageInfo.getList());
@@ -147,5 +148,35 @@ public class AgentInviteCodeController {
 			code.setInviteCode(user.getId() + "" + IdGenerateUtils.makeId());
 			agentInviteCodeService.insert(code);
 		}
+	}
+	
+
+	@RequestMapping("/invite/code/copy")
+	public ModelAndView getAgentInviteCodeCopy(HttpSession session, @RequestParam(value = "page", defaultValue = "1") int curPage, @RequestParam(value = "code", defaultValue = "1") String code) {
+		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
+		long agentId = 0;
+		if (userMsg != null) {
+			agentId = userMsg.getId();
+		}
+		OpAgentInviteCode fOutCode = agentInviteCodeService.findOpAgentInviteCodeByCode(code);
+		if (fOutCode != null && fOutCode.getIsPutOut() < 1){
+			fOutCode.setIsPutOut((byte)1);
+			agentInviteCodeService.update(fOutCode);
+		}
+		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
+		ModelAndView view = new ModelAndView("/page/agent/AgentInviteCodeListPage");
+		PageHelper.startPage(curPage, PAGE_SIZE);
+		List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
+		PageInfo<OpAgentInviteCode> pageInfo = new PageInfo<OpAgentInviteCode>(list);
+		Page page = new Page(curPage, (int) pageInfo.getTotal(), pageInfo.getPageSize(), pageInfo.getList());
+		
+		PageTool3 pt = new PageTool3();
+		String pageStr = pt.getPageStringForjs("", page);
+		view.addObject("lists", list);
+		// view.addObject("targetTime", targetTime);
+		view.addObject("pageTools", pageStr);
+		view.addObject("count", pageInfo.getTotal());
+		
+		return view;
 	}
 }

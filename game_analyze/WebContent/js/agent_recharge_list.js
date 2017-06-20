@@ -34,7 +34,9 @@ require(['jquery', 'dialog'], function ($, dialog) {
     
     function getPager() {
         var num = $(this).attr("num");
-        alert(num);
+       if (num == undefined) {
+			return;
+		}
         getPage(num);
     }
 

@@ -7,7 +7,7 @@
 		<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
 		<td>${item.inviteCode}</td>
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td><a class="btn btn-small" href="javascript:void(0);" data-clipboard-text="${item.inviteCode}" onclick="copy()">复制</a></td>
+		<td><a class="btn btn-small aButton" href="javascript:void(0);" data-clipboard-text="${item.inviteCode}">复制</a></td>
 	</tr>
 </c:forEach>
 <tr>
@@ -20,28 +20,58 @@
 
 
 <script type="text/javascript">
+	window.onload = function() {
+		var clipboard = new Clipboard(".aButton");
+		clipboard.on('success', function(e) {
+			var ctxPage = "${ctxPage}";
 
-	function copy() {
-		
-		if (window.clipboardData) {
-			//for IE
-			alert("复制成功，地址为： " );
-			var text = $(this).attr("data-clipboard-text");
-			window.clipboardData.setData('text', text);
-			alert("复制成功，地址为： " + text);
+			console.info('Action:', e.action);
+			console.info('Text:', e.text);
+			console.info('Trigger:', e.trigger);
+			var inviteCode = e.text;
+			copyFlay(inviteCode);
 
-		} else {
-		var text = $(this).attr("data-clipboard-text");
-		alert("复制成功，地址为sss： "+text );
-			var client = new ZeroClipboard($(this));
-			alert("复制成功，地址为222： " );
-			client.on("ready", function(readyEvent) {
-				client.on("aftercopy", function(event) {
-					alert("复制成功，地址为: " + event.data["text/plain"]);
-				});
-			});
+			e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+			console.error('Action:', e.action);
+			console.error('Trigger:', e.trigger);
+		});
+	}
+
+	function copyFlay(inviteCode) {
+		var num = $(".on").text();
+		//alert(num);
+		var htmlobj = $.ajax({
+			url : ctxPage + "/agent/invite/code/copy?page=" + num
+				+ "&code=" + inviteCode,
+			cache : false,
+			async : false
+		})
+
+		$("#data").html(htmlobj.responseText);
+		$(".pagerx a").click(getPager);
+	}
+
+	function getPage(pid) {
+		var htmlobj = $.ajax({
+			url : ctxPage + "/agent/invite/code/create?page=" + pid + "&code=0",
+			cache : false,
+			async : false
+		})
+
+		$("#data").html(htmlobj.responseText);
+		$(".pagerx a").click(getPager);
+
+	}
+
+	function getPager() {
+		var num = $(this).attr("num");
+		alert("ssss" + num);
+		if (num == undefined) {
+			return;
 		}
-
-
+		getPage(num);
 	}
 </script>

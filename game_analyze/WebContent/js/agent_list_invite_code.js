@@ -25,100 +25,101 @@ var curpage = 1;
 
 require(['jquery', 'dialog'], function($, dialog) {
 
-			// $("#worldid").change(selectMsg);
-			$("#search").bind("click", selectMsg);
-			$("#create").click(createCode);
-			function selectMsg() {
-				getPage(1);
-			}
+	// $("#worldid").change(selectMsg);
+	$("#search").bind("click", selectMsg);
+	$("#create").click(createCode);
+	function selectMsg() {
+		getPage(1);
+	}
 
-			function getPager() {
-				var num = $(this).attr("num");
-				getPage(num);
-			}
+	function getPager() {
+		var num = $(this).attr("num");
+		if (num == undefined) {
+			return;
+		}
+		getPage(num);
+	}
 
-			/**
-			 *  获取列表数据
-			 * @param pid
-			 */
-			function getPage(pid) {
-				curpage = pid;
-				//   var begintime = $("#begintime").val();
-				//   var endtime = $("#endtime").val();
-				//     var appid = $("#appid").val();
-				var worldid = $("#worldid").val();
-				var htmlobj = $.ajax({
-							url : ctxPage
-									+ "/agent/invite/code/create?page="
-									+ pid+"&code=0",
-							cache : false,
-							async : false
-						})
+	/**
+	 *  获取列表数据
+	 * @param pid
+	 */
+	function getPage(pid) {
+		curpage = pid;
+		//   var begintime = $("#begintime").val();
+		//   var endtime = $("#endtime").val();
+		//     var appid = $("#appid").val();
+		var worldid = $("#worldid").val();
+		var htmlobj = $.ajax({
+			url : ctxPage + "/agent/invite/code/create?page=" + pid + "&code=0",
+			cache : false,
+			async : false
+		})
 		//alert(htmlobj.responseText);
-				$("#data").html(htmlobj.responseText);
-				$(".pagerx a").click(getPager);
-				/** $('.sendmoney').on('click', openMsg);**/
-				/** 	 $("a[num]").click(getPager);**/
-				/**	$(".on").click(getPager)**/
-				// paycount();
-			}
+		$("#data").html(htmlobj.responseText);
+		$(".pagerx a").click(getPager);
+		/** $('.sendmoney').on('click', openMsg);**/
+		/** 	 $("a[num]").click(getPager);**/
+		/**	$(".on").click(getPager)**/
+		// paycount();
+	}
 
-			getPage(curpage);
+	getPage(curpage);
 
-		
-				/**
-				* 生成邀请码
-			*/
-			function createCode() {
-			
-				var htmlobj = $.ajax({
+	/**
+	 * 生成邀请码
+	 */
+	function createCode() {
+
+		var htmlobj = $.ajax({
 					url : ctxPage + "/agent/invite/code/create",
 					cache : false,
 					async : false,
 					success : function(data) {
-					
+
 					}
 				});
-				
-				$(".pagerx a").click(getPager);
-				$("#data").html();
-			}
-			
-		
-			/**
-			 * 页面刷新
-			 */
-			function refreshpage() {
-				getPage(curpage);
-			}
 
-			/**
-			 *  弹框绑定
-			 */
-			function openMsg() {
-				var d = dialog({
-							id : 'demox',
-							width : 700,
-							height : 300,
-							title : '订单详情',
-							content : '数据加载...'
-						});
-				d.show();
+		$(".pagerx a").click(getPager);
+		$("#data").html(htmlobj.responseText);
+	}
 
-				var id = $(this).attr("val");
-				var htmlobjxx = $.ajax({
-							url : ctxPage + "/gmt/recharge/datamsg?id=" + id,
-							cache : false,
-							async : false
-						});
-				dialog.get('demox').content(htmlobjxx.responseText);
 
-				d.onclose = function() {
-					//异步刷新
-					setTimeout(function() {
-								refreshpage();
-							}, 1000);
-				};
-			}
 
-		});
+	/**
+	 * 页面刷新
+	 */
+	function refreshpage() {
+		getPage(curpage);
+	}
+
+	/**
+	 *  弹框绑定
+	 */
+	function openMsg() {
+		var d = dialog({
+					id : 'demox',
+					width : 700,
+					height : 300,
+					title : '订单详情',
+					content : '数据加载...'
+				});
+		d.show();
+
+		var id = $(this).attr("val");
+		var htmlobjxx = $.ajax({
+					url : ctxPage + "/gmt/recharge/datamsg?id=" + id,
+					cache : false,
+					async : false
+				});
+		dialog.get('demox').content(htmlobjxx.responseText);
+
+		d.onclose = function() {
+			//异步刷新
+			setTimeout(function() {
+						refreshpage();
+					}, 1000);
+		};
+	}
+
+});

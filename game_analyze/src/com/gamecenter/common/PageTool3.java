@@ -162,7 +162,7 @@ public class PageTool3 {
 		if (totalPageCount <= lineCursor) {
 			for (int i = 1; i < this.totalPageCount + 1; i++) {
 				if (i == this.currentPage) {
-					centerString.append("<a href='javascript:;' class='on'>" + i + "</a>");
+					centerString.append("<a   href='javascript:;' class='on'>" + i + "</a>");
 				} else {
 					centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
 				}
@@ -172,7 +172,7 @@ public class PageTool3 {
 			if (s < 0) {
 				for (int i = 1; i < lineCursor + 1; i++) {
 					if (i == this.currentPage) {
-						centerString.append("<a href='javascript:;' class='on'>" + i + "</a>");
+						centerString.append("<a  href='javascript:;' class='on'>" + i + "</a>");
 					} else {
 						centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
 					}
@@ -181,7 +181,7 @@ public class PageTool3 {
 				if (s + lineCursor > totalPageCount) {
 					for (int i = totalPageCount - lineCursor + 1; i <= totalPageCount; i++) {
 						if (i == this.currentPage) {
-							centerString.append("<a href='javascript:;' class='on'>" + i + "</a>");
+							centerString.append("<a   href='javascript:;' class='on'>" + i + "</a>");
 						} else {
 							centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
 						}
@@ -189,7 +189,7 @@ public class PageTool3 {
 				} else {
 					for (int i = s + 1; i < lineCursor + s + 1; i++) {
 						if (i == this.currentPage) {
-							centerString.append("<a href='javascript:;' class='on'>" + i + "</a>");
+							centerString.append("<a  href='javascript:;' class='on'>" + i + "</a>");
 						} else {
 							centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
 						}

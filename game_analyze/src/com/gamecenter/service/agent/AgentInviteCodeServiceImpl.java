@@ -55,6 +55,8 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
 		OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
 		criteria.andAgentIdEqualTo(agentId);
+		criteria.andIsUseEqualTo((byte)0);
+		criteria.andIsPutOutEqualTo((byte)0);
 		return mapper.selectByExample(opAgentInviteCodeExample);
 	}
 
@@ -74,6 +76,7 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
 		OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
 		criteria.andIsUseEqualTo((byte)0);
+		criteria.andIsPutOutEqualTo((byte)0);
 		return mapper.countByExample(opAgentInviteCodeExample);
 	}
 	
