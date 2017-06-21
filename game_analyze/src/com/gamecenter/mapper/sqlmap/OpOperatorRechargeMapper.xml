@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOperatorRecharge">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="passport" jdbcType="VARCHAR" property="passport" />
-    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sid" jdbcType="VARCHAR" property="sid" />
     <result column="gold" jdbcType="INTEGER" property="gold" />
     <result column="money" jdbcType="DOUBLE" property="money" />
     <result column="billno" jdbcType="VARCHAR" property="billno" />
@@ -80,6 +80,7 @@
     <if test="distinct">
       distinct
     </if>
+    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from op_operator_recharge
     <if test="_parameter != null">
@@ -106,21 +107,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gamecenter.model.OpOperatorRecharge">
-    insert into op_operator_recharge (id, passport, sid, 
-      gold, money, billno, 
-      time, flag, addtime, 
-      res, info)
-    values (#{id,jdbcType=INTEGER}, #{passport,jdbcType=VARCHAR}, #{sid,jdbcType=INTEGER}, 
-      #{gold,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{billno,jdbcType=VARCHAR}, 
-      #{time,jdbcType=INTEGER}, #{flag,jdbcType=VARCHAR}, #{addtime,jdbcType=VARCHAR}, 
-      #{res,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_operator_recharge (passport, sid, gold, 
+      money, billno, time, 
+      flag, addtime, res, 
+      info)
+    values (#{passport,jdbcType=VARCHAR}, #{sid,jdbcType=VARCHAR}, #{gold,jdbcType=INTEGER}, 
+      #{money,jdbcType=DOUBLE}, #{billno,jdbcType=VARCHAR}, #{time,jdbcType=INTEGER}, 
+      #{flag,jdbcType=VARCHAR}, #{addtime,jdbcType=VARCHAR}, #{res,jdbcType=VARCHAR}, 
+      #{info,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpOperatorRecharge">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into op_operator_recharge
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="passport != null">
         passport,
       </if>
@@ -153,14 +157,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="passport != null">
         #{passport,jdbcType=VARCHAR},
       </if>
       <if test="sid != null">
-        #{sid,jdbcType=INTEGER},
+        #{sid,jdbcType=VARCHAR},
       </if>
       <if test="gold != null">
         #{gold,jdbcType=INTEGER},
@@ -204,7 +205,7 @@
         passport = #{record.passport,jdbcType=VARCHAR},
       </if>
       <if test="record.sid != null">
-        sid = #{record.sid,jdbcType=INTEGER},
+        sid = #{record.sid,jdbcType=VARCHAR},
       </if>
       <if test="record.gold != null">
         gold = #{record.gold,jdbcType=INTEGER},
@@ -239,7 +240,7 @@
     update op_operator_recharge
     set id = #{record.id,jdbcType=INTEGER},
       passport = #{record.passport,jdbcType=VARCHAR},
-      sid = #{record.sid,jdbcType=INTEGER},
+      sid = #{record.sid,jdbcType=VARCHAR},
       gold = #{record.gold,jdbcType=INTEGER},
       money = #{record.money,jdbcType=DOUBLE},
       billno = #{record.billno,jdbcType=VARCHAR},
@@ -259,7 +260,7 @@
         passport = #{passport,jdbcType=VARCHAR},
       </if>
       <if test="sid != null">
-        sid = #{sid,jdbcType=INTEGER},
+        sid = #{sid,jdbcType=VARCHAR},
       </if>
       <if test="gold != null">
         gold = #{gold,jdbcType=INTEGER},
@@ -291,7 +292,7 @@
   <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOperatorRecharge">
     update op_operator_recharge
     set passport = #{passport,jdbcType=VARCHAR},
-      sid = #{sid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=VARCHAR},
       gold = #{gold,jdbcType=INTEGER},
       money = #{money,jdbcType=DOUBLE},
       billno = #{billno,jdbcType=VARCHAR},

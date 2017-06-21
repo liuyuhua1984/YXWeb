@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-20 19:10:57
+Date: 2017-06-21 18:37:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -732,7 +732,7 @@ CREATE TABLE `op_agent_invite_code` (
   PRIMARY KEY (`id`),
   KEY `agent_id` (`agent_id`),
   KEY `invite_code` (`invite_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_invite_code
@@ -746,7 +746,7 @@ INSERT INTO `op_agent_invite_code` VALUES ('107', '1876719659917770752', '1', '0
 INSERT INTO `op_agent_invite_code` VALUES ('108', '1876719660051988480', '1', '0', '2017-06-19 16:33:50', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('109', '1876719660165234688', '1', '0', '2017-06-19 16:33:50', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('110', '1876719660291063808', '1', '0', '2017-06-19 16:33:50', '1');
-INSERT INTO `op_agent_invite_code` VALUES ('111', '1876719660412698624', '1', '0', '2017-06-19 16:33:50', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('111', '1876719660412698624', '1', '0', '2017-06-19 16:33:50', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('112', '1876719660538527744', '1', '0', '2017-06-19 16:33:50', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('113', '1876719660655968256', '1', '0', '2017-06-19 16:33:50', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('114', '1876719660781797376', '1', '0', '2017-06-19 16:33:50', '0');
@@ -839,6 +839,16 @@ INSERT INTO `op_agent_invite_code` VALUES ('200', '1876719673754779648', '1', '0
 INSERT INTO `op_agent_invite_code` VALUES ('201', '1876719673847054336', '1', '0', '2017-06-19 16:33:54', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('202', '1876719673964494848', '1', '0', '2017-06-19 16:33:54', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('203', '1876719674090323968', '1', '0', '2017-06-19 16:33:54', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('204', '1877361031465140224', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('205', '1877361031825850368', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('206', '1877361031960068096', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('207', '1877361032207532032', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('208', '1877361032337555456', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('209', '1877361032559853568', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('210', '1877361032689876992', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('211', '1877361032899592192', '1', '0', '2017-06-21 11:02:25', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('212', '1877361033038004224', '1', '0', '2017-06-21 11:02:26', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('213', '1877361033176416256', '1', '0', '2017-06-21 11:02:26', '0');
 
 -- ----------------------------
 -- Table structure for op_agent_list
@@ -867,8 +877,8 @@ CREATE TABLE `op_agent_list` (
 -- ----------------------------
 -- Records of op_agent_list
 -- ----------------------------
-INSERT INTO `op_agent_list` VALUES ('1', '中国人', '6554', '1', '1000', '4556', '589974', '195225225', '2017-06-13 17:20:11', '123456', '1');
-INSERT INTO `op_agent_list` VALUES ('2', '你好', '5666', '1', '0', '1', '5888', '13458795411', '2017-06-19 11:18:00', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('1', '中国人', '6554', '999', '980', '0', '589974', '195225225', '2017-06-21 11:43:27', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('2', '你好', '5666', '1', '10', '1', '5888', '13458795411', '2017-06-19 11:18:00', '123456', '1');
 INSERT INTO `op_agent_list` VALUES ('3', '大人', '5666', '1', '0', '1', '5889', '74125896323', '2017-06-19 11:19:44', '123456', '1');
 INSERT INTO `op_agent_list` VALUES ('4', '大人1', '5666', '1', '0', '1', '58810', '32145678954', '2017-06-19 11:19:47', '123456', '1');
 INSERT INTO `op_agent_list` VALUES ('5', '大人2', '5666', '1', '0', '1', '58811', '98523698769', '2017-06-19 11:19:50', '123456', '1');
@@ -884,39 +894,39 @@ DROP TABLE IF EXISTS `op_agent_recharge`;
 CREATE TABLE `op_agent_recharge` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
-  `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
+  `money` double(20,0) DEFAULT '0' COMMENT '充值的金额(rmb)',
   `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
   `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
   `trader_order` varchar(255) DEFAULT NULL COMMENT '交易号',
   `online_pay` int(11) DEFAULT NULL COMMENT '是否在线充值 1为在线充',
+  `is_fetch` int(11) DEFAULT '0' COMMENT '是否已提现 ,申请提现为1,已提为2',
+  `fetch_money` double(20,2) DEFAULT '0.00' COMMENT '提成',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_recharge
 -- ----------------------------
+INSERT INTO `op_agent_recharge` VALUES ('1', '中国人', '1', '1', '2017-06-21 11:52:24', '你好', 'agent:877373450878976000', '0', '0', null);
+INSERT INTO `op_agent_recharge` VALUES ('2', '中国人', '1', '0', '2017-06-21 14:10:07', '霍普鲁道夫', 'player:877408238918696960', '0', '0', null);
 
 -- ----------------------------
--- Table structure for op_agent_recharge_request
+-- Table structure for op_agent_recharge_fetch
 -- ----------------------------
-DROP TABLE IF EXISTS `op_agent_recharge_request`;
-CREATE TABLE `op_agent_recharge_request` (
+DROP TABLE IF EXISTS `op_agent_recharge_fetch`;
+CREATE TABLE `op_agent_recharge_fetch` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `agent_name` varchar(255) DEFAULT NULL COMMENT '代理名称',
   `money` int(11) DEFAULT '0' COMMENT '充值的金额(rmb)',
-  `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
-  `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
-  `operate` int(1) DEFAULT '0' COMMENT '1表示申请,2表示批准,3表示拒绝',
-  `trader_order` varchar(255) DEFAULT NULL COMMENT '交易号',
-  PRIMARY KEY (`id`),
-  KEY `agent_name` (`agent_name`) USING BTREE
+  `name` varchar(255) DEFAULT NULL COMMENT '申请结算的代理名',
+  `ids` text COMMENT '申请结算的充值id',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of op_agent_recharge_request
+-- Records of op_agent_recharge_fetch
 -- ----------------------------
 
 -- ----------------------------
@@ -957,7 +967,6 @@ CREATE TABLE `op_gameapp` (
 -- Records of op_gameapp
 -- ----------------------------
 INSERT INTO `op_gameapp` VALUES ('1', 'game1001', '棋牌', '棋牌');
-INSERT INTO `op_gameapp` VALUES ('2', 'game1002', 'MO', 'MO');
 
 -- ----------------------------
 -- Table structure for op_gameapp_version
@@ -1002,8 +1011,6 @@ CREATE TABLE `op_gameworld` (
 -- Records of op_gameworld
 -- ----------------------------
 INSERT INTO `op_gameworld` VALUES ('10', 'game1001', null, '局域网', 'game003', '1', '192.168.0.189', '192.168.0.189', '3102', '', '0', null, '2014-06-05');
-INSERT INTO `op_gameworld` VALUES ('11', 'game1002', null, '天下', '1004', '1', '192.168.0.189', '192.168.0.189', '3102', null, '0', null, '2014-07-05');
-INSERT INTO `op_gameworld` VALUES ('18', 'game1001', null, '凤飞飞', '1001', '1', '192.168.0.189', '192.168.0.189', '3102', '2222', '0', null, '2014-07-03');
 
 -- ----------------------------
 -- Table structure for op_game_goods
@@ -1221,7 +1228,7 @@ DROP TABLE IF EXISTS `op_operator_recharge`;
 CREATE TABLE `op_operator_recharge` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `passport` varchar(100) DEFAULT NULL,
-  `sid` int(11) DEFAULT NULL,
+  `sid` varchar(100) DEFAULT NULL,
   `gold` int(11) DEFAULT NULL,
   `money` double(10,2) DEFAULT NULL,
   `billno` varchar(100) DEFAULT NULL,
@@ -1231,12 +1238,15 @@ CREATE TABLE `op_operator_recharge` (
   `res` varchar(100) DEFAULT NULL,
   `info` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_operator_recharge
 -- ----------------------------
 INSERT INTO `op_operator_recharge` VALUES ('1', '1001', '1001', null, '100.00', '6569999666', '455998555', '', '2017-06-08 10:46:42', '1', null);
+INSERT INTO `op_operator_recharge` VALUES ('2', '0game003', 'game003', null, '10.00', 'player:877375974059016192', '1498017709', '1', '2017-06-21 12:01:57', '1', null);
+INSERT INTO `op_operator_recharge` VALUES ('3', '0game003', 'game003', null, '10.00', 'player:877403704259510272', '1498024333', '1', '2017-06-21 13:52:56', '1', null);
+INSERT INTO `op_operator_recharge` VALUES ('4', '0game003', 'game003', null, '10.00', 'player:877408238918696960', '1498025400', '1', '2017-06-21 14:10:01', '1', null);
 
 -- ----------------------------
 -- Table structure for op_operator_world
@@ -3452,7 +3462,7 @@ CREATE TABLE `op_oss_qlz_passport` (
 -- ----------------------------
 -- Records of op_oss_qlz_passport
 -- ----------------------------
-INSERT INTO `op_oss_qlz_passport` VALUES ('0game003', 'game003', '霍普鲁道夫', '1', '9800000.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-08-29 12:38:15', '2014-09-03 14:12:21', '2014-08-29 12:38:10', '3', '5', '-200000.00', '0', null, null, null, '1@0', null, null, null);
+INSERT INTO `op_oss_qlz_passport` VALUES ('0game003', 'game003', '霍普鲁道夫', '1', '9800000.00', '0.00', null, '0', '1', '192.168.1.118', '5', '2014-08-29 12:38:15', '2014-09-03 14:12:21', '2014-08-29 12:38:10', '3', '5', '-200000.00', '0', null, null, null, '1@0', null, null, '1876719665831739392');
 INSERT INTO `op_oss_qlz_passport` VALUES ('10game003', 'game003', '罗斯克洛宁', '1', '9880000.00', '0.00', null, '1', '1', '192.168.1.118', '3', '2014-08-29 12:27:58', '2014-08-29 12:33:10', '2014-08-29 12:27:55', '4', '4', '-120000.00', '12', null, null, null, '1@0', null, null, null);
 INSERT INTO `op_oss_qlz_passport` VALUES ('11', '1', '1', '3', '102.00', '0.00', null, '0', '1', '192.168.1.118', '10', '2014-09-26 09:47:07', '2014-09-28 14:24:04', '2014-09-26 09:47:03', '6', '13', '-3496.00', '0', null, null, null, '5@0', null, null, null);
 INSERT INTO `op_oss_qlz_passport` VALUES ('11game003', 'game003', '休爱迪生', '1', '0.00', '0.00', null, '1', '1', '192.168.1.118', '8', '2014-09-17 16:55:28', '2014-09-22 14:03:25', '2014-09-17 16:55:23', '1', '4', '0.00', '0', null, null, null, '1@0', null, null, null);

@@ -5,9 +5,9 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>代理充值比例配置</title>
+<title>提成比例配置</title>
 <c:import url="/head/agent"></c:import>
-<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
+<!--  <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>-->
 
 <style type="text/css">
 .pagerx {
@@ -57,14 +57,18 @@
 </head>
 <body>
 
-	
+	<c:if test="${level} eq '888888'">
+		<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
+			<a style="margin-top: -7px;" href="${ctxPage}/agent/config/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 修改配置</a>
+		</div>
+	</c:if>
 	<%--列表--%>
 	<div class="row-fluid">
 		<article class="span12">
 			<!-- new widget -->
 			<div class="jarviswidget" id="widget-id-0">
 				<header>
-					<h2>代理充值比例配置</h2>
+					<h2>提成比例配置</h2>
 
 					<div class="jarviswidget-ctrls" role="menu">
 						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
@@ -83,12 +87,11 @@
 						<table class="table table-striped table-bordered responsive" id="dtable">
 							<thead>
 								<tr>
-								   <th width="100">序</th>
 									<th width="100">一级代理</th>
 									<th width="100">二级代理</th>
 									<th width="150">三级代理</th>
-									<th width="150">玩家</th>
-						
+									<th width="150">总代理</th>
+
 								</tr>
 							</thead>
 							<tbody id="data">
@@ -116,40 +119,46 @@
 		</article>
 	</div>
 	<script type="text/javascript">
-    $(document).ready(function () {
-        if ($('#begintime').length) {
-            $('#begintime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }// end if
-        if ($('#endtime').length) {
-            $('#endtime').datepicker({ format: 'yyyy-mm-dd' }); //显示时间 并格式化
-        }
-        
-          /**
-     *  上报状态控制
-     * @param worldid
-     * @param act
-     */
-    function upstatus(id, act) {
-        $.ajax({
-            url: "${ctxPage}/agent/world/upstatus",
-            type: "POST",
-            cache: false,
-            data: {agentId: id, act: act},
-            dataType: "json",
-            success: function (result) {
-                if (result == '1') {
-                    alert("消息发送成功！");
-                }
-                else {
-                    alert("消息发送失败！");
-                }
-            },
-            error: function () {
-                alert("请求异常");
-            }
-        });
-    }
-    });
-</script>
+		$(document).ready(function() {
+			if ($('#begintime').length) {
+				$('#begintime').datepicker({
+					format : 'yyyy-mm-dd'
+				}); //显示时间 并格式化
+			} // end if
+			if ($('#endtime').length) {
+				$('#endtime').datepicker({
+					format : 'yyyy-mm-dd'
+				}); //显示时间 并格式化
+			}
+	
+			/**
+	     *  上报状态控制
+	     * @param worldid
+	     * @param act
+	     */
+			function upstatus(id, act) {
+				$.ajax({
+					url : "${ctxPage}/agent/world/upstatus",
+					type : "POST",
+					cache : false,
+					data : {
+						agentId : id,
+						act : act
+					},
+					dataType : "json",
+					success : function(result) {
+						if (result == '1') {
+							alert("消息发送成功！");
+						} else {
+							alert("消息发送失败！");
+						}
+					},
+					error : function() {
+						alert("请求异常");
+					}
+				});
+			}
+		});
+	</script>
 </body>
 </html>

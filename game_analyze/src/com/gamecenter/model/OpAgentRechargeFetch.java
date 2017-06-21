@@ -3,16 +3,11 @@ package com.gamecenter.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class OpAgentRechargeRequest implements Serializable {
+public class OpAgentRechargeFetch implements Serializable {
     /**
      * 
      */
     private Long id;
-
-    /**
-     * 代理名称
-     */
-    private String agentName;
 
     /**
      * 充值的金额(rmb)
@@ -20,32 +15,22 @@ public class OpAgentRechargeRequest implements Serializable {
     private Integer money;
 
     /**
-     * 是否是代理1为代理
-     */
-    private Byte isAgent;
-
-    /**
      * 申请充值时间
      */
     private Date createTime;
 
     /**
-     * 充值的用户名,或者代理名
+     * 申请结算的代理名
      */
     private String name;
 
     /**
-     * 1表示申请,2表示批准,3表示拒绝
+     * 申请结算的充值id
      */
-    private Integer operate;
+    private String ids;
 
     /**
-     * 交易号
-     */
-    private String traderOrder;
-
-    /**
-     * op_agent_recharge_request
+     * op_agent_recharge_fetch
      */
     private static final long serialVersionUID = 1L;
 
@@ -57,28 +42,12 @@ public class OpAgentRechargeRequest implements Serializable {
         this.id = id;
     }
 
-    public String getAgentName() {
-        return agentName;
-    }
-
-    public void setAgentName(String agentName) {
-        this.agentName = agentName == null ? null : agentName.trim();
-    }
-
     public Integer getMoney() {
         return money;
     }
 
     public void setMoney(Integer money) {
         this.money = money;
-    }
-
-    public Byte getIsAgent() {
-        return isAgent;
-    }
-
-    public void setIsAgent(Byte isAgent) {
-        this.isAgent = isAgent;
     }
 
     public Date getCreateTime() {
@@ -97,20 +66,12 @@ public class OpAgentRechargeRequest implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getOperate() {
-        return operate;
+    public String getIds() {
+        return ids;
     }
 
-    public void setOperate(Integer operate) {
-        this.operate = operate;
-    }
-
-    public String getTraderOrder() {
-        return traderOrder;
-    }
-
-    public void setTraderOrder(String traderOrder) {
-        this.traderOrder = traderOrder == null ? null : traderOrder.trim();
+    public void setIds(String ids) {
+        this.ids = ids == null ? null : ids.trim();
     }
 
     @Override
@@ -120,13 +81,10 @@ public class OpAgentRechargeRequest implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", agentName=").append(agentName);
         sb.append(", money=").append(money);
-        sb.append(", isAgent=").append(isAgent);
         sb.append(", createTime=").append(createTime);
         sb.append(", name=").append(name);
-        sb.append(", operate=").append(operate);
-        sb.append(", traderOrder=").append(traderOrder);
+        sb.append(", ids=").append(ids);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

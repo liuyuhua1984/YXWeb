@@ -17,7 +17,9 @@ import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.model.OpAgentRecharge;
 import com.gamecenter.parBean.AgentUser;
 import com.gamecenter.parBean.UserMsg;
+import com.gamecenter.service.agent.AgentConfigService;
 import com.gamecenter.service.agent.AgentRechargeService;
+import com.gamecenter.service.agent.PlayerRechargeService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -37,6 +39,8 @@ public class AgentRechargeController {
 
 	@Autowired
 	private AgentRechargeService agentRechargeService;
+	@Autowired
+	private AgentConfigService agentConfigService;
 	
 	/** 
 	 * agentBuyList:(). <br/> 
@@ -112,7 +116,6 @@ public class AgentRechargeController {
 		// view.addObject("targetTime", targetTime);
 		view.addObject("pageTools", pageStr);
 		view.addObject("count", pageInfo.getTotal());
-		
 		return view;
 	}
 	

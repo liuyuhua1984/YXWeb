@@ -28,8 +28,8 @@
 
 								<ol>
 									<li><a url-data="player-churned" href="${ctxPage}/agent/list" target="mainFrame">代理列表</a></li>
-									<li><a url-data="player-new" href="${ctxPage}/agent/request/list" target="mainFrame">代理申请列表</a></li>
-									<li><a url-data="player-new" href="${ctxPage}/agent/config" target="mainFrame">代理配置</a></li>
+									<!--<li><a url-data="player-new" href="${ctxPage}/agent/request/list" target="mainFrame">代理申请列表</a></li>-->
+									<li><a url-data="player-new" href="${ctxPage}/agent/config" target="mainFrame">提成配置</a></li>
 								</ol>
 								</li>
 
@@ -39,7 +39,7 @@
 								<ol>
 									<li><a url-data="player-churned" href="${ctxPage}/agent/buy/list" target="mainFrame">购买记录</a></li>
 									<li><a url-data="player-new" href="${ctxPage}/agent/sell/list" target="mainFrame">出售记录</a></li>
-									<li><a url-data="player-new" href="${ctxPage}/agent/recharge/request/list" target="mainFrame">充值申请列表</a></li>
+									<li><a url-data="player-new" href="${ctxPage}/agent/recharge/fetch/list" target="mainFrame">我的结算</a></li>
 								</ol></li>
 
 

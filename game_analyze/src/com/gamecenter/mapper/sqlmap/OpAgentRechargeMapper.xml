@@ -4,12 +4,14 @@
   <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentRecharge">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="agent_name" jdbcType="VARCHAR" property="agentName" />
-    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
     <result column="is_agent" jdbcType="TINYINT" property="isAgent" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="trader_order" jdbcType="VARCHAR" property="traderOrder" />
     <result column="online_pay" jdbcType="INTEGER" property="onlinePay" />
+    <result column="is_fetch" jdbcType="INTEGER" property="isFetch" />
+    <result column="fetch_money" jdbcType="DOUBLE" property="fetchMoney" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, agent_name, money, is_agent, create_time, name, trader_order, online_pay
+    id, agent_name, money, is_agent, create_time, name, trader_order, online_pay, is_fetch, 
+    fetch_money
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRechargeExample" resultMap="BaseResultMap">
     select
@@ -109,10 +112,12 @@
     </selectKey>
     insert into op_agent_recharge (agent_name, money, is_agent, 
       create_time, name, trader_order, 
-      online_pay)
-    values (#{agentName,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{isAgent,jdbcType=TINYINT}, 
+      online_pay, is_fetch, fetch_money
+      )
+    values (#{agentName,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{isAgent,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{traderOrder,jdbcType=VARCHAR}, 
-      #{onlinePay,jdbcType=INTEGER})
+      #{onlinePay,jdbcType=INTEGER}, #{isFetch,jdbcType=INTEGER}, #{fetchMoney,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRecharge">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -141,13 +146,19 @@
       <if test="onlinePay != null">
         online_pay,
       </if>
+      <if test="isFetch != null">
+        is_fetch,
+      </if>
+      <if test="fetchMoney != null">
+        fetch_money,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="agentName != null">
         #{agentName,jdbcType=VARCHAR},
       </if>
       <if test="money != null">
-        #{money,jdbcType=INTEGER},
+        #{money,jdbcType=DOUBLE},
       </if>
       <if test="isAgent != null">
         #{isAgent,jdbcType=TINYINT},
@@ -163,6 +174,12 @@
       </if>
       <if test="onlinePay != null">
         #{onlinePay,jdbcType=INTEGER},
+      </if>
+      <if test="isFetch != null">
+        #{isFetch,jdbcType=INTEGER},
+      </if>
+      <if test="fetchMoney != null">
+        #{fetchMoney,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -182,7 +199,7 @@
         agent_name = #{record.agentName,jdbcType=VARCHAR},
       </if>
       <if test="record.money != null">
-        money = #{record.money,jdbcType=INTEGER},
+        money = #{record.money,jdbcType=DOUBLE},
       </if>
       <if test="record.isAgent != null">
         is_agent = #{record.isAgent,jdbcType=TINYINT},
@@ -199,6 +216,12 @@
       <if test="record.onlinePay != null">
         online_pay = #{record.onlinePay,jdbcType=INTEGER},
       </if>
+      <if test="record.isFetch != null">
+        is_fetch = #{record.isFetch,jdbcType=INTEGER},
+      </if>
+      <if test="record.fetchMoney != null">
+        fetch_money = #{record.fetchMoney,jdbcType=DOUBLE},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -208,12 +231,14 @@
     update op_agent_recharge
     set id = #{record.id,jdbcType=BIGINT},
       agent_name = #{record.agentName,jdbcType=VARCHAR},
-      money = #{record.money,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DOUBLE},
       is_agent = #{record.isAgent,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       name = #{record.name,jdbcType=VARCHAR},
       trader_order = #{record.traderOrder,jdbcType=VARCHAR},
-      online_pay = #{record.onlinePay,jdbcType=INTEGER}
+      online_pay = #{record.onlinePay,jdbcType=INTEGER},
+      is_fetch = #{record.isFetch,jdbcType=INTEGER},
+      fetch_money = #{record.fetchMoney,jdbcType=DOUBLE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,7 +250,7 @@
         agent_name = #{agentName,jdbcType=VARCHAR},
       </if>
       <if test="money != null">
-        money = #{money,jdbcType=INTEGER},
+        money = #{money,jdbcType=DOUBLE},
       </if>
       <if test="isAgent != null">
         is_agent = #{isAgent,jdbcType=TINYINT},
@@ -242,18 +267,26 @@
       <if test="onlinePay != null">
         online_pay = #{onlinePay,jdbcType=INTEGER},
       </if>
+      <if test="isFetch != null">
+        is_fetch = #{isFetch,jdbcType=INTEGER},
+      </if>
+      <if test="fetchMoney != null">
+        fetch_money = #{fetchMoney,jdbcType=DOUBLE},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentRecharge">
     update op_agent_recharge
     set agent_name = #{agentName,jdbcType=VARCHAR},
-      money = #{money,jdbcType=INTEGER},
+      money = #{money,jdbcType=DOUBLE},
       is_agent = #{isAgent,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
       trader_order = #{traderOrder,jdbcType=VARCHAR},
-      online_pay = #{onlinePay,jdbcType=INTEGER}
+      online_pay = #{onlinePay,jdbcType=INTEGER},
+      is_fetch = #{isFetch,jdbcType=INTEGER},
+      fetch_money = #{fetchMoney,jdbcType=DOUBLE}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

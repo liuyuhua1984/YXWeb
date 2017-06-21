@@ -2,7 +2,6 @@ package com.gamecenter.service.agent;
 
 import java.util.List;
 
-import com.gamecenter.model.OpAgentRechargeRequest;
 import com.gamecenter.model.OpAgentRequest;
 
 /** 

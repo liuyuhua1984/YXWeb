@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>充值信息</title>
+<title>添加提成信息</title>
 <%--<c:import url="/head/agent"></c:import>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/common.js?1=2"></script>
 
@@ -48,7 +48,6 @@
 <!-- To switch to full width -->
 <link rel="stylesheet" id="switch-width" href="${ctxPage}/static/css/full-width.css?v=1"/>
 
-
 <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
 <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
@@ -85,7 +84,7 @@
 		
 				<header>
 					<h2>
-						添加充值信息【<a href="${ctxPage}/agent/sell/list">返回列表</a>】
+						添加提成信息【<a href="${ctxPage}/agent/config">返回列表</a>】
 					</h2>
 				</header>
 				<!-- 	wrap div -->
@@ -117,39 +116,35 @@
 
 
 							<div class="control-group">
-								<label class="control-label" for="name">用户名</label>
+								<label class="control-label" for="oneLevel">一级代理提成比例</label>
 
 								<div class="controls">
-									<input type="text" class="span12" id="name" name="name" value="" placeholder="请填写你的用户名" />
+									<input type="number" maxlength="3"  id="oneLevel" name="oneLevel" value="${oneLevel}" placeholder="请填写你的一级代理提成比例" />
 								</div>
 							</div>
 	                        
 							<div class="control-group">
-								<label class="control-label" for="money">充值金额</label>
+								<label class="control-label" for="twoLevel">二级代理提成比例</label>
 
-								<div class="controls" >
-									<select class="span12 with-search" id="money">
-									  <c:forEach var="item" items="${lists}">
-                                        <option value="${item.price}"/>
-                                        ${item.name}
-                                    </c:forEach>
-								
-								</select>
+								<div class="controls">
+									<input type="number" maxlength="3" class="span12" id="twoLevel" name="twoLevel" value="${twoLevel}" placeholder="请填写你的二级代理提成比例" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="threeLevel">三级代理提成比例</label>
+
+								<div class="controls">
+									<input type="number" maxlength="3" class="span12" id="threeLevel" name="threeLevel" value="${threeLevel}" placeholder="请填写你的三级代理提成比例" />
 								</div>
 							</div>
 							
 							<div class="control-group">
-								<label class="control-label" for="isAgent">用户属性</label>
-		
-								<div class="controls">
-								<select class="span12 with-search" id="isAgent">
-									<option  value="1" >代理</option>
-									<option  value="0" selected="selected">玩家</option>
-								</select>
+								<label class="control-label" for="noneLevel">总代理提成比例</label>
 
+								<div class="controls">
+									<input type="number" maxlength="3" class="span12" id="noneLevel" name="noneLevel" value=""${noneLevel} placeholder="请填写你的总代理提成比例" />
 								</div>
 							</div>
-							
 
 							<span id="tishi"></span>
 							<div class="form-actions" style="text-align: left;">
@@ -174,14 +169,12 @@
 		function saveMsg() {
 			//  var jsonInfro = $("#wform").serializeArray();
 	
-			var name = $('#name').val();
-		//	var agentName = $('#agentName').val();
-			var money = $('#money').val();
-		
-			var isAgent = $('#isAgent').val();
-		
-		//alert(money);
-			if (name == ""  || money <= 0) {
+			var oneLevel = $('#oneLevel').val();
+			var twoLevel = $('#twoLevel').val();
+			var threeLevel = $('#threeLevel').val();
+			var noneLevel = $('#noneLevel').val();
+				
+			if (noneLevel == ""  || threeLevel==""  || twoLevel==""  || oneLevel=="") {
 				alert("请完善信息！");
 				return false;
 			}
@@ -194,11 +187,12 @@
 			mark = 1;
 	
 			$.ajax({
-				url : "${ctxPage}/agent/add/money",
+				url : "${ctxPage}/agent/config/update",
 				type : 'POST',
-				data : {name: name,
-					       price: money,
-					       isAgent: isAgent,
+				data : {oneLevel: oneLevel,
+					       twoLevel: twoLevel,
+					       threeLevel: threeLevel,
+					       noneLevel: noneLevel,
 				          },
 				dataType : 'json',
 				error : function() {
@@ -209,7 +203,8 @@
 				success : function(data) {
 					if (data.res == "1") {
 						alert('充值成功！');
-						location.reload();
+						//location.reload();
+						window.location.href="${ctxPage}/agent/config";
 					} else {
 						alert('操作失败,注意XXX不能重复！');
 					}

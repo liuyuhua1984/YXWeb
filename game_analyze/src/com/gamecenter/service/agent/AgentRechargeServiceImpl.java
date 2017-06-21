@@ -67,6 +67,16 @@ public class AgentRechargeServiceImpl implements AgentRechargeService {
 		return mapper.selectByExample(opAgentRechargeExample);
 	}
 
+	@Override
+	public List<OpAgentRecharge> getOpAgentRechargeFetchList(String upAgentName, int isFetch) {
+		// TODO Auto-generated method stub
+		OpAgentRechargeExample  opAgentRechargeExample  = new OpAgentRechargeExample();
+		OpAgentRechargeExample.Criteria criteria = opAgentRechargeExample.createCriteria();
+		criteria.andAgentNameEqualTo(upAgentName);
+		criteria.andIsFetchEqualTo(isFetch);
+		return mapper.selectByExample(opAgentRechargeExample);
+	}
+
 	
 }
   

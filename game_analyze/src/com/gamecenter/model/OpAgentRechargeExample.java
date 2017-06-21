@@ -257,52 +257,52 @@ public class OpAgentRechargeExample {
             return (Criteria) this;
         }
 
-        public Criteria andMoneyEqualTo(Integer value) {
+        public Criteria andMoneyEqualTo(Double value) {
             addCriterion("money =", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotEqualTo(Integer value) {
+        public Criteria andMoneyNotEqualTo(Double value) {
             addCriterion("money <>", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyGreaterThan(Integer value) {
+        public Criteria andMoneyGreaterThan(Double value) {
             addCriterion("money >", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyGreaterThanOrEqualTo(Integer value) {
+        public Criteria andMoneyGreaterThanOrEqualTo(Double value) {
             addCriterion("money >=", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLessThan(Integer value) {
+        public Criteria andMoneyLessThan(Double value) {
             addCriterion("money <", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLessThanOrEqualTo(Integer value) {
+        public Criteria andMoneyLessThanOrEqualTo(Double value) {
             addCriterion("money <=", value, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyIn(List<Integer> values) {
+        public Criteria andMoneyIn(List<Double> values) {
             addCriterion("money in", values, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotIn(List<Integer> values) {
+        public Criteria andMoneyNotIn(List<Double> values) {
             addCriterion("money not in", values, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyBetween(Integer value1, Integer value2) {
+        public Criteria andMoneyBetween(Double value1, Double value2) {
             addCriterion("money between", value1, value2, "money");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyNotBetween(Integer value1, Integer value2) {
+        public Criteria andMoneyNotBetween(Double value1, Double value2) {
             addCriterion("money not between", value1, value2, "money");
             return (Criteria) this;
         }
@@ -624,6 +624,126 @@ public class OpAgentRechargeExample {
 
         public Criteria andOnlinePayNotBetween(Integer value1, Integer value2) {
             addCriterion("online_pay not between", value1, value2, "onlinePay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchIsNull() {
+            addCriterion("is_fetch is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchIsNotNull() {
+            addCriterion("is_fetch is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchEqualTo(Integer value) {
+            addCriterion("is_fetch =", value, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchNotEqualTo(Integer value) {
+            addCriterion("is_fetch <>", value, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchGreaterThan(Integer value) {
+            addCriterion("is_fetch >", value, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_fetch >=", value, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchLessThan(Integer value) {
+            addCriterion("is_fetch <", value, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchLessThanOrEqualTo(Integer value) {
+            addCriterion("is_fetch <=", value, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchIn(List<Integer> values) {
+            addCriterion("is_fetch in", values, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchNotIn(List<Integer> values) {
+            addCriterion("is_fetch not in", values, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchBetween(Integer value1, Integer value2) {
+            addCriterion("is_fetch between", value1, value2, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsFetchNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_fetch not between", value1, value2, "isFetch");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyIsNull() {
+            addCriterion("fetch_money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyIsNotNull() {
+            addCriterion("fetch_money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyEqualTo(Double value) {
+            addCriterion("fetch_money =", value, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyNotEqualTo(Double value) {
+            addCriterion("fetch_money <>", value, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyGreaterThan(Double value) {
+            addCriterion("fetch_money >", value, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyGreaterThanOrEqualTo(Double value) {
+            addCriterion("fetch_money >=", value, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyLessThan(Double value) {
+            addCriterion("fetch_money <", value, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyLessThanOrEqualTo(Double value) {
+            addCriterion("fetch_money <=", value, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyIn(List<Double> values) {
+            addCriterion("fetch_money in", values, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyNotIn(List<Double> values) {
+            addCriterion("fetch_money not in", values, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyBetween(Double value1, Double value2) {
+            addCriterion("fetch_money between", value1, value2, "fetchMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFetchMoneyNotBetween(Double value1, Double value2) {
+            addCriterion("fetch_money not between", value1, value2, "fetchMoney");
             return (Criteria) this;
         }
     }
