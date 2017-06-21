@@ -3,7 +3,7 @@ package com.gamecenter.service.agent;
 import java.util.List;
 
 import com.gamecenter.model.OpAgentRecharge;
-import com.gamecenter.model.OpAgentRechargeRequest;
+import com.gamecenter.model.OpAgentRechargeFetch;
 
 /** 
  * ClassName:AgentRechargeRequestService <br/> 
@@ -14,7 +14,7 @@ import com.gamecenter.model.OpAgentRechargeRequest;
  * @version   
  * @see       
  */
-public interface AgentRechargeRequestService extends BaseService<OpAgentRechargeRequest>{
+public interface AgentRechargeFetchService extends BaseService<OpAgentRechargeFetch>{
 	
 	
 	/** 
@@ -25,6 +25,6 @@ public interface AgentRechargeRequestService extends BaseService<OpAgentRecharge
 	 * @param agentName
 	 * @return 
 	 */  
-	public List<OpAgentRechargeRequest> getAgentRechargeRequestList(String agentName);
+	public List<OpAgentRechargeFetch> getAgentRechargeFetchList(String agentName);
 }
   

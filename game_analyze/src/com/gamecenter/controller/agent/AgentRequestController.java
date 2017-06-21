@@ -20,7 +20,6 @@ import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.model.OpAgentList;
-import com.gamecenter.model.OpAgentRechargeRequest;
 import com.gamecenter.model.OpAgentRequest;
 import com.gamecenter.parBean.AgentUser;
 import com.gamecenter.parBean.UserMsg;
@@ -92,7 +91,8 @@ public class AgentRequestController {
 			phone.trim();
 			// 判断邀请码是否服合要求
 			OpAgentInviteCode code = agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode);
-			if (code != null) {
+			OpAgentList parentAgent = agentListService.findById(code.getAgentId());
+			if (code != null && parentAgent != null) {
 				if (code.getIsUse() == 1) {
 					res = "-3";// 邀请码已过时
 				} else if (agentListService.findByName(name) != null) {// 名称没有被占用
@@ -103,6 +103,8 @@ public class AgentRequestController {
 					res = "-6";// 电话号码已存在,请另外填写
 				}else if (agentListService.findByWechat(weChat) != null){
 					res = "-7";// 微信号已存在,请另外填写
+				}else if (parentAgent.getAgentLevel() <= 1 ){
+					res = "-8";// 微信号已存在,请另外填写
 				}
 				else {
 					code.setIsUse((byte) 1);
@@ -131,6 +133,14 @@ public class AgentRequestController {
 	}
 	
 	
+	/** 
+	 * addAgentProxy:(). <br/> 
+	 * TODO().<br/> 
+	 * 总代注册
+	 * @author lyh 
+	 * @param request
+	 * @return 
+	 */  
 	@RequestMapping("/register/proxy")
 	@ResponseBody
 	public Map<String, Object> addAgentProxy(HttpServletRequest request) {
@@ -142,7 +152,7 @@ public class AgentRequestController {
 		String phone = (String) request.getParameter("phone");
 		if (!ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
 			
-			phone.trim();
+			//phone.trim();
 			// 判断邀请码是否服合要求
 			OpAgentInviteCode code = agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode);
 			if (code != null) {
@@ -170,6 +180,7 @@ public class AgentRequestController {
 					agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据
 					agent.setWechatCode(weChat);
 					agent.setStatus((byte) 1);
+					agent.setRemainMoney(Integer.MAX_VALUE);
 					agentListService.insert(agent);
 					res = "1";
 				}

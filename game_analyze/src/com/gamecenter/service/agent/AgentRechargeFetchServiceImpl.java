@@ -6,9 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.gamecenter.mapper.OpAgentRechargeRequestMapper;
-import com.gamecenter.model.OpAgentRechargeRequest;
-import com.gamecenter.model.OpAgentRechargeRequestExample;
+import com.gamecenter.mapper.OpAgentRechargeFetchMapper;
+import com.gamecenter.model.OpAgentRechargeFetch;
+import com.gamecenter.model.OpAgentRechargeFetchExample;
 
 /** 
  * ClassName:AgentRechargeRequestService <br/> 
@@ -20,19 +20,19 @@ import com.gamecenter.model.OpAgentRechargeRequestExample;
  * @see       
  */
 @Service
-public class AgentRechargeRequestServiceImpl implements AgentRechargeRequestService{
+public class AgentRechargeFetchServiceImpl implements AgentRechargeFetchService{
 
 	@Resource
-	private OpAgentRechargeRequestMapper mapper;
+	private OpAgentRechargeFetchMapper mapper;
 	
 	@Override
-	public void insert(OpAgentRechargeRequest t) {
+	public void insert(OpAgentRechargeFetch t) {
 		// TODO Auto-generated method stub
 		mapper.insert(t);
 	}
 
 	@Override
-	public void update(OpAgentRechargeRequest t) {
+	public void update(OpAgentRechargeFetch t) {
 		// TODO Auto-generated method stub
 		mapper.updateByPrimaryKey(t);
 	}
@@ -44,17 +44,17 @@ public class AgentRechargeRequestServiceImpl implements AgentRechargeRequestServ
 	}
 
 	@Override
-	public OpAgentRechargeRequest findById(long id) {
+	public OpAgentRechargeFetch findById(long id) {
 		// TODO Auto-generated method stub
 		return mapper.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public List<OpAgentRechargeRequest> getAgentRechargeRequestList(String agentName) {
+	public List<OpAgentRechargeFetch> getAgentRechargeFetchList(String agentName) {
 		// TODO Auto-generated method stub
-		OpAgentRechargeRequestExample opAgentRechargeRequestExample = new OpAgentRechargeRequestExample();
-		OpAgentRechargeRequestExample.Criteria criteria = opAgentRechargeRequestExample.createCriteria();
-		criteria.andAgentNameEqualTo(agentName);
+		OpAgentRechargeFetchExample opAgentRechargeRequestExample = new OpAgentRechargeFetchExample();
+		OpAgentRechargeFetchExample.Criteria criteria = opAgentRechargeRequestExample.createCriteria();
+		criteria.andNameEqualTo(agentName);
 		return mapper.selectByExample(opAgentRechargeRequestExample);
 	}
 	

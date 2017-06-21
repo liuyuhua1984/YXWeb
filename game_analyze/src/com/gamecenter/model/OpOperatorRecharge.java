@@ -16,7 +16,7 @@ public class OpOperatorRecharge implements Serializable {
     /**
      * 
      */
-    private Integer sid;
+    private String sid;
 
     /**
      * 
@@ -79,12 +79,12 @@ public class OpOperatorRecharge implements Serializable {
         this.passport = passport == null ? null : passport.trim();
     }
 
-    public Integer getSid() {
+    public String getSid() {
         return sid;
     }
 
-    public void setSid(Integer sid) {
-        this.sid = sid;
+    public void setSid(String sid) {
+        this.sid = sid == null ? null : sid.trim();
     }
 
     public Integer getGold() {
@@ -149,5 +149,27 @@ public class OpOperatorRecharge implements Serializable {
 
     public void setInfo(String info) {
         this.info = info == null ? null : info.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", passport=").append(passport);
+        sb.append(", sid=").append(sid);
+        sb.append(", gold=").append(gold);
+        sb.append(", money=").append(money);
+        sb.append(", billno=").append(billno);
+        sb.append(", time=").append(time);
+        sb.append(", flag=").append(flag);
+        sb.append(", addtime=").append(addtime);
+        sb.append(", res=").append(res);
+        sb.append(", info=").append(info);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

@@ -16,7 +16,16 @@
 				</c:otherwise>
 			</c:choose>
 		</td>
-
+		<td>${item.fetchMoney}</td>	
+		<td>
+		<c:choose>
+				<c:when test="${item.isFetch eq '0'}">未提</c:when>
+				<c:when test="${item.isFetch eq '1'}">已申请</c:when>
+				<c:otherwise>
+								已提
+				</c:otherwise>
+			</c:choose>
+	</td>
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 	</tr>
 </c:forEach>

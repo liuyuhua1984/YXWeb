@@ -115,11 +115,11 @@
 						<table class="table table-striped table-bordered responsive" id="dtable">
 							<thead>
 								<tr>
-									<th width="100">序</th>
-									<th width="100">交易号</th>
+									<th width="50">序</th>
+									<th width="150">交易号</th>
 									<th width="80">上级昵称</th>
 									<th width="80">充值金额</th>
-									<th width="80">充值时间</th>
+									<th width="200">充值时间</th>
 								</tr>
 							</thead>
 							<tbody id="data">

@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OpAgentRechargeRequestExample {
+public class OpAgentRechargeFetchExample {
     /**
-     * op_agent_recharge_request
+     * op_agent_recharge_fetch
      */
     protected String orderByClause;
 
     /**
-     * op_agent_recharge_request
+     * op_agent_recharge_fetch
      */
     protected boolean distinct;
 
     /**
-     * op_agent_recharge_request
+     * op_agent_recharge_fetch
      */
     protected List<Criteria> oredCriteria;
 
-    public OpAgentRechargeRequestExample() {
+    public OpAgentRechargeFetchExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +74,7 @@ public class OpAgentRechargeRequestExample {
     }
 
     /**
-     * op_agent_recharge_request null
+     * op_agent_recharge_fetch null
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -177,76 +177,6 @@ public class OpAgentRechargeRequestExample {
             return (Criteria) this;
         }
 
-        public Criteria andAgentNameIsNull() {
-            addCriterion("agent_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameIsNotNull() {
-            addCriterion("agent_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameEqualTo(String value) {
-            addCriterion("agent_name =", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameNotEqualTo(String value) {
-            addCriterion("agent_name <>", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameGreaterThan(String value) {
-            addCriterion("agent_name >", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameGreaterThanOrEqualTo(String value) {
-            addCriterion("agent_name >=", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameLessThan(String value) {
-            addCriterion("agent_name <", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameLessThanOrEqualTo(String value) {
-            addCriterion("agent_name <=", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameLike(String value) {
-            addCriterion("agent_name like", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameNotLike(String value) {
-            addCriterion("agent_name not like", value, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameIn(List<String> values) {
-            addCriterion("agent_name in", values, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameNotIn(List<String> values) {
-            addCriterion("agent_name not in", values, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameBetween(String value1, String value2) {
-            addCriterion("agent_name between", value1, value2, "agentName");
-            return (Criteria) this;
-        }
-
-        public Criteria andAgentNameNotBetween(String value1, String value2) {
-            addCriterion("agent_name not between", value1, value2, "agentName");
-            return (Criteria) this;
-        }
-
         public Criteria andMoneyIsNull() {
             addCriterion("money is null");
             return (Criteria) this;
@@ -304,66 +234,6 @@ public class OpAgentRechargeRequestExample {
 
         public Criteria andMoneyNotBetween(Integer value1, Integer value2) {
             addCriterion("money not between", value1, value2, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentIsNull() {
-            addCriterion("is_agent is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentIsNotNull() {
-            addCriterion("is_agent is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentEqualTo(Byte value) {
-            addCriterion("is_agent =", value, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentNotEqualTo(Byte value) {
-            addCriterion("is_agent <>", value, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentGreaterThan(Byte value) {
-            addCriterion("is_agent >", value, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentGreaterThanOrEqualTo(Byte value) {
-            addCriterion("is_agent >=", value, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentLessThan(Byte value) {
-            addCriterion("is_agent <", value, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentLessThanOrEqualTo(Byte value) {
-            addCriterion("is_agent <=", value, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentIn(List<Byte> values) {
-            addCriterion("is_agent in", values, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentNotIn(List<Byte> values) {
-            addCriterion("is_agent not in", values, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentBetween(Byte value1, Byte value2) {
-            addCriterion("is_agent between", value1, value2, "isAgent");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsAgentNotBetween(Byte value1, Byte value2) {
-            addCriterion("is_agent not between", value1, value2, "isAgent");
             return (Criteria) this;
         }
 
@@ -496,140 +366,10 @@ public class OpAgentRechargeRequestExample {
             addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
-
-        public Criteria andOperateIsNull() {
-            addCriterion("operate is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateIsNotNull() {
-            addCriterion("operate is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateEqualTo(Integer value) {
-            addCriterion("operate =", value, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateNotEqualTo(Integer value) {
-            addCriterion("operate <>", value, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateGreaterThan(Integer value) {
-            addCriterion("operate >", value, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("operate >=", value, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateLessThan(Integer value) {
-            addCriterion("operate <", value, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateLessThanOrEqualTo(Integer value) {
-            addCriterion("operate <=", value, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateIn(List<Integer> values) {
-            addCriterion("operate in", values, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateNotIn(List<Integer> values) {
-            addCriterion("operate not in", values, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateBetween(Integer value1, Integer value2) {
-            addCriterion("operate between", value1, value2, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andOperateNotBetween(Integer value1, Integer value2) {
-            addCriterion("operate not between", value1, value2, "operate");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderIsNull() {
-            addCriterion("trader_order is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderIsNotNull() {
-            addCriterion("trader_order is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderEqualTo(String value) {
-            addCriterion("trader_order =", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotEqualTo(String value) {
-            addCriterion("trader_order <>", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderGreaterThan(String value) {
-            addCriterion("trader_order >", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderGreaterThanOrEqualTo(String value) {
-            addCriterion("trader_order >=", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderLessThan(String value) {
-            addCriterion("trader_order <", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderLessThanOrEqualTo(String value) {
-            addCriterion("trader_order <=", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderLike(String value) {
-            addCriterion("trader_order like", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotLike(String value) {
-            addCriterion("trader_order not like", value, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderIn(List<String> values) {
-            addCriterion("trader_order in", values, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotIn(List<String> values) {
-            addCriterion("trader_order not in", values, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderBetween(String value1, String value2) {
-            addCriterion("trader_order between", value1, value2, "traderOrder");
-            return (Criteria) this;
-        }
-
-        public Criteria andTraderOrderNotBetween(String value1, String value2) {
-            addCriterion("trader_order not between", value1, value2, "traderOrder");
-            return (Criteria) this;
-        }
     }
 
     /**
-     * op_agent_recharge_request
+     * op_agent_recharge_fetch
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -639,7 +379,7 @@ public class OpAgentRechargeRequestExample {
     }
 
     /**
-     * op_agent_recharge_request null
+     * op_agent_recharge_fetch null
      */
     public static class Criterion {
         private String condition;

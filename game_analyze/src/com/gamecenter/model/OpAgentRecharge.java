@@ -17,7 +17,7 @@ public class OpAgentRecharge implements Serializable {
     /**
      * 充值的金额(rmb)
      */
-    private Integer money;
+    private Double money;
 
     /**
      * 是否是代理1为代理
@@ -45,6 +45,16 @@ public class OpAgentRecharge implements Serializable {
     private Integer onlinePay;
 
     /**
+     * 是否已提现 ,申请提现为1,已提为2
+     */
+    private Integer isFetch;
+
+    /**
+     * 提成
+     */
+    private Double fetchMoney;
+
+    /**
      * op_agent_recharge
      */
     private static final long serialVersionUID = 1L;
@@ -65,11 +75,11 @@ public class OpAgentRecharge implements Serializable {
         this.agentName = agentName == null ? null : agentName.trim();
     }
 
-    public Integer getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(Integer money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 
@@ -113,6 +123,22 @@ public class OpAgentRecharge implements Serializable {
         this.onlinePay = onlinePay;
     }
 
+    public Integer getIsFetch() {
+        return isFetch;
+    }
+
+    public void setIsFetch(Integer isFetch) {
+        this.isFetch = isFetch;
+    }
+
+    public Double getFetchMoney() {
+        return fetchMoney;
+    }
+
+    public void setFetchMoney(Double fetchMoney) {
+        this.fetchMoney = fetchMoney;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -127,6 +153,8 @@ public class OpAgentRecharge implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", traderOrder=").append(traderOrder);
         sb.append(", onlinePay=").append(onlinePay);
+        sb.append(", isFetch=").append(isFetch);
+        sb.append(", fetchMoney=").append(fetchMoney);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

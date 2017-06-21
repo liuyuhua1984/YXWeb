@@ -256,52 +256,62 @@ public class OpOperatorRechargeExample {
             return (Criteria) this;
         }
 
-        public Criteria andSidEqualTo(Integer value) {
+        public Criteria andSidEqualTo(String value) {
             addCriterion("sid =", value, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidNotEqualTo(Integer value) {
+        public Criteria andSidNotEqualTo(String value) {
             addCriterion("sid <>", value, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidGreaterThan(Integer value) {
+        public Criteria andSidGreaterThan(String value) {
             addCriterion("sid >", value, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSidGreaterThanOrEqualTo(String value) {
             addCriterion("sid >=", value, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidLessThan(Integer value) {
+        public Criteria andSidLessThan(String value) {
             addCriterion("sid <", value, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidLessThanOrEqualTo(Integer value) {
+        public Criteria andSidLessThanOrEqualTo(String value) {
             addCriterion("sid <=", value, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidIn(List<Integer> values) {
+        public Criteria andSidLike(String value) {
+            addCriterion("sid like", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidNotLike(String value) {
+            addCriterion("sid not like", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidIn(List<String> values) {
             addCriterion("sid in", values, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidNotIn(List<Integer> values) {
+        public Criteria andSidNotIn(List<String> values) {
             addCriterion("sid not in", values, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidBetween(Integer value1, Integer value2) {
+        public Criteria andSidBetween(String value1, String value2) {
             addCriterion("sid between", value1, value2, "sid");
             return (Criteria) this;
         }
 
-        public Criteria andSidNotBetween(Integer value1, Integer value2) {
+        public Criteria andSidNotBetween(String value1, String value2) {
             addCriterion("sid not between", value1, value2, "sid");
             return (Criteria) this;
         }

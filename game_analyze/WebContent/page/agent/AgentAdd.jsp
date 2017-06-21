@@ -96,7 +96,7 @@
 				<form id="wform" class="form-horizontal themed" onsubmit="return false;" />
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="name">代理昵称：</label>
+						<label class="control-label" for="name">昵称：</label>
 						<%-- 
                             <div class="controls">
                                 <select id="appid" name="appid" class="span12 with-search">
@@ -221,6 +221,9 @@
 					} else if (data.res == "-7") {
 	
 						alert('微信号已存在!');
+					}else if (data.res == "-8") {
+						
+						alert('权限不足!');
 					} else {
 						alert('邀请码不存在 ！');
 					}
