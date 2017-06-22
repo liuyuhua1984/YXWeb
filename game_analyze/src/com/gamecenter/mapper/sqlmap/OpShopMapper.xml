@@ -3,7 +3,7 @@
 <mapper namespace="com.gamecenter.mapper.OpShopMapper">
   <resultMap id="BaseResultMap" type="com.gamecenter.model.OpShop">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="num" jdbcType="INTEGER" property="num" />
     <result column="gift" jdbcType="INTEGER" property="gift" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -107,7 +107,7 @@
     </selectKey>
     insert into op_shop (price, num, gift, 
       type, name)
-    values (#{price,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{gift,jdbcType=INTEGER}, 
+    values (#{price,jdbcType=DOUBLE}, #{num,jdbcType=INTEGER}, #{gift,jdbcType=INTEGER}, 
       #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpShop">
@@ -134,7 +134,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="price != null">
-        #{price,jdbcType=INTEGER},
+        #{price,jdbcType=DOUBLE},
       </if>
       <if test="num != null">
         #{num,jdbcType=INTEGER},
@@ -163,7 +163,7 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.price != null">
-        price = #{record.price,jdbcType=INTEGER},
+        price = #{record.price,jdbcType=DOUBLE},
       </if>
       <if test="record.num != null">
         num = #{record.num,jdbcType=INTEGER},
@@ -185,7 +185,7 @@
   <update id="updateByExample" parameterType="map">
     update op_shop
     set id = #{record.id,jdbcType=BIGINT},
-      price = #{record.price,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
       num = #{record.num,jdbcType=INTEGER},
       gift = #{record.gift,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER},
@@ -198,7 +198,7 @@
     update op_shop
     <set>
       <if test="price != null">
-        price = #{price,jdbcType=INTEGER},
+        price = #{price,jdbcType=DOUBLE},
       </if>
       <if test="num != null">
         num = #{num,jdbcType=INTEGER},
@@ -217,7 +217,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpShop">
     update op_shop
-    set price = #{price,jdbcType=INTEGER},
+    set price = #{price,jdbcType=DOUBLE},
       num = #{num,jdbcType=INTEGER},
       gift = #{gift,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},

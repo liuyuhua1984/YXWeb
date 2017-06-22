@@ -56,10 +56,10 @@
 </style>
 </head>
 <body>
-
-	<c:if test="${level} eq '888888'">
-		<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
-			<a style="margin-top: -7px;" href="${ctxPage}/agent/config/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 修改配置</a>
+	
+	<c:if test="${level eq '888888'}">
+			<div style="margin-top: 10px;margin-left: 3px;">
+			<a  href="${ctxPage}/agent/config/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 修改配置</a>
 		</div>
 	</c:if>
 	<%--列表--%>
@@ -97,11 +97,10 @@
 							<tbody id="data">
 								<c:forEach items="${lists}" var="item">
 									<tr>
-										<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
-										<td>${item.oneLevel}</td>
-										<td>${item.twoLevel}</td>
-										<td>${item.threeLevel}</td>
-										<td>${item.noneLevel}</td>
+										<td>${item.oneLevel}%</td>
+										<td>${item.twoLevel}%</td>
+										<td>${item.threeLevel}%</td>
+										<td>${item.noneLevel}%</td>
 									</tr>
 								</c:forEach>
 								<tr>
@@ -131,33 +130,7 @@
 				}); //显示时间 并格式化
 			}
 	
-			/**
-	     *  上报状态控制
-	     * @param worldid
-	     * @param act
-	     */
-			function upstatus(id, act) {
-				$.ajax({
-					url : "${ctxPage}/agent/world/upstatus",
-					type : "POST",
-					cache : false,
-					data : {
-						agentId : id,
-						act : act
-					},
-					dataType : "json",
-					success : function(result) {
-						if (result == '1') {
-							alert("消息发送成功！");
-						} else {
-							alert("消息发送失败！");
-						}
-					},
-					error : function() {
-						alert("请求异常");
-					}
-				});
-			}
+			
 		});
 	</script>
 </body>

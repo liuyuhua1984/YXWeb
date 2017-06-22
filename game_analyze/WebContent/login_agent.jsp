@@ -1,60 +1,60 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>元巫科技代理系统</title>
-    <link href="/images/login/favicon.ico" rel="Shortcut Icon">
-    <script type="text/javascript" src="${ctxPage}/js/jquery.js"></script>
-    <link href="${ctxPage}/admin/css/login2.css" rel="stylesheet" type="text/css"/>
+<title>元巫科技代理系统</title>
+<link href="${ctxPage}/static/images/lo.ico" rel="Shortcut Icon">
+<script type="text/javascript" src="${ctxPage}/js/jquery.js"></script>
+<link href="${ctxPage}/admin/css/login2.css" rel="stylesheet" type="text/css" />
 </head>
 
 <c:if test="${not empty act_agent}">
-    <script>parent.location.href = "${ctxPage}/loginOut/page/agent";</script>
+	<script>parent.location.href = "${ctxPage}/loginOut/page/agent";</script>
 </c:if>
 
 <base target="_top">
 <body class="loginBody" target="_top">
-<div class="loginBg" style="">
-    <div style="width: 100%; height: 50%; left: 0; top: 0; z-index:-1;"></div>
-    <%--登陆框--%>
-    <div style="width: 442px; height: 440px; margin: 0 auto; margin-top: -260px;">
-        <div class="loginLogo"></div>
-        <div class="welcome">元巫科技代理系统</div>
-        <div id="loginFrame" class="loginFrame">
-            <form id="loginForm" name="loginForm" method="post" onsubmit="return false;">
-                <div class="">
-                    <%--用户名--%>
-                        <div class="lable">账号：</div>
-                        <div class="inputBg">
-                            <input type="text" id="userName" name="userName" class="inputText" onfocus="" value=""/>
-                        </div>
-                    </div>
-                    <%--密码--%>
-                    <div class="filedInput">
-                        <div class="lable">密码：</div>
-                        <div class="inputBg">
-                            <input type="password" id="pwd" name="pwd" class="inputText" onfocus="" value=""/>
-                        </div>
-                    </div>
-                    
-                    <%--登陆按钮--%>
-                    <div id="loginBtnWrap" class="filedInput">
-                        <a href="javascript:;" id="loginBtn" class="inline-block" onclick="login();return false;">登陆</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <%--页脚--%>
-    <div class="copyright">
-        <div class="center">版本(1.0)</div>
-    </div>
-</div>
+	<div class="loginBg" style="">
+		<div style="width: 100%; height: 50%; left: 0; top: 0; z-index:-1;"></div>
+		<%--登陆框--%>
+		<div style="width: 442px; height: 440px; margin: 0 auto; margin-top: -260px;">
+			<div class="loginLogo"></div>
+			<div class="welcome">元巫科技代理系统</div>
+			<div id="loginFrame" class="loginFrame">
+				<form id="loginForm" name="loginForm" method="post" onsubmit="return false;">
+					<div class="">
+						<%--用户名--%>
+						<div class="lable">账号：</div>
+						<div class="inputBg">
+							<input type="text" id="userName" name="userName" class="inputText" onfocus="" value="" />
+						</div>
+					</div>
+					<%--密码--%>
+					<div class="filedInput">
+						<div class="lable">密码：</div>
+						<div class="inputBg">
+							<input type="password" id="pwd" name="pwd" class="inputText" onfocus="" value="" />
+						</div>
+					</div>
 
-<script type="text/javascript">
+					<%--登陆按钮--%>
+					<div id="loginBtnWrap" class="filedInput">
+						<a href="javascript:;" id="loginBtn" class="inline-block" onclick="login();return false;">登陆</a>
+					</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	<%--页脚--%>
+	<div class="copyright">
+		<div class="center">版本(1.0)</div>
+	</div>
+	</div>
+
+	<script type="text/javascript">
     var mark = 0;
     var token = "${token}";
     function login() {

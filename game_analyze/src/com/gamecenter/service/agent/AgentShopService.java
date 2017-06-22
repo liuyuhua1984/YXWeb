@@ -43,7 +43,7 @@ public interface AgentShopService extends BaseService<OpShop> {
 	 * @param type
 	 * @return 
 	 */  
-	OpShop findShopGoodsByPrice(int price,int type);
+	OpShop findShopGoodsByPrice(double price,int type);
 	
 }
   

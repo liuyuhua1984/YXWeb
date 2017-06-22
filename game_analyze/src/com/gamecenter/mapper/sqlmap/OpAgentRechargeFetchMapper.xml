@@ -3,7 +3,7 @@
 <mapper namespace="com.gamecenter.mapper.OpAgentRechargeFetchMapper">
   <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentRechargeFetch">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
@@ -130,7 +130,7 @@
     </selectKey>
     insert into op_agent_recharge_fetch (money, create_time, name, 
       ids)
-    values (#{money,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+    values (#{money,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
       #{ids,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRechargeFetch">
@@ -154,7 +154,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="money != null">
-        #{money,jdbcType=INTEGER},
+        #{money,jdbcType=DOUBLE},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -180,7 +180,7 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.money != null">
-        money = #{record.money,jdbcType=INTEGER},
+        money = #{record.money,jdbcType=DOUBLE},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -199,7 +199,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update op_agent_recharge_fetch
     set id = #{record.id,jdbcType=BIGINT},
-      money = #{record.money,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DOUBLE},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       name = #{record.name,jdbcType=VARCHAR},
       ids = #{record.ids,jdbcType=LONGVARCHAR}
@@ -210,7 +210,7 @@
   <update id="updateByExample" parameterType="map">
     update op_agent_recharge_fetch
     set id = #{record.id,jdbcType=BIGINT},
-      money = #{record.money,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DOUBLE},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -221,7 +221,7 @@
     update op_agent_recharge_fetch
     <set>
       <if test="money != null">
-        money = #{money,jdbcType=INTEGER},
+        money = #{money,jdbcType=DOUBLE},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -237,7 +237,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gamecenter.model.OpAgentRechargeFetch">
     update op_agent_recharge_fetch
-    set money = #{money,jdbcType=INTEGER},
+    set money = #{money,jdbcType=DOUBLE},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
       ids = #{ids,jdbcType=LONGVARCHAR}
@@ -245,7 +245,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentRechargeFetch">
     update op_agent_recharge_fetch
-    set money = #{money,jdbcType=INTEGER},
+    set money = #{money,jdbcType=DOUBLE},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}

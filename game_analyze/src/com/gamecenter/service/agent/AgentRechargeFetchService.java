@@ -20,11 +20,21 @@ public interface AgentRechargeFetchService extends BaseService<OpAgentRechargeFe
 	/** 
 	 * getAgentRechargeRequestList:(). <br/> 
 	 * TODO().<br/> 
-	 *充值请求列表
+	 *结算请求列表
 	 * @author lyh 
 	 * @param agentName
 	 * @return 
 	 */  
 	public List<OpAgentRechargeFetch> getAgentRechargeFetchList(String agentName);
+	
+	/** 
+	 * countFetchSize:(). <br/> 
+	 * TODO().<br/> 
+	 * 结算列表的条数
+	 * @author lyh 
+	 * @param agentName
+	 * @return 
+	 */  
+	public int countFetchSize(String agentName);
 }
   

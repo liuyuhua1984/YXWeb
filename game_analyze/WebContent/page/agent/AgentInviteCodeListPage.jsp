@@ -7,7 +7,7 @@
 		<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
 		<td>${item.inviteCode}</td>
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td><a class="btn btn-small aButton" href="javascript:void(0);" data-clipboard-text="${item.inviteCode}">复制</a></td>
+		<td><button  type ="button" class="btn btn-small aButton"  data-clipboard-text="${item.inviteCode}">复制</button></td>
 	</tr>
 </c:forEach>
 <tr>
@@ -20,17 +20,17 @@
 
 
 <script type="text/javascript">
-	window.onload = function() {
+	//window.onload = function() {
 		var clipboard = new Clipboard(".aButton");
-		clipboard.on('success', function(e) {
+			clipboard.on('success', function(e) {
 			var ctxPage = "${ctxPage}";
-
+		
 			console.info('Action:', e.action);
 			console.info('Text:', e.text);
 			console.info('Trigger:', e.trigger);
 			var inviteCode = e.text;
 			copyFlay(inviteCode);
-
+			//alert("成都 ");
 			e.clearSelection();
 		});
 
@@ -38,7 +38,7 @@
 			console.error('Action:', e.action);
 			console.error('Trigger:', e.trigger);
 		});
-	}
+//	}
 
 	function copyFlay(inviteCode) {
 		var num = $(".on").text();
@@ -68,7 +68,7 @@
 
 	function getPager() {
 		var num = $(this).attr("num");
-		alert("ssss" + num);
+	//	alert("ssss" + num);
 		if (num == undefined) {
 			return;
 		}

@@ -108,7 +108,7 @@
                             </div> --%>
 
 						<div class="controls">
-							<input type="text" class="span12" id="name" name="name" value="" />
+							<input type="text" class="span12" id="name" name="name" value="" maxlength="12" />
 						</div>
 					</div>
 
@@ -116,7 +116,7 @@
 						<label class="control-label" for="password">密码</label>
 
 						<div class="controls">
-							<input type="text" class="span12" id="password" name="password" value="" />
+							<input type="password" class="span12" id="password" name="password" value="" maxlength="6"/>
 						</div>
 					</div>
 
@@ -124,7 +124,7 @@
 						<label class="control-label" for="inviteCode">邀请码：</label>
 
 						<div class="controls">
-							<input type="text" class="span12" id="inviteCode" name="inviteCode" value="" placeholder="请填写你的邀请码" />
+							<input type="text" class="span12" id="inviteCode" name="inviteCode" value="" placeholder="请填写你的邀请码" maxlength="10" />
 						</div>
 					</div>
 
@@ -133,7 +133,7 @@
 						<label class="control-label" for="weChat">微信号</label>
 
 						<div class="controls">
-							<input type="text" class="span12" id="weChat" name="weChat" value="" placeholder="请填写你的微信号" />
+							<input type="text" class="span12" id="weChat" name="weChat" value="" placeholder="请填写你的微信号" maxlength="20"/>
 
 						</div>
 					</div>
@@ -142,7 +142,7 @@
 						<label class="control-label" for="phone">电话号码</label>
 
 						<div class="controls">
-							<input type="number" class="span12" id="phone" name="phone" value="" />
+							<input type="number" class="span12" id="phone" name="phone" value=""  maxlength="13"/>
 						</div>
 					</div>
 					<span id="tishi"></span>
