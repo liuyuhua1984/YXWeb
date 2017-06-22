@@ -57,6 +57,15 @@ public class AgentRechargeFetchServiceImpl implements AgentRechargeFetchService{
 		criteria.andNameEqualTo(agentName);
 		return mapper.selectByExample(opAgentRechargeRequestExample);
 	}
+
+	@Override
+	public int countFetchSize(String agentName) {
+		// TODO Auto-generated method stub
+		OpAgentRechargeFetchExample opAgentRechargeRequestExample = new OpAgentRechargeFetchExample();
+		OpAgentRechargeFetchExample.Criteria criteria = opAgentRechargeRequestExample.createCriteria();
+		criteria.andNameEqualTo(agentName);
+		return (int)mapper.countByExample(opAgentRechargeRequestExample);
+	}
 	
 }
   

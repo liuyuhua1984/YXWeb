@@ -12,7 +12,7 @@ public class OpAgentRechargeFetch implements Serializable {
     /**
      * 充值的金额(rmb)
      */
-    private Integer money;
+    private Double money;
 
     /**
      * 申请充值时间
@@ -42,11 +42,11 @@ public class OpAgentRechargeFetch implements Serializable {
         this.id = id;
     }
 
-    public Integer getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(Integer money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 

@@ -62,6 +62,7 @@
 		<button id="search" type="button" class="btn btn-small" style="margin-top: -7px;">
 			<i class="icon-search"></i>
 		</button>
+		</div>
 		<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 			<a style="margin-top: -7px;" href="${ctxPage}/agent/recharge/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 充值</a>
 		</div>
@@ -111,7 +112,7 @@
 					<div>
 						<!-- inner-spacer  -->
 						<div class=" inner-spacer">
-							<table class="table table-striped table-bordered " id="dtable">
+							<table class="table table-striped table-bordered  responsive" id="dtable">
 								<thead>
 									<tr class="info">
 										<th width="50">序</th>

@@ -62,14 +62,12 @@
 		<button id="search" type="button" class="btn btn-small" style="margin-top: -7px;">
 			<i class="icon-search"></i>
 		</button>
-
 	</div>
 
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<button id="create" type="button" class="btn btn-large" style="margin-top: -7px;">
 			<i class="icon-play"></i> 生成邀请码
 		</button>
-
 	</div>
 
 	<%--列表--%>

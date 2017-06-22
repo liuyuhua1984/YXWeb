@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gamecenter.common.IdGenerateUtils;
 import com.gamecenter.common.Tools;
+import com.gamecenter.model.OpAgentConfig;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpAgentRecharge;
 import com.gamecenter.model.OpGameapp;
@@ -23,6 +24,7 @@ import com.gamecenter.model.OpGameworld;
 import com.gamecenter.model.OpOssQlzPassport;
 import com.gamecenter.model.OpShop;
 import com.gamecenter.parBean.AgentUser;
+import com.gamecenter.service.agent.AgentConfigService;
 import com.gamecenter.service.agent.AgentListService;
 import com.gamecenter.service.agent.AgentRechargeFetchService;
 import com.gamecenter.service.agent.AgentRechargeService;
@@ -70,20 +72,23 @@ public class AgentRechargeRequestController {
 	@Autowired
 	private AppService appService;
 	
-	@RequestMapping("/recharge/fetch/list")
-	public ModelAndView getAgentRechargeRequest(HttpSession session) {
-		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
-		String platformName = "";
-		if (userMsg != null) {
-			platformName = userMsg.getAgentName();
-		}
-		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
-		ModelAndView view = new ModelAndView("page/agent/AgentRechargeRequestList");
-//		List<OpAgentRechargeRequest> list = agentRechargeRequestService.getAgentRechargeRequestList(platformName);
-//		view.addObject("lists", list);
-		view.addObject("targetTime", targetTime);
-		return view;
-	}
+	@Autowired
+	private AgentConfigService agentConfigService;
+	
+//	@RequestMapping("/recharge/fetch/list")
+//	public ModelAndView getAgentRechargeRequest(HttpSession session) {
+//		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
+//		String platformName = "";
+//		if (userMsg != null) {
+//			platformName = userMsg.getAgentName();
+//		}
+//		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
+//		ModelAndView view = new ModelAndView("page/agent/AgentRechargeRequestList");
+////		List<OpAgentRechargeRequest> list = agentRechargeRequestService.getAgentRechargeRequestList(platformName);
+////		view.addObject("lists", list);
+//		view.addObject("targetTime", targetTime);
+//		return view;
+//	}
 	
 	/** 
 	 * rechargeRequest:(). <br/> 
@@ -111,6 +116,15 @@ public class AgentRechargeRequestController {
 		return view;
 	}
 	
+	/** 
+	 * addMoney:(). <br/> 
+	 * TODO().<br/> 
+	 * 购买道具,代理给下一级买
+	 * @author lyh 
+	 * @param session
+	 * @param request
+	 * @return 
+	 */  
 	@RequestMapping("/add/money")
 	@ResponseBody
 	public ModelMap addMoney(HttpSession session, HttpServletRequest request) {
@@ -125,8 +139,9 @@ public class AgentRechargeRequestController {
 		String payedName = request.getParameter("name");
 		String isAgent = request.getParameter("isAgent");
 		boolean bAgent = Integer.parseInt(isAgent) > 0 ? true : false;
+		double dPrice = Double.parseDouble(price);
 		
-		OpShop goods = agentShopService.findShopGoodsByPrice(Integer.parseInt(price), 0);
+		OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
 		if (goods != null) {
 			OpAgentList parentAgent = agentListService.findById(userMsg.getId());
 			int gold = goods.getGift() + goods.getNum();
@@ -139,7 +154,7 @@ public class AgentRechargeRequestController {
 						// 这儿暂时没有加同步
 						// 生成订单号
 						String trade = "agent:" + IdGenerateUtils.makeId();
-						addAgentMoney(agent, parentAgent, gold, Integer.parseInt(price), trade);
+						addAgentMoney(agent, parentAgent, gold, dPrice, trade);
 						res = "1";
 					}
 				} else {
@@ -157,11 +172,16 @@ public class AgentRechargeRequestController {
 							OpOssQlzPassport player = dataUpHandleService.getPassportByName(payedName, worldServer.getWorldid());
 							if (player != null) {
 								//
+								double fetchMoneyRate = 0;
+								OpAgentConfig agentConfig =  agentConfigService.findById(1);
+								if (agentConfig != null && agentConfig.getOneLevel() != null){
+									fetchMoneyRate = Double.parseDouble(agentConfig.getOneLevel() );
+								}
 								String trade = "player:" + IdGenerateUtils.makeId();
 								int status = playerRechargeService.recharge(player.getOpenid(), trade, gold, (int) (System.currentTimeMillis() / 1000), worldServer.getWorldid(), "" + 1, worldServer);
 								if (status == 1) {
 									res = "1";
-									addPlayerMoney(player, agent, gold, Integer.parseInt(price), trade);
+									addPlayerMoney(player, agent, gold, dPrice, trade,(fetchMoneyRate*dPrice)/100);
 								}
 							}
 						}
@@ -181,14 +201,14 @@ public class AgentRechargeRequestController {
 		parentAgent.setRemainMoney(parentAgent.getRemainMoney() - gold);
 		agentListService.update(parentAgent);
 		
-		saveRecharge(parentAgent.getName(), 1, price, agent.getName(), staderOrder, 0);
+		saveRecharge(parentAgent.getName(), 1, price, agent.getName(), staderOrder, 0,0);
 	}
 	
 	@Transactional
-	public void addPlayerMoney(OpOssQlzPassport player, OpAgentList parentAgent, int gold, double price, String staderOrder) {
+	public void addPlayerMoney(OpOssQlzPassport player, OpAgentList parentAgent, int gold, double price, String staderOrder,double fetchMoney) {
 		parentAgent.setRemainMoney(parentAgent.getRemainMoney() - gold);
 		agentListService.update(parentAgent);
-		saveRecharge(parentAgent.getName(), 0, price, player.getRolename(), staderOrder, 0);
+		saveRecharge(parentAgent.getName(), 0, price, player.getRolename(), staderOrder, 0,fetchMoney);
 	}
 	
 	/**
@@ -204,7 +224,7 @@ public class AgentRechargeRequestController {
 	 * @param traderOrder
 	 * @param onlinePay
 	 */
-	public void saveRecharge(String agentName, int isAgent, double rmb, String rechageName, String traderOrder, int onlinePay) {
+	public void saveRecharge(String agentName, int isAgent, double rmb, String rechageName, String traderOrder, int onlinePay,double fetchMoney) {
 		OpAgentRecharge pay = new OpAgentRecharge();
 		pay.setAgentName(agentName);
 		pay.setIsAgent((byte) isAgent);
@@ -214,6 +234,7 @@ public class AgentRechargeRequestController {
 		pay.setOnlinePay(onlinePay);
 		pay.setCreateTime(new Date(System.currentTimeMillis()));
 		pay.setIsFetch(0);
+		pay.setFetchMoney(fetchMoney);
 		agentRechargeService.insert(pay);
 	}
 }

@@ -71,10 +71,11 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 	}
 
 	@Override
-	public long remainInviteCode() {
+	public long remainInviteCode(long agentId) {
 		// TODO Auto-generated method stub
 		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
 		OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
+		criteria.andAgentIdEqualTo(agentId);
 		criteria.andIsUseEqualTo((byte)0);
 		criteria.andIsPutOutEqualTo((byte)0);
 		return mapper.countByExample(opAgentInviteCodeExample);

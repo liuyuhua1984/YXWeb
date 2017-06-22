@@ -104,7 +104,7 @@ public class AgentRequestController {
 				}else if (agentListService.findByWechat(weChat) != null){
 					res = "-7";// 微信号已存在,请另外填写
 				}else if (parentAgent.getAgentLevel() <= 1 ){
-					res = "-8";// 微信号已存在,请另外填写
+					res = "-8";// 
 				}
 				else {
 					code.setIsUse((byte) 1);

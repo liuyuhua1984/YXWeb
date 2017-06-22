@@ -5,9 +5,9 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>我的售卡记录</title>
+<title>结算列表</title>
 <c:import url="/head/agent"></c:import>
-<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_recharge_sell" defer async="true"></script>
+<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_recharge_fetch" defer async="true"></script>
 
 <style type="text/css">
 .pagerx {
@@ -62,11 +62,14 @@
 		<button id="search" type="button" class="btn btn-small" style="margin-top: -7px;">
 			<i class="icon-search"></i>
 		</button>
-		<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
-			<a style="margin-top: -7px;" href="${ctxPage}/agent/recharge/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 充值</a>
-		</div>
-		
-		<%--
+	</div>
+
+	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
+		<button id="fetch" type="button" class="btn btn-large" style="margin-top: -7px;">
+			<i class="icon-play"></i> 结算
+		</button>
+	</div>
+	<%--
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<div style="position: absolute;">
 			<div style="margin-top: 8px;float: left">游戏：</div>
@@ -91,54 +94,54 @@
 		</div>
 	</div>
  --%>
-		<%--列表--%>
-		<div class="row-fluid">
-			<article class="span12">
-				<!-- new widget -->
-				<div class="jarviswidget" id="widget-id-0">
-					<header>
-						<h2>我的售卡记录</h2>
-						<div class="jarviswidget-ctrls" role="menu">
-							<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
-								class="pencil-10 "></span></a> <a href="#" class="button-icon jarviswidget-fullscreen-btn"><span class="fullscreen-10 "></span></a> <a href="#" class="button-icon  cus-book-next"><span
-								class="min-10 "></span></a>
-								
-						</div>
-						<span class="jarviswidget-loader"></span>
+	<%--列表--%>
+	<div class="row-fluid">
+		<article class="span12">
+			<!-- new widget -->
+			<div class="jarviswidget" id="widget-id-0">
+				<header>
+					<h2>结算列表</h2>
+					<div class="jarviswidget-ctrls" role="menu">
+						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
+							class="pencil-10 "></span></a> <a href="#" class="button-icon jarviswidget-fullscreen-btn"><span class="fullscreen-10 "></span></a> <a href="#" class="button-icon  cus-book-next"><span
+							class="min-10 "></span></a>
 
-					</header>
-					<!-- wrap div -->
-					<div>
-						<!-- inner-spacer  -->
-						<div class=" inner-spacer">
-							<table class="table table-striped table-bordered " id="dtable">
-								<thead>
-									<tr class="info">
-										<th width="50">序</th>
-										<th width="200">交易号</th>
-										<th width="80">上级代理</th>
-										<th width="80">充值金额</th>
-										<th width="80">用户属性</th>
-										<th width="80">提成</th>
-										<th width="80">提成状态</th>
-										<th width="200">充值时间</th>
-									</tr>
-								</thead>
-								<tbody id="data">
-
-								</tbody>
-							</table>
-
-						</div>
-						<!-- end content-->
 					</div>
-					<!-- end wrap div -->
+					<span class="jarviswidget-loader"></span>
+
+				</header>
+				<!-- wrap div -->
+				<div>
+					<!-- inner-spacer  -->
+					<div class=" inner-spacer">
+						<table class="table table-striped table-bordered responsive" id="dtable">
+							<thead>
+								<tr class="info">
+									<th width="50">序</th>
+									<th width="200">交易号</th>
+									<th width="80">上级代理</th>
+									<th width="80">充值金额</th>
+									<th width="80">用户属性</th>
+									<th width="80">提成</th>
+									<th width="80">提成状态</th>
+									<th width="200">充值时间</th>
+								</tr>
+							</thead>
+							<tbody id="data">
+
+							</tbody>
+						</table>
+
+					</div>
+					<!-- end content-->
 				</div>
-				<!-- end widget -->
-			</article>
-		</div>
-		
-		<script type="text/javascript">
+				<!-- end wrap div -->
+			</div>
+			<!-- end widget -->
+		</article>
+	</div>
+
+	<script type="text/javascript">
 			$(document).ready(function() {
 				if ($('#begintime').length) {
 					$('#begintime').datepicker({

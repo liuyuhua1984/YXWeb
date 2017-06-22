@@ -46,29 +46,9 @@ public interface AgentRechargeService extends BaseService<OpAgentRecharge>{
 	 * @param isFetch
 	 * @return 
 	 */  
-	public List<OpAgentRecharge> getOpAgentRechargeFetchList(String upAgentName,int isFetch);
+	public List<OpAgentRecharge> getOpAgentRechargeFetchList(String upAgentName,int isFetch,int level);
 	
 	
-//	/** 
-//	 * getOpAgentRechargeSellListByAgentId:(). <br/> 
-//	 * TODO().<br/> 
-//	 * 通过代理id获取房卡记录
-//	 * @author lyh 
-//	 * @param parentId
-//	 * @return 
-//	 */  
-//	public List<OpAgentRecharge> getOpAgentRechargeSellListByAgentId(long parentId);
-//	
-//	/** 
-//	 * getOpAgentRechargeBuyListByAgentId:(). <br/> 
-//	 * TODO().<br/> 
-//	 * 自己的购买记录
-//	 * @author lyh 
-//	 * @param myId
-//	 * @return 
-//	 */  
-//	public List<OpAgentRecharge> getOpAgentRechargeBuyListByAgentId(long myId);
-
 	
 }
   

@@ -115,7 +115,7 @@
 						<table class="table table-striped table-bordered responsive" id="dtable">
 							<thead>
 								<tr>
-									<th width="100">序</th>
+									<th width="20">序</th>
 									<th width="100">代理名</th>
 									<th width="150">邀请码</th>
 									<th width="150">代理级别</th>
@@ -124,7 +124,8 @@
 									<th width="80">上级代理</th>
 									<th width="100">微信号</th>
 									<th width="100">电话</th>
-									<th width="60">状态</th>
+									<th width="200">注册时间</th>
+									<th width="100">操作</th>
 								</tr>
 							</thead>
 							<tbody id="tbtable">

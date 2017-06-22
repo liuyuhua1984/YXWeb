@@ -39,10 +39,12 @@ import com.github.pagehelper.PageInfo;
 @RequestMapping("/agent")
 public class AgentInviteCodeController {
 	
+	public static final String randomInviteArray[] = { "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m", "N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T", "t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z" };
 	@Autowired
 	private AgentInviteCodeService agentInviteCodeService;
 	
 	public static final int PAGE_SIZE = 10;
+	
 	/**
 	 * getAgentInviteCodeList:(). <br/>
 	 * TODO().<br/>
@@ -60,7 +62,7 @@ public class AgentInviteCodeController {
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
 		ModelAndView view = new ModelAndView("/page/agent/AgentInviteCodeList");
-		//List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
+		// List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
 		// view.addObject("lists", list);
 		view.addObject("targetTime", targetTime);
 		return view;
@@ -110,7 +112,7 @@ public class AgentInviteCodeController {
 			agentId = userMsg.getId();
 		}
 		if (code == 1) {
-			long count = agentInviteCodeService.remainInviteCode();
+			long count = agentInviteCodeService.remainInviteCode(agentId);
 			if (count < 100) {
 				// 生成邀请码
 				createCode(userMsg, (int) (100 - count));
@@ -138,19 +140,25 @@ public class AgentInviteCodeController {
 		if (count <= 0) {
 			return;
 		}
-		for (int i = count; i >= 0; i--) {
+		for (int i = count; i > 0; i--) {
 			OpAgentInviteCode code = new OpAgentInviteCode();
 			code.setCreateTime(new Date(System.currentTimeMillis()));
 			code.setIsPutOut((byte) 0);
 			code.setIsUse((byte) 0);
 			code.setAgentId(user.getId());
 			// int inviteCode = ThreadLocalRandom.current().nextInt();
-			code.setInviteCode(user.getId() + "" + IdGenerateUtils.makeId());
-			agentInviteCodeService.insert(code);
+			String inviteCode = "";
+			for (int j = 0; j < 6; j++) {
+				int rNum = ThreadLocalRandom.current().nextInt(0, 62);
+				inviteCode += randomInviteArray[rNum];
+			}
+			if (agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode) == null) {
+				code.setInviteCode(inviteCode);
+				agentInviteCodeService.insert(code);
+			}
 		}
 	}
 	
-
 	@RequestMapping("/invite/code/copy")
 	public ModelAndView getAgentInviteCodeCopy(HttpSession session, @RequestParam(value = "page", defaultValue = "1") int curPage, @RequestParam(value = "code", defaultValue = "1") String code) {
 		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
@@ -159,8 +167,8 @@ public class AgentInviteCodeController {
 			agentId = userMsg.getId();
 		}
 		OpAgentInviteCode fOutCode = agentInviteCodeService.findOpAgentInviteCodeByCode(code);
-		if (fOutCode != null && fOutCode.getIsPutOut() < 1){
-			fOutCode.setIsPutOut((byte)1);
+		if (fOutCode != null && fOutCode.getIsPutOut() < 1) {
+			fOutCode.setIsPutOut((byte) 1);
 			agentInviteCodeService.update(fOutCode);
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);

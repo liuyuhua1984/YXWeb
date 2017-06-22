@@ -57,7 +57,7 @@ public class AgentShopServiceImpl implements AgentShopService {
 	}
 
 	@Override
-	public OpShop findShopGoodsByPrice(int price, int type) {
+	public OpShop findShopGoodsByPrice(double price, int type) {
 		// TODO Auto-generated method stub
 		OpShopExample opShopExample = new OpShopExample();
 		OpShopExample.Criteria criteria = opShopExample.createCriteria();

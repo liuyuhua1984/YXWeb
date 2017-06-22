@@ -22,7 +22,7 @@
 </c:forEach>
 <tr>
 	<td colspan="11">
-		<div id="inCount">总查询记录数（${count}）条   <span>累计充值(${total})</span>&nbsp <span>可提成(${fetch})</span></div>
+		<div id="inCount">总查询记录数（${count}）条</div>
 		<div class="pagerx">${pageTools}</div>
 	</td>
 </tr>

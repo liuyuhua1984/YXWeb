@@ -43,7 +43,7 @@ public interface AgentInviteCodeService extends BaseService<OpAgentInviteCode>{
 	 * @author lyh 
 	 * @return 
 	 */  
-	public long  remainInviteCode();
+	public long  remainInviteCode(long agentId);
 		
 	
 }
