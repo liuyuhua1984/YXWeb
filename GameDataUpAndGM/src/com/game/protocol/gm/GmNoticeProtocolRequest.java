@@ -25,7 +25,6 @@ public class GmNoticeProtocolRequest extends DataUpBase implements IMsgCode {
 	/** content String 公告发送内容 **/
 	private String content;
 	
-	private String serverId;
 	
 	public String getContent() {
 		return content;
@@ -33,14 +32,6 @@ public class GmNoticeProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	public void setContent(String content) {
 		this.content = content;
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 }

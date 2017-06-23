@@ -40,7 +40,6 @@ public class GmQqRechargeProtocolRequest extends DataUpBase implements IMsgCode 
 	/** sigstr String MD5 32位加密串,MD5[openid+ payitem +billno +key],key为约定秘钥。 **/
 	private String sigstr;
 	
-	private String serverId;
 	
 	public String getOpenid() {
 		return openid;
@@ -88,13 +87,5 @@ public class GmQqRechargeProtocolRequest extends DataUpBase implements IMsgCode 
 	
 	public void setBillno(String billno) {
 		this.billno = billno;
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 }

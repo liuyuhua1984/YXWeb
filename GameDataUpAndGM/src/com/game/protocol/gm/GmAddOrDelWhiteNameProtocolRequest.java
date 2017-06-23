@@ -30,7 +30,6 @@ public class GmAddOrDelWhiteNameProtocolRequest extends DataUpBase implements IM
 	/** 名单列表 */
 	private List<String> lists;
 	
-	private String serverId;
 	
 	public int getType() {
 		return type;
@@ -48,11 +47,4 @@ public class GmAddOrDelWhiteNameProtocolRequest extends DataUpBase implements IM
 		this.lists = lists;
 	}
 	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
 }

@@ -23,6 +23,9 @@ public abstract class DataUpBase implements Serializable,IMsgCode{
 
 	private int  msgCode;
 	
+	/**服务器id**/  
+	private String serverId;
+	
 	/**记录创建时间**/  
 	//private Timestamp createTime;
 	
@@ -60,6 +63,18 @@ public abstract class DataUpBase implements Serializable,IMsgCode{
 	public void setMsgCode(int msgCode) {
 		this.msgCode = msgCode;
 	}
+
+
+	public String getServerId() {
+		return serverId;
+	}
+
+
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
+	}
+	
+	
 	
 }
   

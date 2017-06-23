@@ -35,9 +35,6 @@ public class GmMailRoleProtocolRequest extends DataUpBase implements IMsgCode {
 	/*** extendstr String 扩展信息，预留为”” **/
 	private String extendstr;
 	
-	private String serverId;
-	
-
 	public int getType() {
 		return type;
 	}
@@ -69,15 +66,6 @@ public class GmMailRoleProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	public void setExtendstr(String extendstr) {
 		this.extendstr = extendstr;
-	}
-	
-
-	public String getServerId() {
-		// TODO Auto-generated method stub
-		return serverId;
-	}
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 }

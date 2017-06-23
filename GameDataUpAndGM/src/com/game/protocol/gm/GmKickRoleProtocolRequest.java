@@ -29,8 +29,6 @@ public class GmKickRoleProtocolRequest extends DataUpBase implements IMsgCode {
 	/** actstr String 账号标示； 标示的类型由type决定。 **/
 	private String actstr;
 	
-	private String serverId;
-	
 	public int getType() {
 		return type;
 	}
@@ -45,15 +43,6 @@ public class GmKickRoleProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	public void setActstr(String actstr) {
 		this.actstr = actstr;
-	}
-	
-	public String getServerId() {
-		// TODO Auto-generated method stub
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 }

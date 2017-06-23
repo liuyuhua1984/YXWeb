@@ -23,29 +23,10 @@ public class GmServerToGMPlatformProtocolRequest extends DataUpBase implements I
 		// TODO Auto-generated constructor stub
 	}
 	
-	/** 游戏服务器 **/
-	private String worldid;
-	
 	/** MD5验证 **/
 	private String sigstr;
 	
-	private String serverId;
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
-	
-	public String getWorldid() {
-		return worldid;
-	}
-	
-	public void setWorldid(String worldid) {
-		this.worldid = worldid;
-	}
+
 	
 	public String getSigstr() {
 		return sigstr;
