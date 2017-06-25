@@ -28,7 +28,6 @@ public class GmBlockIPProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	/** time String 禁言时间，单位分钟。 **/
 	private int time;
-	private String serverId;
 	
 	public int getTime() {
 		return time;
@@ -47,14 +46,6 @@ public class GmBlockIPProtocolRequest extends DataUpBase implements IMsgCode {
 		if (this.ip == null || ip.equals("")) {
 			ip = "1";
 		}
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 }

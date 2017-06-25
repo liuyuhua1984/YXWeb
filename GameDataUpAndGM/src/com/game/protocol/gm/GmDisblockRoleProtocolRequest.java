@@ -28,7 +28,6 @@ public class GmDisblockRoleProtocolRequest extends DataUpBase implements IMsgCod
 	
 	/** actstr String 账号标示； 标示的类型由type决定。 **/
 	private String actstr;
-	private String serverId;
 	
 	public int getType() {
 		return type;
@@ -47,13 +46,4 @@ public class GmDisblockRoleProtocolRequest extends DataUpBase implements IMsgCod
 		this.actstr = actstr;
 	}
 	
-
-	public String getServerId() {
-		// TODO Auto-generated method stub
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
 }

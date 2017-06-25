@@ -28,9 +28,7 @@ public class GmRoleInfoProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	/** 账号标示； 标示的类型由type决定。 如果标示的类型是角色名称，查询时请使用模糊匹配。 **/
 	private String actstr;
-	private String serverId;
-	
-	
+
 	public int getType() {
 		return type;
 	}
@@ -48,14 +46,5 @@ public class GmRoleInfoProtocolRequest extends DataUpBase implements IMsgCode {
 		this.actstr = actstr;
 	}
 	
-	
-	public String getServerId() {
-		// TODO Auto-generated method stub
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
 	
 }

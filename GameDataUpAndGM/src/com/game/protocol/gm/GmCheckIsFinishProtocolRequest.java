@@ -31,9 +31,6 @@ public class GmCheckIsFinishProtocolRequest extends DataUpBase implements IMsgCo
 	/** 任务配置表Id */
 	private int taskid;
 	
-	/** 服务器id **/
-	private String serverId;
-	
 	public String getCmd() {
 		return cmd;
 	}
@@ -56,14 +53,6 @@ public class GmCheckIsFinishProtocolRequest extends DataUpBase implements IMsgCo
 	
 	public void setTaskid(int taskid) {
 		this.taskid = taskid;
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 }

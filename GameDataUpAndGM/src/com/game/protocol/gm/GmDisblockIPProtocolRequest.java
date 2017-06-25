@@ -26,7 +26,6 @@ public class GmDisblockIPProtocolRequest extends DataUpBase implements IMsgCode 
 	/*** ip String Ip地址串：如127.0.0.1 ***/
 	private String ip;
 	
-	private String serverId;
 	
 	public String getIp() {
 		return ip;
@@ -34,14 +33,6 @@ public class GmDisblockIPProtocolRequest extends DataUpBase implements IMsgCode 
 	
 	public void setIp(String ip) {
 		this.ip = ip;
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 }

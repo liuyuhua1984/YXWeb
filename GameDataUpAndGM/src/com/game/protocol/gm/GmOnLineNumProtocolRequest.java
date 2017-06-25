@@ -17,18 +17,10 @@ public class GmOnLineNumProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	/****/
 	private static final long serialVersionUID = 3948300615553874955L;
-	private String serverId;
 	public GmOnLineNumProtocolRequest() {
 		super(GM_ONLINE_NUM_HTTP_PROTOCOL);
 		// TODO Auto-generated constructor stub
 	}
-	public String getServerId() {
-		return serverId;
-	}
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
-	
 
 	
 }

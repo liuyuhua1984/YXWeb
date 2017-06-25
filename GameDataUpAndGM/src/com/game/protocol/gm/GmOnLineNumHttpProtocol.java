@@ -25,9 +25,7 @@ public class GmOnLineNumHttpProtocol extends DataUpBase implements IMsgCode {
 	
 	/** 当前在线人数 **/
 	private int onlinenum;
-	
-	private String serverId;
-	
+
 	public int getOnlinenum() {
 		return onlinenum;
 	}

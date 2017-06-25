@@ -31,9 +31,6 @@ public class GmBlockSayProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	/*** time String 禁言时间，单位分钟。 */
 	private int time;
-	
-	private String serverId;
-	
 
 	public int getType() {
 		return type;
@@ -59,15 +56,6 @@ public class GmBlockSayProtocolRequest extends DataUpBase implements IMsgCode {
 	public void setTime(int time) {
 		this.time = time;
 	}
-	
 
-	public String getServerId() {
-		// TODO Auto-generated method stub
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
 	
 }

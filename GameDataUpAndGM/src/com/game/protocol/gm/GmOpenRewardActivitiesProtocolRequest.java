@@ -29,9 +29,6 @@ public class GmOpenRewardActivitiesProtocolRequest extends DataUpBase implements
 	/** 账号标示； 标示的类型由type决定。 如果标示的类型是角色名称，查询时请使用模糊匹配。 **/
 	private String actstr;
 	
-	/** 服务器ID **/
-	private String serverId;
-	
 	/**
 	 * 大类型 * 小类型 * 数量 （以上为一个奖励，多个以#号隔开）,大类型（1装备或道具，2货币）,小类型（当大类型为1时，此处填写装备或道具ID ，否则，填写：1表示金币，2表示索尼，3表示阅历，4表示声望）,数量（奖励值）
 	 **/
@@ -52,14 +49,6 @@ public class GmOpenRewardActivitiesProtocolRequest extends DataUpBase implements
 	
 	public void setActstr(String actstr) {
 		this.actstr = actstr;
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 	public String getAccessory() {
