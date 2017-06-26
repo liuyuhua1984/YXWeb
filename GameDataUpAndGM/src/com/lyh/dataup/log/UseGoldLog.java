@@ -31,8 +31,6 @@ public class UseGoldLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
-	/** 服务器ID **/
-	private String serverId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -67,12 +65,21 @@ public class UseGoldLog extends DataUpBase {
 	/** 道名称 **/
 	private String itemName;
 	
-	/** 是否已上报 **/
-	private String isUp = "0";
 	
 	/**使用道具时间**/  
 	private long useGoldTime;
 	
+	/**邀请码**/  
+	private String inviteCode;
+	
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
+
 	public String getAppId() {
 		return appId;
 	}
@@ -97,14 +104,7 @@ public class UseGoldLog extends DataUpBase {
 		this.userName = userName;
 	}
 	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
-	
+
 	public String getRoleName() {
 		return roleName;
 	}
@@ -193,14 +193,6 @@ public class UseGoldLog extends DataUpBase {
 		this.itemName = itemName;
 	}
 	
-	public String getIsUp() {
-		return isUp;
-	}
-	
-	public void setIsUp(String isUp) {
-		this.isUp = isUp;
-	}
-
 	public long getUseGoldTime() {
 		return useGoldTime;
 	}

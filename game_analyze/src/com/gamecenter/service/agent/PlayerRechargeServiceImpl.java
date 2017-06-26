@@ -55,7 +55,7 @@ public class PlayerRechargeServiceImpl implements PlayerRechargeService {
 	}
 	
 	@Override
-	public int recharge(String pssport, String billno, double money, int time, String sid, String flag,OpGameworld opGameworld) {
+	public int recharge(String pssport, String billno, double dPrice,double money, int time, String sid, String flag,OpGameworld opGameworld) {
 		
 		long status = 0;
 		int num = 0;
@@ -87,10 +87,11 @@ public class PlayerRechargeServiceImpl implements PlayerRechargeService {
 	
 			
 			GmRechargeProtocolRequest req = new GmRechargeProtocolRequest();
-			req.setBillon("lyh" + System.currentTimeMillis()); // 平台单号
-			req.setExtendstr("all");
-			req.setMoney("" + ((int) money));
+			req.setBillon(billno); // 平台单号
+			req.setExtendstr(""+dPrice);
+			req.setMoney(""+ money);
 			req.setOpenid(pssport);
+			
 			req.setSigstr(MD5.encodeMD5(req.getOpenid() + req.getBillon() + req.getMoney() + "123456"));
 			req.setServerId("" + sid);
 			GmRechargeHttpProtocol resp = (GmRechargeHttpProtocol) PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), req);

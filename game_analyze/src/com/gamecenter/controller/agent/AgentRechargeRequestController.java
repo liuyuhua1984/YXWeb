@@ -178,7 +178,7 @@ public class AgentRechargeRequestController {
 									fetchMoneyRate = Double.parseDouble(agentConfig.getOneLevel() );
 								}
 								String trade = "player:" + IdGenerateUtils.makeId();
-								int status = playerRechargeService.recharge(player.getOpenid(), trade, gold, (int) (System.currentTimeMillis() / 1000), worldServer.getWorldid(), "" + 1, worldServer);
+								int status = playerRechargeService.recharge(player.getOpenid(), trade, dPrice,gold, (int) (System.currentTimeMillis() / 1000), worldServer.getWorldid(), "" + 1, worldServer);
 								if (status == 1) {
 									res = "1";
 									addPlayerMoney(player, agent, gold, dPrice, trade,(fetchMoneyRate*dPrice)/100);

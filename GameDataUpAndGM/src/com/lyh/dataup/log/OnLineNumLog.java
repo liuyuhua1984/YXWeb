@@ -25,9 +25,6 @@ public class OnLineNumLog extends DataUpBase {
 	/** APPID 应用的惟一标识 **/
 	private String appId;
 	
-	/** 服务器ID **/
-	private String serverId;
-	
 	/** 登录时间 **/
 	private Timestamp createTime;
 	
@@ -37,11 +34,20 @@ public class OnLineNumLog extends DataUpBase {
 	/** 在线人数 **/
 	private int onlineNum;
 	
-	/** 是否已上报 **/
-	private String isUp = "0";
 	
 	/**记录在线人数时间**/  
 	private long recordTime;
+	
+	/**邀请码**/  
+	private String inviteCode;
+	
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
 	
 	public String getAppId() {
 		return appId;
@@ -50,14 +56,7 @@ public class OnLineNumLog extends DataUpBase {
 	public void setAppId(String appId) {
 		this.appId = appId;
 	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
+
 	
 	public Timestamp getCreateTime() {
 		return createTime;
@@ -81,14 +80,6 @@ public class OnLineNumLog extends DataUpBase {
 	
 	public void setOnlineNum(int onlineNum) {
 		this.onlineNum = onlineNum;
-	}
-	
-	public String getIsUp() {
-		return isUp;
-	}
-	
-	public void setIsUp(String isUp) {
-		this.isUp = isUp;
 	}
 
 	public long getRecordTime() {

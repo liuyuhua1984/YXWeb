@@ -31,8 +31,6 @@ public class RechargeLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
-	/** 服务器ID **/
-	private String serverId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -61,10 +59,20 @@ public class RechargeLog extends DataUpBase {
 	/** 流水号 **/
 	private String billOrder;
 	
-	/** 是否已上报 **/
-	private String isUp = "0";
+
 	
 	private long payTime;
+	
+	/**邀请码**/  
+	private String inviteCode;
+	
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
 	public String getAppId() {
 		return appId;
 	}
@@ -87,14 +95,6 @@ public class RechargeLog extends DataUpBase {
 	
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
 	}
 	
 	public String getRoleName() {
@@ -161,14 +161,6 @@ public class RechargeLog extends DataUpBase {
 		this.rechargeChannel = rechargeChannel;
 	}
 	
-	
-	public String getIsUp() {
-		return isUp;
-	}
-	
-	public void setIsUp(String isUp) {
-		this.isUp = isUp;
-	}
 
 	public String getBillOrder() {
 		return billOrder;
