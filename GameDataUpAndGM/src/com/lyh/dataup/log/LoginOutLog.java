@@ -31,8 +31,6 @@ public class LoginOutLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
-	/** 服务器ID **/
-	private String serverId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -52,14 +50,23 @@ public class LoginOutLog extends DataUpBase {
 	/** 新手引导 **/
 	private String newPlayerGuild;
 	
-	/** 是否已上报 **/
-	private String isUp = "0";
-	
 	/** 在线时间 **/
 	private int onlineTime;
 	
 	/**退出 时间**/  
 	private long loginOutTime;
+	
+	
+	/**邀请码**/  
+	private String inviteCode;
+	
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
 	
 	public String getAppId() {
 		return appId;
@@ -85,13 +92,6 @@ public class LoginOutLog extends DataUpBase {
 		this.userName = userName;
 	}
 	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
 	
 	public String getRoleName() {
 		return roleName;
@@ -140,14 +140,7 @@ public class LoginOutLog extends DataUpBase {
 	public void setNewPlayerGuild(String newPlayerGuild) {
 		this.newPlayerGuild = newPlayerGuild;
 	}
-	
-	public String getIsUp() {
-		return isUp;
-	}
-	
-	public void setIsUp(String isUp) {
-		this.isUp = isUp;
-	}
+
 
 	public int getOnlineTime() {
 		return onlineTime;

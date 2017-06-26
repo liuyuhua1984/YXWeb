@@ -28,6 +28,6 @@ public interface PlayerRechargeService extends BaseService<OpOperatorRecharge> {
 	 * @param flag
 	 * @return 
 	 */  
-	int recharge(String pssport, String billno, double money, int time, String sid, String flag,OpGameworld opGameworld);
+	int recharge(String pssport, String billno,double dPrice, double money, int time, String sid, String flag,OpGameworld opGameworld);
 }
   

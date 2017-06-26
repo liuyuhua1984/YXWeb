@@ -31,8 +31,6 @@ public class RegisterLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
-	/** 服务器ID **/
-	private String serverId;
 	
 	/** 登录时间 **/
 	private Timestamp createTime;
@@ -43,8 +41,16 @@ public class RegisterLog extends DataUpBase {
 	/**注册时间**/  
 	private long registerTime;
 	
-	/** 是否已上报 **/
-	private String isUp = "0";
+	/**邀请码**/  
+	private String inviteCode;
+	
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
+	}
 	
 	public String getAppId() {
 		return appId;
@@ -70,13 +76,6 @@ public class RegisterLog extends DataUpBase {
 		this.userName = userName;
 	}
 	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
 	
 	public Timestamp getCreateTime() {
 		return createTime;
@@ -93,14 +92,7 @@ public class RegisterLog extends DataUpBase {
 	public void setServerIp(String serverIp) {
 		this.serverIp = serverIp;
 	}
-	
-	public String getIsUp() {
-		return isUp;
-	}
-	
-	public void setIsUp(String isUp) {
-		this.isUp = isUp;
-	}
+
 
 	public long getRegisterTime() {
 		return registerTime;

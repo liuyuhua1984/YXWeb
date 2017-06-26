@@ -33,8 +33,6 @@ public class CreateRoleLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
-	/** 服务器ID **/
-	private String serverId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -47,9 +45,6 @@ public class CreateRoleLog extends DataUpBase {
 	
 	/** 服务器IP **/
 	private String serverIp;
-	
-	/** 是否已上报 **/
-	private String isUp = "0";
 	
 	/**创建角色时间**/  
 	private long createRoleTime;
@@ -89,14 +84,6 @@ public class CreateRoleLog extends DataUpBase {
 		this.userName = userName;
 	}
 	
-	public String getServerId() {
-		return serverId;
-	}
-	
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
-	
 	public String getRoleName() {
 		return roleName;
 	}
@@ -129,13 +116,6 @@ public class CreateRoleLog extends DataUpBase {
 		this.serverIp = serverIp;
 	}
 	
-	public String getIsUp() {
-		return isUp;
-	}
-	
-	public void setIsUp(String isUp) {
-		this.isUp = isUp;
-	}
 
 	public long getCreateRoleTime() {
 		return createRoleTime;
