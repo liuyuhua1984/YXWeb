@@ -115,8 +115,8 @@ public class GmtMoneyServiceImpl implements GmtMoneyService {
 		for (String pid : passports) {
 			try {
 				GmRechargeProtocolRequest req = new GmRechargeProtocolRequest();
-				req.setBillon("lyh" + System.currentTimeMillis()); // 平台单号
-				req.setExtendstr("all");
+				req.setBillon("lyh:" + System.currentTimeMillis()); // 平台单号
+				req.setExtendstr("0");
 				req.setMoney(gmtSendMoneyBean.getMoney());
 				req.setOpenid(pid);
 				req.setSigstr(MD5.encodeMD5(req.getOpenid() + req.getBillon() + req.getMoney() + "123456"));
