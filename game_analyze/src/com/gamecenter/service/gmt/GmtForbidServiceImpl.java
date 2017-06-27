@@ -92,7 +92,7 @@ public class GmtForbidServiceImpl implements GmtForbidService {
 				opGmtForbidmsg.setOptres(resp.getStatus() == 1? "成功" : (resp.getStatus() ==-1000 ? "链接失败" : (resp.getStatus() ==-1002 ? "接入失败" : "失败" + resp.getStatus())));
 				opGmtForbidmsgMapper.insertSelective(opGmtForbidmsg);
 				
-			} else if (gmtForbidBean.getAct().equals("5052")) { // IP禁言
+			} else if (gmtForbidBean.getAct().equals("5052")) { // IP禁止
 				GmBlockIPProtocolRequest req = new GmBlockIPProtocolRequest();
 				req.setIp(gmtForbidBean.getIp());
 				req.setTime(Integer.parseInt(gmtForbidBean.getTime()));

@@ -31,7 +31,7 @@
                             <ol>
                                 <li><a url-data="player-new" class="hover" href="${ctxPage}/gmt/forbid/wordsforpassport" target="mainFrame">账号禁言</a>
                                 </li>
-                                <li class=""><a url-data="player-active" href="${ctxPage}/gmt/forbid/wordsforip" target="mainFrame">IP禁言</a></li>
+                                <li class=""><a url-data="player-active" href="${ctxPage}/gmt/forbid/wordsforip" target="mainFrame">IP禁止</a></li>
                                 <li class=""><a url-data="player-active" href="${ctxPage}/gmt/forbid/passport" target="mainFrame">封号</a></li>
                                 <li class=""><a url-data="player-active" href="${ctxPage}/gmt/forbid/tiren" target="mainFrame">踢人</a></li>
                                 <li class=""><a url-data="player-active" href="${ctxPage}/gmt/forbid/msglist" target="mainFrame">封禁历史</a>

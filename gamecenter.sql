@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-22 18:20:29
+Date: 2017-06-27 19:26:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -635,7 +635,7 @@ INSERT INTO `oa_user_permit` VALUES ('11', null, null, '0', null, null);
 INSERT INTO `oa_user_permit` VALUES ('13', null, null, '16', null, null);
 INSERT INTO `oa_user_permit` VALUES ('14', null, null, '18', null, null);
 INSERT INTO `oa_user_permit` VALUES ('15', null, null, '20', null, null);
-INSERT INTO `oa_user_permit` VALUES ('16', null, null, '20', null, null);
+INSERT INTO `oa_user_permit` VALUES ('16', null, null, '18', null, null);
 
 -- ----------------------------
 -- Table structure for op_activity
@@ -739,9 +739,9 @@ CREATE TABLE `op_agent_invite_code` (
 -- Records of op_agent_invite_code
 -- ----------------------------
 INSERT INTO `op_agent_invite_code` VALUES ('315', 'f9tyhq', '1', '1', '2017-06-22 16:58:19', '1');
-INSERT INTO `op_agent_invite_code` VALUES ('316', 'CY6Gou', '1', '0', '2017-06-22 16:58:36', '0');
-INSERT INTO `op_agent_invite_code` VALUES ('317', 'MJre2U', '1', '0', '2017-06-22 16:58:36', '0');
-INSERT INTO `op_agent_invite_code` VALUES ('318', 'E5Y8qq', '1', '0', '2017-06-22 16:58:36', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('316', 'CY6Gou', '1', '1', '2017-06-22 16:58:36', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('317', 'MJre2U', '1', '0', '2017-06-22 16:58:36', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('318', 'E5Y8qq', '1', '1', '2017-06-22 16:58:36', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('319', 'nWuLqK', '1', '0', '2017-06-22 16:58:36', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('320', '0S1AYe', '1', '0', '2017-06-22 16:58:36', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('321', 'T5bLZL', '1', '1', '2017-06-22 16:58:36', '1');
@@ -990,7 +990,7 @@ CREATE TABLE `op_agent_recharge` (
   `fetch_money` double(20,2) DEFAULT '0.00' COMMENT '提成',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_recharge
@@ -1007,7 +1007,7 @@ CREATE TABLE `op_agent_recharge_fetch` (
   `name` varchar(255) DEFAULT NULL COMMENT '申请结算的代理名',
   `ids` text COMMENT '申请结算的充值id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_recharge_fetch
@@ -1094,7 +1094,7 @@ CREATE TABLE `op_gameworld` (
 -- ----------------------------
 -- Records of op_gameworld
 -- ----------------------------
-INSERT INTO `op_gameworld` VALUES ('10', 'game1001', null, '局域网', 'game003', '1', '192.168.0.189', '192.168.0.189', '3102', '', '0', null, '2014-06-05');
+INSERT INTO `op_gameworld` VALUES ('10', 'game1001', null, '局域网', '1001', '1', '192.168.0.189', '192.168.0.189', '3102', '', '0', null, '2014-06-05');
 
 -- ----------------------------
 -- Table structure for op_game_goods
@@ -1134,11 +1134,30 @@ CREATE TABLE `op_gmt_forbidmsg` (
   `opttime` varchar(20) DEFAULT NULL,
   `username` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gmt_forbidmsg
 -- ----------------------------
+INSERT INTO `op_gmt_forbidmsg` VALUES ('1', '1', '321654', null, '10', '5050', '10', null, '不想看到你', '成功', '2017-06-27 17:01:41', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('2', '1', '321654', null, '10', '5051', null, null, '', '成功', '2017-06-27 17:03:17', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('3', null, null, null, '10', '5052', null, '192.168.0.189', '想禁你', '成功', '2017-06-27 17:06:41', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('4', null, null, null, '10', '5052', null, '192.168.0.189', '想禁你', '成功', '2017-06-27 17:08:25', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('5', null, null, null, '10', '5053', null, '192.168.0.189', '想解你', '成功', '2017-06-27 17:16:47', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('6', null, null, null, '10', '5052', null, '192.168.0.189', '', '成功', '2017-06-27 17:19:23', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('7', null, null, null, '10', '5053', null, '192.168.0.189', '', '成功', '2017-06-27 17:20:06', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('8', null, null, null, '10', '5053', null, '192.168.0.189', '', '成功', '2017-06-27 17:22:49', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('9', null, null, null, '10', '5052', null, '192.168.0.189', '', '成功', '2017-06-27 17:24:23', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('10', '1', '321654', null, '10', '5060', null, null, '禁止登录', '失败-2', '2017-06-27 17:27:20', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('11', '1', '321654', null, '10', '5060', null, null, '禁止登录', '成功', '2017-06-27 17:28:55', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('12', '1', '321654', null, '10', '5061', null, null, '', '成功', '2017-06-27 17:32:05', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('13', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 17:34:22', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('14', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 17:35:15', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('15', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 17:37:52', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('16', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 17:40:02', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('17', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 17:53:05', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('18', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 18:02:24', 'admin');
+INSERT INTO `op_gmt_forbidmsg` VALUES ('19', '1', '321654', null, '10', '5070', null, null, '', '成功', '2017-06-27 18:10:30', 'admin');
 
 -- ----------------------------
 -- Table structure for op_gmt_notice
@@ -1155,11 +1174,29 @@ CREATE TABLE `op_gmt_notice` (
   `opttime` varchar(20) DEFAULT NULL,
   `username` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gmt_notice
 -- ----------------------------
+INSERT INTO `op_gmt_notice` VALUES ('1', 'game1001', '10', '1', '公千柑 工有去 苛工', '', '成功', '2017-06-27 18:12:01', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('2', 'game1001', '10', '2', '看下净利要', '', '成功', '2017-06-27 18:12:50', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('3', 'game1001', '10', '2', '我相看看地', '', '成功', '2017-06-27 18:16:00', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('4', 'game1001', '10', '2', '大规模', '', '成功', '2017-06-27 18:29:44', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('5', 'game1001', '10', '1', '春树暮云 棋工仍解体你', '', '成功', '2017-06-27 18:39:29', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('6', 'game1001', '10', '1', '脏爸爸我', '', '成功', '2017-06-27 18:43:42', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('7', 'game1001', '10', '1', '须苛在人有在', '', '成功', '2017-06-27 18:44:56', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('8', 'game1001', '10', '1', 'ewee dsf as', '', '成功', '2017-06-27 18:46:02', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('9', 'game1001', '10', '2', '56416', '', '成功', '2017-06-27 19:05:39', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('10', 'game1001', '10', '2', '56416', '', '成功', '2017-06-27 19:05:40', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('11', 'game1001', '10', '2', '56416', '', '成功', '2017-06-27 19:05:50', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('12', 'game1001', '10', '2', '56416', '', '成功', '2017-06-27 19:06:00', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('13', 'game1001', '10', '2', '56416', '', '成功', '2017-06-27 19:06:10', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('14', 'game1001', '10', '2', '56416', '', '成功', '2017-06-27 19:06:20', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('15', 'game1001', '10', '2', 'ewtrwet vwertwe r', '', '成功', '2017-06-27 19:07:10', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('16', 'game1001', '10', '2', 'ewtrwet vwertwe r', '', '成功', '2017-06-27 19:07:20', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('17', 'game1001', '10', '2', 'ewtrwet vwertwe r', '', '成功', '2017-06-27 19:07:40', '胡君琳');
+INSERT INTO `op_gmt_notice` VALUES ('18', 'game1001', '10', '2', 'ewtrwet vwertwe r', '', '成功', '2017-06-27 19:08:10', '胡君琳');
 
 -- ----------------------------
 -- Table structure for op_gmt_notice_cycle
@@ -1178,11 +1215,18 @@ CREATE TABLE `op_gmt_notice_cycle` (
   `settime` varchar(20) DEFAULT NULL,
   `status` varchar(2) DEFAULT '1' COMMENT '1:活跃  0：停止',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_gmt_notice_cycle
 -- ----------------------------
+INSERT INTO `op_gmt_notice_cycle` VALUES ('1', 'game1001', '10', '2', '10', '看下净利要', '', '2017-06-27 18:12:50', '胡君琳', '2017-06-27 18:12:48', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('2', 'game1001', '10', '2', '10', '我相看看地', '', '2017-06-27 18:16:00', '胡君琳', '2017-06-27 18:15:53', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('3', 'game1001', '10', '2', '10', '你们好在基斯柯达茜苛', '', '2017-06-27 18:23:06', '胡君琳', '2017-06-27 18:22:58', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('4', 'game1001', '10', '2', '10', '大规模', '', '2017-06-27 18:29:42', '胡君琳', '2017-06-27 18:24:21', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('5', 'game1001', '10', '2', '10', '脸在人仍在基区', '', '2017-06-27 18:45:45', '胡君琳', '2017-06-27 18:33:43', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('6', 'game1001', '10', '2', '1', '56416', '', '2017-06-27 19:06:20', '胡君琳', '2017-06-27 19:05:26', '0');
+INSERT INTO `op_gmt_notice_cycle` VALUES ('7', 'game1001', '10', '2', '1', 'ewtrwet vwertwe r', '', '2017-06-27 19:07:50', '胡君琳', '2017-06-27 19:07:00', '0');
 
 -- ----------------------------
 -- Table structure for op_gmt_sendmoney
@@ -1259,7 +1303,7 @@ CREATE TABLE `op_operator` (
   `status` varchar(2) DEFAULT NULL COMMENT '状态',
   `info` varchar(2000) DEFAULT NULL COMMENT '信息',
   PRIMARY KEY (`optid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_operator
@@ -1280,7 +1324,7 @@ CREATE TABLE `op_operator_product` (
   `status` varchar(2) DEFAULT NULL COMMENT '状态',
   `info` varchar(2000) DEFAULT NULL COMMENT '信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_operator_product
@@ -1303,7 +1347,7 @@ CREATE TABLE `op_operator_recharge` (
   `res` varchar(100) DEFAULT NULL,
   `info` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_operator_recharge
@@ -1320,7 +1364,7 @@ CREATE TABLE `op_operator_world` (
   `number` varchar(50) DEFAULT NULL,
   `info` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_operator_world
@@ -1430,7 +1474,7 @@ CREATE TABLE `op_oss_qlz_consume_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=511 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_consume_log
@@ -1450,11 +1494,15 @@ CREATE TABLE `op_oss_qlz_createrole_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
 
 -- ----------------------------
 -- Records of op_oss_qlz_createrole_log
 -- ----------------------------
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('1', '1', '192.168.0.189', '2017-06-27 15:16:46', '6589', 'c:', '2017-06-27 15:16:53', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('2', '1', '192.168.0.189', '2017-06-27 15:47:32', '9865', 'c:esmj879606665433841664', '2017-06-27 15:47:32', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('3', '1001', '192.168.0.189', '2017-06-27 16:03:24', '321654', 'c:esmj879611060301070336', '2017-06-27 16:03:27', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('4', '1001', '192.168.0.189', '2017-06-27 17:17:34', '987456', 'c:esmj879629765277908992', '2017-06-27 17:17:39', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_login_log
@@ -1471,11 +1519,22 @@ CREATE TABLE `op_oss_qlz_login_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=352 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_login_log
 -- ----------------------------
+INSERT INTO `op_oss_qlz_login_log` VALUES ('1', '1001', '192.168.0.189', '2017-06-27 17:33:52', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 17:33:53', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('2', '1001', '192.168.0.189', '2017-06-27 17:39:45', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 17:39:45', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('3', '1001', '192.168.0.189', '2017-06-27 17:42:14', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 17:42:14', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('4', '1001', '192.168.0.189', '2017-06-27 17:54:13', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 17:54:18', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('5', '1001', '192.168.0.189', '2017-06-27 17:57:21', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 17:57:21', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('6', '1001', '192.168.0.189', '2017-06-27 18:01:18', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 18:01:18', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('7', '1001', '192.168.0.189', '2017-06-27 18:04:35', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 18:04:35', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('8', '1001', '192.168.0.189', '2017-06-27 18:09:49', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 18:09:49', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('9', '1001', '192.168.0.189', '2017-06-27 18:11:21', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 18:11:21', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('10', '1001', '192.168.0.189', '2017-06-27 18:22:28', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 18:22:31', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('11', '1001', '192.168.0.189', '2017-06-27 19:03:45', '321654', '1', 'c:esmj879611060301070336', '2017-06-27 19:03:51', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_onlinecur_log
@@ -1488,7 +1547,7 @@ CREATE TABLE `op_oss_qlz_onlinecur_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=758 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
 
 -- ----------------------------
 -- Records of op_oss_qlz_onlinecur_log
@@ -1512,11 +1571,21 @@ CREATE TABLE `op_oss_qlz_out_log` (
   `guidenum` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=285 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_out_log
 -- ----------------------------
+INSERT INTO `op_oss_qlz_out_log` VALUES ('1', '1', '192.168.0.189', '2017-06-27 15:43:02', '6589', '1', '1', 'c:', '2017-06-27 15:43:04', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('2', '1001', '192.168.0.189', '2017-06-27 16:08:50', '321654', '0', '1', 'c:esmj879611060301070336', '2017-06-27 16:08:51', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('3', '1001', '192.168.0.189', '2017-06-27 17:24:28', '987456', '0', '1', 'c:esmj879629765277908992', '2017-06-27 17:24:29', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('4', '1001', '192.168.0.189', '2017-06-27 17:39:28', '321654', '0', '1', 'c:esmj879611060301070336', '2017-06-27 17:39:28', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('5', '1001', '192.168.0.189', '2017-06-27 17:41:23', '321654', '0', '1', 'c:esmj879611060301070336', '2017-06-27 17:41:23', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('6', '1001', '192.168.0.189', '2017-06-27 17:56:14', '321654', '0', '1', 'c:esmj879611060301070336', '2017-06-27 17:56:15', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('7', '1001', '192.168.0.189', '2017-06-27 17:58:14', '321654', '0', '1', 'c:esmj879611060301070336', '2017-06-27 17:58:14', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('8', '1001', '192.168.0.189', '2017-06-27 18:03:50', '321654', '0', '1', 'c:esmj879611060301070336', '2017-06-27 18:03:50', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('9', '1001', '192.168.0.189', '2017-06-27 18:09:18', '321654', '1', '1', 'c:esmj879611060301070336', '2017-06-27 18:09:18', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('10', '1001', '192.168.0.189', '2017-06-27 18:10:46', '321654', '1', '1', 'c:esmj879611060301070336', '2017-06-27 18:10:46', '0', null, '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport
@@ -1554,6 +1623,8 @@ CREATE TABLE `op_oss_qlz_passport` (
 -- ----------------------------
 -- Records of op_oss_qlz_passport
 -- ----------------------------
+INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '0.00', '0.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '1', '1', '0.00', '0', null, null, null, null, null, '1', 'E5Y8qq');
+INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport_reg

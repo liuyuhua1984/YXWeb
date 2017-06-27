@@ -65,8 +65,8 @@ public class GmtPassportServiceImpl implements GmtPassportService {
 						passportMsg_response.setResult("不存在的账号!");
 					}
 					
-					passportMsg_response.setIsonline(passportMsg_response.getIsonline().equals("1") ? "在线" : "不在线");
-					passportMsg_response.setStatus(passportMsg_response.getStatus().equals("1") ? "正常" : (passportMsg_response.getStatus().equals("2") ? "禁言中" : "封号中"));
+					passportMsg_response.setIsonline(resp.getIsonline() > 0 ? "在线" : "不在线");
+					passportMsg_response.setStatus(resp.getStatus() == 1 ? "正常" : (resp.getStatus()  == 2 ? "禁言中" : "封号中"));
 					passportMsg_response.setCareer("未解析");
 					
 			//	}

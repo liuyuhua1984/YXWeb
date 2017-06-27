@@ -102,7 +102,7 @@ public class GmtNoticeServiceImpl implements GmtNoticeService {
 		opGmtNoticeCycle.setAppid(gmtSendNoticeBean.getAppid());
 		opGmtNoticeCycle.setSettime(Tools.getNowDate());
 		opGmtNoticeCycle.setStatus("1"); // 活跃
-		
+		opGmtNoticeCycle.setLastsendtime(System.currentTimeMillis()+opGmtNoticeCycle.getCycletime() * 60 * 1000);
 		int res = opGmtNoticeCycleMapper.insertSelective(opGmtNoticeCycle);
 		
 		// 放入循环公告...

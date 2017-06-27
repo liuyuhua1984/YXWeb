@@ -106,8 +106,8 @@ public interface IMsgCode {
 	/** 发起公告。 */
 	public static final int GM_NOTICE_HTTP_PROTOCOL = 0x6101;
 	
-	/** 发起循环公告。 */
-	public static final int GM_LOOP_NOTICE_HTTP_PROTOCOL = 0x6102;
+	/** 发起邀请码。 */
+	public static final int GM_INVITE_CODE_HTTP_PROTOCOL = 0x6102;
 	
 	/** 发送邮件至账户。。 */
 	public static final int GM_EMAIL_HTTP_PROTOCOL = 0x6111;

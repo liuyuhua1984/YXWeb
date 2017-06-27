@@ -12,13 +12,13 @@ import com.lyh.dataup.log.DataUpBase;
  * @version   
  * @see       
  */
-public class GmLoopNoticeHttpProtocol extends DataUpBase implements IMsgCode {
+public class GmInviteCodeHttpProtocol extends DataUpBase implements IMsgCode {
 
 	/****/  
 	private static final long serialVersionUID = 1L;
 
-	public GmLoopNoticeHttpProtocol() {
-		super(GM_LOOP_NOTICE_HTTP_PROTOCOL);
+	public GmInviteCodeHttpProtocol() {
+		super(GM_INVITE_CODE_HTTP_PROTOCOL);
 	}
 	
 	/*** 消息体 status String 状态 -1：失败 ,1：成功,2 异常**/

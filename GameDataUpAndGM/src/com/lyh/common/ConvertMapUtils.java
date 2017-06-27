@@ -22,10 +22,10 @@ import com.game.protocol.gm.GmDisblockRoleHttpProtocol;
 import com.game.protocol.gm.GmDisblockRoleProtocolRequest;
 import com.game.protocol.gm.GmDisblockSayHttpProtocol;
 import com.game.protocol.gm.GmDisblockSayProtocolRequest;
+import com.game.protocol.gm.GmInviteCodeHttpProtocol;
+import com.game.protocol.gm.GmInviteCodeProtocolRequest;
 import com.game.protocol.gm.GmKickRoleHttpProtocol;
 import com.game.protocol.gm.GmKickRoleProtocolRequest;
-import com.game.protocol.gm.GmLoopNoticeHttpProtocol;
-import com.game.protocol.gm.GmLoopNoticeProtocolRequest;
 import com.game.protocol.gm.GmMailRoleHttpProtocol;
 import com.game.protocol.gm.GmMailRoleProtocolRequest;
 import com.game.protocol.gm.GmNoticeHttpProtocol;
@@ -115,9 +115,9 @@ public class ConvertMapUtils {
 			} else if (head == IMsgCode.GM_NOTICE_HTTP_PROTOCOL) {
 				/** 发起公告 */
 				httpMessageMap.put(head, GmNoticeHttpProtocol.class);
-			} else if (head == IMsgCode.GM_LOOP_NOTICE_HTTP_PROTOCOL) {
+			} else if (head == IMsgCode.GM_INVITE_CODE_HTTP_PROTOCOL) {
 				/** 发起循环公告 */
-				httpMessageMap.put(head, GmLoopNoticeHttpProtocol.class);
+				httpMessageMap.put(head, GmInviteCodeHttpProtocol.class);
 			} else if (head == IMsgCode.GM_EMAIL_HTTP_PROTOCOL) {
 				/** 发送邮件至账户 */
 				httpMessageMap.put(head, GmMailRoleHttpProtocol.class);
@@ -199,9 +199,9 @@ public class ConvertMapUtils {
 			} else if (head == IMsgCode.GM_NOTICE_HTTP_PROTOCOL) {
 				/** 发起公告 */
 				httpRqeustMessageMap.put(head, GmNoticeProtocolRequest.class);
-			} else if (head == IMsgCode.GM_LOOP_NOTICE_HTTP_PROTOCOL) {
+			} else if (head == IMsgCode.GM_INVITE_CODE_HTTP_PROTOCOL) {
 				/** 发起循环公告 */
-				httpRqeustMessageMap.put(head, GmLoopNoticeProtocolRequest.class);
+				httpRqeustMessageMap.put(head, GmInviteCodeProtocolRequest.class);
 			} else if (head == IMsgCode.GM_EMAIL_HTTP_PROTOCOL) {
 				/** 发送邮件至账户 */
 				httpRqeustMessageMap.put(head, GmMailRoleProtocolRequest.class);

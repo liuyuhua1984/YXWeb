@@ -25,6 +25,20 @@
         </property>
     </bean>
 -->
+<!-- inviteCode -->
+	<bean id="inviteCode" class="com.gamecenter.service.task.InviteCodeTask"/>
+	<bean id="jobInvite" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="inviteCode"/>
+		<property name="targetMethod">
+			<value>work</value>
+		</property>
+	</bean>
+	    <bean id="inviteCodeFactroy" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobInvite" />
+        <property name="cronExpression">
+            <value>0/10 * * * * ?</value>
+        </property>
+    </bean>
     <!-- 循环公告 -->
     <bean id="cycleNotice" class="com.gamecenter.service.task.SendNoticeCycle" init-method="initData"></bean>
     <bean id="cycleNoticetask"
@@ -88,6 +102,7 @@
                 <ref bean="cycleNoticetaskgo"/>
                 <!--<ref bean="checkUpNode"/>-->
                 <ref bean="dataAnalyzeCronTrigger"/>
+                <ref bean="inviteCodeFactroy"/>
             </list>
         </property>
     </bean>

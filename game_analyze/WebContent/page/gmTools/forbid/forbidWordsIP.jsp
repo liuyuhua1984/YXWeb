@@ -13,7 +13,7 @@
 </script>
 
 <a class="btn btn-small" href="javascript:void(0);"
-   onclick="$('#timeshow').show();$('#btitle').html('IP禁言');act=5052;">IP禁言</a>
+   onclick="$('#timeshow').show();$('#btitle').html('IP禁止');act=5052;">IP禁止</a>
 <a class="btn btn-small" href="javascript:void(0);"
    onclick="$('#timeshow').hide();$('#btitle').html('IP解禁');act=5053;">IP解禁</a>
 
@@ -22,7 +22,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2 id='btitle'>IP禁言</h2>
+                <h2 id='btitle'>IP禁止</h2>
             </header>
             <!-- wrap div -->
             <div id="step1">
@@ -67,11 +67,11 @@
 
                                 <p class="help-block">
 
-                                    输入禁言IP地址。
+                                    输入禁止的IP地址。
                                 </p>
                             </div>
-
                         </div>
+                        <!-- 
                         <div class="control-group" id="timeshow">
                             <label class="control-label" for="time">禁言时间</label>
 
@@ -84,6 +84,7 @@
                                 </p>
                             </div>
                         </div>
+                         -->
                         <div class="control-group">
                             <label class="control-label" for="msg">操作原因描述</label>
 
@@ -118,7 +119,7 @@
 
     function saveMsg() {
         var ip = $('#ip').val();
-        var time = $('#time').val();
+        var time =0;// $('#time').val();
         var msg = $('#msg').val();
         var wid = $('#wid').val();
 

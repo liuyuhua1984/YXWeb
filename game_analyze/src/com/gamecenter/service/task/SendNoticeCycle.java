@@ -38,16 +38,20 @@ public class SendNoticeCycle {
 				
 				OpGmtNoticeCycle obj = entry.getValue();
 				if (obj.getStatus().equals("1")) {
-					if (System.currentTimeMillis() - obj.getLastsendtime() > obj.getCycletime() * 60 * 1000) {
+					if (obj.getLastsendtime() - System.currentTimeMillis() > 0) {
 						System.out.println("发起循环公告:" + obj.getDid());
 						// 设置发送时间
-						obj.setLastsendtime(System.currentTimeMillis());
+						//obj.setLastsendtime(System.currentTimeMillis());
 						obj.setOpttime(Tools.getNowDate());
 						// OpGmtNoticeCycleExample opGmtNoticeCycleExample = new OpGmtNoticeCycleExample();
 						// OpGmtNoticeCycleExample.Criteria criteria = opGmtNoticeCycleExample.createCriteria();
 						opGmtNoticeCycleMapper.updateByPrimaryKey(obj);
 						// 立即发送
-						gmtNoticeService.sendNotic(obj);
+						try{
+							gmtNoticeService.sendNotic(obj);
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					} else {
 						gmtNoticeService.stopCycleNotic("" + obj.getDid());
 					}
