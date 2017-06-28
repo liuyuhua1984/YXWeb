@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-28 11:12:03
+Date: 2017-06-28 11:36:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1879,10 +1879,13 @@ CREATE TABLE `op_shop` (
 -- ----------------------------
 -- Records of op_shop
 -- ----------------------------
-INSERT INTO `op_shop` VALUES ('1', '1.00', '10', '0', '0', '钻1');
-INSERT INTO `op_shop` VALUES ('2', '5.00', '11', '0', '0', '钻2');
-INSERT INTO `op_shop` VALUES ('3', '10.00', '30', '0', '0', '钻3');
-INSERT INTO `op_shop` VALUES ('4', '100.00', '30', '0', '0', '钻4');
+INSERT INTO `op_shop` VALUES ('1', '6.00', '7', '0', '0', '钻6');
+INSERT INTO `op_shop` VALUES ('2', '12.00', '15', '0', '0', '钻12');
+INSERT INTO `op_shop` VALUES ('3', '24.00', '30', '0', '0', '钻24');
+INSERT INTO `op_shop` VALUES ('4', '48.00', '58', '0', '0', '钻48');
+INSERT INTO `op_shop` VALUES ('5', '96.00', '116', '0', '0', '钻96');
+INSERT INTO `op_shop` VALUES ('6', '200.00', '250', '0', '0', '钻200');
+INSERT INTO `op_shop` VALUES ('7', '400.00', '500', '0', '0', '钻400');
 
 -- ----------------------------
 -- Table structure for op_tx_task

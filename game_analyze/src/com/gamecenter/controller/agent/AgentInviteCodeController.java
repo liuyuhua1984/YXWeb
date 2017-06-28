@@ -149,7 +149,7 @@ public class AgentInviteCodeController {
 			// int inviteCode = ThreadLocalRandom.current().nextInt();
 			String inviteCode = "";
 			for (int j = 0; j < 6; j++) {
-				int rNum = ThreadLocalRandom.current().nextInt(0, 62);
+				int rNum = ThreadLocalRandom.current().nextInt(0, randomInviteArray.length);
 				inviteCode += randomInviteArray[rNum];
 			}
 			if (agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode) == null) {
