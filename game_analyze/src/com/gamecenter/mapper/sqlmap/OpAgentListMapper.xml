@@ -7,7 +7,7 @@
     <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
     <result column="agent_level" jdbcType="INTEGER" property="agentLevel" />
     <result column="remain_money" jdbcType="INTEGER" property="remainMoney" />
-    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="parent_name" jdbcType="VARCHAR" property="parentName" />
     <result column="wechat_code" jdbcType="VARCHAR" property="wechatCode" />
     <result column="phone" jdbcType="BIGINT" property="phone" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, invite_code, agent_level, remain_money, parent_id, wechat_code, phone, 
+    id, name, invite_code, agent_level, remain_money, parent_name, wechat_code, phone, 
     create_time, password, status
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentListExample" resultMap="BaseResultMap">
@@ -112,11 +112,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into op_agent_list (name, invite_code, agent_level, 
-      remain_money, parent_id, wechat_code, 
+      remain_money, parent_name, wechat_code, 
       phone, create_time, password, 
       status)
     values (#{name,jdbcType=VARCHAR}, #{inviteCode,jdbcType=VARCHAR}, #{agentLevel,jdbcType=INTEGER}, 
-      #{remainMoney,jdbcType=INTEGER}, #{parentId,jdbcType=BIGINT}, #{wechatCode,jdbcType=VARCHAR}, 
+      #{remainMoney,jdbcType=INTEGER}, #{parentName,jdbcType=VARCHAR}, #{wechatCode,jdbcType=VARCHAR}, 
       #{phone,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{password,jdbcType=VARCHAR}, 
       #{status,jdbcType=TINYINT})
   </insert>
@@ -138,8 +138,8 @@
       <if test="remainMoney != null">
         remain_money,
       </if>
-      <if test="parentId != null">
-        parent_id,
+      <if test="parentName != null">
+        parent_name,
       </if>
       <if test="wechatCode != null">
         wechat_code,
@@ -170,8 +170,8 @@
       <if test="remainMoney != null">
         #{remainMoney,jdbcType=INTEGER},
       </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=BIGINT},
+      <if test="parentName != null">
+        #{parentName,jdbcType=VARCHAR},
       </if>
       <if test="wechatCode != null">
         #{wechatCode,jdbcType=VARCHAR},
@@ -214,8 +214,8 @@
       <if test="record.remainMoney != null">
         remain_money = #{record.remainMoney,jdbcType=INTEGER},
       </if>
-      <if test="record.parentId != null">
-        parent_id = #{record.parentId,jdbcType=BIGINT},
+      <if test="record.parentName != null">
+        parent_name = #{record.parentName,jdbcType=VARCHAR},
       </if>
       <if test="record.wechatCode != null">
         wechat_code = #{record.wechatCode,jdbcType=VARCHAR},
@@ -244,7 +244,7 @@
       invite_code = #{record.inviteCode,jdbcType=VARCHAR},
       agent_level = #{record.agentLevel,jdbcType=INTEGER},
       remain_money = #{record.remainMoney,jdbcType=INTEGER},
-      parent_id = #{record.parentId,jdbcType=BIGINT},
+      parent_name = #{record.parentName,jdbcType=VARCHAR},
       wechat_code = #{record.wechatCode,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -269,8 +269,8 @@
       <if test="remainMoney != null">
         remain_money = #{remainMoney,jdbcType=INTEGER},
       </if>
-      <if test="parentId != null">
-        parent_id = #{parentId,jdbcType=BIGINT},
+      <if test="parentName != null">
+        parent_name = #{parentName,jdbcType=VARCHAR},
       </if>
       <if test="wechatCode != null">
         wechat_code = #{wechatCode,jdbcType=VARCHAR},
@@ -296,7 +296,7 @@
       invite_code = #{inviteCode,jdbcType=VARCHAR},
       agent_level = #{agentLevel,jdbcType=INTEGER},
       remain_money = #{remainMoney,jdbcType=INTEGER},
-      parent_id = #{parentId,jdbcType=BIGINT},
+      parent_name = #{parentName,jdbcType=VARCHAR},
       wechat_code = #{wechatCode,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},

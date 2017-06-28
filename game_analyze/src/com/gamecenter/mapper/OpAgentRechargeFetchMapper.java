@@ -16,21 +16,15 @@ public interface OpAgentRechargeFetchMapper {
 
     int insertSelective(OpAgentRechargeFetch record);
 
-    List<OpAgentRechargeFetch> selectByExampleWithBLOBs(OpAgentRechargeFetchExample example);
-
     List<OpAgentRechargeFetch> selectByExample(OpAgentRechargeFetchExample example);
 
     OpAgentRechargeFetch selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") OpAgentRechargeFetch record, @Param("example") OpAgentRechargeFetchExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") OpAgentRechargeFetch record, @Param("example") OpAgentRechargeFetchExample example);
-
     int updateByExample(@Param("record") OpAgentRechargeFetch record, @Param("example") OpAgentRechargeFetchExample example);
 
     int updateByPrimaryKeySelective(OpAgentRechargeFetch record);
-
-    int updateByPrimaryKeyWithBLOBs(OpAgentRechargeFetch record);
 
     int updateByPrimaryKey(OpAgentRechargeFetch record);
 }

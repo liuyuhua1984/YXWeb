@@ -113,11 +113,12 @@ public class AgentRequestController {
 					agent.setAgentLevel(1);
 					agent.setInviteCode(inviteCode);
 					agent.setName(name);
-					agent.setParentId(code.getAgentId());
+					agent.setParentName(parentAgent.getName());
 					agent.setCreateTime(new Date(System.currentTimeMillis()));
 					agent.setPassword(password);
 					agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据
 					agent.setWechatCode(weChat);
+					agent.setRemainMoney(0);
 					agent.setStatus((byte) 1);
 					agentListService.insert(agent);
 					res = "1";
@@ -155,6 +156,7 @@ public class AgentRequestController {
 			//phone.trim();
 			// 判断邀请码是否服合要求
 			OpAgentInviteCode code = agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode);
+			OpAgentList parentAgent = agentListService.findById(code.getAgentId());
 			if (code != null) {
 				if (code.getIsUse() == 1) {
 					res = "-3";// 邀请码已过时
@@ -174,7 +176,13 @@ public class AgentRequestController {
 					agent.setAgentLevel(999);
 					agent.setInviteCode(inviteCode);
 					agent.setName(name);
-					agent.setParentId(code.getAgentId());
+					String parentName = "";
+					if (parentAgent == null){
+						parentName = "无";
+					}else {
+						parentName = parentAgent.getName();
+					}
+					agent.setParentName(parentName);
 					agent.setCreateTime(new Date(System.currentTimeMillis()));
 					agent.setPassword(password);
 					agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据

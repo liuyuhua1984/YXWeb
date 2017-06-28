@@ -24,11 +24,11 @@ public class AgentListServiceImpl implements AgentListService {
 	@Autowired
 	private  OpAgentListMapper maper;
 	@Override
-	public List<OpAgentList> getNextOpAgentList(long agentId) {
+	public List<OpAgentList> getChildrenOpAgentList(String name) {
 		// TODO Auto-generated method stub
 		OpAgentListExample example = new OpAgentListExample();
 		OpAgentListExample.Criteria criteria = example.createCriteria();
-		criteria.andParentIdEqualTo(agentId);
+		criteria.andParentNameEqualTo(name);
 		return maper.selectByExample(example);
 	}
 

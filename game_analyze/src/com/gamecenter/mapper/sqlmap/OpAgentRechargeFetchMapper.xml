@@ -6,9 +6,7 @@
     <result column="money" jdbcType="DOUBLE" property="money" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gamecenter.model.OpAgentRechargeFetch">
-    <result column="ids" jdbcType="LONGVARCHAR" property="ids" />
+    <result column="ids" jdbcType="VARCHAR" property="ids" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,28 +67,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, money, create_time, name
+    id, money, create_time, name, ids
   </sql>
-  <sql id="Blob_Column_List">
-    ids
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.gamecenter.model.OpAgentRechargeFetchExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from op_agent_recharge_fetch
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRechargeFetchExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -106,11 +84,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from op_agent_recharge_fetch
     where id = #{id,jdbcType=BIGINT}
   </select>
@@ -131,7 +107,7 @@
     insert into op_agent_recharge_fetch (money, create_time, name, 
       ids)
     values (#{money,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
-      #{ids,jdbcType=LONGVARCHAR})
+      #{ids,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRechargeFetch">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -163,7 +139,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="ids != null">
-        #{ids,jdbcType=LONGVARCHAR},
+        #{ids,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -189,20 +165,9 @@
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.ids != null">
-        ids = #{record.ids,jdbcType=LONGVARCHAR},
+        ids = #{record.ids,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update op_agent_recharge_fetch
-    set id = #{record.id,jdbcType=BIGINT},
-      money = #{record.money,jdbcType=DOUBLE},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      name = #{record.name,jdbcType=VARCHAR},
-      ids = #{record.ids,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,7 +177,8 @@
     set id = #{record.id,jdbcType=BIGINT},
       money = #{record.money,jdbcType=DOUBLE},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      name = #{record.name,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR},
+      ids = #{record.ids,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -230,24 +196,17 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="ids != null">
-        ids = #{ids,jdbcType=LONGVARCHAR},
+        ids = #{ids,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gamecenter.model.OpAgentRechargeFetch">
-    update op_agent_recharge_fetch
-    set money = #{money,jdbcType=DOUBLE},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      name = #{name,jdbcType=VARCHAR},
-      ids = #{ids,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentRechargeFetch">
     update op_agent_recharge_fetch
     set money = #{money,jdbcType=DOUBLE},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      name = #{name,jdbcType=VARCHAR}
+      name = #{name,jdbcType=VARCHAR},
+      ids = #{ids,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -150,12 +150,14 @@ public class AgentRechargeRequestController {
 				// 添加到
 				if (bAgent) {
 					OpAgentList agent = agentListService.findByName(payedName);
-					if (agent != null && userMsg.getId() == agent.getParentId() && parentAgent.getRemainMoney() >= gold) {// 只有上级充值下级
+					if (agent != null && userMsg.getAgentName().equals(agent.getParentName()) && parentAgent.getRemainMoney() >= gold) {// 只有上级充值下级
 						// 这儿暂时没有加同步
 						// 生成订单号
 						String trade = "agent:" + IdGenerateUtils.makeId();
 						addAgentMoney(agent, parentAgent, gold, dPrice, trade);
 						res = "1";
+					}else {
+						res="-2";
 					}
 				} else {
 					OpAgentList agent = agentListService.findByName(platformName);
@@ -183,8 +185,12 @@ public class AgentRechargeRequestController {
 									res = "1";
 									addPlayerMoney(player, agent, gold, dPrice, trade,(fetchMoneyRate*dPrice)/100);
 								}
+							}else {
+								res="-3";
 							}
 						}
+					}else {
+						res="-2";
 					}
 				}
 			}
@@ -196,6 +202,9 @@ public class AgentRechargeRequestController {
 	
 	@Transactional
 	public void addAgentMoney(OpAgentList agent, OpAgentList parentAgent, int gold, double price, String staderOrder) {
+		if (agent.getRemainMoney() == null){
+			agent.setRemainMoney(0);
+		}
 		agent.setRemainMoney(agent.getRemainMoney() + gold);
 		agentListService.update(agent);
 		parentAgent.setRemainMoney(parentAgent.getRemainMoney() - gold);

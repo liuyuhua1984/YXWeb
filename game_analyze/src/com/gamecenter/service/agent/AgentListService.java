@@ -27,14 +27,14 @@ public interface AgentListService {
 	        void insert(OpAgentList agent);
 	        
 		/** 
-		 * getOpAgentList:(). <br/> 
+		 * getChildrenOpAgentList:(). <br/> 
 		 * TODO().<br/> 
 		 * 获取下级代理列表
 		 * @author lyh 
 		 * @param agentId
 		 * @return 
 		 */  
-		List<OpAgentList> getNextOpAgentList(long agentId);
+		List<OpAgentList> getChildrenOpAgentList(String name);
 		
 		/** 
 		 * findById:(). <br/> 

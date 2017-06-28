@@ -10,46 +10,46 @@
 
 <!--// OPTIONAL & CONDITIONAL CSS FILES //-->
 <!-- date picker css -->
-<link rel="stylesheet" href="${ctxPage}/static/css/datepicker.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/datepicker.css?v=1" />
 <!-- full calander css -->
-<link rel="stylesheet" href="${ctxPage}/static/css/fullcalendar.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/fullcalendar.css?v=1" />
 <!-- data tables extended CSS -->
-<link rel="stylesheet" href="${ctxPage}/static/css/TableTools.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/TableTools.css?v=1" />
 <!-- bootstrap wysimhtml5 editor -->
-<link rel="stylesheet" href="${ctxPage}/static/css/bootstrap-wysihtml5.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/wysiwyg-color.css"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/bootstrap-wysihtml5.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/wysiwyg-color.css" />
 <!-- custom/responsive growl messages -->
-<link rel="stylesheet" href="${ctxPage}/static/css/toastr.custom.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/toastr-responsive.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/jquery.jgrowl.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/toastr.custom.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/toastr-responsive.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/jquery.jgrowl.css?v=1" />
 
 <!-- // DO NOT REMOVE OR CHANGE ORDER OF THE FOLLOWING // -->
 <!-- bootstrap default css (DO NOT REMOVE) -->
-<link rel="stylesheet" href="${ctxPage}/static/css/bootstrap.min.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/bootstrap-responsive.min.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/bootstrap.min.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/bootstrap-responsive.min.css?v=1" />
 <!-- font awsome and custom icons -->
-<link rel="stylesheet" href="${ctxPage}/static/css/font-awesome.min.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/cus-icons.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/font-awesome.min.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/cus-icons.css?v=1" />
 <!-- jarvis widget css -->
-<link rel="stylesheet" href="${ctxPage}/static/css/jarvis-widgets.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/jarvis-widgets.css?v=1" />
 <!-- Data tables, normal tables and responsive tables css -->
-<link rel="stylesheet" href="${ctxPage}/static/css/DT_bootstrap.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/responsive-tables.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/DT_bootstrap.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/responsive-tables.css?v=1" />
 <!-- used where radio, select and form elements are used -->
-<link rel="stylesheet" href="${ctxPage}/static/css/uniform.default.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/select2.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/uniform.default.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/select2.css?v=1" />
 <!-- main theme files -->
-<link rel="stylesheet" href="${ctxPage}/static/css/theme.css?v=1"/>
-<link rel="stylesheet" href="${ctxPage}/static/css/theme-responsive.css?v=1"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/theme.css?v=1" />
+<link rel="stylesheet" href="${ctxPage}/static/css/theme-responsive.css?v=1" />
 
 <!-- // THEME CSS changed by javascript: the CSS link below will override the rules above // -->
 <!-- For more information, please see the documentation for "THEMES" -->
-<link rel="stylesheet" id="switch-theme-js" href="${ctxPage}/static/css/themes/default.css?v=1"/>
+<link rel="stylesheet" id="switch-theme-js" href="${ctxPage}/static/css/themes/default.css?v=1" />
 <!-- To switch to full width -->
-<link rel="stylesheet" id="switch-width" href="${ctxPage}/static/css/full-width.css?v=1"/>
+<link rel="stylesheet" id="switch-width" href="${ctxPage}/static/css/full-width.css?v=1" />
 
 
-<link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
+<link rel="stylesheet" href="${ctxPage}/static/css/css.css" />
 <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
 
 <script type="text/javascript" src="${ctxPage}/static/js/min.js"></script>
@@ -58,18 +58,18 @@
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>--%>
-<script  type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.min.js"></script>
+<script type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"><\/script>')</script>
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>--%>
-<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
+<script type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
 <script>window.jQuery.ui || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"><\/script>')</script>
 
 <!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
-<script  type="text/javascript"  src="${ctxPage}/static/js/include/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="${ctxPage}/static/js/include/jquery.ui.touch-punch.min.js"></script>
 <!-- REQUIRED: Bootstrap Date Picker -->
-<script  type="text/javascript"  src="${ctxPage}/static/js/include/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="${ctxPage}/static/js/include/bootstrap-datepicker.min.js"></script>
 <!-- REQUIRED: Bootstrap engine -->
-<script  type="text/javascript"  src="${ctxPage}/static/js/include/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctxPage}/static/js/include/bootstrap.min.js"></script>
 
 
 <script language="javascript" type="text/javascript" src="${ctxPage}/js/json.min.js"></script>
@@ -82,7 +82,7 @@
 		<article class="span12">
 			<!-- new widget -->
 			<div class="jarviswidget" id="widget-id-0">
-		
+
 				<header>
 					<h2>
 						添加充值信息【<a href="${ctxPage}/agent/sell/list">返回列表</a>】
@@ -98,7 +98,7 @@
 							<!-- 
 							<div class="control-group">
 								<label class="control-label" for="agentName">代理昵称：</label> -->
-								<!-- 
+							<!-- 
                             <div class="controls">
                                 <select id="appid" name="appid" class="span12 with-search">
                                     <c:forEach var="item" items="${appList}">
@@ -108,7 +108,7 @@
                                 </select>
                             </div>
                              -->
-                             <!-- 
+							<!-- 
 								<div class="controls">
 									<input type="text" class="span12" id="agentName" name="agentName" value="" placeholder="请填写你的代理昵称" />
 								</div>
@@ -123,33 +123,33 @@
 									<input type="text" class="span12" id="name" name="name" value="" placeholder="请填写你的用户名" />
 								</div>
 							</div>
-	                        
+
 							<div class="control-group">
 								<label class="control-label" for="money">充值金额</label>
 
-								<div class="controls" >
+								<div class="controls">
 									<select class="span12 with-search" id="money">
-									  <c:forEach var="item" items="${lists}">
-                                        <option value="${item.price}"/>
+										<c:forEach var="item" items="${lists}">
+											<option value="${item.price}" />
                                         ${item.name}
                                     </c:forEach>
-								
-								</select>
+
+									</select>
 								</div>
 							</div>
-							
+
 							<div class="control-group">
 								<label class="control-label" for="isAgent">用户属性</label>
-		
+
 								<div class="controls">
-								<select class="span12 with-search" id="isAgent">
-									<option  value="1" >代理</option>
-									<option  value="0" selected="selected">玩家</option>
-								</select>
+									<select class="span12 with-search" id="isAgent">
+										<option value="1">代理</option>
+										<option value="0" selected="selected">玩家</option>
+									</select>
 
 								</div>
 							</div>
-							
+
 
 							<span id="tishi"></span>
 							<div class="form-actions" style="text-align: left;">
@@ -210,7 +210,12 @@
 					if (data.res == "1") {
 						alert('充值成功！');
 						location.reload();
-					} else {
+					} else if (data.res == "-2"){
+						alert('房卡不足不能充值！');
+					}else if (data.res == "-3"){
+						alert('用户昵称不存在！');
+					}
+					else {
 						alert('操作失败,注意XXX不能重复！');
 					}
 					mark = 0;
