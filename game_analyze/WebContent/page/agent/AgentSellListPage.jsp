@@ -9,6 +9,7 @@
 		<td>${item.traderOrder}</td>
 		<td>${item.agentName}</td>
 		<td>${item.money}</td>
+		<td>${item.name}</td>
 		<td><c:choose>
 				<c:when test="${item.isAgent eq '0'}">玩家</c:when>
 				<c:otherwise>

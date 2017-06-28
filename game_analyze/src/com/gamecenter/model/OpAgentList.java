@@ -30,9 +30,9 @@ public class OpAgentList implements Serializable {
     private Integer remainMoney;
 
     /**
-     * 上一级代理id
+     * 上一级代理名称
      */
-    private Long parentId;
+    private String parentName;
 
     /**
      * 微信号
@@ -104,12 +104,12 @@ public class OpAgentList implements Serializable {
         this.remainMoney = remainMoney;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public String getParentName() {
+        return parentName;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setParentName(String parentName) {
+        this.parentName = parentName == null ? null : parentName.trim();
     }
 
     public String getWechatCode() {
@@ -163,7 +163,7 @@ public class OpAgentList implements Serializable {
         sb.append(", inviteCode=").append(inviteCode);
         sb.append(", agentLevel=").append(agentLevel);
         sb.append(", remainMoney=").append(remainMoney);
-        sb.append(", parentId=").append(parentId);
+        sb.append(", parentName=").append(parentName);
         sb.append(", wechatCode=").append(wechatCode);
         sb.append(", phone=").append(phone);
         sb.append(", createTime=").append(createTime);

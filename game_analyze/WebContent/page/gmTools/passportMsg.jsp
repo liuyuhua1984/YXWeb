@@ -203,7 +203,7 @@
             success: function (data) {
                 if (data.res != null) {
                      if(data.res.result=='1'){
-                     	 alert(data.res.openid);
+                     	// alert(data.res.openid);
                          $("#msg_passport").html(data.res.openid);
                          $("#msg_rolename").html(data.res.name);
                          $("#msg_money").html(data.res.money);

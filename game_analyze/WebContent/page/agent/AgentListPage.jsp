@@ -10,7 +10,7 @@
 		<td>${item.inviteCode}</td>
 		<td>${item.agentLevel}</td>
 		<td>${item.remainMoney}</td>
-		<td>${item.parentId}</td>
+		<td>${item.parentName}</td>
 		<td>${item.wechatCode}</td>
 		<td>${item.phone}</td>
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -20,7 +20,7 @@
 
 					</c:when>
 					<c:when test="${item.status eq '2'}">&nbsp;<a type="button" class="btn btn-small" href="javascript:void(0);"
-							onclick='$("#act${item.id}").attr("checked", "checked");dealWithMoney(${item.optid});'>结算</a>
+							onclick='$("#act${item.id}").attr("checked", "checked");dealWithMoney(${item.id});'>结算</a>
 					</c:when>
 					<c:otherwise>
 								&nbsp;<a type="button" class="btn btn-small" href="javascript:void(0);" onclick="upstatus('${item.id}',1)">绑定</a>
@@ -94,7 +94,7 @@
 				} else {
 					//alert("结算成功!!")
 					//window.location.reload();
-					if (!window.confirm("你确定要和" + result.name + "结算" + result.money + "?")) //确定是否结算
+					if (!window.confirm("你确定要和" + result.name + "结算" + result.money + "元?")) //确定是否结算
 						return false;
 
 					$.ajax({
@@ -107,7 +107,7 @@
 						dataType : "json",
 						success : function(result) {
 							if (result.res == '-1') {
-								alert("结算异常！");
+								alert("确认异常！");
 							} else {
 								alert("结算成功!!")
 								window.location.reload();

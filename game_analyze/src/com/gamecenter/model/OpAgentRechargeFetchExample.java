@@ -366,6 +366,76 @@ public class OpAgentRechargeFetchExample {
             addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
+
+        public Criteria andIdsIsNull() {
+            addCriterion("ids is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsIsNotNull() {
+            addCriterion("ids is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsEqualTo(String value) {
+            addCriterion("ids =", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsNotEqualTo(String value) {
+            addCriterion("ids <>", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsGreaterThan(String value) {
+            addCriterion("ids >", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsGreaterThanOrEqualTo(String value) {
+            addCriterion("ids >=", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsLessThan(String value) {
+            addCriterion("ids <", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsLessThanOrEqualTo(String value) {
+            addCriterion("ids <=", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsLike(String value) {
+            addCriterion("ids like", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsNotLike(String value) {
+            addCriterion("ids not like", value, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsIn(List<String> values) {
+            addCriterion("ids in", values, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsNotIn(List<String> values) {
+            addCriterion("ids not in", values, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsBetween(String value1, String value2) {
+            addCriterion("ids between", value1, value2, "ids");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdsNotBetween(String value1, String value2) {
+            addCriterion("ids not between", value1, value2, "ids");
+            return (Criteria) this;
+        }
     }
 
     /**

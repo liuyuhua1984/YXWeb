@@ -116,7 +116,7 @@
 							<thead>
 								<tr>
 									<th width="20">序</th>
-									<th width="100">代理名</th>
+									<th width="100">昵称</th>
 									<th width="150">邀请码</th>
 									<th width="150">代理级别</th>
 									<th width="100">剩余房卡</th>
