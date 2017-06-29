@@ -29,6 +29,7 @@ public class PlayerFeedBackController {
 		String content = req.getParameter("content");
 		String serverId = req.getParameter("serverId");
 		String phone = req.getParameter("phone");
+		
 		map.put("result", 1);
 		return map;
 	}
