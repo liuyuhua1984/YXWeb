@@ -15,9 +15,11 @@ import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpGameapp;
 import com.gamecenter.model.OpGameworld;
 import com.gamecenter.model.OpOssQlzPassport;
+import com.gamecenter.parBean.vo.WorldOnlineData;
 import com.gamecenter.service.appServices.AppService;
 import com.gamecenter.service.appServices.WorldService;
 import com.gamecenter.service.dataup.DataUpHandleService;
+import com.gamecenter.service.task.WorldOnlineNum;
 
 /**
  * 运行分析 -- 游戏玩家 Created with IntelliJ IDEA. User: gsb Date: 14-4-24 Time: 下午5:33 To change this template use File | Settings | File Templates.
@@ -41,10 +43,13 @@ public class GameUser_base_Controller {
 		if (appList != null && appList.size() > 0) {
 			worldList = worldService.getWorldListByAppId(appList.get(0).getAppid());
 		}
+		int num = 0;
+	
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/page/oss/passport/base/passportPage");
 		modelAndView.addObject("appList", appList);
 		modelAndView.addObject("worldList", worldList);
+	
 		return modelAndView;
 	}
 	
@@ -81,9 +86,16 @@ public class GameUser_base_Controller {
 		
 		for (OpOssQlzPassport opOssQlzPassport : (List<OpOssQlzPassport>) p.getResult()) {
 			opOssQlzPassport.setWorldid(worldService.getWorldByWorldId(opOssQlzPassport.getWorldid()).getWname());
-			opOssQlzPassport.setTotalmoney(Tools.round(opOssQlzPassport.getTotalmoney() / 10, 2));
+			//opOssQlzPassport.setTotalmoney(Tools.round(opOssQlzPassport.getTotalmoney() / 10, 2));
 		}
+		
 		modelAndView.addObject("count", p.getTotalSize());
+		WorldOnlineData curObj = WorldOnlineNum.onlineMap.get(opGameworld.getWorldid());
+		int num = 0;
+		if (curObj != null){
+			num = curObj.curNum;
+		}
+		modelAndView.addObject("onlineNum", num);
 		return modelAndView;
 	}
 	

@@ -92,7 +92,7 @@ public class HttpClient {
 			logger.error(e.getMessage(), e);
 		} finally {
 			if (con != null) {
-				con.disconnect();
+			//	con.disconnect();
 			}
 		}
 		return null;

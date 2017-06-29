@@ -1,5 +1,7 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -102,7 +104,8 @@ public class PlayerRechargeServiceImpl implements PlayerRechargeService {
 				OpOperatorRecharge opOperatorRecharge = new OpOperatorRecharge();
 				opOperatorRecharge.setPassport(pssport);
 				opOperatorRecharge.setBillno(billno);
-				opOperatorRecharge.setMoney(money);
+				opOperatorRecharge.setMoney(dPrice);
+				opOperatorRecharge.setGold((int)money);
 				opOperatorRecharge.setTime(time);
 				opOperatorRecharge.setSid(sid);
 				opOperatorRecharge.setFlag(flag);
@@ -122,6 +125,27 @@ public class PlayerRechargeServiceImpl implements PlayerRechargeService {
 			status = 2;
 		}
 		return (int)status;
+	}
+
+	@Override
+	public List<OpOperatorRecharge> findOpOperatorRechargeByWorldIdAndTime(String worldId, String beginTime, String endTime) {
+		// TODO Auto-generated method stub
+		OpOperatorRechargeExample opOperatorRechargeExample = new OpOperatorRechargeExample();
+		OpOperatorRechargeExample.Criteria criteria = opOperatorRechargeExample.createCriteria();
+		criteria.andSidEqualTo(worldId);
+		criteria.andAddtimeBetween(beginTime, endTime);
+		return opOperatorRechargeMapper.selectByExample(opOperatorRechargeExample);
+	}
+
+	@Override
+	public double payCount(String worldId, String beginTime, String endTime) {
+		// TODO Auto-generated method stub
+		OpOperatorRechargeExample opOperatorRechargeExample = new OpOperatorRechargeExample();
+		OpOperatorRechargeExample.Criteria criteria = opOperatorRechargeExample.createCriteria();
+		criteria.andSidEqualTo(worldId);
+		criteria.andAddtimeBetween(beginTime, endTime);
+		
+		return opOperatorRechargeMapper.payCount(opOperatorRechargeExample);
 	}
 	
 }

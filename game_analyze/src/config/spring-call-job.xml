@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-    <!-- 在线人数采集 
+  <!--   在线人数采集 -->
     <bean id="job" class="com.gamecenter.service.task.WorldOnlineNum"></bean>
     <bean id="jobtask"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -21,10 +21,10 @@
     <bean id="online" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobtask" />
         <property name="cronExpression">
-            <value>0/8 * * * * ?</value>
+            <value>1 * * * * ?</value>
         </property>
     </bean>
--->
+
 <!-- inviteCode -->
 	<bean id="inviteCode" class="com.gamecenter.service.task.InviteCodeTask"/>
 	<bean id="jobInvite" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -98,7 +98,7 @@
           class="org.springframework.scheduling.quartz.SchedulerFactoryBean"  lazy-init="default">
         <property name="triggers">
             <list>
-                <!--<ref bean="online"/>-->
+                <ref bean="online"/>
                 <ref bean="cycleNoticetaskgo"/>
                 <!--<ref bean="checkUpNode"/>-->
                 <ref bean="dataAnalyzeCronTrigger"/>

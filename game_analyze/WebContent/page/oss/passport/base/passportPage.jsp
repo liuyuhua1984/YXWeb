@@ -88,9 +88,10 @@
                 </c:forEach>
             </select>
         </div>
-
     </div>
-</div>
+    
+    </div>
+
 
 
 <%--列表--%>
@@ -132,10 +133,12 @@
                             <th class="sortth" width="80" style="background-color: #ffd700" par="curmoney" atr='asc'>
                                 当前金币
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b></th>
+                                <!--  
                             <th class="sortth" width="80" style="background-color: #ffd700" par="totalmoney"
                                  atr='asc'>充值[元]
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b>
                             </th>
+                            -->
                             <th class="sortth" width="80" style="background-color: #ffd700" par="totalconsume"
                                  atr='asc'>消耗[金币]
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b>

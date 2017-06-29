@@ -303,4 +303,11 @@
       info = #{info,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="payCount" parameterType="com.gamecenter.model.OpOperatorRechargeExample" resultType="java.lang.Double">
+      select sum(money) from op_operator_recharge 
+       <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
 </mapper>
