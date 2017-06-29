@@ -36,7 +36,7 @@ public class WorldOnlineNum {
 	 * 人数获取周期任务
 	 */
 	public synchronized void work() {
-		System.out.println(">>>>>>>>>区服实时在线人数 >>>>>>>>>>>>>>>");
+		//System.out.println(">>>>>>>>>区服实时在线人数 >>>>>>>>>>>>>>>");
 		
 		List<OpGameworld> lists = worldService.getWorldList();
 		for (OpGameworld wobj : lists) {

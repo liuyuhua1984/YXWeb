@@ -115,7 +115,7 @@ public class PermitServiceImpl implements PermitService {
 		OaUserPermit oaUserPermit = userService.getUserPermit(uid);
 		if (oaUserPermit != null) {
 			if (oaUserPermit.getPgid() != null && oaUserPermit.getPgid().intValue() != 0) {
-				tempIds = getPermits(1, oaUserPermit.getPgid());
+				tempIds = getPermits(1, oaUserPermit.getPgid());//sourceid
 				permitIds.addAll(tempIds);
 			}
 			if (oaUserPermit.getRoleid() != null && oaUserPermit.getRoleid().intValue() != 0) {
