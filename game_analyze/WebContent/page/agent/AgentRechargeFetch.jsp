@@ -124,7 +124,7 @@
 									<th width="80">用户属性</th>
 									<th width="80">提成</th>
 									<th width="80">提成状态</th>
-									<th width="200">充值时间</th>
+									<th width="*">充值时间</th>
 								</tr>
 							</thead>
 							<tbody id="data">

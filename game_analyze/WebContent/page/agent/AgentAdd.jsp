@@ -108,7 +108,7 @@
                             </div> --%>
 
 						<div class="controls">
-							<input type="text" class="span12" id="name" name="name" value=""  maxlength="12"/>
+							<input type="text" class="span12" id="name" name="name" value="" maxlength="12" />
 						</div>
 					</div>
 
@@ -116,7 +116,7 @@
 						<label class="control-label" for="password">密码</label>
 
 						<div class="controls">
-							<input type="password" class="span12" id="password" name="password" value=""  maxlength="6"/>
+							<input type="password" class="span12" id="password" name="password" value="" maxlength="6" />
 						</div>
 					</div>
 
@@ -124,7 +124,7 @@
 						<label class="control-label" for="inviteCode">邀请码：</label>
 
 						<div class="controls">
-							<input type="text" class="span12" id="inviteCode" name="inviteCode" value="" placeholder="请填写你的邀请码"maxlength="10"/>
+							<input type="text" class="span12" id="inviteCode" name="inviteCode" value="" placeholder="请填写你的邀请码" maxlength="10" />
 						</div>
 					</div>
 
@@ -133,7 +133,7 @@
 						<label class="control-label" for="weChat">微信号</label>
 
 						<div class="controls">
-							<input type="text" class="span12" id="weChat" name="weChat" value="" placeholder="请填写你的微信号" maxlength="20"/>
+							<input type="text" class="span12" id="weChat" name="weChat" value="" placeholder="请填写你的微信号" maxlength="20" />
 
 						</div>
 					</div>
@@ -142,9 +142,19 @@
 						<label class="control-label" for="phone">电话号码</label>
 
 						<div class="controls">
-							<input type="number" class="span12" id="phone" name="phone" value=""  maxlength="13"/>
+							<input type="number" class="span12" id="phone" name="phone" value="" maxlength="13" />
+						</div>
+
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="blankCard">银行卡</label>
+
+						<div class="controls">
+							<input type="number" class="span12" id="blankCard" name="blankCard" value="" maxlength="20" />
 						</div>
 					</div>
+
 					<span id="tishi"></span>
 					<div class="form-actions" style="text-align: left;">
 						<button type="submit" class="btn medium btn-danger" onclick="saveMsg()">提交</button>
@@ -173,8 +183,8 @@
 			var inviteCode = $('#inviteCode').val();
 			var weChat = $('#weChat').val();
 			var phone = $('#phone').val();
-	
-			if (name == "" || password == "" || inviteCode == "" || weChat == "" || phone == "") {
+		    var blankCard = $('#blankCard').val();
+			if (name == "" || password == "" || inviteCode == "" || weChat == "" || phone == "" || blankCard=="") {
 				alert("请完善信息！");
 				return false;
 			}
@@ -194,7 +204,8 @@
 					password : password,
 					inviteCode : inviteCode,
 					weChat : weChat,
-					phone : phone
+					phone : phone,
+					blankCard: blankCard
 				},
 				dataType : 'json',
 				error : function() {
@@ -222,7 +233,6 @@
 	
 						alert('微信号已存在!');
 					}else if (data.res == "-8") {
-						
 						alert('权限不足!');
 					} else {
 						alert('邀请码不存在 ！');

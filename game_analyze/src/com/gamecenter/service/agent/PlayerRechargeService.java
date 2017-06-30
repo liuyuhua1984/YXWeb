@@ -1,5 +1,7 @@
 package com.gamecenter.service.agent;
 
+import java.util.List;
+
 import com.gamecenter.model.OpGameworld;
 import com.gamecenter.model.OpOperatorRecharge;
 
@@ -29,5 +31,32 @@ public interface PlayerRechargeService extends BaseService<OpOperatorRecharge> {
 	 * @return 
 	 */  
 	int recharge(String pssport, String billno,double dPrice, double money, int time, String sid, String flag,OpGameworld opGameworld);
+	
+	
+	/** 
+	 * findOpOperatorRechargeByWorldIdAndTime:(). <br/> 
+	 * TODO().<br/> 
+	 * 查找充值记录
+	 * @author lyh 
+	 * @param worldId
+	 * @param beginTime
+	 * @param endTime
+	 * @return 
+	 */  
+	List<OpOperatorRecharge> findOpOperatorRechargeByWorldIdAndTime(String worldId,String beginTime,String endTime);
+		
+	
+	/** 
+	 * payCount:(). <br/> 
+	 * TODO().<br/> 
+	 * 统计累计充值
+	 * @author lyh 
+	 * @param worldId
+	 * @param beginTime
+	 * @param endTime
+	 * @return 
+	 */  
+	double payCount(String worldId,String beginTime,String endTime);
+	
 }
   

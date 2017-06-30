@@ -41,7 +41,7 @@
 
                         <li>
                             <a url-data="" class="more_icon Players">
-                                <span>公告管理</span>
+                                <span>广播管理</span>
                             </a>
 
                             <ol>
@@ -59,7 +59,7 @@
                             </a>
                             <ol>
                                 <li><a url-data="player-new" href="${ctxPage}/gmt/passport/select" target="mainFrame">账号信息</a></li>
-                                <li><a url-data="player-new" href="${ctxPage}/gmt/passport/allow" target="mainFrame">账号白名单</a></li>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/notice/left/list" target="mainFrame">公告栏</a></li>
                             </ol>
                         </li>
 

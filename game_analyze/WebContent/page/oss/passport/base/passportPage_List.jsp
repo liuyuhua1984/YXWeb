@@ -8,7 +8,9 @@
         <td>${item.rolename}</td>
         <td>${item.grade}</td>
         <td>${item.curmoney}</td>
+        <!-- 
         <td>${item.totalmoney} </td>
+         -->
         <td>${item.totalconsume} </td>
         <td>
             <c:choose>
@@ -30,6 +32,7 @@
 <tr>
     <td colspan="11">
         <div style="float: left">总查询记录数（${count}）条</div>
+        <div style="float: left"> &nbsp;&nbsp;在线人数（${onlineNum}）</div>
         <div class="pagerx">${pageTools}</div>
     </td>
 </tr>

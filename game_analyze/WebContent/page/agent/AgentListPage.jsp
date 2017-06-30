@@ -13,7 +13,9 @@
 		<td>${item.parentName}</td>
 		<td>${item.wechatCode}</td>
 		<td>${item.phone}</td>
+		
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+		<td>${item.blankCard}</td>
 		<td><span style="color: #ff0000;"> <c:choose>
 					<c:when test="${item.status eq '1'}">
 						<a type="button" class="btn btn-small" href="javascript:void(0);" onclick='$("#act${item.id}").attr("checked", "checked");delAgent(${item.id});'>删除</a>

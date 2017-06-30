@@ -34,7 +34,7 @@ public class GmtNoticeServiceImpl implements GmtNoticeService {
 	@Resource
 	OpGmtNoticeCycleMapper opGmtNoticeCycleMapper;
 	
-	public String sendNotic(GmtSendNoticeBean gmtSendNoticeBean) {
+	public String sendNotic(GmtSendNoticeBean gmtSendNoticeBean, boolean record) {
 		String res = "";
 		if (gmtSendNoticeBean != null) {
 			// 获取区服信息
@@ -44,21 +44,23 @@ public class GmtNoticeServiceImpl implements GmtNoticeService {
 				GmNoticeProtocolRequest req = new GmNoticeProtocolRequest();
 				req.setContent(gmtSendNoticeBean.getContent());
 				req.setServerId(opGameworld.getWorldid());
-//				SendReqToGame.getInstance().init(opGameworld.getIp(), Integer.parseInt(opGameworld.getServerurl()));
-//				res = SendReqToGame.getInstance().sendMessage(sendNotice_request, opGameworld.getWorldid()).toString();
+				// SendReqToGame.getInstance().init(opGameworld.getIp(), Integer.parseInt(opGameworld.getServerurl()));
+				// res = SendReqToGame.getInstance().sendMessage(sendNotice_request, opGameworld.getWorldid()).toString();
 				
-				GmNoticeHttpProtocol resp = (GmNoticeHttpProtocol)PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), req);
-				res = ""+resp.getStatus();
-				OpGmtNotice opGmtNotice = new OpGmtNotice();
-				opGmtNotice.setAppid(gmtSendNoticeBean.getAppid());
-				opGmtNotice.setWorldid(gmtSendNoticeBean.getWid());
-				opGmtNotice.setType(Integer.parseInt(gmtSendNoticeBean.getType()));
-				opGmtNotice.setContent(gmtSendNoticeBean.getContent());
-				opGmtNotice.setOpttime(Tools.getNowDate());
-				opGmtNotice.setMsg(gmtSendNoticeBean.getMsg());
-				opGmtNotice.setUsername(gmtSendNoticeBean.getUser());
-				opGmtNotice.setOptres(res.equals("1") ? "成功" : (res.equals("-1000") ? "链接失败" : (res.equals("-1002") ? "接入失败" : "失败" + res)));
-				opGmtNoticeMapper.insertSelective(opGmtNotice);
+				GmNoticeHttpProtocol resp = (GmNoticeHttpProtocol) PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), req);
+				res = "" + resp.getStatus();
+				if (record) {
+					OpGmtNotice opGmtNotice = new OpGmtNotice();
+					opGmtNotice.setAppid(gmtSendNoticeBean.getAppid());
+					opGmtNotice.setWorldid(gmtSendNoticeBean.getWid());
+					opGmtNotice.setType(Integer.parseInt(gmtSendNoticeBean.getType()));
+					opGmtNotice.setContent(gmtSendNoticeBean.getContent());
+					opGmtNotice.setOpttime(Tools.getNowDate());
+					opGmtNotice.setMsg(gmtSendNoticeBean.getMsg());
+					opGmtNotice.setUsername(gmtSendNoticeBean.getUser());
+					opGmtNotice.setOptres(res.equals("1") ? "成功" : (res.equals("-1000") ? "链接失败" : (res.equals("-1002") ? "接入失败" : "失败" + res)));
+					opGmtNoticeMapper.insertSelective(opGmtNotice);
+				}
 				
 			}
 			
@@ -66,7 +68,7 @@ public class GmtNoticeServiceImpl implements GmtNoticeService {
 		return res;
 	}
 	
-	public String sendNotic(OpGmtNoticeCycle opGmtNoticeCycle) {
+	public String sendNotic(OpGmtNoticeCycle opGmtNoticeCycle, boolean record) {
 		GmtSendNoticeBean gmtSendNoticeBean = new GmtSendNoticeBean();
 		gmtSendNoticeBean.setAppid(opGmtNoticeCycle.getAppid());
 		gmtSendNoticeBean.setWid(Integer.parseInt(opGmtNoticeCycle.getWorldid()));
@@ -77,7 +79,7 @@ public class GmtNoticeServiceImpl implements GmtNoticeService {
 		gmtSendNoticeBean.setUser(opGmtNoticeCycle.getUsername());
 		gmtSendNoticeBean.setAct("5100");
 		
-		String res = sendNotic(gmtSendNoticeBean);
+		String res = sendNotic(gmtSendNoticeBean, record);
 		
 		return res;
 	}
@@ -102,7 +104,7 @@ public class GmtNoticeServiceImpl implements GmtNoticeService {
 		opGmtNoticeCycle.setAppid(gmtSendNoticeBean.getAppid());
 		opGmtNoticeCycle.setSettime(Tools.getNowDate());
 		opGmtNoticeCycle.setStatus("1"); // 活跃
-		opGmtNoticeCycle.setLastsendtime(System.currentTimeMillis()+opGmtNoticeCycle.getCycletime() * 60 * 1000);
+		opGmtNoticeCycle.setLastsendtime(System.currentTimeMillis() + opGmtNoticeCycle.getCycletime() * 60 * 1000);
 		int res = opGmtNoticeCycleMapper.insertSelective(opGmtNoticeCycle);
 		
 		// 放入循环公告...

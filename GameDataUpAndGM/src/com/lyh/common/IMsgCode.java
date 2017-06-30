@@ -115,8 +115,8 @@ public interface IMsgCode {
 	/** 平台指定开放奖励活动 */
 	public static final int GM_OPEN_REWARD_ACTIVITIES_HTTP_PROTOCOL = 0x6201;
 	
-	/** 添加或删除白名单 */
-	public static final int GM_ADD_OR_DEL_WHITE_NAME_HTTP_PROTOCOL = 0x6211;
+	/** 添加公告栏*/
+	public static final int GM_NOTICE_LEFT_HTTP_PROTOCOL = 0x6211;
 	
 	/** GM发起关闭界面按钮 */
 	public static final int GM_CLOSE_BUTTON_HTTP_PROTOCOL = 0x6221;

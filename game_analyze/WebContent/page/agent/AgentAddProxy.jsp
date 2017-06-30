@@ -145,6 +145,13 @@
 							<input type="number" class="span12" id="phone" name="phone" value=""  maxlength="13"/>
 						</div>
 					</div>
+						<div class="control-group">
+						<label class="control-label" for="blankCard">银行卡</label>
+
+						<div class="controls">
+							<input type="number" class="span12" id="blankCard" name="blankCard" value="" maxlength="20" />
+						</div>
+					</div>
 					<span id="tishi"></span>
 					<div class="form-actions" style="text-align: left;">
 						<button type="submit" class="btn medium btn-danger" onclick="saveMsg()">提交</button>
@@ -173,8 +180,8 @@
 			var inviteCode = $('#inviteCode').val();
 			var weChat = $('#weChat').val();
 			var phone = $('#phone').val();
-	
-			if (name == "" || password == "" || inviteCode == "" || weChat == "" || phone == "") {
+		    var blankCard = $('#blankCard').val();
+			if (name == "" || password == "" || inviteCode == "" || weChat == "" || phone == "" || blankCard == "") {
 				alert("请完善信息！");
 				return false;
 			}
@@ -194,7 +201,8 @@
 					password : password,
 					inviteCode : inviteCode,
 					weChat : weChat,
-					phone : phone
+					phone : phone,
+					blankCard : blankCard
 				},
 				dataType : 'json',
 				error : function() {

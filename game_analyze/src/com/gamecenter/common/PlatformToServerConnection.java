@@ -3,6 +3,9 @@ package com.gamecenter.common;
 
 import java.io.UnsupportedEncodingException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.lyh.common.ConvertMapUtils;
 import com.lyh.dataup.log.DataUpBase;
 
@@ -17,7 +20,7 @@ import com.lyh.dataup.log.DataUpBase;
  * @see       
  */
 public class PlatformToServerConnection {
-
+	private static Logger logger = LoggerFactory.getLogger(PlatformToServerConnection.class);
 	/** 
 	 * sendPlatformToServer:(). <br/> 
 	 * TODO().<br/> 
@@ -38,7 +41,8 @@ public class PlatformToServerConnection {
 		
 			return   resp;
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			logger.error("连接服端报错", e);
 		}
 	
 		return null;

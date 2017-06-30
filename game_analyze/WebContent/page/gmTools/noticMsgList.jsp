@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>公告记录</title>
+    <title>广播记录</title>
     <c:import url="/headmsg"></c:import>
 </head>
 <body>
@@ -16,7 +16,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2>公告信息记录</h2>
+                <h2>广播信息记录</h2>
 
                 <div class="jarviswidget-ctrls" role="menu">
                     <a href="javascript:void(0);"

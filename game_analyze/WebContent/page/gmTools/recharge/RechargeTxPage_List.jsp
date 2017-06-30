@@ -3,21 +3,15 @@
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 <c:forEach var="item" items="${lists}">
     <tr class="odd gradeX">
-        <td align="center">${item.appid}</td>
-        <td>${item.zoneid}</td>
-        <td>${item.rolename}</td>
-        <td>${item.openid}</td>
-        <td>${item.payitem} </td>
+        <td>${item.sid}</td>
+        <td>${item.billno}</td>
+        <td>${item.passport}</td>
+        <td>${item.money} </td>
             <%--<td>${item.token}</td>--%>
-        <td class="center">${item.amt/10}</td>
-        <td><c:choose>
-            <c:when test="${item.status eq '0'}"><span style="color: red;">待发</span></c:when>
-            <c:when
-                    test="${item.status eq '1'}">已发</c:when>
-        </c:choose>
-        </td>
+        <td class="center">${item.gold}</td>
+        
         <td>${item.addtime}</td>
-        <td style="text-align: center;"><a href="javascript:void(0);" class="sendmoney" val="${item.did}">明细</a></td>
+       <%--  <td style="text-align: center;"><a href="javascript:void(0);" class="sendmoney" val="${item.did}">明细</a></td> --%>
     </tr>
 </c:forEach>
 <tr>

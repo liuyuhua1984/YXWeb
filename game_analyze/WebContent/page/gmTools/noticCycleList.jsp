@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>循环公告配置记录</title>
+    <title>循环广播配置记录</title>
     <c:import url="/headmsg"></c:import>
 </head>
 <body>

@@ -121,7 +121,7 @@
 										<th width="80">充值金额</th>
 										<th width="200">用户昵称</th>
 										<th width="80">用户属性</th>
-										<th width="200">充值时间</th>
+										<th width="*">充值时间</th>
 									</tr>
 								</thead>
 								<tbody id="data">

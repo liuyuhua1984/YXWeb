@@ -5,7 +5,7 @@
 <!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>腾讯充值对账列表</title>
+    <title>充值列表</title>
     <c:import url="/headmsg"></c:import>
     <script  type="text/javascript"  src="${ctxPage}/js/artDialog6/lib/require.js"  data-main="${ctxPage}/js/recharge" defer async="true"></script>
 
@@ -99,7 +99,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2>腾讯充值对账列表</h2>
+                <h2>充值列表</h2>
 
                 <div class="jarviswidget-ctrls" role="menu">
                     <a href="javascript:void(0);" id=""
@@ -124,16 +124,14 @@
                     <table class="table table-striped table-bordered responsive" id="dtable">
                         <thead>
                         <tr>
-                            <th width="100">游戏</th>
                             <th width="100">区服</th>
                             <th width="150">单号</th>
                             <th width="150">账号</th>
-                            <th width="100">物品</th>
+                            <th width="100">单价</th>
                             <%--<th width="100">交易号</th>--%>
-                            <th width="80">消耗Q点</th>
-                            <th width="60">状态</th>
+                            <th width="100">金额</th>
                             <th width="*">时间</th>
-                            <th width="100">操作</th>
+                    
                         </tr>
                         </thead>
                         <tbody id="data">

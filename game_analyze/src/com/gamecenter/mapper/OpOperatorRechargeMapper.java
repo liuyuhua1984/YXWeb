@@ -29,4 +29,6 @@ public interface OpOperatorRechargeMapper {
     int updateByPrimaryKeySelective(OpOperatorRecharge record);
 
     int updateByPrimaryKey(OpOperatorRecharge record);
+    
+    double payCount(OpOperatorRechargeExample example);
 }

@@ -153,7 +153,7 @@ public class AgentRechargeRequestController {
 					if (agent != null && userMsg.getAgentName().equals(agent.getParentName()) && parentAgent.getRemainMoney() >= gold) {// 只有上级充值下级
 						// 这儿暂时没有加同步
 						// 生成订单号
-						String trade = "agent:" + IdGenerateUtils.makeId();
+						String trade = "a" + IdGenerateUtils.makeId();
 						addAgentMoney(agent, parentAgent, gold, dPrice, trade);
 						res = "1";
 					}else {
@@ -179,7 +179,7 @@ public class AgentRechargeRequestController {
 								if (agentConfig != null && agentConfig.getOneLevel() != null){
 									fetchMoneyRate = Double.parseDouble(agentConfig.getOneLevel() );
 								}
-								String trade = "player:" + IdGenerateUtils.makeId();
+								String trade = "p" + IdGenerateUtils.makeId();
 								int status = playerRechargeService.recharge(player.getOpenid(), trade, dPrice,gold, (int) (System.currentTimeMillis() / 1000), worldServer.getWorldid(), "" + 1, worldServer);
 								if (status == 1) {
 									res = "1";

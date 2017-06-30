@@ -14,12 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
+import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpGameapp;
 import com.gamecenter.model.OpGameworld;
+import com.gamecenter.model.OpOperatorRecharge;
 import com.gamecenter.model.OpOssQlzRechargeTx;
+import com.gamecenter.service.agent.PlayerRechargeService;
 import com.gamecenter.service.appServices.AppService;
 import com.gamecenter.service.appServices.WorldService;
 import com.gamecenter.service.gmt.RechargeService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 /**
  * 充值日志
@@ -31,7 +36,11 @@ import com.gamecenter.service.gmt.RechargeService;
 public class RechargeController {
 	
 	@Resource
-	RechargeService rechargeService;
+	PlayerRechargeService rechargeService;
+	
+	@Resource
+	RechargeService txRechargeService;
+	
 	@Resource
 	WorldService worldService;
 	@Resource
@@ -68,24 +77,40 @@ public class RechargeController {
 	 * @return
 	 */
 	@RequestMapping("/dataList")
-	public ModelAndView dataList(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "appid") String appid, @RequestParam(value = "worldid") String worldid, @RequestParam(value = "begintime", defaultValue = "2000-00-00") String begintime, @RequestParam(value = "endtime", defaultValue = "3000-00-00") String endtime) {
+	public ModelAndView dataList(@RequestParam(value = "page", defaultValue = "1") int curPage, @RequestParam(value = "appid") String appid, @RequestParam(value = "worldid") String worldid, @RequestParam(value = "begintime", defaultValue = "2000-00-00") String begintime, @RequestParam(value = "endtime", defaultValue = "3000-00-00") String endtime) {
 		OpGameworld opGameworld = worldService.getWorldByWorldId(worldid);
 		if (opGameworld == null)
 			return null;
 		
-		OpOssQlzRechargeTx obj = new OpOssQlzRechargeTx();
-		obj.setZoneid(opGameworld.getWorldid());
-		obj.setAddtime(begintime + " 00:00:00" + "#" + endtime + " 23:59:59");
+//		OpOssQlzRechargeTx obj = new OpOssQlzRechargeTx();
+//		obj.setZoneid(opGameworld.getWorldid());
+//		obj.setAddtime(begintime + " 00:00:00" + "#" + endtime + " 23:59:59");
+//		
+//		Page p = rechargeService.getRechargeTxList(obj, 15, page);
+//		PageTool3 pt = new PageTool3();
+//		String pageStr = pt.getPageStringForjs("", p);
+//		
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.setViewName("page/gmTools/recharge/RechargeTxPage_List");
+//		modelAndView.addObject("lists", (List<OpOssQlzRechargeTx>) p.getResult());
+//		modelAndView.addObject("pageTools", pageStr);
+//		modelAndView.addObject("count", p.getTotalSize());
 		
-		Page p = rechargeService.getRechargeTxList(obj, 15, page);
+		
+		PageHelper.startPage(curPage,Tools.PAGE_SIZE);
+//		begintime + " 00:00:00" + "#" + endtime + " 23:59:59"
+		List<OpOperatorRecharge> list = rechargeService.findOpOperatorRechargeByWorldIdAndTime(worldid, begintime + " 00:00:00", endtime + " 23:59:59");
+		PageInfo<OpOperatorRecharge> pageInfo = new PageInfo<OpOperatorRecharge>(list);
+		Page page = new Page(curPage, (int) pageInfo.getTotal(), pageInfo.getPageSize(), pageInfo.getList());
+		
 		PageTool3 pt = new PageTool3();
-		String pageStr = pt.getPageStringForjs("", p);
+		String pageStr = pt.getPageStringForjs("", page);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("page/gmTools/recharge/RechargeTxPage_List");
-		modelAndView.addObject("lists", (List<OpOssQlzRechargeTx>) p.getResult());
+		modelAndView.addObject("lists", list);
 		modelAndView.addObject("pageTools", pageStr);
-		modelAndView.addObject("count", p.getTotalSize());
+		modelAndView.addObject("count", page.getTotalSize());
 		
 		return modelAndView;
 	}
@@ -106,11 +131,13 @@ public class RechargeController {
 		if (opGameworld == null)
 			return null;
 		
-		OpOssQlzRechargeTx obj = new OpOssQlzRechargeTx();
-		obj.setZoneid(opGameworld.getWorldid());
-		obj.setAddtime(begintime + " 00:00:00" + "#" + endtime + " 23:59:59");
+
+//		
+//		OpOssQlzRechargeTx obj = new OpOssQlzRechargeTx();
+//		obj.setZoneid(opGameworld.getWorldid());
+//		obj.setAddtime(begintime + " 00:00:00" + "#" + endtime + " 23:59:59");
 		
-		double paycount = rechargeService.paycount(obj);
+		double paycount = rechargeService.payCount(worldid, begintime + " 00:00:00", endtime + " 23:59:59");
 		return paycount;
 	}
 	
@@ -122,7 +149,7 @@ public class RechargeController {
 	 */
 	@RequestMapping("/datamsg")
 	public ModelAndView datamsg(@RequestParam(value = "id", defaultValue = "1") int id) {
-		OpOssQlzRechargeTx obj = rechargeService.getRechargeTxById(id);
+		OpOssQlzRechargeTx obj = txRechargeService.getRechargeTxById(id);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("page/gmTools/recharge/RechargeTxPage_data");
@@ -143,7 +170,7 @@ public class RechargeController {
 		if (billno == null || billno.length() <= 0) {
 			msg = "非法单号！";
 		} else {
-			String res = rechargeService.fahuo(billno);
+			String res = txRechargeService.fahuo(billno);
 			if (res.equals("0")) {
 				msg = "注意货物已经发送！";
 			} else if (res.equals("1")) {

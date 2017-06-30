@@ -81,7 +81,7 @@ public class Notice_send_Controller {
 				if (gmtSendNoticeBean.getType().equals("2")) {
 					res = gmtNoticeService.sendCycleNotic(gmtSendNoticeBean) + "";
 				} else {
-					res = gmtNoticeService.sendNotic(gmtSendNoticeBean);
+					res = gmtNoticeService.sendNotic(gmtSendNoticeBean,true);
 				}
 				
 			} else {

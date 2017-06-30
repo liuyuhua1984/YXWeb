@@ -98,7 +98,7 @@
 									<th width="100">序</th>
 									<th width="300">邀请码</th>
 									<th width="200">生成时间</th>
-									<th width="80">操作</th>
+									<th width="*">操作</th>
 								</tr>
 							</thead>
 							<tbody id="data">

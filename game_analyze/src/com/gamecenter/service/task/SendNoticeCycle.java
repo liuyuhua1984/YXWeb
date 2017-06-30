@@ -48,7 +48,7 @@ public class SendNoticeCycle {
 						opGmtNoticeCycleMapper.updateByPrimaryKey(obj);
 						// 立即发送
 						try{
-							gmtNoticeService.sendNotic(obj);
+							gmtNoticeService.sendNotic(obj,false);
 						}catch(Exception e){
 							e.printStackTrace();
 						}
