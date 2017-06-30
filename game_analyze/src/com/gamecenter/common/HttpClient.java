@@ -62,8 +62,11 @@ public class HttpClient {
 			con.setRequestProperty("Content-Length", String.valueOf(data.length));
 			con.setConnectTimeout(30000);// jdk 1.5换成这个,连接超时
 			con.setReadTimeout(30000);// jdk 1.5换成这个,读操作超时
-			con.connect();
-			
+			try{
+				con.connect();
+			}catch(Exception e){
+				logger.error("http连接问题", e);
+			}
 			if (isPost) {
 				OutputStream os = con.getOutputStream();
 				os.write(data);

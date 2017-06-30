@@ -17,9 +17,9 @@ public interface GmtNoticeService {
 	 * @param gmtSendNoticeBean
 	 * @return
 	 */
-	public String sendNotic(GmtSendNoticeBean gmtSendNoticeBean);
+	public String sendNotic(GmtSendNoticeBean gmtSendNoticeBean,boolean record);
 	
-	public String sendNotic(OpGmtNoticeCycle opGmtNoticeCycle);
+	public String sendNotic(OpGmtNoticeCycle opGmtNoticeCycle,boolean record);
 	
 	/**
 	 * 获取发送记录

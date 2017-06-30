@@ -86,7 +86,8 @@ public class AgentRequestController {
 		String inviteCode = (String) request.getParameter("inviteCode");
 		String weChat = (String) request.getParameter("weChat");
 		String phone = (String) request.getParameter("phone");
-		if (!ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
+		String blankCard = (String) request.getParameter("blankCard");
+		if (!ToolUtils.isStringNull(blankCard) && !ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
 			
 			phone.trim();
 			// 判断邀请码是否服合要求
@@ -118,6 +119,7 @@ public class AgentRequestController {
 					agent.setPassword(password);
 					agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据
 					agent.setWechatCode(weChat);
+					agent.setBlankCard(blankCard);
 					agent.setRemainMoney(0);
 					agent.setStatus((byte) 1);
 					agentListService.insert(agent);
@@ -151,7 +153,8 @@ public class AgentRequestController {
 		String inviteCode = (String) request.getParameter("inviteCode");
 		String weChat = (String) request.getParameter("weChat");
 		String phone = (String) request.getParameter("phone");
-		if (!ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
+		String blankCard = (String) request.getParameter("blankCard");
+		if (!ToolUtils.isStringNull(blankCard) &&!ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
 			
 			//phone.trim();
 			// 判断邀请码是否服合要求
@@ -187,6 +190,7 @@ public class AgentRequestController {
 					agent.setPassword(password);
 					agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据
 					agent.setWechatCode(weChat);
+					agent.setBlankCard(blankCard);
 					agent.setStatus((byte) 1);
 					agent.setRemainMoney(Integer.MAX_VALUE);
 					agentListService.insert(agent);

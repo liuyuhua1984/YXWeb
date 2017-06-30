@@ -826,6 +826,76 @@ public class OpAgentListExample {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
+
+        public Criteria andBlankCardIsNull() {
+            addCriterion("blank_card is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardIsNotNull() {
+            addCriterion("blank_card is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardEqualTo(String value) {
+            addCriterion("blank_card =", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardNotEqualTo(String value) {
+            addCriterion("blank_card <>", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardGreaterThan(String value) {
+            addCriterion("blank_card >", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardGreaterThanOrEqualTo(String value) {
+            addCriterion("blank_card >=", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardLessThan(String value) {
+            addCriterion("blank_card <", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardLessThanOrEqualTo(String value) {
+            addCriterion("blank_card <=", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardLike(String value) {
+            addCriterion("blank_card like", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardNotLike(String value) {
+            addCriterion("blank_card not like", value, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardIn(List<String> values) {
+            addCriterion("blank_card in", values, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardNotIn(List<String> values) {
+            addCriterion("blank_card not in", values, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardBetween(String value1, String value2) {
+            addCriterion("blank_card between", value1, value2, "blankCard");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlankCardNotBetween(String value1, String value2) {
+            addCriterion("blank_card not between", value1, value2, "blankCard");
+            return (Criteria) this;
+        }
     }
 
     /**

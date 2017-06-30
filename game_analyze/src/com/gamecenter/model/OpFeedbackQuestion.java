@@ -12,7 +12,7 @@ public class OpFeedbackQuestion implements Serializable {
     /**
      * 账号
      */
-    private Long openId;
+    private String openId;
 
     /**
      * 内容
@@ -42,12 +42,12 @@ public class OpFeedbackQuestion implements Serializable {
         this.id = id;
     }
 
-    public Long getOpenId() {
+    public String getOpenId() {
         return openId;
     }
 
-    public void setOpenId(Long openId) {
-        this.openId = openId;
+    public void setOpenId(String openId) {
+        this.openId = openId == null ? null : openId.trim();
     }
 
     public String getContent() {

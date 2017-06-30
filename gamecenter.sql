@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-29 19:19:13
+Date: 2017-06-30 18:50:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -106,7 +106,7 @@ INSERT INTO `oa_action` VALUES ('118', '执行封禁', 'execute', '', '0', '');
 INSERT INTO `oa_action` VALUES ('119', '数据保存', 'save', '', '0', '');
 INSERT INTO `oa_action` VALUES ('120', '循环控制', 'optCycle', '', '0', '');
 INSERT INTO `oa_action` VALUES ('121', '发起查询', 'select', '', '0', '');
-INSERT INTO `oa_action` VALUES ('122', '添加白名单', 'save', '', '0', '');
+INSERT INTO `oa_action` VALUES ('122', '添加公告', 'save', '', '0', '');
 INSERT INTO `oa_action` VALUES ('123', '发起申请', 'applySave', '', '0', '');
 INSERT INTO `oa_action` VALUES ('124', '金币发放', 'sendpage', '', '0', '');
 INSERT INTO `oa_action` VALUES ('125', '发放保存', 'sendSave', '', '0', '');
@@ -194,7 +194,7 @@ INSERT INTO `oa_module` VALUES ('104', '100', '付费习惯', '/oss/pay/habit', 
 INSERT INTO `oa_module` VALUES ('105', '101', '消费点统计', '/oss/consume/report', '1', '0', '', null, '0', '80_101_105', '3');
 INSERT INTO `oa_module` VALUES ('130', '0', '客服管理', '', '2', '0', '', null, '1', '130', '1');
 INSERT INTO `oa_module` VALUES ('131', '130', '封禁管理', '', '1', '0', '', null, '1', '130_131', '2');
-INSERT INTO `oa_module` VALUES ('132', '130', '公告管理', '', '2', '0', '', null, '1', '130_132', '2');
+INSERT INTO `oa_module` VALUES ('132', '130', '广播管理', '', '2', '0', '', null, '1', '130_132', '2');
 INSERT INTO `oa_module` VALUES ('133', '130', '玩家查询', '', '3', '0', '', null, '1', '130_133', '2');
 INSERT INTO `oa_module` VALUES ('134', '130', '内部充值', '', '4', '0', '', null, '1', '130_134', '2');
 INSERT INTO `oa_module` VALUES ('135', '130', '外部充值', '', '5', '0', '', null, '1', '130_135', '2');
@@ -203,11 +203,11 @@ INSERT INTO `oa_module` VALUES ('137', '131', '账号禁言', '/gmt/forbid/words
 INSERT INTO `oa_module` VALUES ('138', '131', 'IP  禁言', '/gmt/forbid/wordsforip', '3', '0', '', null, '0', '130_131_138', '3');
 INSERT INTO `oa_module` VALUES ('139', '131', '封号', '/gmt/forbid/passport', '4', '0', '', null, '0', '130_131_139', '3');
 INSERT INTO `oa_module` VALUES ('140', '131', '踢人', '/gmt/forbid/tiren', '5', '0', '', null, '0', '130_131_140', '3');
-INSERT INTO `oa_module` VALUES ('141', '132', '公告列表', '/gmt/notice/list', '1', '0', '', null, '0', '130_132_141', '3');
-INSERT INTO `oa_module` VALUES ('142', '132', '发送公告', '/gmt/notice/send', '2', '0', '', null, '0', '130_132_142', '3');
-INSERT INTO `oa_module` VALUES ('143', '132', '循环公告', '/gmt/notice/cyclelist', '3', '0', '', null, '0', '130_132_143', '3');
+INSERT INTO `oa_module` VALUES ('141', '132', '广播列表', '/gmt/notice/list', '1', '0', '', null, '0', '130_132_141', '3');
+INSERT INTO `oa_module` VALUES ('142', '132', '发送广播', '/gmt/notice/send', '2', '0', '', null, '0', '130_132_142', '3');
+INSERT INTO `oa_module` VALUES ('143', '132', '循环广播', '/gmt/notice/cyclelist', '3', '0', '', null, '0', '130_132_143', '3');
 INSERT INTO `oa_module` VALUES ('144', '133', '账号查询', '/gmt/passport/select', '1', '0', '', null, '0', '130_133_144', '3');
-INSERT INTO `oa_module` VALUES ('145', '133', '添加白名单', '/gmt/passport/allow', '2', '0', '', null, '0', '130_133_145', '3');
+INSERT INTO `oa_module` VALUES ('145', '133', '公告列表', '/gmt/notice/left/list', '2', '0', '', null, '0', '130_133_145', '3');
 INSERT INTO `oa_module` VALUES ('146', '134', '发起申请', '/gmt/money/apply', '1', '0', '', null, '0', '130_134_146', '3');
 INSERT INTO `oa_module` VALUES ('147', '134', '申请记录', '/gmt/money/applyList', '2', '0', '', null, '0', '130_134_147', '3');
 INSERT INTO `oa_module` VALUES ('148', '134', '发放记录', '/gmt/money/sendLog', '3', '0', '', null, '0', '130_134_148', '3');
@@ -739,7 +739,7 @@ CREATE TABLE `op_agent_invite_code` (
   PRIMARY KEY (`id`),
   KEY `agent_id` (`agent_id`),
   KEY `invite_code` (`invite_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=616 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=716 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_invite_code
@@ -1045,6 +1045,106 @@ INSERT INTO `op_agent_invite_code` VALUES ('612', 'b4YId8', '14', '0', '2017-06-
 INSERT INTO `op_agent_invite_code` VALUES ('613', 'O0l3jf', '14', '0', '2017-06-28 10:10:22', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('614', 'coRHy0', '14', '0', '2017-06-28 10:10:22', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('615', '4l6g4L', '14', '0', '2017-06-28 10:10:22', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('616', 'HTcF1H', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('617', 'Xoy6re', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('618', 'xynZlC', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('619', 'lt7Bv1', '13', '1', '2017-06-30 10:45:39', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('620', 'CX6592', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('621', 'XpTuKJ', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('622', 'NxnGaL', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('623', 'FMJS1V', '13', '1', '2017-06-30 10:45:39', '1');
+INSERT INTO `op_agent_invite_code` VALUES ('624', '9KuU1Q', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('625', 'zfZmeH', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('626', 'Gph2pg', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('627', 'mFl16V', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('628', 'IRGStK', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('629', 'cq5ysW', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('630', 'C6Tl8k', '13', '0', '2017-06-30 10:45:39', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('631', 'Ij305Q', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('632', 'n8AH1d', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('633', 'YQU8Sq', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('634', 'llvubw', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('635', 'xlj2Hr', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('636', 'S4io9K', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('637', 'hz44IJ', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('638', '7NuRvA', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('639', 'WyeIW8', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('640', 'k218Sz', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('641', 'uXkOnL', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('642', '7IasrP', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('643', 'SVeVpf', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('644', 'jNNrJl', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('645', 'ZYOk7u', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('646', 'gUuOek', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('647', 'NA9fwd', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('648', 'Reru4R', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('649', 'n6ohn2', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('650', 'VwMa4v', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('651', 'sZlEdO', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('652', 'zMdSfR', '13', '0', '2017-06-30 10:45:40', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('653', 'gmFCu7', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('654', '6aG4QW', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('655', '6WSO3g', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('656', 'wFPvIg', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('657', 'rDjeyP', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('658', 'd6Ks4U', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('659', 'OuzMJZ', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('660', 'gXLcaz', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('661', 'ktOHuU', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('662', 'AvKk51', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('663', '84kzXh', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('664', '3XCGs1', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('665', '5pVyRk', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('666', '13WEJP', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('667', 'JCuc7k', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('668', 'qkIUid', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('669', 'kFpnjd', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('670', 'fLobCj', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('671', 'Ee4Brq', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('672', 'oNVyuW', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('673', '0GbpzX', '13', '0', '2017-06-30 10:45:41', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('674', 'GQXlEO', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('675', '1XhZuP', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('676', 'Kuaviw', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('677', 'Nov5KT', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('678', 'rvibix', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('679', 'YsjNLI', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('680', 'ZgrVBL', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('681', 'ezUYe8', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('682', 'Bsfqko', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('683', 'M3tEaI', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('684', 'ZQtSI4', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('685', 'pDzF1g', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('686', 'rYHKjC', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('687', '58vpzD', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('688', '8TaQl6', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('689', 'O7AjLi', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('690', 'rPOpYS', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('691', 'vtvpTl', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('692', '5SwRyZ', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('693', 'ikk68B', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('694', 'clx0zF', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('695', 'L8Ohir', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('696', 'gwwass', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('697', 'zT7lmz', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('698', 'vnx3Ay', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('699', '1pJlu9', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('700', 'ayk0Oq', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('701', '80llLa', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('702', 'HRo9PR', '13', '0', '2017-06-30 10:45:42', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('703', 'oAfGR2', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('704', 'y8ObBR', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('705', 'fh5bSV', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('706', 'mbWUNB', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('707', 'jdGQWP', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('708', 'APIgKN', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('709', 'Djw3pG', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('710', 'v1yHtL', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('711', 'A1Jc79', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('712', 'MpvsTL', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('713', 'D7cEYQ', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('714', '0RZ8ep', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('715', 'oYKnYt', '13', '0', '2017-06-30 10:45:43', '0');
 
 -- ----------------------------
 -- Table structure for op_agent_list
@@ -1062,6 +1162,7 @@ CREATE TABLE `op_agent_list` (
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `password` varchar(255) DEFAULT NULL COMMENT '代理密码',
   `status` tinyint(4) DEFAULT '1' COMMENT '禁用为0,',
+  `blank_card` varchar(255) DEFAULT NULL COMMENT '银行卡',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_name`),
   KEY `name` (`name`),
@@ -1073,11 +1174,11 @@ CREATE TABLE `op_agent_list` (
 -- ----------------------------
 -- Records of op_agent_list
 -- ----------------------------
-INSERT INTO `op_agent_list` VALUES ('1', '超级管理员', '888888', '888888', '2147483637', '0', '超级管理员', '12345678996', '2017-06-28 09:36:43', '888888', '1');
-INSERT INTO `op_agent_list` VALUES ('11', 'proxy1', 'paWaxA', '999', '2147483617', '超级管理员', '88888', '15746953659', '2017-06-28 09:59:09', '123456', '1');
-INSERT INTO `op_agent_list` VALUES ('12', 'proxy2', 'f9tyhq', '999', '2147483647', '超级管理员', '9876554', '17785246536', '2017-06-28 09:59:12', '123456', '1');
-INSERT INTO `op_agent_list` VALUES ('13', 'proxy11', 'toq18a', '1', null, 'proxy1', 'toq18a', '13256487952', '2017-06-28 09:59:18', '123456', '1');
-INSERT INTO `op_agent_list` VALUES ('14', 'proxy12', 'UiU7OQ', '1', '9', 'proxy1', 'UiU7OQ', '18745696352', '2017-06-28 09:59:21', '123456', '1');
+INSERT INTO `op_agent_list` VALUES ('1', '超级管理员', '888888', '888888', '2147483637', '0', '超级管理员', '12345678996', '2017-06-28 09:36:43', '888888', '1', null);
+INSERT INTO `op_agent_list` VALUES ('11', 'proxy1', 'paWaxA', '999', '2147483617', '超级管理员', '88888', '15746953659', '2017-06-28 09:59:09', '123456', '1', null);
+INSERT INTO `op_agent_list` VALUES ('12', 'proxy2', 'f9tyhq', '999', '2147483647', '超级管理员', '9876554', '17785246536', '2017-06-28 09:59:12', '123456', '1', null);
+INSERT INTO `op_agent_list` VALUES ('13', 'proxy11', 'toq18a', '1', null, 'proxy1', 'toq18a', '13256487952', '2017-06-28 09:59:18', '123456', '1', null);
+INSERT INTO `op_agent_list` VALUES ('14', 'proxy12', 'UiU7OQ', '1', '9', 'proxy1', 'UiU7OQ', '18745696352', '2017-06-28 09:59:21', '123456', '1', null);
 
 -- ----------------------------
 -- Table structure for op_agent_recharge
@@ -1150,7 +1251,7 @@ CREATE TABLE `op_agent_request` (
 DROP TABLE IF EXISTS `op_feedback_question`;
 CREATE TABLE `op_feedback_question` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `open_id` bigint(20) DEFAULT '0' COMMENT '账号',
+  `open_id` varchar(50) DEFAULT '0' COMMENT '账号',
   `content` varchar(512) DEFAULT '0' COMMENT '内容',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `phone` int(11) DEFAULT NULL COMMENT '电话号码',
@@ -1508,6 +1609,9 @@ CREATE TABLE `op_gmt_notice_left` (
   `id` bigint(20) NOT NULL,
   `content` varchar(512) DEFAULT '0' COMMENT '内容',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `app_id` varchar(50) DEFAULT NULL COMMENT 'appid',
+  `world_id` varchar(50) DEFAULT NULL COMMENT '服务器id',
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1803,7 +1907,7 @@ CREATE TABLE `op_oss_qlz_createrole_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
 
 -- ----------------------------
 -- Records of op_oss_qlz_createrole_log
@@ -1823,6 +1927,7 @@ INSERT INTO `op_oss_qlz_createrole_log` VALUES ('12', '1001', '192.168.0.189', '
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('13', '1001', '192.168.0.189', '2017-06-29 11:25:23', 'sdsds', 'c:eNWVvsz', '2017-06-29 11:25:23', '1');
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('14', '1001', '192.168.0.65', '2017-06-29 14:33:01', 'zyj', 'c:eW2bico', '2017-06-29 14:33:05', '1');
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('15', '1001', '192.168.0.65', '2017-06-29 14:46:57', 'jyz', 'c:ec0OSMt', '2017-06-29 14:46:57', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('16', '1001', '192.168.0.189', '2017-06-30 10:44:16', '7788', 'c:e0jOleu', '2017-06-30 10:44:21', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_login_log
@@ -1875,7 +1980,7 @@ CREATE TABLE `op_oss_qlz_onlinecur_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=416 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
+) ENGINE=InnoDB AUTO_INCREMENT=463 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
 
 -- ----------------------------
 -- Records of op_oss_qlz_onlinecur_log
@@ -2295,6 +2400,53 @@ INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('412', '1001', '0', '2017-06-29 1
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('413', '1001', '0', '2017-06-29 19:17:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('414', '1001', '0', '2017-06-29 19:18:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('415', '1001', '0', '2017-06-29 19:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('416', '1001', '0', '2017-06-29 19:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('417', '1001', '0', '2017-06-29 19:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('418', '1001', '0', '2017-06-29 19:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('419', '1001', '0', '2017-06-29 19:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('420', '1001', '0', '2017-06-29 19:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('421', '1001', '0', '2017-06-30 10:44:03', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('422', '1001', '1', '2017-06-30 10:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('423', '1001', '1', '2017-06-30 10:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('424', '1001', '1', '2017-06-30 10:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('425', '1001', '1', '2017-06-30 10:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('426', '1001', '1', '2017-06-30 10:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('427', '1001', '1', '2017-06-30 10:52:02', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('428', '1001', '1', '2017-06-30 10:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('429', '1001', '1', '2017-06-30 10:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('430', '1001', '1', '2017-06-30 10:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('431', '1001', '0', '2017-06-30 10:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('432', '1001', '0', '2017-06-30 10:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('433', '1001', '0', '2017-06-30 10:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('434', '1001', '0', '2017-06-30 10:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('435', '1001', '0', '2017-06-30 11:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('436', '1001', '0', '2017-06-30 11:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('437', '1001', '0', '2017-06-30 11:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('438', '1001', '0', '2017-06-30 11:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('439', '1001', '0', '2017-06-30 11:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('440', '1001', '0', '2017-06-30 11:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('441', '1001', '0', '2017-06-30 11:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('442', '1001', '0', '2017-06-30 11:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('443', '1001', '0', '2017-06-30 11:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('444', '1001', '0', '2017-06-30 11:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('445', '1001', '0', '2017-06-30 11:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('446', '1001', '0', '2017-06-30 11:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('447', '1001', '0', '2017-06-30 11:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('448', '1001', '0', '2017-06-30 11:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('449', '1001', '0', '2017-06-30 11:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('450', '1001', '0', '2017-06-30 11:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('451', '1001', '0', '2017-06-30 11:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('452', '1001', '0', '2017-06-30 11:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('453', '1001', '0', '2017-06-30 11:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('454', '1001', '0', '2017-06-30 11:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('455', '1001', '0', '2017-06-30 11:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('456', '1001', '0', '2017-06-30 11:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('457', '1001', '0', '2017-06-30 11:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('458', '1001', '0', '2017-06-30 11:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('459', '1001', '0', '2017-06-30 11:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('460', '1001', '0', '2017-06-30 11:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('461', '1001', '0', '2017-06-30 11:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('462', '1001', '0', '2017-06-30 11:27:01', null);
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_out_log
@@ -2314,7 +2466,7 @@ CREATE TABLE `op_oss_qlz_out_log` (
   `guidenum` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_out_log
@@ -2342,6 +2494,7 @@ INSERT INTO `op_oss_qlz_out_log` VALUES ('20', '1001', '192.168.0.65', '2017-06-
 INSERT INTO `op_oss_qlz_out_log` VALUES ('21', '1001', '192.168.0.65', '2017-06-29 14:54:40', 'jyz', '1', '1', 'c:ec0OSMt', '2017-06-29 14:54:40', '0', null, '1');
 INSERT INTO `op_oss_qlz_out_log` VALUES ('22', '1001', '192.168.0.65', '2017-06-29 15:24:45', 'jyz', '1', '1', 'c:ec0OSMt', '2017-06-29 15:24:45', '0', null, '1');
 INSERT INTO `op_oss_qlz_out_log` VALUES ('23', '1001', '192.168.0.65', '2017-06-29 15:25:04', 'jyz', '1', '1', 'c:ec0OSMt', '2017-06-29 15:25:04', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('24', '1001', '192.168.0.189', '2017-06-30 10:55:04', '7788', '1', '1', 'c:e0jOleu', '2017-06-30 10:55:06', '0', null, '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport
@@ -2384,6 +2537,7 @@ INSERT INTO `op_oss_qlz_passport` VALUES ('1412', '1001', 'c:eDyZYrg', '1', '0.0
 INSERT INTO `op_oss_qlz_passport` VALUES ('213', '1001', 'c:eoQc5M3', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:42:48', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '110.00', '110.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '10#player:879877857940078592', '1', '0.00', '0', '2017-06-28 09:43:25', '2017-06-28 09:43:25', null, null, null, '1001', 'NVvObb');
 INSERT INTO `op_oss_qlz_passport` VALUES ('478555hhh', '1001', 'c:ebgbAw6', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:47:17', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('7788', '1001', 'c:e0jOleu', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-30 10:44:16', null, '0', '0.00', '0', null, null, null, null, null, '1', 'FMJS1V');
 INSERT INTO `op_oss_qlz_passport` VALUES ('9852', '1001', 'c:esmj879909164015419392', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-28 11:47:47', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('dswwwd', '1001', 'c:eoqDPKa', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:50:07', null, '0', '0.00', '0', null, null, null, null, null, '1', '');

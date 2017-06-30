@@ -116,7 +116,7 @@ public class WorldOnlineNum {
 				num = 0;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return num;
 	}

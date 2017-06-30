@@ -119,7 +119,7 @@
 									<th width="150">交易号</th>
 									<th width="80">上级昵称</th>
 									<th width="80">充值金额</th>
-									<th width="200">充值时间</th>
+									<th width="*">充值时间</th>
 								</tr>
 							</thead>
 							<tbody id="data">

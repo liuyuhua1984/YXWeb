@@ -119,7 +119,7 @@
 									<%--<th width="100">交易号</th>--%>
 									<th width="60">微信号</th>
 									<th width="60">电话</th>
-									<th width="60">操作</th>
+									<th width="*">操作</th>
 								</tr>
 							</thead>
 							<tbody id="data">

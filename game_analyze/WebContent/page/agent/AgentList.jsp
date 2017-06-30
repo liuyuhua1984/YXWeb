@@ -125,7 +125,9 @@
 									<th width="100">微信号</th>
 									<th width="100">电话</th>
 									<th width="200">注册时间</th>
+									<th width="*">银行卡</th>
 									<th width="100">操作</th>
+									
 								</tr>
 							</thead>
 							<tbody id="tbtable">

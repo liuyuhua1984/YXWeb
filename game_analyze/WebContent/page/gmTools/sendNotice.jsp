@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>发送公告</title>
+    <title>发送广播</title>
     <c:import url="/headmsg"></c:import>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-0">
             <header>
-                <h2 id='btitle'>发送公告</h2>
+                <h2 id='btitle'>发送广播</h2>
             </header>
             <!-- wrap div -->
             <div id="step1">
@@ -90,7 +90,7 @@
                                 <textarea class="span12" id="content" name="content" rows="3"></textarea>
 
                                 <p class="help-block">
-                                    公告的内容信息(250字内哦)。
+                                    广播的内容信息(250字内哦)。
                                 </p>
                             </div>
                         </div>

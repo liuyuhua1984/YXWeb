@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.alibaba.fastjson.JSON;
-import com.game.protocol.gm.GmAddOrDelWhiteNameHttpProtocol;
-import com.game.protocol.gm.GmAddOrDelWhiteNameProtocolRequest;
+import com.game.protocol.gm.GmNoticeLeftHttpProtocol;
+import com.game.protocol.gm.GmNoticeLeftProtocolRequest;
 import com.game.protocol.gm.GmBlockIPHttpProtocol;
 import com.game.protocol.gm.GmBlockIPProtocolRequest;
 import com.game.protocol.gm.GmBlockRoleHttpProtocol;
@@ -22,10 +22,10 @@ import com.game.protocol.gm.GmDisblockRoleHttpProtocol;
 import com.game.protocol.gm.GmDisblockRoleProtocolRequest;
 import com.game.protocol.gm.GmDisblockSayHttpProtocol;
 import com.game.protocol.gm.GmDisblockSayProtocolRequest;
-import com.game.protocol.gm.GmInviteCodeHttpProtocol;
-import com.game.protocol.gm.GmInviteCodeProtocolRequest;
 import com.game.protocol.gm.GmKickRoleHttpProtocol;
 import com.game.protocol.gm.GmKickRoleProtocolRequest;
+import com.game.protocol.gm.GmInviteCodeHttpProtocol;
+import com.game.protocol.gm.GmInviteCodeProtocolRequest;
 import com.game.protocol.gm.GmMailRoleHttpProtocol;
 import com.game.protocol.gm.GmMailRoleProtocolRequest;
 import com.game.protocol.gm.GmNoticeHttpProtocol;
@@ -124,9 +124,9 @@ public class ConvertMapUtils {
 			} else if (head == IMsgCode.GM_OPEN_REWARD_ACTIVITIES_HTTP_PROTOCOL) {
 				/** 平台指定开放奖励活动 */
 				httpMessageMap.put(head, GmOpenRewardActivitiesHttpProtocol.class);
-			} else if (head == IMsgCode.GM_ADD_OR_DEL_WHITE_NAME_HTTP_PROTOCOL) {
+			} else if (head == IMsgCode.GM_NOTICE_LEFT_HTTP_PROTOCOL) {
 				/** 添加或删除白名单 */
-				httpMessageMap.put(head, GmAddOrDelWhiteNameHttpProtocol.class);
+				httpMessageMap.put(head, GmNoticeLeftHttpProtocol.class);
 			} else if (head == IMsgCode.GM_CLOSE_BUTTON_HTTP_PROTOCOL) {
 				/** GM发起关闭界面按钮 */
 				httpMessageMap.put(head, GmCloseButtonHttpProtocol.class);
@@ -208,9 +208,9 @@ public class ConvertMapUtils {
 			} else if (head == IMsgCode.GM_OPEN_REWARD_ACTIVITIES_HTTP_PROTOCOL) {
 				/** 平台指定开放奖励活动 */
 				httpRqeustMessageMap.put(head, GmOpenRewardActivitiesProtocolRequest.class);
-			} else if (head == IMsgCode.GM_ADD_OR_DEL_WHITE_NAME_HTTP_PROTOCOL) {
+			} else if (head == IMsgCode.GM_NOTICE_LEFT_HTTP_PROTOCOL) {
 				/** 添加或删除白名单 */
-				httpRqeustMessageMap.put(head, GmAddOrDelWhiteNameProtocolRequest.class);
+				httpRqeustMessageMap.put(head, GmNoticeLeftProtocolRequest.class);
 			} else if (head == IMsgCode.GM_CLOSE_BUTTON_HTTP_PROTOCOL) {
 				/** GM发起关闭界面按钮 */
 				httpRqeustMessageMap.put(head, GmCloseButtonProtocolRequest.class);

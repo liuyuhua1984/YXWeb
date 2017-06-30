@@ -6,8 +6,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
-import com.game.protocol.gm.GmAddOrDelWhiteNameHttpProtocol;
-import com.game.protocol.gm.GmAddOrDelWhiteNameProtocolRequest;
 import com.game.protocol.gm.GmRoleInfoHttpProtocol;
 import com.game.protocol.gm.GmRoleInfoProtocolRequest;
 import com.gamecenter.common.PlatformToServerConnection;
@@ -81,16 +79,16 @@ public class GmtPassportServiceImpl implements GmtPassportService {
 	 *
 	 */
 	public int allowPassport(int type, List<String> passports, String wid) {
-		OpGameworld opGameworld = worldService.getWorldByWid(Integer.parseInt(wid));
-		GmAddOrDelWhiteNameProtocolRequest req = new GmAddOrDelWhiteNameProtocolRequest();
-		req.setServerId( opGameworld.getWorldid());
-		req.setType(type);
-		req.setLists(passports);
-		
-		GmAddOrDelWhiteNameHttpProtocol resp = (GmAddOrDelWhiteNameHttpProtocol)PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), req);
+//		OpGameworld opGameworld = worldService.getWorldByWid(Integer.parseInt(wid));
+//		GmAddOrDelWhiteNameProtocolRequest req = new GmAddOrDelWhiteNameProtocolRequest();
+//		req.setServerId( opGameworld.getWorldid());
+//		req.setType(type);
+//		req.setLists(passports);
+//		
+//		GmAddOrDelWhiteNameHttpProtocol resp = (GmAddOrDelWhiteNameHttpProtocol)PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), req);
 //		SendReqToGame.getInstance().init(opGameworld.getIp(), Integer.parseInt(opGameworld.getServerurl()));
 //		Object res = SendReqToGame.getInstance().sendMessage(req, opGameworld.getWorldid());
 		
-		return resp.getStatus();
+		return 0;
 	}
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.gamecenter.mapper.OpFeedbackQuestionMapper">
   <resultMap id="BaseResultMap" type="com.gamecenter.model.OpFeedbackQuestion">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="open_id" jdbcType="BIGINT" property="openId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="phone" jdbcType="INTEGER" property="phone" />
@@ -106,7 +106,7 @@
     </selectKey>
     insert into op_feedback_question (open_id, content, create_time, 
       phone)
-    values (#{openId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{openId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{phone,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpFeedbackQuestion">
@@ -130,7 +130,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="openId != null">
-        #{openId,jdbcType=BIGINT},
+        #{openId,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
@@ -156,7 +156,7 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.openId != null">
-        open_id = #{record.openId,jdbcType=BIGINT},
+        open_id = #{record.openId,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
@@ -175,7 +175,7 @@
   <update id="updateByExample" parameterType="map">
     update op_feedback_question
     set id = #{record.id,jdbcType=BIGINT},
-      open_id = #{record.openId,jdbcType=BIGINT},
+      open_id = #{record.openId,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       phone = #{record.phone,jdbcType=INTEGER}
@@ -187,7 +187,7 @@
     update op_feedback_question
     <set>
       <if test="openId != null">
-        open_id = #{openId,jdbcType=BIGINT},
+        open_id = #{openId,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpFeedbackQuestion">
     update op_feedback_question
-    set open_id = #{openId,jdbcType=BIGINT},
+    set open_id = #{openId,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       phone = #{phone,jdbcType=INTEGER}

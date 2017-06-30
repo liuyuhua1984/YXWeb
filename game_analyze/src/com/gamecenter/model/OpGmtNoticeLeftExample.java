@@ -306,6 +306,216 @@ public class OpGmtNoticeLeftExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andAppIdIsNull() {
+            addCriterion("app_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdIsNotNull() {
+            addCriterion("app_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdEqualTo(String value) {
+            addCriterion("app_id =", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotEqualTo(String value) {
+            addCriterion("app_id <>", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdGreaterThan(String value) {
+            addCriterion("app_id >", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdGreaterThanOrEqualTo(String value) {
+            addCriterion("app_id >=", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLessThan(String value) {
+            addCriterion("app_id <", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLessThanOrEqualTo(String value) {
+            addCriterion("app_id <=", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdLike(String value) {
+            addCriterion("app_id like", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotLike(String value) {
+            addCriterion("app_id not like", value, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdIn(List<String> values) {
+            addCriterion("app_id in", values, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotIn(List<String> values) {
+            addCriterion("app_id not in", values, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdBetween(String value1, String value2) {
+            addCriterion("app_id between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAppIdNotBetween(String value1, String value2) {
+            addCriterion("app_id not between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdIsNull() {
+            addCriterion("world_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdIsNotNull() {
+            addCriterion("world_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdEqualTo(String value) {
+            addCriterion("world_id =", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdNotEqualTo(String value) {
+            addCriterion("world_id <>", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdGreaterThan(String value) {
+            addCriterion("world_id >", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdGreaterThanOrEqualTo(String value) {
+            addCriterion("world_id >=", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdLessThan(String value) {
+            addCriterion("world_id <", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdLessThanOrEqualTo(String value) {
+            addCriterion("world_id <=", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdLike(String value) {
+            addCriterion("world_id like", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdNotLike(String value) {
+            addCriterion("world_id not like", value, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdIn(List<String> values) {
+            addCriterion("world_id in", values, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdNotIn(List<String> values) {
+            addCriterion("world_id not in", values, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdBetween(String value1, String value2) {
+            addCriterion("world_id between", value1, value2, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorldIdNotBetween(String value1, String value2) {
+            addCriterion("world_id not between", value1, value2, "worldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIsNull() {
+            addCriterion("title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIsNotNull() {
+            addCriterion("title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleEqualTo(String value) {
+            addCriterion("title =", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotEqualTo(String value) {
+            addCriterion("title <>", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThan(String value) {
+            addCriterion("title >", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("title >=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThan(String value) {
+            addCriterion("title <", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThanOrEqualTo(String value) {
+            addCriterion("title <=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLike(String value) {
+            addCriterion("title like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotLike(String value) {
+            addCriterion("title not like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIn(List<String> values) {
+            addCriterion("title in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotIn(List<String> values) {
+            addCriterion("title not in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleBetween(String value1, String value2) {
+            addCriterion("title between", value1, value2, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotBetween(String value1, String value2) {
+            addCriterion("title not between", value1, value2, "title");
+            return (Criteria) this;
+        }
     }
 
     /**

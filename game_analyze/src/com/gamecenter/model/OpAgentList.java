@@ -60,6 +60,11 @@ public class OpAgentList implements Serializable {
     private Byte status;
 
     /**
+     * 银行卡
+     */
+    private String blankCard;
+
+    /**
      * op_agent_list
      */
     private static final long serialVersionUID = 1L;
@@ -152,6 +157,14 @@ public class OpAgentList implements Serializable {
         this.status = status;
     }
 
+    public String getBlankCard() {
+        return blankCard;
+    }
+
+    public void setBlankCard(String blankCard) {
+        this.blankCard = blankCard == null ? null : blankCard.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -169,6 +182,7 @@ public class OpAgentList implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", password=").append(password);
         sb.append(", status=").append(status);
+        sb.append(", blankCard=").append(blankCard);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

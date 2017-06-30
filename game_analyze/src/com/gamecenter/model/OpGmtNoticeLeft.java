@@ -20,6 +20,21 @@ public class OpGmtNoticeLeft implements Serializable {
     private Date createTime;
 
     /**
+     * appid
+     */
+    private String appId;
+
+    /**
+     * 服务器id
+     */
+    private String worldId;
+
+    /**
+     * 标题
+     */
+    private String title;
+
+    /**
      * op_gmt_notice_left
      */
     private static final long serialVersionUID = 1L;
@@ -48,6 +63,30 @@ public class OpGmtNoticeLeft implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId == null ? null : appId.trim();
+    }
+
+    public String getWorldId() {
+        return worldId;
+    }
+
+    public void setWorldId(String worldId) {
+        this.worldId = worldId == null ? null : worldId.trim();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -57,6 +96,9 @@ public class OpGmtNoticeLeft implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", content=").append(content);
         sb.append(", createTime=").append(createTime);
+        sb.append(", appId=").append(appId);
+        sb.append(", worldId=").append(worldId);
+        sb.append(", title=").append(title);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
