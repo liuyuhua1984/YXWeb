@@ -51,7 +51,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
    //     var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         var htmlobj = $.ajax(
-        	{url: ctxPage+"/feedback/add/feedback/page?page=" + pid, cache: false, async: false})
+        	{url: ctxPage+"/gmt/player/feedback/page?page=" + pid, cache: false, async: false})
         	
         $("#data").html(htmlobj.responseText);
 		 $(".pagerx a").click(getPager);

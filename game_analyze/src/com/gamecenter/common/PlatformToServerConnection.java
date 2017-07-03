@@ -37,8 +37,10 @@ public class PlatformToServerConnection {
 			String jsonString = ConvertMapUtils.objToString(req);
 			data = jsonString.getBytes("UTF-8");
 			String strResutl = HttpClient.doPost(ip+":"+port+"/platform",data);
-			DataUpBase resp = ConvertMapUtils.jsonStringToObj(false, strResutl);
-		
+			DataUpBase resp  = null;
+			if (strResutl != null){
+				resp = ConvertMapUtils.jsonStringToObj(false, strResutl);
+			}
 			return   resp;
 		} catch (UnsupportedEncodingException e) {
 			//e.printStackTrace();

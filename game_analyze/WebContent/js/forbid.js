@@ -80,6 +80,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
         $("#data").html(htmlobj.responseText);
         $(".detail").bind("click", openmsg);
     }
+    
 	if (curpage==undefined){
 		return;
 	}

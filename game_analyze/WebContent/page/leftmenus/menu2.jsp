@@ -89,7 +89,14 @@
                                 <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">充值记录</a></li>
                             </ol>
                         </li>
-
+							<li>
+                            <a url-data="" class="more_icon Players">
+                                <span>玩家反馈</span>
+                            </a>
+                            <ol>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/player/feedback" target="mainFrame">反馈列表</a></li>
+                            </ol>
+                        </li>
                     </ul>
                 </div>
             </div>

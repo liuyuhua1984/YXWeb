@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-30 18:50:08
+Date: 2017-07-03 19:00:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `oa_action` (
   `sort` int(11) DEFAULT '0',
   `info` varchar(200) DEFAULT NULL COMMENT '说明',
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_action
@@ -146,6 +146,7 @@ INSERT INTO `oa_action` VALUES ('158', '选择运营商', 'selectOperatorByAppId
 INSERT INTO `oa_action` VALUES ('159', 'json列表', 'getJsonList', '', '0', '');
 INSERT INTO `oa_action` VALUES ('160', '数据列表', 'dataList', '', '0', '');
 INSERT INTO `oa_action` VALUES ('161', '问题反馈', 'playerFeedBack', null, '0', null);
+INSERT INTO `oa_action` VALUES ('162', '金花控制', 'jhPlayControl', null, '0', null);
 
 -- ----------------------------
 -- Table structure for oa_module
@@ -164,12 +165,12 @@ CREATE TABLE `oa_module` (
   `joinid` varchar(200) DEFAULT NULL,
   `level` int(11) DEFAULT '1',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=utf8 COMMENT='菜单模块表';
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8 COMMENT='菜单模块表';
 
 -- ----------------------------
 -- Records of oa_module
 -- ----------------------------
-INSERT INTO `oa_module` VALUES ('80', '0', '运营管理', '', '1', '0', '', null, '1', '80', '1');
+INSERT INTO `oa_module` VALUES ('80', '0', '运营管理', '', '2', '0', '', null, '1', '80', '1');
 INSERT INTO `oa_module` VALUES ('82', '0', '运维管理', '', '3', '0', '', null, '1', '82', '1');
 INSERT INTO `oa_module` VALUES ('83', '0', '支撑管理', '', '4', '0', '', null, '1', '83', '1');
 INSERT INTO `oa_module` VALUES ('84', '80', '游戏概况', '', '1', '0', '', null, '1', '80_84', '2');
@@ -192,7 +193,7 @@ INSERT INTO `oa_module` VALUES ('102', '100', '充值日报', '/oss/pay/dayrepor
 INSERT INTO `oa_module` VALUES ('103', '100', '付费排行', '/oss/pay/top', '1', '0', '', null, '0', '80_100_103', '3');
 INSERT INTO `oa_module` VALUES ('104', '100', '付费习惯', '/oss/pay/habit', '1', '0', '', null, '0', '80_100_104', '3');
 INSERT INTO `oa_module` VALUES ('105', '101', '消费点统计', '/oss/consume/report', '1', '0', '', null, '0', '80_101_105', '3');
-INSERT INTO `oa_module` VALUES ('130', '0', '客服管理', '', '2', '0', '', null, '1', '130', '1');
+INSERT INTO `oa_module` VALUES ('130', '0', '客服管理', '', '1', '0', '', null, '1', '130', '1');
 INSERT INTO `oa_module` VALUES ('131', '130', '封禁管理', '', '1', '0', '', null, '1', '130_131', '2');
 INSERT INTO `oa_module` VALUES ('132', '130', '广播管理', '', '2', '0', '', null, '1', '130_132', '2');
 INSERT INTO `oa_module` VALUES ('133', '130', '玩家查询', '', '3', '0', '', null, '1', '130_133', '2');
@@ -234,8 +235,10 @@ INSERT INTO `oa_module` VALUES ('169', '165', '系统设置', '/sys/set', '3', '
 INSERT INTO `oa_module` VALUES ('170', '166', '数据分析', '/sys/analyzeset', '1', '0', '', null, '0', '162_166_170', '3');
 INSERT INTO `oa_module` VALUES ('171', '166', '数据备份', '', '2', '0', '', null, '0', '162_166_171', '3');
 INSERT INTO `oa_module` VALUES ('186', '153', '联运商产品', '/apps/operator/product', '2', '0', '', null, '0', '83_153_186', '3');
-INSERT INTO `oa_module` VALUES ('187', '130', '玩家反馈', '/gmt/player/feedback', '1', '0', null, null, '0', '130_188_187', '3');
+INSERT INTO `oa_module` VALUES ('187', '188', '玩家反馈', '/gmt/player/feedback', '1', '0', null, null, '0', '130_188_187', '3');
 INSERT INTO `oa_module` VALUES ('188', '130', '玩家反馈', '', '6', '0', null, null, '1', '130_188', '2');
+INSERT INTO `oa_module` VALUES ('189', '130', '金花控制', '', '7', '0', null, null, '1', '130_189', '2');
+INSERT INTO `oa_module` VALUES ('190', '189', '金花控制', '/gmt/jh/control', '1', '0', null, null, '0', '130_189_190', '3');
 
 -- ----------------------------
 -- Table structure for oa_permit
@@ -247,7 +250,7 @@ CREATE TABLE `oa_permit` (
   `aid` int(11) DEFAULT NULL,
   `info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`permitid`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8 COMMENT='基本权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8 COMMENT='基本权限表';
 
 -- ----------------------------
 -- Records of oa_permit
@@ -358,7 +361,8 @@ INSERT INTO `oa_permit` VALUES ('157', '186', '157', null);
 INSERT INTO `oa_permit` VALUES ('158', '186', '158', null);
 INSERT INTO `oa_permit` VALUES ('159', '156', '159', null);
 INSERT INTO `oa_permit` VALUES ('160', '157', '160', null);
-INSERT INTO `oa_permit` VALUES ('161', '188', '161', null);
+INSERT INTO `oa_permit` VALUES ('161', '187', '161', null);
+INSERT INTO `oa_permit` VALUES ('162', '190', '162', null);
 
 -- ----------------------------
 -- Table structure for oa_permit_detail
@@ -370,7 +374,7 @@ CREATE TABLE `oa_permit_detail` (
   `permitid` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT '1' COMMENT '1:权限组 2：角色',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=1841 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
+) ENGINE=InnoDB AUTO_INCREMENT=1843 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
 
 -- ----------------------------
 -- Records of oa_permit_detail
@@ -570,6 +574,8 @@ INSERT INTO `oa_permit_detail` VALUES ('1837', '20', '145', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1838', '20', '91', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1839', '18', '161', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1840', '17', '161', '2');
+INSERT INTO `oa_permit_detail` VALUES ('1841', '17', '162', '2');
+INSERT INTO `oa_permit_detail` VALUES ('1842', '18', '162', '2');
 
 -- ----------------------------
 -- Table structure for oa_role
@@ -1254,13 +1260,15 @@ CREATE TABLE `op_feedback_question` (
   `open_id` varchar(50) DEFAULT '0' COMMENT '账号',
   `content` varchar(512) DEFAULT '0' COMMENT '内容',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `phone` int(11) DEFAULT NULL COMMENT '电话号码',
+  `phone` bigint(20) DEFAULT NULL COMMENT '电话号码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_feedback_question
 -- ----------------------------
+INSERT INTO `op_feedback_question` VALUES ('2', '7788', '这是一个好的建议夺读书法枯枯萎栽李斐莉雪枯枯顶替模压 你用针夺顶替枯萎枯萎枯萎枯在无可奈何 顶替村东走西顾革枯无可奈何花落去顶替顶替村阿斯蒂芬 顶替顶替顶替夺模压 工厅阿斯蒂芬要东走西顾械械有顶替柑使用者', '2017-07-03 11:24:26', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('3', '7788', '这是一个好的建议夺读书法枯枯萎栽李斐莉雪枯枯顶替模压 你用针夺顶替枯萎枯萎枯萎枯在无可奈何 顶替村东走西顾革枯无可奈何花落去顶替顶替村阿斯蒂芬 顶替顶替顶替夺模压 工厅阿斯蒂芬要东走西顾械械有顶替柑使用者', '2017-07-03 11:24:35', '15320589662');
 
 -- ----------------------------
 -- Table structure for op_gameapp
@@ -1606,18 +1614,21 @@ INSERT INTO `op_gmt_notice_cycle` VALUES ('11', 'game1001', '10', '2', '10', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `op_gmt_notice_left`;
 CREATE TABLE `op_gmt_notice_left` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `content` varchar(512) DEFAULT '0' COMMENT '内容',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `app_id` varchar(50) DEFAULT NULL COMMENT 'appid',
   `world_id` varchar(50) DEFAULT NULL COMMENT '服务器id',
   `title` varchar(50) DEFAULT NULL COMMENT '标题',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_gmt_notice_left
 -- ----------------------------
+INSERT INTO `op_gmt_notice_left` VALUES ('34', '\\upload\\img\\commit.png', '2017-07-03 18:08:01', 'game1001', '1001', '公告');
+INSERT INTO `op_gmt_notice_left` VALUES ('36', '\\upload\\img\\commit.png', '2017-07-03 18:27:57', 'game1001', '1001', '公告');
+INSERT INTO `op_gmt_notice_left` VALUES ('37', '\\upload\\img\\10.png', '2017-07-03 18:30:45', 'game1001', '1001', '公告');
 
 -- ----------------------------
 -- Table structure for op_gmt_sendmoney
@@ -1907,7 +1918,7 @@ CREATE TABLE `op_oss_qlz_createrole_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
 
 -- ----------------------------
 -- Records of op_oss_qlz_createrole_log
@@ -1928,6 +1939,12 @@ INSERT INTO `op_oss_qlz_createrole_log` VALUES ('13', '1001', '192.168.0.189', '
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('14', '1001', '192.168.0.65', '2017-06-29 14:33:01', 'zyj', 'c:eW2bico', '2017-06-29 14:33:05', '1');
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('15', '1001', '192.168.0.65', '2017-06-29 14:46:57', 'jyz', 'c:ec0OSMt', '2017-06-29 14:46:57', '1');
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('16', '1001', '192.168.0.189', '2017-06-30 10:44:16', '7788', 'c:e0jOleu', '2017-06-30 10:44:21', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('17', '1001', '192.168.0.65', '2017-07-03 18:33:38', '123', 'c:eA6lJdc', '2017-07-03 18:33:48', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('18', '1001', '192.168.0.65', '2017-07-03 18:35:51', '3123', 'c:e3OO3zw', '2017-07-03 18:35:51', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('19', '1001', '192.168.0.65', '2017-07-03 18:44:19', '312', 'c:erdEHwm', '2017-07-03 18:44:19', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('20', '1001', '192.168.0.65', '2017-07-03 18:45:09', '21312', 'c:ehxZXil', '2017-07-03 18:45:09', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('21', '1001', '192.168.0.65', '2017-07-03 18:50:37', '321', 'c:eTw8oy4', '2017-07-03 18:50:37', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('22', '1001', '192.168.0.65', '2017-07-03 18:51:09', 'dasd', 'c:e29jWRG', '2017-07-03 18:51:10', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_login_log
@@ -1944,7 +1961,7 @@ CREATE TABLE `op_oss_qlz_login_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_login_log
@@ -1968,6 +1985,9 @@ INSERT INTO `op_oss_qlz_login_log` VALUES ('16', '1001', '192.168.0.65', '2017-0
 INSERT INTO `op_oss_qlz_login_log` VALUES ('17', '1001', '192.168.0.65', '2017-06-29 14:54:38', 'jyz', '1', 'c:ec0OSMt', '2017-06-29 14:54:38', '1');
 INSERT INTO `op_oss_qlz_login_log` VALUES ('18', '1001', '192.168.0.65', '2017-06-29 15:23:34', 'jyz', '1', 'c:ec0OSMt', '2017-06-29 15:23:36', '1');
 INSERT INTO `op_oss_qlz_login_log` VALUES ('19', '1001', '192.168.0.65', '2017-06-29 15:24:53', 'jyz', '1', 'c:ec0OSMt', '2017-06-29 15:24:53', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('20', '1001', '192.168.0.65', '2017-07-03 18:47:00', '3123', '1', 'c:e3OO3zw', '2017-07-03 18:47:10', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('21', '1001', '192.168.0.65', '2017-07-03 18:55:22', '3123', '1', 'c:e3OO3zw', '2017-07-03 18:55:22', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('22', '1001', '192.168.0.65', '2017-07-03 18:57:08', '3123', '1', 'c:e3OO3zw', '2017-07-03 18:57:08', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_onlinecur_log
@@ -1980,7 +2000,7 @@ CREATE TABLE `op_oss_qlz_onlinecur_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=463 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
+) ENGINE=InnoDB AUTO_INCREMENT=496 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
 
 -- ----------------------------
 -- Records of op_oss_qlz_onlinecur_log
@@ -2447,6 +2467,39 @@ INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('459', '1001', '0', '2017-06-30 1
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('460', '1001', '0', '2017-06-30 11:25:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('461', '1001', '0', '2017-06-30 11:26:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('462', '1001', '0', '2017-06-30 11:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('463', '1001', '0', '2017-07-03 18:27:09', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('464', '1001', '0', '2017-07-03 18:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('465', '1001', '0', '2017-07-03 18:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('466', '1001', '0', '2017-07-03 18:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('467', '1001', '0', '2017-07-03 18:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('468', '1001', '0', '2017-07-03 18:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('469', '1001', '0', '2017-07-03 18:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('470', '1001', '1', '2017-07-03 18:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('471', '1001', '0', '2017-07-03 18:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('472', '1001', '1', '2017-07-03 18:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('473', '1001', '1', '2017-07-03 18:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('474', '1001', '1', '2017-07-03 18:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('475', '1001', '0', '2017-07-03 18:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('476', '1001', '0', '2017-07-03 18:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('477', '1001', '0', '2017-07-03 18:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('478', '1001', '0', '2017-07-03 18:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('479', '1001', '0', '2017-07-03 18:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('480', '1001', '0', '2017-07-03 18:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('481', '1001', '0', '2017-07-03 18:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('482', '1001', '0', '2017-07-03 18:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('483', '1001', '1', '2017-07-03 18:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('484', '1001', '0', '2017-07-03 18:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('485', '1001', '0', '2017-07-03 18:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('486', '1001', '0', '2017-07-03 18:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('487', '1001', '0', '2017-07-03 18:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('488', '1001', '1', '2017-07-03 18:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('489', '1001', '0', '2017-07-03 18:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('490', '1001', '0', '2017-07-03 18:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('491', '1001', '0', '2017-07-03 18:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('492', '1001', '0', '2017-07-03 18:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('493', '1001', '0', '2017-07-03 18:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('494', '1001', '0', '2017-07-03 18:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('495', '1001', '0', '2017-07-03 18:59:01', null);
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_out_log
@@ -2466,7 +2519,7 @@ CREATE TABLE `op_oss_qlz_out_log` (
   `guidenum` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_out_log
@@ -2495,6 +2548,15 @@ INSERT INTO `op_oss_qlz_out_log` VALUES ('21', '1001', '192.168.0.65', '2017-06-
 INSERT INTO `op_oss_qlz_out_log` VALUES ('22', '1001', '192.168.0.65', '2017-06-29 15:24:45', 'jyz', '1', '1', 'c:ec0OSMt', '2017-06-29 15:24:45', '0', null, '1');
 INSERT INTO `op_oss_qlz_out_log` VALUES ('23', '1001', '192.168.0.65', '2017-06-29 15:25:04', 'jyz', '1', '1', 'c:ec0OSMt', '2017-06-29 15:25:04', '0', null, '1');
 INSERT INTO `op_oss_qlz_out_log` VALUES ('24', '1001', '192.168.0.189', '2017-06-30 10:55:04', '7788', '1', '1', 'c:e0jOleu', '2017-06-30 10:55:06', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('25', '1001', '192.168.0.65', '2017-07-03 18:34:05', '123', '1', '1', 'c:eA6lJdc', '2017-07-03 18:34:05', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('26', '1001', '192.168.0.65', '2017-07-03 18:38:28', '3123', '1', '1', 'c:e3OO3zw', '2017-07-03 18:38:28', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('27', '1001', '192.168.0.65', '2017-07-03 18:44:32', '312', '1', '1', 'c:erdEHwm', '2017-07-03 18:44:32', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('28', '1001', '192.168.0.65', '2017-07-03 18:45:52', '21312', '1', '1', 'c:ehxZXil', '2017-07-03 18:45:52', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('29', '1001', '192.168.0.65', '2017-07-03 18:47:02', '3123', '1', '1', 'c:e3OO3zw', '2017-07-03 18:47:11', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('30', '1001', '192.168.0.65', '2017-07-03 18:50:59', '321', '1', '1', 'c:eTw8oy4', '2017-07-03 18:50:59', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('31', '1001', '192.168.0.65', '2017-07-03 18:53:00', 'dasd', '1', '1', 'c:e29jWRG', '2017-07-03 18:53:00', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('32', '1001', '192.168.0.65', '2017-07-03 18:55:27', '3123', '1', '1', 'c:e3OO3zw', '2017-07-03 18:55:27', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('33', '1001', '192.168.0.65', '2017-07-03 18:57:15', '3123', '1', '1', 'c:e3OO3zw', '2017-07-03 18:57:15', '0', null, '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport
@@ -2532,14 +2594,20 @@ CREATE TABLE `op_oss_qlz_passport` (
 -- ----------------------------
 -- Records of op_oss_qlz_passport
 -- ----------------------------
+INSERT INTO `op_oss_qlz_passport` VALUES ('123', '1001', 'c:eA6lJdc', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:33:38', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('1241', '1001', 'c:eAWgrLv', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:30:05', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('1412', '1001', 'c:eDyZYrg', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:36:12', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('213', '1001', 'c:eoQc5M3', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:42:48', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('21312', '1001', 'c:ehxZXil', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:45:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('312', '1001', 'c:erdEHwm', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:44:19', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('3123', '1001', 'c:e3OO3zw', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '4', '2017-07-03 18:47:00', '2017-07-03 18:57:08', '2017-07-03 18:35:51', '1', '4', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('321', '1001', 'c:eTw8oy4', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:50:37', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '110.00', '110.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '10#player:879877857940078592', '1', '0.00', '0', '2017-06-28 09:43:25', '2017-06-28 09:43:25', null, null, null, '1001', 'NVvObb');
 INSERT INTO `op_oss_qlz_passport` VALUES ('478555hhh', '1001', 'c:ebgbAw6', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:47:17', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('7788', '1001', 'c:e0jOleu', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-30 10:44:16', null, '0', '0.00', '0', null, null, null, null, null, '1', 'FMJS1V');
 INSERT INTO `op_oss_qlz_passport` VALUES ('9852', '1001', 'c:esmj879909164015419392', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-28 11:47:47', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dasd', '1001', 'c:e29jWRG', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:51:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('dswwwd', '1001', 'c:eoqDPKa', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:50:07', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('jyz', '1001', 'c:ec0OSMt', '1', '10.00', '40.00', null, '0', '1', '192.168.0.65', '7', '2017-06-29 14:47:17', '2017-06-29 15:24:53', '2017-06-29 14:46:57', '1', '6', '0.00', '0', null, null, null, null, null, '1', '');
 INSERT INTO `op_oss_qlz_passport` VALUES ('sdsds', '1001', 'c:eNWVvsz', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:25:23', null, '0', '0.00', '0', null, null, null, null, null, '1', '');

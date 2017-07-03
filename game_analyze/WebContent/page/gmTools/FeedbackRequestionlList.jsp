@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>玩家反馈</title>
-<c:import url="/head/agent"></c:import>
+<c:import url="/headmsg"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/feedback" defer async="true"></script>
 
 <style type="text/css">
@@ -117,7 +117,7 @@
 										<th width ="200">账号</th>
 										<th width ="200"> 电话</th>
 										<th width="200">时间</th>
-										<th width="*">内容</th>
+										<th width="300">内容</th>
 										<th width="100">操作</th>
 									</tr>
 								</thead>

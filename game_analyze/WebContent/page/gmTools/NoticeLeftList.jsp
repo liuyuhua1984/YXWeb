@@ -7,11 +7,12 @@
 <head>
 <title>公告列表</title>
 <c:import url="/headmsg"></c:import>
+<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/noticeleft" defer async="true"></script>
 </head>
 <body>
 	<%--<a class="btn btn-small" href="javascript:void(0);">kkk</a>--%>
 	<div style="margin-top: 10px;margin-left: 3px;">
-		<a href="${ctxPage}/gmt/notice/left/save" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 添加公告</a>
+		<a href="${ctxPage}/gmt/notice/left/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 添加公告</a>
 	</div>
 
 
@@ -45,14 +46,14 @@
 									<th width="100">区服</th>
 									<th width="100">标题</th>
 									<th width="140">发送时间</th>
-									<th width="*">内容</th>
+									<th width="*">图片</th>
 									<th width="100">操作</th>
 								</tr>
 							</thead>
 							<tbody id="data">
 
 
-								</c:forEach>
+			
 
 							</tbody>
 						</table>

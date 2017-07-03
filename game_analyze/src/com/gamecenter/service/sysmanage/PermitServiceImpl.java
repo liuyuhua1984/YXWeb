@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.gamecenter.mapper.OaModuleMapper;
@@ -35,6 +37,7 @@ public class PermitServiceImpl implements PermitService {
 	@Resource
 	private OpAgentListMapper opAgentListMapper;
 	
+	private Logger logger = LoggerFactory.getLogger(PermitServiceImpl.class);
 	public boolean initUserPermit(int uid) {
 		return false;
 	}
@@ -244,7 +247,7 @@ public class PermitServiceImpl implements PermitService {
 		map.put("pid", "'" + pid + "%'");
 		map.put("mids", str);
 		oaModules = oaModuleMapper.getModelListByMidsByPid(map);
-		
+		//logger.error("map::"+map.toString());
 		return oaModules;
 	}
 }

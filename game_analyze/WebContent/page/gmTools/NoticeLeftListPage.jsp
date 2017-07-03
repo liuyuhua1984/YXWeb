@@ -9,8 +9,8 @@
 		<td>${item.worldId}</td>
 		<td class="center">${item.title}</td>
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td class="center">${item.content}</td>
-		<td class="center"><button type="button" onclick='$("#act${item.id}").attr("checked", "checked");doDel(${item.id});'>删除</button></td>
+		<td class="center"><img width="100" height="30" src="${ctxPage}/${item.content}"></td>
+		<td class="center"><a type="button"  class="btn btn-small"  href ="javascript:void(0);"    onclick='$("#act${item.id}").attr("checked", "checked");doDel(${item.id});'>删除</a></td>
 
 	</tr>
 </c:forEach>
@@ -25,7 +25,7 @@
 	/**
 	*删除代理
 	*/
-	function delDel(id) {
+	function doDel(id) {
 		if (!window.confirm("危险操作，你确定删除吗？")) //确定是否删除
 			return false;
 			// var query = new Object();

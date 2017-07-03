@@ -1,7 +1,9 @@
 package com.gamecenter.controller.gmt;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +24,7 @@ import com.gamecenter.controller.BaseController;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpFeedbackQuestion;
 import com.gamecenter.parBean.AgentUser;
+import com.gamecenter.parBean.UserMsg;
 import com.gamecenter.service.gmt.FeedbackQuestingService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -35,27 +39,34 @@ import com.github.pagehelper.PageInfo;
  * @see       
  */
 @Controller
-@RequestMapping("/gmt/player")
 public class PlayerFeedBackController extends BaseController {
 	
 	@Autowired
 	private FeedbackQuestingService feedbackService;
 	
-	@RequestMapping("/feedback/add")
+	@RequestMapping(value="/player/feedback/add",method=RequestMethod.POST)
 	@ResponseBody
-	public ModelMap playerFeedBackAdd(HttpSession session, HttpServletRequest req){
-		ModelMap map = new ModelMap();
+	public Map<String,String> playerFeedBackAdd(HttpSession session, HttpServletRequest req){
+		Map<String,String>  map = new HashMap<String,String> ();
 		String openId = req.getParameter("openId");
 		String content = req.getParameter("content");
 		String serverId = req.getParameter("serverId");
 		String phone = req.getParameter("phone");
-		OpFeedbackQuestion quest = new OpFeedbackQuestion();
-		quest.setOpenId(openId);
-		quest.setContent(content);
-		quest.setPhone(Integer.parseInt(phone));
-		quest.setCreateTime(new Date(System.currentTimeMillis()));
-		feedbackService.insert(quest);
-		map.put("result", 1);
+
+		String res = "1";
+	
+		if (Tools.isPhoneLegal(phone)){
+			OpFeedbackQuestion quest = new OpFeedbackQuestion();
+			quest.setOpenId(openId);
+			quest.setContent(content);
+			quest.setPhone(Long.parseLong(phone));
+			quest.setCreateTime(new Date(System.currentTimeMillis()));
+			feedbackService.insert(quest);
+		}else{
+			res="-1";
+		}
+		
+		map.put("result", res);
 		return map;
 	}
 	
@@ -66,15 +77,15 @@ public class PlayerFeedBackController extends BaseController {
 	 * @author lyh 
 	 * @return 
 	 */  
-	@RequestMapping("/feedback")
+	@RequestMapping("/gmt/player/feedback")
 	public ModelAndView playerFeedBack(HttpSession session, @RequestParam(value = "page", defaultValue = "1") int curPage){
-		ModelAndView view = new ModelAndView("/page/gmTools/FeedbackRequestionlList");
-		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
-		long agentId = 0;
+		UserMsg userMsg = (UserMsg) session.getAttribute("UserMsg");
+		long   userId = 0;
 		if (userMsg != null) {
-			agentId = userMsg.getId();
+			userId = userMsg.getUid();
 		}
 		String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
+		ModelAndView view = new ModelAndView("/page/gmTools/FeedbackRequestionlList");
 		view.addObject("targetTime", targetTime);
 		return view;
 	}
@@ -90,15 +101,15 @@ public class PlayerFeedBackController extends BaseController {
 	 * @param curPage
 	 * @return
 	 */
-	@RequestMapping("/page")
+	@RequestMapping("/gmt/player/feedback/page")
 	public ModelAndView playerFeedBackPage(HttpSession session, @RequestParam(value = "page", defaultValue = "1") int curPage) {
-		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
-		long agentId = 0;
+		UserMsg userMsg = (UserMsg) session.getAttribute("UserMsg");
+		long   userId = 0;
 		if (userMsg != null) {
-			agentId = userMsg.getId();
+			userId = userMsg.getUid();
 		}
 		// String targetTime = Tools.getDate(Tools.getNowDate(), 1, -1).substring(0, 10);
-		ModelAndView view = new ModelAndView("/page/agent/AgentListPage");
+		ModelAndView view = new ModelAndView("/page/gmTools/FeedbackRequestionlListPage");
 		PageHelper.startPage(curPage, Tools.PAGE_SIZE);
 		List<OpFeedbackQuestion> list = feedbackService.getOpFeedbackQuestionList();
 		PageInfo<OpFeedbackQuestion> pageInfo = new PageInfo<OpFeedbackQuestion>(list);
@@ -125,7 +136,7 @@ public class PlayerFeedBackController extends BaseController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("/del")
+	@RequestMapping("/gmt/player/feedback/del")
 	@ResponseBody
 	public String deleteFeedback(HttpSession session, @RequestParam(value = "id") long id) {
 		String res = "-1";

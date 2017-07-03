@@ -27,7 +27,7 @@ public class OpFeedbackQuestion implements Serializable {
     /**
      * 电话号码
      */
-    private Integer phone;
+    private Long phone;
 
     /**
      * op_feedback_question
@@ -66,11 +66,11 @@ public class OpFeedbackQuestion implements Serializable {
         this.createTime = createTime;
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

@@ -6,6 +6,7 @@
 <head>
 <title>添加公告栏</title>
 <c:import url="/headmsg"></c:import>
+<script type="text/javascript" src="${ctxPage}/js/ajaxfileupload.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
@@ -20,7 +21,7 @@
 					<h2>
 						添加公告信息【<a href="${ctxPage}/gmt/notice/left/list">返回列表</a>】
 					</h2>
-				
+
 				</header>
 				<!-- wrap div -->
 				<div id="step1">
@@ -68,12 +69,13 @@
 
 							<div class="control-group">
 
-								<label class="control-label" for="content">公告内容</label>
+								<label class="control-label" for="file">公告文件</label>
 
 								<div class="controls">
-									<textarea class="span12" id="content" name="content" rows="5"></textarea>
+									<input id="fileData" type="file" name="file" placeholder="选择一张图片" />
+									<%--    <textarea class="span12" id="content" name="content" rows="5"></textarea>--%>
 
-									<p class="help-block">输入的内空不能超过120字</p>
+									<p class="help-block">选择一张PNG图片</p>
 								</div>
 
 							</div>
@@ -99,15 +101,24 @@
 		var mark = 0;
 	
 		function saveMsg() {
-			var content = $('#content').val();
+			var fileData = $('#fileData').val();
 			var title = $('#title').val();
 			var wid = $('#wid').val();
-			var appid = $('#wid').val();
-			if (content == "") {
-				alert("请输入公告内容！");
+			var appid = $('#appid').val();
+			if (fileData == "" || fileData == null) {
+				alert("请选择png文件！");
 				return false;
 			}
-	
+			/***
+				if (!/\.(jpg|jpeg|png|JPEG|JPG|PNG)$/.test(fileData)){
+					alert("图片类型必须是.jpeg,jpg,png中的一种");
+	    		$('#'+fileid).val("");
+	    		return false;
+				}**/
+			if (!/\.(png)$/.test(fileData)) {
+				alert("图片类型必须是.png中的一种");
+				return false;
+			}
 			$("#tishi").html("请等待，信息处理中....");
 	
 			if (mark == 1) {
@@ -115,30 +126,49 @@
 			}
 			mark = 1;
 	
-			$.ajax({
-				url : "${ctxPage}/gmt/notice/left/save",
-				type : 'POST',
-				data : {
-					content : content,
-					title : title,
-					wid : wid,
-					appid : appid
-				},
-				dataType : 'json',
-				error : function() {
-					alert("超时或者系统异常...");
-					mark = 0;
-					$("#tishi").html("");
-				},
-				success : function(data) {
-					if (data == 1) {
-						alert("操作完成");
-						location.reload();
+			$.ajaxFileUpload(
+				{
+					url : "${ctxPage}/gmt/notice/left/save", //用于文件上传的服务器端请求地址
+					type : 'POST',
+					secureuri : false, //是否需要安全协议，一般设置为false
+					fileElementId : 'fileData', //文件上传域的ID
+					dataType : 'json', //返回值类型 一般设置为json
+					data : {
+						title : title,
+						wid : wid,
+						appid : appid
+						//请求参数
+	
+					},
+					success : function(data, status) //服务器成功响应处理函数
+					{
+	
+						//data是服务器返回的数据
+						
+						if (data.res == '1') {
+							alert("操作完成");
+							location.reload();
+						}else{
+							alert("上传有问题");
+						}
+						mark = 0;
+						$("#tishi").html("");
+	
+					},
+					error : function(data, status, e) //服务器响应失败处理函数
+					{
+	
+						//data是服务器返回的数据
+		                console("e::"+e);
+						alert("超时或者系统异常..." + e);
+						mark = 0;
+						$("#tishi").html("");
+	
 					}
-					mark = 0;
-					$("#tishi").html("");
 				}
-			});
+			);
+	
+	
 		}
 	
 		/**
