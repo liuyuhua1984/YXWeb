@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
-<title>查看金花</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+<title>金花</title>
 <%--<c:import url="/head/agent"></c:import>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/common.js?1=2"></script>
 
@@ -95,6 +97,31 @@
 				<%-- content goes here --%>
 				<form id="wform" class="form-horizontal themed" onsubmit="return false;" />
 				<fieldset>
+				<div class="control-group">
+								<label class="control-label">游戏名称</label>
+
+								<div class="controls">
+									<select id="appid" name="appid" class="span12 with-search" onchange="changeWorld(this.value)">
+										<c:forEach var="item" items="${appList}">
+											<option value="${item.appid}" />
+                                        ${item.appname}
+                                    </c:forEach>
+									</select>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label">区服</label>
+
+								<div class="controls">
+									<select id="wid" name="wid" class="span12 with-search">
+										<c:forEach var="item" items="${worldList}">
+											<option value="${item.worldid}" />
+                                        ${item.wname}
+                                    </c:forEach>
+									</select>
+								</div>
+							</div>
 					<div class="control-group">
 						<label class="control-label" for="name">玩家昵称：</label>
 						<%-- 
@@ -109,6 +136,7 @@
 
 						<div class="controls">
 							<input type="text" class="span12" id="name" name="name" value="" maxlength="20" />
+								<p class="help-block">请在玩家进入房间后输入玩家昵称</p>
 						</div>
 					</div>
 					<%--
@@ -179,11 +207,9 @@
 			//  var jsonInfro = $("#wform").serializeArray();
 	
 			var name = $('#name').val();
-			var password = $('#password').val();
-			var inviteCode = $('#inviteCode').val();
-			var weChat = $('#weChat').val();
-			var phone = $('#phone').val();
-		    var blankCard = $('#blankCard').val();
+			var appId = $('#appid').val();
+			var worldId = $('#wid').val();
+
 			if (name == "") {
 				alert("请完善信息！");
 				return false;
@@ -200,7 +226,9 @@
 				url : "${ctxPage}/gmt/jh/cat",
 				type : 'POST',
 				data : {
-					name : name
+					name : name,
+					appId: appId,
+					worldId: worldId
 				},
 				dataType : 'json',
 				error : function() {
@@ -213,7 +241,7 @@
 						alert('操作成功！');
 						location.reload();
 					} else {
-						alert('邀请码不存在 ！');
+						alert('玩家不存在,或者不在线 ！');
 					}
 	
 					mark = 0;

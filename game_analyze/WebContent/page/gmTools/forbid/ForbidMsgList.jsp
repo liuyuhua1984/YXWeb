@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>封禁历史</title>
     <c:import url="/headmsg"></c:import>
     <script  type="text/javascript"  src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/forbid" defer async="true"></script>
@@ -71,13 +73,13 @@
                         <%--</thead>--%>
                         <thead>
                         <tr>
-                            <th width="100" style="background-color: #ffd700">操作类型</th>
-                            <th width="100" style="background-color: #ffd700">游戏</th>
-                            <th width="100" style="background-color: #ffd700">区服</th>
-                            <th width="100" style="background-color: #ffd700">账号</th>
-                            <th width="100" style="background-color: #ffd700">操作结果</th>
-                            <th width="140" style="background-color: #ffd700">时间</th>
-                            <th width="*" style="background-color: #ffd700">备注</th>
+                            <th style="width :100px;background-color: #ffd700">操作类型</th>
+                            <th style="width :100px;background-color: #ffd700">游戏</th>
+                            <th style="width :100px;background-color: #ffd700">区服</th>
+                            <th style="width :100px;background-color: #ffd700">账号</th>
+                            <th style="width :100px;background-color: #ffd700">操作结果</th>
+                            <th style="width :140px;background-color: #ffd700">时间</th>
+                            <th style="width :*;background-color: #ffd700">备注</th>
                         </tr>
                         </thead>
                         <tbody>

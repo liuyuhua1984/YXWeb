@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>内充记录</title>
     <c:import url="/headmsg"></c:import>
     <style type="text/css">
@@ -122,15 +124,15 @@
                     <table class="table table-striped table-bordered responsive" id="dtable">
                         <thead>
                         <tr>
-                            <th width="100">游戏</th>
-                            <th width="100">区服</th>
-                            <th width="150">单号</th>
-                            <th width="150">账号</th>
-                            <th width="150">角色名</th>
-                            <th width="80">金币</th>
-                            <th width="60">状态</th>
-                            <th width="*">时间</th>
-                            <th width="100">操作</th>
+                            <th style="width :100px">游戏</th>
+                            <th style="width :100px">区服</th>
+                            <th style="width :150px">单号</th>
+                            <th style="width :150px">账号</th>
+                            <th style="width :150px">角色名</th>
+                            <th style="width :80px">金币</th>
+                            <th style="width :60px">状态</th>
+                            <th style="width :*">时间</th>
+                            <th style="width :100px">操作</th>
                         </tr>
                         </thead>
                         <tbody id="data">

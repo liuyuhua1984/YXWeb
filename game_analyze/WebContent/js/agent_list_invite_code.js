@@ -3,7 +3,7 @@ var ctxPage = "/" + localObj.pathname.split("/")[1];
 require.config({
 			/**模块及源文件的路径隐射*/
 			paths : {
-				jquery : ctxPage + '/js/artDialog6/lib/jquery-1.10.2',
+				jquery : ctxPage + '/js/jquery-1.12.4',
 				dialog : ctxPage + '/js/artDialog6/src/dialog',
 				popup : ctxPage + '/js/artDialog6/src/popup',
 				"dialog-config" : ctxPage + '/js/artDialog6/src/dialog-config'

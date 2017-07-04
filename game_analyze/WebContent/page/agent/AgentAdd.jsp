@@ -4,6 +4,8 @@
 
 <html>
 <head>
+     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 <title>添加游戏代理信息</title>
 <%--<c:import url="/head/agent"></c:import>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/common.js?1=2"></script>

@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" /> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html >
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>元巫科技运营支撑系统</title>
     <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
     <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
@@ -368,9 +369,9 @@
             <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table_style1" style="">
                 <thead>
                 <tr>
-                    <th width="33.333333333333336%" class="sorting_asc" rowspan="1" colspan="1">日期</th>
-                    <th width="33.333333333333336%" class="sorting" rowspan="1" colspan="1">设备激活</th>
-                    <th width="33.333333333333336%" class="sorting" rowspan="1" colspan="1">新增玩家</th>
+                    <th style="width :33.333333333333336%" class="sorting_asc" rowspan="1" colspan="1">日期</th>
+                    <th style="width :33.333333333333336%" class="sorting" rowspan="1" colspan="1">设备激活</th>
+                    <th style="width :33.333333333333336%" class="sorting" rowspan="1" colspan="1">新增玩家</th>
                 </tr>
                 </thead>
 

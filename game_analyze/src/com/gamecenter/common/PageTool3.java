@@ -79,7 +79,7 @@ public class PageTool3 {
 		if (currentPage == 1) {
 			leftString = new StringBuffer("");
 		} else {
-			leftString = new StringBuffer(getUrl() + "1'><font class='page_up_down'>« 首页</font></a>" + getUrl() + (getCurrentPage() - 1) + "'<font class='page_up_down'>上一页</font></a>");
+			leftString = new StringBuffer(getUrl() + "1'><span class='page_up_down'>« 首页</span></a>" + getUrl() + (getCurrentPage() - 1) + "'<span class='page_up_down'>上一页</span></a>");
 		}
 		return leftString.toString();
 	}
@@ -89,7 +89,7 @@ public class PageTool3 {
 		if (currentPage == 1) {
 			leftString = new StringBuffer("");
 		} else {
-			leftString = new StringBuffer("<a href='javascript:;' num=1><font class='page_up_down'>« 首页</font></a><a href='javascript:;' num='" + (getCurrentPage() - 1) + "'><font class='page_up_down'>上一页</font></a>");
+			leftString = new StringBuffer("<a href=\"javascript:void(0);\" num=1><span class=\"page_up_down\">« 首页</span></a><a href=\"javascript:void(0);\" num=\"" + (getCurrentPage() - 1) + "\"><span class=\"page_up_down\">上一页</span></a>");
 		}
 		return leftString.toString();
 	}
@@ -99,7 +99,7 @@ public class PageTool3 {
 		if (currentPage == totalPageCount || totalPageCount == 0) {
 			rightString = new StringBuffer("");
 		} else {
-			rightString = new StringBuffer(getUrl() + (getCurrentPage() + 1) + "'><font class='page_up_down'>下一页</font></a>" + getUrl() + (getTotalPageCount()) + "'<font class='page_up_down'>尾页 »</font></a>");
+			rightString = new StringBuffer(getUrl() + (getCurrentPage() + 1) + "'><span class='page_up_down'>下一页</span></a>" + getUrl() + (getTotalPageCount()) + "'<span class='page_up_down'>尾页 »</span></a>");
 		}
 		return rightString.toString();
 	}
@@ -109,7 +109,7 @@ public class PageTool3 {
 		if (currentPage == totalPageCount || totalPageCount == 0) {
 			rightString = new StringBuffer("");
 		} else {
-			rightString = new StringBuffer("<a href='javascript:;' num='" + (getCurrentPage() + 1) + "'><font class='page_up_down'>下一页</font></a><a href='javascript:;' num='" + (getTotalPageCount()) + "'><font class='page_up_down'>尾页 »</font></a>");
+			rightString = new StringBuffer("<a href=\"javascript:void(0);\" num=\"" + (getCurrentPage() + 1) + "\"><span class=\"page_up_down\">下一页</span></a><a href=\"javascript:void(0);\" num=\"" + (getTotalPageCount()) + "\"><span class=\"page_up_down\">尾页 »</span></a>");
 		}
 		return rightString.toString();
 	}
@@ -162,9 +162,9 @@ public class PageTool3 {
 		if (totalPageCount <= lineCursor) {
 			for (int i = 1; i < this.totalPageCount + 1; i++) {
 				if (i == this.currentPage) {
-					centerString.append("<a   href='javascript:;' class='on'>" + i + "</a>");
+					centerString.append("<a   href=\"javascript:void(0);\" class=\"on\">" + i + "</a>");
 				} else {
-					centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
+					centerString.append("<a href=\"javascript:void(0);\" num=\"" + i + "\">" + i + "</a>");
 				}
 			}
 		} else {
@@ -172,26 +172,26 @@ public class PageTool3 {
 			if (s < 0) {
 				for (int i = 1; i < lineCursor + 1; i++) {
 					if (i == this.currentPage) {
-						centerString.append("<a  href='javascript:;' class='on'>" + i + "</a>");
+						centerString.append("<a  href=\"javascript:void(0);\" class=\"on\">" + i + "</a>");
 					} else {
-						centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
+						centerString.append("<a href=\"javascript:void(0);\" num=\"" + i + "\">" + i + "</a>");
 					}
 				}
 			} else {
 				if (s + lineCursor > totalPageCount) {
 					for (int i = totalPageCount - lineCursor + 1; i <= totalPageCount; i++) {
 						if (i == this.currentPage) {
-							centerString.append("<a   href='javascript:;' class='on'>" + i + "</a>");
+							centerString.append("<a   href=\"javascript:void(0);\" class=\"on\">" + i + "</a>");
 						} else {
-							centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
+							centerString.append("<a href=\"cjavascript:void(0);\" num=\"" + i + "\">" + i + "</a>");
 						}
 					}
 				} else {
 					for (int i = s + 1; i < lineCursor + s + 1; i++) {
 						if (i == this.currentPage) {
-							centerString.append("<a  href='javascript:;' class='on'>" + i + "</a>");
+							centerString.append("<a  href=\"javascript:void(0);\" class=\"on\">" + i + "</a>");
 						} else {
-							centerString.append("<a href='javascript:;' num='" + i + "'>" + i + "</a>");
+							centerString.append("<a href=\"javascript:void(0);\" num=\"" + i + "\">" + i + "</a>");
 						}
 					}
 				}

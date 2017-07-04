@@ -32,14 +32,14 @@
                               onsubmit="return false;">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <th width="180">帐号：</th>
+                                    <th style="width :180">帐号：</th>
                                     <td><input type="text" class="textinput requireinput" name="name" id="name"
                                                style="width:180px;" value="${user.name}"/> &nbsp;(登录系统时使用)
                                         <input type="hidden" value="${user.uid}" name="uid" id="uid"/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th width="180">系统角色：</th>
+                                    <th style="width :180">系统角色：</th>
                                     <td>
                                         <select name="roleid" id="roleid">
                                             <c:forEach var="item" items="${roles}">
@@ -49,7 +49,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th width="180">密码：</th>
+                                    <th style="width :180">密码：</th>
                                     <td>
                                         <input type="password" class="textinput requireinput" name="pwd" id="pwd"
                                                style="width:180px;" value="${user.pwd}"/>
@@ -57,21 +57,21 @@
                                 </tr>
 
                                 <tr>
-                                    <th width="180">确认密码：</th>
+                                    <th style="width :180">确认密码：</th>
                                     <td>
                                         <input type="password" class="textinput requireinput" name="repwd" id="repwd"
                                                style="width:180px;" value="${user.pwd}"/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th width="180">姓名：</th>
+                                    <th style="width :180">姓名：</th>
                                     <td>
                                         <input type="text" class="textinput requireinput" name="realname" id="realname"
                                                style="width:180px;" value="${user.realname}"/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th width="180">电话：</th>
+                                    <th style="width :180">电话：</th>
                                     <td>
                                         <input type="text" class="textinput" name="tel" id="tel" style="width:180px;"
                                                value="${user.tel}"/>&nbsp;(方便及时联系)

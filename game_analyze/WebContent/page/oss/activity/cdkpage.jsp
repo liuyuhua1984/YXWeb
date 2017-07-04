@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html >
+<html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>玩家账号</title>
     <c:import url="/headmsg"></c:import>
     <style type="text/css">
@@ -108,12 +110,12 @@
                     <table class="table table-striped table-bordered responsive" id="dtable">
                         <thead>
                         <tr>
-                            <th width="40" style="background-color: #ffd700">序号</th>
-                            <th width="120" style="background-color: #ffd700">活动</th>
-                            <th width="250" style="background-color: #ffd700">卡密</th>
-                            <th width="80" style="background-color: #ffd700">状态</th>
-                            <th width="*" style="background-color: #ffd700">生成时间</th>
-                            <th width="100" style="background-color: #ffd700">操作</th>
+                            <th style="width :40px;background-color: #ffd700">序号</th>
+                            <th style="width :120px;background-color: #ffd700">活动</th>
+                            <th style="width :250px;background-color: #ffd700">卡密</th>
+                            <th style="width :80px;background-color: #ffd700">状态</th>
+                            <th style="width :*;background-color: #ffd700">生成时间</th>
+                            <th style="width :100px;background-color: #ffd700">操作</th>
                         </tr>
                         </thead>
                         <tbody id="data">

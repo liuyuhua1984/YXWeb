@@ -26,7 +26,7 @@
                         <form method='post' id="form" name="form" action="/nodeManage/addData.do">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <th width="200">说明</th>
+                                    <th style="width :200">说明</th>
                                     <td>
                                         <p>1. 只填写模块，为模块的公共授权<br/>2. 填写操作与模块，为指定模块中节点的授权</p>
                                     </td>

@@ -6,18 +6,18 @@
        id="dtable">
     <thead>
     <tr>
-        <th width="30" style="background-color: #ffd700">序</th>
-        <th width="120" style="background-color: #ffd700">区服名称</th>
-        <th width="60" style="background-color: #ffd700">编号</th>
-        <th width="80" style="background-color: #ffd700">运营商</th>
-        <th width="80" style="background-color: #ffd700">游戏</th>
-        <th width="80" style="background-color: #ffd700">域名</th>
-        <th width="40" style="background-color: #ffd700">状态</th>
-        <th width="40" style="background-color: #ffd700">混服</th>
-        <th width="100" style="background-color: #ffd700">数据上报</th>
-        <th width="*" style="background-color: #ffd700">邀请开关</th>
-        <th width="80" style="background-color: #ffd700">开服时间</th>
-        <th width="100" style="background-color: #ffd700">操作</th>
+        <th style="width :30px;background-color: #ffd700">序</th>
+        <th style="width :120px;background-color: #ffd700">区服名称</th>
+        <th style="width :60px;background-color: #ffd700">编号</th>
+        <th style="width :80px;background-color: #ffd700">运营商</th>
+        <th style="width :80px;background-color: #ffd700">游戏</th>
+        <th style="width :80px;background-color: #ffd700">域名</th>
+        <th style="width :40px;background-color: #ffd700">状态</th>
+        <th style="width :40px;background-color: #ffd700">混服</th>
+        <th style="width :100px;background-color: #ffd700">数据上报</th>
+        <th style="width :150px;background-color: #ffd700">邀请开关</th>
+        <th style="width :80px;background-color: #ffd700">开服时间</th>
+        <th style="width :100px;background-color: #ffd700">操作</th>
     </tr>
     </thead>
     <tbody>

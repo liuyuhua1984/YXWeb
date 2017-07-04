@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>玩家账号</title>
     <c:import url="/headmsg"></c:import>
     <script  type="text/javascript"  src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/passport" defer
@@ -125,12 +127,12 @@
                     <table class="table table-striped table-bordered responsive" id="dtable">
                         <thead>
                         <tr>
-                            <th width="100" style="background-color: #ffd700">区服</th>
-                            <th width="100" style="background-color: #ffd700">账号</th>
-                            <th width="100" style="background-color: #ffd700">角色名</th>
-                            <th class="sortth" width="50" style="background-color: #ffd700" par="grade" atr='asc'>等级
+                            <th style="width :100px;background-color: #ffd700">区服</th>
+                            <th style="width :100px;background-color: #ffd700">账号</th>
+                            <th style="width :100px;background-color: #ffd700">角色名</th>
+                            <th class="sortth" style="width:50px;background-color: #ffd700" par="grade" atr='asc'>等级
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b></th>
-                            <th class="sortth" width="80" style="background-color: #ffd700" par="curmoney" atr='asc'>
+                            <th class="sortth"  style="width:80px;background-color: #ffd700" par="curmoney" atr='asc'>
                                 当前金币
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b></th>
                                 <!--  
@@ -139,17 +141,17 @@
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b>
                             </th>
                             -->
-                            <th class="sortth" width="80" style="background-color: #ffd700" par="totalconsume"
+                            <th class="sortth" style="width:80px;background-color: #ffd700" par="totalconsume"
                                  atr='asc'>消耗[金币]
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b>
                             </th>
-                            <th width="60" style="background-color: #ffd700">状态</th>
-                            <th width="60" style="background-color: #ffd700">是否在线</th>
+                            <th style="width :60px;background-color: #ffd700">状态</th>
+                            <th style="width :60px;background-color: #ffd700">是否在线</th>
                             <th class="sortth" width="*" style="background-color: #ffd700"  par="totalonline"
                                  atr='asc'>累计在线时长
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b>
                             </th>
-                            <th width="100" style="background-color: #ffd700">操作</th>
+                            <th style="width :100px;background-color: #ffd700">操作</th>
                         </tr>
                         </thead>
                         <tbody id="data">

@@ -55,7 +55,7 @@ public class PlayerFeedBackController extends BaseController {
 
 		String res = "1";
 	
-		if (Tools.isPhoneLegal(phone)){
+		if (phone != null && openId != null &&content != null &&  Tools.isPhoneLegal(phone)){
 			OpFeedbackQuestion quest = new OpFeedbackQuestion();
 			quest.setOpenId(openId);
 			quest.setContent(content);

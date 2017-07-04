@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>动态菜单</title>
     <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
     <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
@@ -15,9 +15,9 @@
 </head>
 <body>
 
-<div id="talkinggameData" style="min-height: 1700px;">
+<div id="talkinggameData" >
     <div class="hide" id="talkinggamePages" style="display: block;">
-        <div id="minweb" class="main" style="min-height: 1730px;">
+        <div id="minweb" class="main">
             <!-- 左侧菜单 -->
             <div id="menu-banner">
                 <div class="menu l">

@@ -56,10 +56,10 @@
                         <form method='post' id="form" name="form" action="/newsManage/addData.do">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <td width="10%">&nbsp;</td>
-                                    <td width="65%">新闻信息发布:(请完善下列信息后单击提交保存)</td>
-                                    <td width="10%">&nbsp;</td>
-                                    <td width="15%">&nbsp;</td>
+                                    <td style ="width:10%">&nbsp;</td>
+                                    <td style ="width:65%">新闻信息发布:(请完善下列信息后单击提交保存)</td>
+                                    <td style ="width:10%">&nbsp;</td>
+                                    <td style ="width:15%">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:right;">标题:</td>

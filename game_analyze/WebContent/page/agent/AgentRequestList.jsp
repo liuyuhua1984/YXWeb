@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 <title>代理审批</title>
 <c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
@@ -113,13 +115,13 @@
 						<table class="table table-striped table-bordered responsive" id="dtable">
 							<thead>
 								<tr>
-									<th width="100">序</th>
-									<th width="100">代理名</th>
-									<th width="150">邀请码</th>
-									<%--<th width="100">交易号</th>--%>
-									<th width="60">微信号</th>
-									<th width="60">电话</th>
-									<th width="*">操作</th>
+									<th style="width :100px">序</th>
+									<th style="width :100px">代理名</th>
+									<th style="width :150px">邀请码</th>
+									<%--<th style="width :100">交易号</th>--%>
+									<th style="width :60px">微信号</th>
+									<th style="width :60px">电话</th>
+									<th style="width :100px">操作</th>
 								</tr>
 							</thead>
 							<tbody id="data">

@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 
     <title>oss</title>
     <meta name="description" content=""/>
@@ -14,7 +15,7 @@
     <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
     <meta name="HandheldFriendly" content="True"/>
     <meta name="MobileOptimized" content="320"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
 
     <%--公共功能--%>
     <script type="text/javascript" src="${ctxPage}/static/js/common.js"></script>
@@ -116,8 +117,8 @@
                     <table class="table table-striped table-bordered responsive" id="dtable">
                         <thead>
                         <tr>
-                            <th width="60">属性</th>
-                            <th width="140">属性值</th>
+                            <th style="width :60px">属性</th>
+                            <th style="width :140px">属性值</th>
                         </tr>
                         </thead>
                         <tbody>

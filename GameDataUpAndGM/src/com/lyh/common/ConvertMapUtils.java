@@ -40,8 +40,8 @@ import com.game.protocol.gm.GmRechargeHttpProtocol;
 import com.game.protocol.gm.GmRechargeProtocolRequest;
 import com.game.protocol.gm.GmRoleInfoHttpProtocol;
 import com.game.protocol.gm.GmRoleInfoProtocolRequest;
-import com.game.protocol.gm.GmServerToGMPlatformHttpProtocol;
-import com.game.protocol.gm.GmServerToGMPlatformProtocolRequest;
+import com.game.protocol.gm.GmJHPlayerHttpProtocol;
+import com.game.protocol.gm.GmJHPlayerProtocolRequest;
 import com.lyh.dataup.log.DataUpBase;
 
 /** 
@@ -72,9 +72,9 @@ public class ConvertMapUtils {
 		Class<? extends DataUpBase> p = httpMessageMap.get(head);
 		if (p == null) {
 			
-			if (head == IMsgCode.GM_CONNECT_HTTP_PROTOCOL) {
+			if (head == IMsgCode.GM_JH_PLAYER_HTTP_PROTOCOL) {
 				/** GM平台接入验证. */
-				httpMessageMap.put(head, GmServerToGMPlatformHttpProtocol.class);
+				httpMessageMap.put(head, GmJHPlayerHttpProtocol.class);
 			} else if (head == IMsgCode.GM_RECHARGE_HTTP_PROTOCOL) {
 				/** GM平台充值游戏。 */
 				httpMessageMap.put(head, GmRechargeHttpProtocol.class);
@@ -156,9 +156,9 @@ public class ConvertMapUtils {
 		Class<? extends DataUpBase> p = httpRqeustMessageMap.get(head);
 		if (p == null) {
 			
-			if (head == IMsgCode.GM_CONNECT_HTTP_PROTOCOL) {
+			if (head == IMsgCode.GM_JH_PLAYER_HTTP_PROTOCOL) {
 				/** GM平台接入验证. */
-				httpRqeustMessageMap.put(head, GmServerToGMPlatformProtocolRequest.class);
+				httpRqeustMessageMap.put(head, GmJHPlayerProtocolRequest.class);
 			} else if (head == IMsgCode.GM_RECHARGE_HTTP_PROTOCOL) {
 				/** GM平台充值游戏。 */
 				httpRqeustMessageMap.put(head, GmRechargeProtocolRequest.class);

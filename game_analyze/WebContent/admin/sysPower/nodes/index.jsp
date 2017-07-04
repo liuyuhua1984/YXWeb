@@ -50,20 +50,20 @@
                         <table id="checkList" class="table-list list" cellpadding="0" cellspacing="0" border="0">
                             <thead>
                             <tr>
-                                <th width="30" class="first">
+                                <th style="width :30" class="first">
                                     <input type="checkbox" onclick="checkAll('checkList')">
                                 </th>
-                                <th width="50">编号</th>
+                                <th style="width :50">编号</th>
                                 <th>操作</th>
-                                <th width="100">操作名</th>
-                                <th width="100">模块</th>
-                                <th width="80">模块名</th>
-                                <th width="80">所属导航</th>
-                                <th width="80">授权类型</th>
-                                <th width="80">节点排序</th>
-                                <th width="80">菜单显示</th>
-                                <th width="80">状态</th>
-                                <th width="80">操作</th>
+                                <th style="width :100">操作名</th>
+                                <th style="width :100">模块</th>
+                                <th style="width :80">模块名</th>
+                                <th style="width :80">所属导航</th>
+                                <th style="width :80">授权类型</th>
+                                <th style="width :80">节点排序</th>
+                                <th style="width :80">菜单显示</th>
+                                <th style="width :80">状态</th>
+                                <th style="width :80">操作</th>
                             </tr>
                             </thead>
                             <tbody>
