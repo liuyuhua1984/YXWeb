@@ -26,14 +26,14 @@
                         <form action="/userManage/changePwd.do" method='post' id="form" name="form">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <th width="180">当前密码：</th>
+                                    <th style="width :180">当前密码：</th>
                                     <td>
                                         <input type="password" class="textinput" name="nowPwd"/>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <th width="180">新密码：</th>
+                                    <th style="width :180">新密码：</th>
                                     <td>
                                         <input type="password" class="textinput" name="newPwd"/>
                                     </td>

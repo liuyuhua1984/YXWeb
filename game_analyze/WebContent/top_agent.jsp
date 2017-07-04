@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="utf-8">
+    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>元巫科技运营支撑系统</title>
     <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
     <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
@@ -89,12 +90,12 @@
 <div style="z-index:99999;" id="topBanner" class="top">
     <div class="header">
         <div class="logo l">
-            <a href="#"><img title="" alt="" src="${ctxPage}/static/gameLogo.png" height="48" width="100"></a>
+           <!--  <a href="#"><img title="" alt="" src="${ctxPage}/static/gameLogo.png" height="48" width="100"></a>-->
         </div>
         <div class="nav r">
-            <font id="noticeTips" class="Information tip"></font>
-            <font class="user">欢迎您，${AgentUser.agentName}</font>
-            <font><a class="logout" id="logout" href="${ctxPage}/loginOut/out/agent">注销</a></font>
+            <span id="noticeTips" class="Information tip"></span>
+            <span class="user">欢迎您，${AgentUser.agentName}</span>
+            <span><a class="logout" id="logout" href="${ctxPage}/loginOut/out/agent">注销</a></span>
 
         </div>
     </div>

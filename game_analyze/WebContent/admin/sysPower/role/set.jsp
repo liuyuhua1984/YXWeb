@@ -30,12 +30,12 @@
                         <form action="/userManage/setData.do" method='post' id="form" name="form" onsubmit="deal3();">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <th width="180">用户名称：</th>
+                                    <th style="width :180">用户名称：</th>
                                     <td>${userName}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th width="180">权限设置</th>
+                                    <th style="width :180">权限设置</th>
                                     <td>
                                         1. 如果要指定当前模块下的所有权限，可选中该模块名称 <br>
                                         2. 如果要指定当前模块下的操作权限，可选中该模块的操作名称

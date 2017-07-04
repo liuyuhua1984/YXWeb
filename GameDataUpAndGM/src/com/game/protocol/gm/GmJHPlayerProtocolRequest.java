@@ -13,27 +13,25 @@ import com.lyh.dataup.log.DataUpBase;
  * @version
  * @see
  */
-public class GmServerToGMPlatformProtocolRequest extends DataUpBase implements IMsgCode {
+public class GmJHPlayerProtocolRequest extends DataUpBase implements IMsgCode {
 	
 	/****/
 	private static final long serialVersionUID = 6215974659551468586L;
 	
-	public GmServerToGMPlatformProtocolRequest() {
-		super(GM_CONNECT_HTTP_PROTOCOL);
+	public GmJHPlayerProtocolRequest() {
+		super(GM_JH_PLAYER_HTTP_PROTOCOL);
 		// TODO Auto-generated constructor stub
 	}
 	
-	/** MD5验证 **/
-	private String sigstr;
-	
+	/**玩家名称 **/
+	private String playerName;
 
-	
-	public String getSigstr() {
-		return sigstr;
+	public String getPlayerName() {
+		return playerName;
 	}
-	
-	public void setSigstr(String sigstr) {
-		this.sigstr = sigstr;
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 	
 	

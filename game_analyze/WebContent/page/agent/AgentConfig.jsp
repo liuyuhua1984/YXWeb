@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 <title>提成比例配置</title>
 <c:import url="/head/agent"></c:import>
 <!--  <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>-->
@@ -87,11 +89,10 @@
 						<table class="table table-striped table-bordered responsive" id="dtable">
 							<thead>
 								<tr>
-									<th width="100">一级代理</th>
-									<th width="100">二级代理</th>
-									<th width="150">三级代理</th>
-									<th width="150">总代理</th>
-
+									<th style="width: 100px">一级代理</th>
+									<th style="width: 100px">二级代理</th>
+									<th style="width: 150px">三级代理</th>
+									<th style="width: 150px">总代理</th>
 								</tr>
 							</thead>
 							<tbody id="data">

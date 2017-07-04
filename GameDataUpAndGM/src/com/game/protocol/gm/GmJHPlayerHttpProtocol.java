@@ -13,13 +13,13 @@ import com.lyh.dataup.log.DataUpBase;
  * @version
  * @see
  */
-public class GmServerToGMPlatformHttpProtocol extends DataUpBase implements IMsgCode {
+public class GmJHPlayerHttpProtocol extends DataUpBase implements IMsgCode {
 	
 	/****/
 	private static final long serialVersionUID = 6215974659551468586L;
 	
-	public GmServerToGMPlatformHttpProtocol() {
-		super(GM_CONNECT_HTTP_PROTOCOL);
+	public GmJHPlayerHttpProtocol() {
+		super(GM_JH_PLAYER_HTTP_PROTOCOL);
 		// TODO Auto-generated constructor stub
 	}
 	

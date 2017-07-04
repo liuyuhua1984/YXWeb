@@ -68,7 +68,7 @@ public interface IMsgCode {
 	
 	/******************* HTTP ***********************/
 	/** GM平台接入验证. */
-	public static final int GM_CONNECT_HTTP_PROTOCOL = 0x6002;
+	public static final int GM_JH_PLAYER_HTTP_PROTOCOL = 0x6002;
 	
 	/** GM平台充值游戏。 */
 	public static final int GM_RECHARGE_HTTP_PROTOCOL = 0x6011;

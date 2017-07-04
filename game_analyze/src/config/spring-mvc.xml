@@ -17,6 +17,7 @@
 	<mvc:resources mapping="/static/**" location="/static/" />
 	<mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/admin/**" location="/admin/" />
+	<mvc:resources mapping="/upload/**" location="/upload/"/>
 	<!-- or <mvc:default-servlet-handler/> 与上面mvc:resources标签选其一即可,这里如果配置，必须配置<mvc:annotation-driven/>其他controller才可正常工作 -->
 	<!-- 解决@ResponseBody注解直接返回对象并转换成JSON时出现406问题，同时解决了返回String类型乱码的问题 -->
 	<mvc:annotation-driven>
@@ -76,7 +77,15 @@
 	
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="10000000"/>
+        <property name="defaultEncoding" value="utf-8"/>
     </bean>
 
-
+ <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+         <property name="exceptionMappings">
+            <props>
+               <!-- 遇到MaxUploadSizeExceededException异常时,自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->
+                 <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/page/commons/403.html</prop>
+          </props>
+         </property>
+    </bean>
 </beans>

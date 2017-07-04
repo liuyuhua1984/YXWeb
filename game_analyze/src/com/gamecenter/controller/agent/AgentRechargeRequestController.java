@@ -161,6 +161,9 @@ public class AgentRechargeRequestController {
 					}
 				} else {
 					OpAgentList agent = agentListService.findByName(platformName);
+					if (agent.getRemainMoney() == null){
+						agent.setRemainMoney(0);
+					}
 					if (agent != null && agent.getRemainMoney() >= gold) {
 						List<OpGameapp> appList = appService.getAppList();
 						OpGameapp gameApp = appList.size() > 0 ? appList.get(0) : null;

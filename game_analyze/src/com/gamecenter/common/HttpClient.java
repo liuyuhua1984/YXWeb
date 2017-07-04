@@ -65,7 +65,8 @@ public class HttpClient {
 			try{
 				con.connect();
 			}catch(Exception e){
-				logger.error("http连接问题", e);
+				//logger.error("http连接问题", e);
+				return null;
 			}
 			if (isPost) {
 				OutputStream os = con.getOutputStream();

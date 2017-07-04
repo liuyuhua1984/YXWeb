@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>用户活跃</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -66,7 +69,7 @@
                             <th>开服时间</th>
                             <th>时间</th>
                             <th>新增活跃</th>
-                            <th width="*">活跃</th>
+                            <th style="width :*">活跃</th>
                         </tr>
                         </thead>
 

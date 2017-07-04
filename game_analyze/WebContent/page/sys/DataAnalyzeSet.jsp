@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>数据分析设置</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -122,11 +124,11 @@
                            id="dtable2">
                         <thead>
                         <tr>
-                            <th width="120">类型</th>
-                            <th width="120">时间</th>
-                            <th width="80">状态</th>
-                            <th width="80">耗时</th>
-                            <th width="*">备注</th>
+                            <th style="width :120px">类型</th>
+                            <th style="width :120px">时间</th>
+                            <th style="width :80px">状态</th>
+                            <th style="width :80px">耗时</th>
+                            <th style="width :*">备注</th>
                         </tr>
                         </thead>
 

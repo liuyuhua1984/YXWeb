@@ -7,11 +7,14 @@
 		<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
 
 		<td>${item.openId}</td>
-		<td>${item.agentName}</td>
 		<td>${item.phone}</td>
-		<td>${item.name}</td>
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		<td>${item.content}</td>
+		<td>
+			<textarea  class="span12"  name="content" rows="3"   cols ="4" readonly="readonly">
+				${item.content}
+			</textarea>
+
+		</td>
 		<td><a type="button" class="btn btn-small" href="javascript:void(0);" onclick='$("#act${item.id}").attr("checked", "checked");delAgent(${item.id});'>删除</a></td>
 	</tr>
 </c:forEach>
@@ -34,7 +37,7 @@
 
 		//发起请求 提交数据
 		$.ajax({
-			url : "${ctxPage}//gmt/player/feedback/del",
+			url : "${ctxPage}/gmt/player/feedback/del",
 			type : "POST",
 			cache : false,
 			data : {

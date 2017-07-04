@@ -30,14 +30,14 @@
                         <form action="/roleManage/addData.do" method='post' id="form" name="form" onsubmit="deal3();">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <th width="180">角色名称</th>
+                                    <th style="width :180">角色名称</th>
                                     <td width="100"><input type="text" class="textinput requireinput" name="rolename"
                                                            value="${roleName}"/>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <th width="180">权限设置</th>
+                                    <th style="width :180">权限设置</th>
                                     <td colspan="2">
                                         1. 如果要指定当前模块下的所有权限，可选中该模块名称 <br>
                                         2. 如果要指定当前模块下的操作权限，可选中该模块的操作名称
@@ -45,7 +45,7 @@
                                 </tr>
 
                                 <tr>
-                                    <th width="180">模块</th>
+                                    <th style="width :180">模块</th>
                                     <td colspan="2">操作</td>
                                 </tr>
 

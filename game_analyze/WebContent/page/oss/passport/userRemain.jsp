@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>用户留存</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -68,7 +71,7 @@
                             <th>次日留存</th>
                             <th>3日留存</th>
                             <th>7日留存</th>
-                            <th width="*">30日留存</th>
+                            <th style="width :*">30日留存</th>
                         </tr>
                         </thead>
 

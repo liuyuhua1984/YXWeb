@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
-     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-<title>添加游戏代理信息</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+<title>金花</title>
 <%--<c:import url="/head/agent"></c:import>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/common.js?1=2"></script>
 
@@ -97,8 +97,33 @@
 				<%-- content goes here --%>
 				<form id="wform" class="form-horizontal themed" onsubmit="return false;" />
 				<fieldset>
+				<div class="control-group">
+								<label class="control-label">游戏名称</label>
+
+								<div class="controls">
+									<select id="appid" name="appid" class="span12 with-search" onchange="changeWorld(this.value)">
+										<c:forEach var="item" items="${appList}">
+											<option value="${item.appid}" />
+                                        ${item.appname}
+                                    </c:forEach>
+									</select>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label">区服</label>
+
+								<div class="controls">
+									<select id="wid" name="wid" class="span12 with-search">
+										<c:forEach var="item" items="${worldList}">
+											<option value="${item.worldid}" />
+                                        ${item.wname}
+                                    </c:forEach>
+									</select>
+								</div>
+							</div>
 					<div class="control-group">
-						<label class="control-label" for="name">昵称：</label>
+						<label class="control-label" for="name">玩家昵称：</label>
 						<%-- 
                             <div class="controls">
                                 <select id="appid" name="appid" class="span12 with-search">
@@ -110,10 +135,11 @@
                             </div> --%>
 
 						<div class="controls">
-							<input type="text" class="span12" id="name" name="name" value="" maxlength="12" />
+							<input type="text" class="span12" id="name" name="name" value="" maxlength="20" />
+								<p class="help-block">请在玩家进入房间后输入玩家昵称</p>
 						</div>
 					</div>
-
+					<%--
 					<div class="control-group">
 						<label class="control-label" for="password">密码</label>
 
@@ -156,7 +182,7 @@
 							<input type="number" class="span12" id="blankCard" name="blankCard" value="" maxlength="20" />
 						</div>
 					</div>
-
+	 --%>
 					<span id="tishi"></span>
 					<div class="form-actions" style="text-align: left;">
 						<button type="submit" class="btn medium btn-danger" onclick="saveMsg()">提交</button>
@@ -181,12 +207,10 @@
 			//  var jsonInfro = $("#wform").serializeArray();
 	
 			var name = $('#name').val();
-			var password = $('#password').val();
-			var inviteCode = $('#inviteCode').val();
-			var weChat = $('#weChat').val();
-			var phone = $('#phone').val();
-		    var blankCard = $('#blankCard').val();
-			if (name == "" || password == "" || inviteCode == "" || weChat == "" || phone == "" || blankCard=="") {
+			var appId = $('#appid').val();
+			var worldId = $('#wid').val();
+
+			if (name == "") {
 				alert("请完善信息！");
 				return false;
 			}
@@ -199,15 +223,12 @@
 			mark = 1;
 	
 			$.ajax({
-				url : "${ctxPage}/agent/register",
+				url : "${ctxPage}/gmt/jh/cat",
 				type : 'POST',
 				data : {
 					name : name,
-					password : password,
-					inviteCode : inviteCode,
-					weChat : weChat,
-					phone : phone,
-					blankCard: blankCard
+					appId: appId,
+					worldId: worldId
 				},
 				dataType : 'json',
 				error : function() {
@@ -219,25 +240,8 @@
 					if (data.res == "1") {
 						alert('操作成功！');
 						location.reload();
-					} else if (data.res == "-3") {
-						alert('邀请码已过时！');
-					} else if (data.res == "-4") { //名称没有被占用
-						alert('代理名称已存在！');
-	
-					} else if (data.res == "-1") {
-						alert('数据不合法！');
-					} else if (data.res == "-5") {
-						alert('电话号码不合法！');
-					} else if (data.res == "-6") {
-						alert('电话号码已存在！');
-	
-					} else if (data.res == "-7") {
-	
-						alert('微信号已存在!');
-					}else if (data.res == "-8") {
-						alert('权限不足!');
 					} else {
-						alert('邀请码不存在 ！');
+						alert('玩家不存在,或者不在线 ！');
 					}
 	
 					mark = 0;

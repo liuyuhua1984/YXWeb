@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>充值排行</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -59,15 +62,15 @@
                         <tr>
                             <th style="text-align: center;background-color: #f6931f">区服名称</th>
                             <th style="text-align: center;background-color: #f6931f">名称</th>
-                            <th style="text-align: center;background-color: #f6931f" width="100px;">账号</th>
+                            <th style="text-align: center;background-color: #f6931f;width:100;">账号</th>
                             <th style="text-align: center;background-color: #f6931f">充值总额[元]</th>
                             <th style="text-align: center;background-color: #f6931f">充值次数</th>
                             <th style="text-align: center;background-color: #f6931f">平均充值[元]</th>
-                            <th style="text-align: center;background-color: #f6931f" width="150px;">首次充值</th>
-                            <th style="text-align: center;background-color: #f6931f" width="150px;">最后充值</th>
+                            <th style="text-align: center;background-color: #f6931f;width:150;">首次充值</th>
+                            <th style="text-align: center;background-color: #f6931f;width:150;">最后充值</th>
                             <th style="text-align: center;background-color: #f6931f">总消耗[金币]</th>
-                            <th width="*" style="text-align: center;background-color: #f6931f">当前金币</th>
-                            <th style="text-align: center;background-color: #f6931f" width="50px;">等级</th>
+                            <th style="width :*;text-align: center;background-color: #f6931f">当前金币</th>
+                            <th style="text-align: center;background-color: #f6931f;width:50">等级</th>
                         </tr>
                         </thead>
 

@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>新增用户监控</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -60,7 +63,7 @@
                             <th>创建数</th>
                             <th>新增DAU</th>
                             <th>创注比</th>
-                            <th width="*">进创比</th>
+                            <th style="width :*">进创比</th>
                         </tr>
                         </thead>
 

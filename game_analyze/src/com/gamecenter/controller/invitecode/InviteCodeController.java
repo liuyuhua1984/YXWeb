@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,7 +38,7 @@ public class InviteCodeController {
 	
 	private String KEY = "PINGANBANK_NET_B2C";
 	
-	@RequestMapping("/invite/code/check")
+	@RequestMapping(value="/invite/code/check",method=RequestMethod.POST)
 	@ResponseBody
 	public ModelMap checkInviteCode(HttpSession session, HttpServletRequest req) {
 		ModelMap map = new ModelMap();

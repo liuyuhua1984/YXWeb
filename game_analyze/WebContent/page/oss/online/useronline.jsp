@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>每日在线</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -65,8 +68,8 @@
                             <th style="text-align: center;background-color: #f6931f">区服</th>
                             <th>时间</th>
                             <th>最高在线</th>
-                            <th width="*">平均在线</th>
-                            <th width="100px">明细</th>
+                            <th style="width :*">平均在线</th>
+                            <th style="width :100px">明细</th>
                         </tr>
                         </thead>
 

@@ -3,7 +3,7 @@ var ctxPage = "/"+localObj.pathname.split("/")[1];
 require.config({
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery: ctxPage+'/js/artDialog6/lib/jquery-1.10.2',
+        jquery: ctxPage+'/js/jquery-1.12.4',
         dialog: ctxPage+'/js/artDialog6/src/dialog',
         popup: ctxPage+'/js/artDialog6/src/popup',
         "dialog-config": ctxPage+'/js/artDialog6/src/dialog-config'
@@ -51,7 +51,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
    //     var appid = $("#appid").val();
         var worldid = $("#worldid").val();
         var htmlobj = $.ajax(
-        	{url: ctxPage+"/feedback/add/feedback/page?page=" + pid, cache: false, async: false})
+        	{url: ctxPage+"/gmt/player/feedback/page?page=" + pid, cache: false, async: false})
         	
         $("#data").html(htmlobj.responseText);
 		 $(".pagerx a").click(getPager);

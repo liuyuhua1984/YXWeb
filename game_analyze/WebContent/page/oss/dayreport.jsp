@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>综合日报</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -64,7 +67,7 @@
                             <th>新增APA</th>
                             <th>当日营收</th>
                             <th>付费渗透率</th>
-                            <th width="*">ARPU</th>
+                            <th style="width :*">ARPU</th>
                         </tr>
                         </thead>
 

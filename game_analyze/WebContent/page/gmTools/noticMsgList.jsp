@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>广播记录</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -41,13 +43,13 @@
                     <table class="table table-striped table-bordered responsive" id="dtable">
                         <thead>
                         <tr>
-                            <th width="30">序</th>
-                            <th width="100">操作类型</th>
-                            <th width="100">游戏</th>
-                            <th width="100">区服</th>
-                            <th width="100">操作结果</th>
-                            <th width="140">时间</th>
-                            <th width="*">内容</th>
+                            <th style="width :30px">序</th>
+                            <th style="width :100px">操作类型</th>
+                            <th style="width :100px">游戏</th>
+                            <th style="width :100px">区服</th>
+                            <th style="width :100px">操作结果</th>
+                            <th style="width :140px">时间</th>
+                            <th style="width :*">内容</th>
                         </tr>
                         </thead>
                         <tbody>

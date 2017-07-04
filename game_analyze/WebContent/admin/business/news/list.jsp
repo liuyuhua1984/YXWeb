@@ -60,19 +60,19 @@
                         <table id="checkList" class="table-list list" cellpadding="0" cellspacing="0" border="0">
                             <thead>
                             <tr>
-                                <th width="30" class="first">
+                                <th style="width :30" class="first">
                                     <input type="checkbox" onclick="checkAll('checkList')">
                                 </th>
-                                <%--<th width="50">编号</th>--%>
+                                <%--<th style="width :50">编号</th>--%>
                                 <th>标题</th>
-                                <th width="100">分类</th>
-                                <%--<th width="100">标签</th>--%>
-                                <%--<th width="150">来源</th>--%>
-                                <th width="50">作者</th>
-                                <th width="150">发布时间</th>
-                                <%--<th width="100">图片新闻</th>--%>
-                                <%--<th width="50">置顶</th>--%>
-                                <th width="120">操作</th>
+                                <th style="width :100">分类</th>
+                                <%--<th style="width :100">标签</th>--%>
+                                <%--<th style="width :150">来源</th>--%>
+                                <th style="width :50">作者</th>
+                                <th style="width :150">发布时间</th>
+                                <%--<th style="width :100">图片新闻</th>--%>
+                                <%--<th style="width :50">置顶</th>--%>
+                                <th style="width :120">操作</th>
                             </tr>
                             </thead>
                             <tbody>

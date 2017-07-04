@@ -50,18 +50,18 @@
                         <table id="checkList" class="table-list list" cellpadding="0" cellspacing="0" border="0">
                             <thead>
                             <tr>
-                                <th width="30" class="first">
+                                <th style="width :30" class="first">
                                     <input type="checkbox" onclick="checkAll('checkList')">
                                 </th>
-                                <th width="100">管理帐号</th>
-                                <th width="100">所属权限组</th>
-                                <th width="100">最后登录时间</th>
-                                <th width="100">最后登录IP</th>
-                                <th width="100">真实姓名</th>
-                                <th width="50">次数</th>
-                                <th width="50">状态</th>
-                                <th width="120">联系电话</th>
-                                <th width="80">操作</th>
+                                <th style="width :100">管理帐号</th>
+                                <th style="width :100">所属权限组</th>
+                                <th style="width :100">最后登录时间</th>
+                                <th style="width :100">最后登录IP</th>
+                                <th style="width :100">真实姓名</th>
+                                <th style="width :50">次数</th>
+                                <th style="width :50">状态</th>
+                                <th style="width :120">联系电话</th>
+                                <th style="width :80">操作</th>
                             </tr>
                             </thead>
                             <tbody>

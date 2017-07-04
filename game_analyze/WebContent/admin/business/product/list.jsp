@@ -37,15 +37,15 @@
                         <table id="checkList" class="table-list list" cellpadding="0" cellspacing="0" border="0">
                             <thead>
                             <tr>
-                                <th width="30" class="first">
+                                <th style="width :30" class="first">
                                     <input type="checkbox" onclick="checkAll('checkList')">
                                 </th>
-                                <th width="200">名称</th>
+                                <th style="width :200">名称</th>
                                 <th>项目规模</th>
-                                <th width="150">认购起点</th>
-                                <th width="150">募集时间</th>
-                                <th width="100">风控措施</th>
-                                <th width="120">操作</th>
+                                <th style="width :150">认购起点</th>
+                                <th style="width :150">募集时间</th>
+                                <th style="width :100">风控措施</th>
+                                <th style="width :120">操作</th>
                             </tr>
                             </thead>
                             <tbody>

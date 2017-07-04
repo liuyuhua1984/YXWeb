@@ -2,16 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 <title>公告列表</title>
 <c:import url="/headmsg"></c:import>
+<script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/noticeleft" defer async="true"></script>
 </head>
 <body>
 	<%--<a class="btn btn-small" href="javascript:void(0);">kkk</a>--%>
 	<div style="margin-top: 10px;margin-left: 3px;">
-		<a href="${ctxPage}/gmt/notice/left/save" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 添加公告</a>
+		<a href="${ctxPage}/gmt/notice/left/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 添加公告</a>
 	</div>
 
 
@@ -40,19 +43,19 @@
 						<table class="table table-striped table-bordered responsive" id="dtable">
 							<thead>
 								<tr>
-									<th width="30">序</th>
-									<th width="100">游戏</th>
-									<th width="100">区服</th>
-									<th width="100">标题</th>
-									<th width="140">发送时间</th>
-									<th width="*">内容</th>
-									<th width="100">操作</th>
+									<th style="width :30px">序</th>
+									<th style="width :100px">游戏</th>
+									<th style="width :100px">区服</th>
+									<th style="width :100px">标题</th>
+									<th style="width :140px">发送时间</th>
+									<th style="width :*">图片</th>
+									<th style="width :100px">操作</th>
 								</tr>
 							</thead>
 							<tbody id="data">
 
 
-								</c:forEach>
+			
 
 							</tbody>
 						</table>

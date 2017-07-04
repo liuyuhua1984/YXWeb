@@ -30,7 +30,7 @@
                         <form action="/nvaManage/updateData.do" method='post' id="form" name="form">
                             <table cellpadding="4" cellspacing="0" border="0" class="table-form">
                                 <tr>
-                                    <th width="180">菜单名称</th>
+                                    <th style="width :180">菜单名称</th>
                                     <td><input type="text" class="textinput requireinput" name="navName"
                                                value="${navidList.name}"/> &nbsp;&nbsp;(注意：short 值)
                                         <input type="hidden" name="navid" value="${navidList.navid}"/>
@@ -38,7 +38,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th width="180">菜单排序</th>
+                                    <th style="width :180">菜单排序</th>
                                     <td><input type="text" class="textinput requireinput" name="sort"
                                                value="${navidList.sort}"
                                                onkeyup="this.value=this.value.replace(/\D/g,'')"

@@ -6,7 +6,7 @@
     <result column="open_id" jdbcType="VARCHAR" property="openId" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="phone" jdbcType="BIGINT" property="phone" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -107,7 +107,7 @@
     insert into op_feedback_question (open_id, content, create_time, 
       phone)
     values (#{openId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{phone,jdbcType=INTEGER})
+      #{phone,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpFeedbackQuestion">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -139,7 +139,7 @@
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="phone != null">
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -165,7 +165,7 @@
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -178,7 +178,7 @@
       open_id = #{record.openId,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      phone = #{record.phone,jdbcType=INTEGER}
+      phone = #{record.phone,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -196,7 +196,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="phone != null">
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -206,7 +206,7 @@
     set open_id = #{openId,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      phone = #{phone,jdbcType=INTEGER}
+      phone = #{phone,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

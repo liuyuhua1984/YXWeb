@@ -7,7 +7,7 @@ require.config({
 
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery:ctxPage + '/js/artDialog6/lib/jquery-1.10.2',
+        jquery:ctxPage + '/js/jquery-1.12.4',
         ztree: ctxPage+'/js/ztree/jquery.ztree.all-3.5.min',
         dialog: ctxPage+'/js/artDialog6/src/dialog',
         popup: ctxPage+'/js/artDialog6/src/popup',

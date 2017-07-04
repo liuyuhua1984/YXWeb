@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 <title>我的售卡记录</title>
 <c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_recharge_sell" defer async="true"></script>
@@ -115,13 +117,13 @@
 							<table class="table table-striped table-bordered  responsive" id="dtable">
 								<thead>
 									<tr class="info">
-										<th width="50">序</th>
-										<th width="200">交易号</th>
-										<th width="80">上级代理</th>
-										<th width="80">充值金额</th>
-										<th width="200">用户昵称</th>
-										<th width="80">用户属性</th>
-										<th width="*">充值时间</th>
+										<th style="width: 50px;">序</th>
+										<th style="width: 200px;">交易号</th>
+										<th style="width: 80px;">上级代理</th>
+										<th style="width: 80px;">充值金额</th>
+										<th style="width: 200px;">用户昵称</th>
+										<th style="width: 80px;">用户属性</th>
+										<th style="width:150px;">充值时间</th>
 									</tr>
 								</thead>
 								<tbody id="data">

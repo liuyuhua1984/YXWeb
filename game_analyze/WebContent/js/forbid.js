@@ -3,7 +3,7 @@ var ctxPage = "/"+localObj.pathname.split("/")[1];
 require.config({
     /**模块及源文件的路径隐射*/
     paths: {
-        jquery:ctxPage+ '/js/artDialog6/lib/jquery-1.10.2',
+        jquery:ctxPage+ '/js/jquery-1.12.4',
         dialog: ctxPage+'/js/artDialog6/src/dialog',
         popup: ctxPage+'/js/artDialog6/src/popup',
         "dialog-config": ctxPage+'/js/artDialog6/src/dialog-config'
@@ -66,7 +66,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
         changeWorld($(this).val());
         getPage(1);
     }
-
+	var curpage=1;
     function getPage(pid) {
 		if (pid==undefined){
 			return;
@@ -76,10 +76,17 @@ require(['jquery', 'dialog'], function ($, dialog) {
         var openid = $("#openid").val();
         var rolename = $("#rolename").val();
         var wid = $("#wid").val();
+        if (appid == undefined){
+        	return;
+        }
+		if (rolename == undefined){
+			rolename ="";
+		}
         var htmlobj = $.ajax({url: ctxPage+"/oss/gameuser/base/dataList?page=" + pid + "&appid=" + appid + "&wid=" + wid + "&openid=" + openid + "&rolename=" + rolename + "&sort=" + sort, cache: false, async: false})
         $("#data").html(htmlobj.responseText);
         $(".detail").bind("click", openmsg);
     }
+    
 	if (curpage==undefined){
 		return;
 	}

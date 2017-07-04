@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>消费日报</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -64,7 +67,7 @@
                             <th style="text-align: center;background-color: #f6931f" width="180px;">类型名称</th>
                             <th style="text-align: center;background-color: #f6931f" width="80px;">消耗数量</th>
                             <th style="text-align: center;background-color: #f6931f" width="80px;">人数</th>
-                            <th width="*" style="text-align: center;background-color: #f6931f">金额</th>
+                            <th style="width :*;text-align: center;background-color: #f6931f">金额</th>
                         </tr>
                         </thead>
 

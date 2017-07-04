@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>等级分布</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -66,7 +69,7 @@
                             <th>人数</th>
                             <th>滞率占比</th>
                             <th>付费总额</th>
-                            <th width="*">付费人数</th>
+                            <th style="width :*">付费人数</th>
                         </tr>
                         </thead>
 

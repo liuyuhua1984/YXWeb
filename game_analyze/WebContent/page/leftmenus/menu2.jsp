@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>GMT</title>
     <link rel="stylesheet" href="${ctxPage}/static/css/css.css"/>
     <link rel="stylesheet" href="${ctxPage}/static/css/css_invite.css">
@@ -15,9 +16,9 @@
 </head>
 <body>
 
-<div id="talkinggameData" style="min-height: 1700px;">
+<div id="talkinggameData" >
     <div class="hide" id="talkinggamePages" style="display: block;">
-        <div id="minweb" class="main" style="min-height: 1730px;">
+        <div id="minweb" class="main" >
             <!-- 左侧菜单 -->
             <div id="menu-banner">
                 <div class="menu l">
@@ -89,7 +90,14 @@
                                 <li><a url-data="player-new" href="${ctxPage}/gmt/recharge" target="mainFrame">充值记录</a></li>
                             </ol>
                         </li>
-
+							<li>
+                            <a url-data="" class="more_icon Players">
+                                <span>玩家反馈</span>
+                            </a>
+                            <ol>
+                                <li><a url-data="player-new" href="${ctxPage}/gmt/player/feedback" target="mainFrame">反馈列表</a></li>
+                            </ol>
+                        </li>
                     </ul>
                 </div>
             </div>

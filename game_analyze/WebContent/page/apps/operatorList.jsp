@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
-
+<!DOCTYPE html>
 <html>
 <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>运营商信息</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -34,13 +36,13 @@
                            id="dtable">
                         <thead>
                         <tr>
-                            <th width="30" style="background-color: #ffd700">序</th>
-                            <th width="120" style="background-color: #ffd700">标示</th>
-                            <th width="120" style="background-color: #ffd700">名称</th>
-                            <th width="100" style="background-color: #ffd700">状态</th>
-                            <th width="220" style="background-color: #ffd700">运营产品</th>
-                            <th width="*" style="background-color: #ffd700">备注</th>
-                            <th width="100" style="background-color: #ffd700">操作</th>
+                            <th style="width :30px;background-color: #ffd700">序</th>
+                            <th style="width :120px;background-color: #ffd700">标示</th>
+                            <th style="width :120px;background-color: #ffd700">名称</th>
+                            <th style="width :100px;background-color: #ffd700">状态</th>
+                            <th style="width :220px;background-color: #ffd700">运营产品</th>
+                            <th style="width :200px;background-color: #ffd700">备注</th>
+                            <th style="width :100px;background-color: #ffd700">操作</th>
                         </tr>
                         </thead>
                         <tbody>
