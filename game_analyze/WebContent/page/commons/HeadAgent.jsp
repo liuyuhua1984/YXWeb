@@ -74,8 +74,8 @@
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>--%>
-<script  type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"><\/script>')</script>
+<script  type="text/javascript"  src="${ctxPage}/js/jquery-1.12.4.js"></script>
+<script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/js/jquery-1.12.4.js"><\/script>')</script>
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>--%>
 <script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
 <script>window.jQuery.ui || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"><\/script>')</script>

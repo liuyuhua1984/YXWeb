@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>新闻发布</title>
     <c:import url="/admin/header.do"/>
-    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
     <script charset="utf-8" src="/js/kindeditor-4.1.1/kindeditor-min.js"></script>
     <script charset="utf-8" src="/js/kindeditor-4.1.1/lang/zh_CN.js"></script>
 

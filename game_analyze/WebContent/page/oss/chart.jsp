@@ -6,7 +6,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>oss</title>
     <meta name="description" content=""/>
@@ -15,7 +15,7 @@
     <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
     <meta name="HandheldFriendly" content="True"/>
     <meta name="MobileOptimized" content="320"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+    <meta name="viewport" content="width=device-width, width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <%--公共功能--%>
     <script type="text/javascript" src="${ctxPage}/static/js/common.js"></script>
@@ -114,7 +114,7 @@
 
                 <div class="inner-spacer">
 
-                    <table class="table table-striped table-bordered responsive" id="dtable">
+                    <table class="table table-striped table-bordered table-condensed" id="dtable">
                         <thead>
                         <tr>
                             <th style="width :60px">属性</th>
@@ -207,8 +207,8 @@
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>--%>
-<script type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.min.js"><\/script>')</script>
+<script type="text/javascript"  src="${ctxPage}/js/jquery-1.12.4.js"></script>
+<script>window.jQuery || document.write('<script type="text/javascript"  src="${ctxPage}/js/jquery-1.12.4.js"><\/script>')</script>
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>--%>
 <script  type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
 <script>window.jQuery.ui || document.write('<script type="text/javascript"  src="${ctxPage}/static/js/libs/jquery.ui.min.js"><\/script>')</script>

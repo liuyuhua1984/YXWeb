@@ -6,7 +6,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>玩家反馈</title>
 <c:import url="/headmsg"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/feedback" defer async="true"></script>
@@ -112,7 +112,7 @@
 					<div>
 						<!-- inner-spacer  -->
 						<div class=" inner-spacer">
-							<table class="table table-striped table-bordered  responsive" id="dtable">
+							<table class="table table-striped table-bordered  table-condensed" id="dtable">
 								<thead>
 									<tr class="info">
 										<th style="width :50px">序</th>

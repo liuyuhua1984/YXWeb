@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>模块功能列表</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -37,7 +37,7 @@
                 <div class="inner-spacer" style="height: 300px; overflow-y:scroll;">
                     <!-- content goes here -->
                     <form id="permitform" onsubmit="return false;">
-                        <table class="table table-striped table-bordered responsive"
+                        <table class="table table-striped table-bordered table-condensed"
                                id="dtable">
                             <thead>
                             <tr>

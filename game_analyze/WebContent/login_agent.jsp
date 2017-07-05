@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>元巫科技代理系统</title>
 <link href="${ctxPage}/static/images/lo.ico" rel="Shortcut Icon">
-<script type="text/javascript" src="${ctxPage}/js/jquery.js"></script>
+<script type="text/javascript" src="${ctxPage}/js/jquery-1.12.4.js"></script>
 <link href="${ctxPage}/admin/css/login2.css" rel="stylesheet" type="text/css" />
 </head>
 
