@@ -10,9 +10,13 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -922,5 +926,39 @@ public class Tools {
 	        return m.matches();  
 	    }
 	    
+	    
+	    
+	    /** 
+	 * splitStringToMap:(). <br/> 
+	 * TODO().<br/> 
+	 * 分隔字符串到map
+	 * @author lyh 
+	 * @param srcString
+	 * @param separatorOne
+	 * @param mapSeparator
+	 * @return 
+	 */  
+	public static Map<String,String> splitStringToMap(String srcStr,String separatorOne,String mapSeparator){
+		    Map<String,String> map = new HashMap<String, String>();
+			List<String> list = new ArrayList<String>();
+			if (srcStr != null) {
+				int i = 0;
+				int j = 0;
+				while ((i = srcStr.indexOf(separatorOne, i)) != -1) {
+					list.add(srcStr.substring(j, i));
+					j = i + separatorOne.length();
+					i = j;
+				}
+				
+				list.add(srcStr.substring(j, srcStr.length()));
+			}
+			for (String str : list){
+				int i = 0;
+				while ((i = srcStr.indexOf(separatorOne, i)) != -1) {
+					map.put(str.substring(0, i),str.substring( i + separatorOne.length(), str.length()));
+				}
+			}
+		    return map;
+	    }
 	
 }

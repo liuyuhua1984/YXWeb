@@ -185,7 +185,7 @@
 	 --%>
 					<span id="tishi"></span>
 					<div class="form-actions" style="text-align: left;">
-						<button type="submit" class="btn medium btn-danger" onclick="saveMsg()">提交</button>
+						<button type="submit" class="btn medium btn-danger" onclick="saveMsg();">提交</button>
 						<button type="reset" class="btn medium btn-primary">重置</button>
 
 					</div>
@@ -209,7 +209,7 @@
 			var name = $('#name').val();
 			var appId = $('#appid').val();
 			var worldId = $('#wid').val();
-
+	
 			if (name == "") {
 				alert("请完善信息！");
 				return false;
@@ -221,9 +221,9 @@
 				alert("信息还在处理中...");
 			}
 			mark = 1;
-	
+	   //    alert(name);
 			$.ajax({
-				url : "${ctxPage}/gmt/jh/cat",
+				url : "${ctxPage}/gmt/jh/check",
 				type : 'POST',
 				data : {
 					name : name,

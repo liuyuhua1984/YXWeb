@@ -126,6 +126,10 @@ public class DataUpHandleServiceImpl implements DataUpHandleService {
 	}
 	
 	public int addPassport(OpOssQlzPassport opOssQlzPassport) {
+		OpOssQlzPassport passport = opOssQlzPassportMapper.selectByPrimaryKey(opOssQlzPassport.getOpenid());
+		if (passport != null){
+			return 1;
+		}
 		int res = opOssQlzPassportMapper.insertSelective(opOssQlzPassport);
 		return res;
 	}
