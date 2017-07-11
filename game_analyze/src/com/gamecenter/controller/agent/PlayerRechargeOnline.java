@@ -1,5 +1,6 @@
 package com.gamecenter.controller.agent;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -19,6 +20,7 @@ import java.util.Map;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
@@ -118,7 +120,7 @@ public class PlayerRechargeOnline extends BaseController {
 				if (flag) {
 					
 					logger.info("签名验证通过");
-					String ret_code = String.valueOf(objMap.get("objMap"));
+					String ret_code = String.valueOf(objMap.get("ret_code"));
 					if (ret_code.equals("0000")) {
 						double dPrice = Double.parseDouble(String.valueOf(objMap.get("amount"))) / 100;
 						OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
@@ -144,7 +146,7 @@ public class PlayerRechargeOnline extends BaseController {
 								agent.setRemainMoney(0);
 							}
 							
-							if (agent != null && agent.getRemainMoney() >= gold) {
+							if (agent != null ) {//&& agent.getRemainMoney() >= gold在线冲值不要减money
 								List<OpGameapp> appList = appService.getAppList();
 								OpGameapp gameApp = appList.size() > 0 ? appList.get(0) : null;
 								OpGameworld worldServer = null;
@@ -197,8 +199,8 @@ public class PlayerRechargeOnline extends BaseController {
 	
 	@Transactional
 	public void addPlayerMoney(OpOssQlzPassport player, OpAgentList parentAgent, int gold, double price, String staderOrder, double fetchMoney) {
-		parentAgent.setRemainMoney(parentAgent.getRemainMoney() - gold);
-		agentListService.update(parentAgent);
+//		parentAgent.setRemainMoney(parentAgent.getRemainMoney() - gold); 在线冲值不充值
+//		agentListService.update(parentAgent);
 		saveRecharge(parentAgent.getName(), 0, price, player.getRolename(), staderOrder, 0, fetchMoney);
 	}
 	
@@ -249,8 +251,11 @@ public class PlayerRechargeOnline extends BaseController {
 		BufferedReader reader = null;
 		StringBuilder sb = new StringBuilder();
 		try {
-			reader = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
-			String line = null;
+			ServletInputStream is = request.getInputStream();
+			//System.err.println("num::"+is.available());
+			reader = new BufferedReader(new InputStreamReader(is, "utf-8"));
+			String line =null;
+			//System.err.println("line::"+line);
 			while ((line = reader.readLine()) != null) {
 				sb.append(line);
 			}

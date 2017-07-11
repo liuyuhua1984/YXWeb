@@ -954,7 +954,7 @@ public class Tools {
 			}
 			for (String str : list){
 				int i = 0;
-				while ((i = srcStr.indexOf(separatorOne, i)) != -1) {
+				if ((i = str.indexOf(mapSeparator, i)) != -1) {
 					map.put(str.substring(0, i),str.substring( i + separatorOne.length(), str.length()));
 				}
 			}
