@@ -44,6 +44,7 @@
 		<commons-compress.version>1.13</commons-compress.version>
 		<jsr250-api.version>1.0</jsr250-api.version>
 		<dom4j.version>1.6.1</dom4j.version>
+		<jdom.version>2.0.2</jdom.version>
 		<javassist.version>3.21.0-GA</javassist.version>
 		<jaxen.version>1.1.6</jaxen.version>
 
@@ -115,18 +116,18 @@
 
 	</properties>
 	<!-- 依赖项定义 -->
-	
+
 	<dependencies>
-	<dependency>
-    <groupId>org.apache.xbean</groupId>
-    <artifactId>xbean-spring</artifactId>
-    <version>${xbean-spring.version}</version>
-</dependency>
-	<dependency>
-    <groupId>javax.servlet.jsp</groupId>
-    <artifactId>javax.servlet.jsp-api</artifactId>
-    <version>${javax.servlet.jsp-api.version}</version>
-</dependency>
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-spring</artifactId>
+			<version>${xbean-spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${javax.servlet.jsp-api.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -368,6 +369,12 @@
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 			<version>${dom4j.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>${jdom.version}</version>
 		</dependency>
 
 		<dependency>
@@ -763,6 +770,6 @@
 
 		</plugins>
 	</build>
-	
+
 
 </project>
