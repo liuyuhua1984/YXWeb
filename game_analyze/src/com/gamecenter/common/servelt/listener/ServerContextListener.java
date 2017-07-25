@@ -32,7 +32,7 @@ public class ServerContextListener implements ServletContextListener {
 		// jsp上用法${path}/css/xx.css
 		ServletContext sc = event.getServletContext();
 		//String CONFIG_PATH = sc.getRealPath("/");
-		ServletPath.PATH = sc.getContextPath();
+		ServletPath.PATH = sc.getRealPath("/");
 		WeChatConfig.loadWeChatConfigConfig(ServletPath.PATH );
 		sc.setAttribute("path", sc.getContextPath());
 		System.out.println("进来了");
