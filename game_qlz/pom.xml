@@ -41,6 +41,7 @@
 		<commons-compress.version>1.13</commons-compress.version>
 		<jsr250-api.version>1.0</jsr250-api.version>
 		<dom4j.version>1.6.1</dom4j.version>
+		<jdom.version>2.0.2</jdom.version>
 		<javassist.version>3.21.0-GA</javassist.version>
 		<jaxen.version>1.1.6</jaxen.version>
 
@@ -714,6 +715,12 @@
 			<groupId>org.imgscalr</groupId>
 			<artifactId>imgscalr-lib</artifactId>
 			<version>${imgscalr-lib.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>${jdom.version}</version>
 		</dependency>
 		<!-- 加载本地包 <dependency> <groupId>com.read</groupId> <artifactId>com.read</artifactId> 
 			<version>excel-read</version> <scope>system</scope> <systemPath> ${basedir}/WebContent/WEB-INF/lib/game-lib.jar 

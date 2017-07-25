@@ -1,8 +1,10 @@
 package com.gamecenter.controller.pay.wechat;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
@@ -12,23 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.gamecenter.common.ToolUtils;
-import com.gamecenter.common.Tools;
 import com.gamecenter.common.pay.wechat.CommonUtil;
 import com.gamecenter.common.pay.wechat.PayCommonUtil;
-import com.gamecenter.common.pay.wechat.WeChatAPPUtils;
 import com.gamecenter.common.pay.wechat.XmlUtils;
+import com.gamecenter.common.properties.WeChatConfig;
 import com.gamecenter.controller.BaseController;
 import com.gamecenter.model.OpAgentConfig;
 import com.gamecenter.model.OpAgentInviteCode;
@@ -95,12 +92,12 @@ public class WeChatPayController extends BaseController {
 	 * @param actualPay 实际支付金额
 	 * @return
 	 */
-	@RequestMapping(value = "pay/{serverId}/unifiedorder", method = { RequestMethod.POST })
-	private String generateOrderInfoByWeiXinPay(String orderId, String fprice, String openId, String inviteCode, @PathVariable String serverId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+	@RequestMapping(value = "/wechat/pay/{serverId}/unifiedorder", method = { RequestMethod.POST })
+	private void generateOrderInfoByWeiXinPay(String orderId, String fprice, String openId, String inviteCode, @PathVariable String serverId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PrintWriter write = response.getWriter();
 		boolean bCheck = false;
 		int price = Integer.parseInt(fprice);
-		double dPrice = price/100;
+		double dPrice = price / 100;
 		OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
 		SortedMap<String, String> returnMap = new TreeMap<String, String>();
 		if (goods != null) {
@@ -138,9 +135,10 @@ public class WeChatPayController extends BaseController {
 			}
 		}
 		
-		if (!bCheck) {//验证没有通过false
+		if (!bCheck) {// 验证没有通过false
 			StringBuffer weiXinVo = new StringBuffer();
-			return weiXinVo.append("return_code=").append("FAIL").toString();
+			write.write(weiXinVo.append("return_code=").append("FAIL").toString());
+			return;
 		}
 		
 		String attach = "" + openId + "|" + serverId;
@@ -148,12 +146,12 @@ public class WeChatPayController extends BaseController {
 			attach += "|" + inviteCode;
 		}
 		String nonceStr = CommonUtil.getNonceStr();
-		String notify_url = WeChatAPPUtils.NOTIFY_URL;// 回调地址
+		String notify_url = WeChatConfig.NOTIFY_URL;// 回调地址
 		logger.error(":::" + request.getLocalAddr());
 		SortedMap<String, String> signParams = new TreeMap<String, String>();
-		signParams.put("appid", WeChatAPPUtils.APP_ID);// app_id
+		signParams.put("appid", WeChatConfig.APP_ID);// app_id
 		signParams.put("body", "商品");// 商品参数信息
-		signParams.put("mch_id", WeChatAPPUtils.MCHID);// 微信商户账号
+		signParams.put("mch_id", WeChatConfig.MCH_ID);// 微信商户账号
 		signParams.put("nonce_str", nonceStr);// 32位不重复的编号
 		signParams.put("notify_url", notify_url);// 回调页面
 		signParams.put("out_trade_no", orderId);// 订单编号
@@ -165,7 +163,8 @@ public class WeChatPayController extends BaseController {
 		signParams.put("sign", sign);
 		signParams.remove("key");// 调用统一下单无需key（商户应用密钥）
 		String requestXml = PayCommonUtil.getRequestXml(signParams);// 生成Xml格式的字符串
-		String result = CommonUtil.httpsRequest(WeChatAPPUtils.UNIFIED_ORDER_URL, "POST", requestXml);
+		logger.error("requestXml:::" + requestXml);
+		String result = CommonUtil.httpsRequest(WeChatConfig.UNIFIED_ORDER_URL, "POST", requestXml);
 		// 以post请求的方式调用统一下单接口
 		// （注：ConstantUtil.UNIFIED_ORDER_URL=https://api.mch.weixin.qq.com/pay/unifiedorder;）
 		
@@ -186,95 +185,81 @@ public class WeChatPayController extends BaseController {
 			long second = currentTimeMillis / 1000L;// （转换成秒）
 			String seconds = String.valueOf(second).substring(0, 10);// （截取前10位）
 			SortedMap<String, String> signParam = new TreeMap<String, String>();
-			signParam.put("appid", WeChatAPPUtils.APP_ID);// app_id
-			signParam.put("partnerid", WeChatAPPUtils.MCHID);// 微信商户账号
+			signParam.put("appid", WeChatConfig.APP_ID);// app_id
+			signParam.put("mch_id", WeChatConfig.MCH_ID);// 微信商户账号
 			signParam.put("prepayid", prepay_id);// 预付订单id
 			signParam.put("package", "Sign=WXPay");// 默认sign=WXPay
 			signParam.put("noncestr", nonceStr);// 自定义不重复的长度不长于32位
 			signParam.put("timestamp", seconds);// 北京时间时间戳
 			String signAgain = PayCommonUtil.createSign("UTF-8", signParam);// 再次生成签名
 			signParams.put("sign", signAgain);
-			weiXinVo.append("&appid=").append(WeChatAPPUtils.APP_ID).append("&partnerid=").append(WeChatAPPUtils.MCHID).append("&prepayid=").append(prepay_id).append("&package=Sign=WXPay").append("&noncestr=").append(nonceStr).append("&timestamp=").append(seconds).append("&sign=").append(signAgain);// 拼接参数返回给移动端
+			weiXinVo.append("&appid=").append(WeChatConfig.APP_ID).append("&mch_id=").append(WeChatConfig.MCH_ID).append("&prepayid=").append(prepay_id).append("&package=Sign=WXPay").append("&noncestr=").append(nonceStr).append("&timestamp=").append(seconds).append("&sign=").append(signAgain);// 拼接参数返回给移动端
 			
 		} else {
 		
 		}
-		
-		return weiXinVo.toString();
+		write.write(weiXinVo.toString());
 		
 	}
 	
 	// 通知处理类
+	/**
+	 * notifyUrlMsg:(). <br/>
+	 * TODO().<br/>
+	 * 支付结果通知
+	 * 
+	 * @author lyh
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
 	@SuppressWarnings("unused")
-	@RequestMapping(value = "/pay/wechat/return", produces = "text/html;charset=UTF-8", method = { RequestMethod.POST })
-	public String returnmsg(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+	@RequestMapping(value = "/wechat/pay/notify/return", method = { RequestMethod.POST })
+	public void notifyUrlMsg(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		logger.error("===进来了没有!!!===" );
 		// 解析结果存储在HashMap
-		Map<String, String> map = new HashMap<String, String>();
 		InputStream inputStream = request.getInputStream();
-		
+		PrintWriter write = response.getWriter();
 		// 读取输入流
-		SAXReader reader = new SAXReader();
-		Document document = reader.read(inputStream);
-		// 得到xml根元素
-		Element root = document.getRootElement();
-		// 得到根元素的所有子节点
-		List<Element> elementList = root.elements();
+		   StringBuffer sb  = new StringBuffer() ; 
+		        String s = null;
+		        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));  
+		        while ((s = in.readLine()) != null){  
+		            sb.append(s);  
+		        }  
 		
-		// 遍历所有子节点
-		for (Element e : elementList) {
-			map.put(e.getName(), e.getText());
-		}
 		// 释放资源
 		inputStream.close();
 		inputStream = null;
+		in.close();
+		String result = sb.toString();
+		Map<String, String> map = XmlUtils.doXMLParse(result);
+		
 		String json = JSON.toJSONString(map);
 		
 		// JSONObject json = JSONObject.fromObject(map);
 		
-		System.out.println("===消息通知的结果：" + json.toString() + "==========================");
-		System.out.println("===return_code===" + map.get("return_code"));
-		System.out.println("===return_msg===" + map.get("return_msg"));
-		System.out.println("===out_trade_no===" + map.get("out_trade_no"));
+		logger.error(result+":===消息通知的结果："+ "==========================");
+		logger.error("===return_code===" + map.get("return_code"));
+		logger.error("===return_msg===" + map.get("return_msg"));
+		logger.error("===out_trade_no===" + map.get("out_trade_no"));
 		
 		// 验证签名的过程
-		
+		SortedMap<String, String> returnMap = new TreeMap<String, String>();
 		// 判断是否支付成功
 		if (map.get("return_code").equals("SUCCESS")) {// 这儿要修改
 			
 			/**
 			 * 支付成功之后的业务处理
 			 */
-			SortedMap<String, String> parameters = new TreeMap<String, String>();
-			parameters.put("appid", map.get("appid"));
-			parameters.put("attach", map.get("attach"));
-			parameters.put("bank_type", map.get("bank_type"));
-			parameters.put("cash_fee", map.get("cash_fee"));
-			parameters.put("fee_type", map.get("fee_type"));
-			parameters.put("is_subscribe", map.get("is_subscribe"));
-			parameters.put("mch_id", map.get("mch_id"));
-			parameters.put("nonce_str", map.get("nonce_str"));
-			parameters.put("openid", map.get("openid"));
-			parameters.put("out_trade_no", map.get("out_trade_no"));
-			parameters.put("result_code", map.get("result_code"));
-			parameters.put("return_code", map.get("return_code"));
-			parameters.put("time_end", map.get("time_end"));
-			parameters.put("total_fee", map.get("total_fee"));
-			parameters.put("trade_type", map.get("trade_type"));
-			parameters.put("transaction_id", map.get("transaction_id"));
-			
-			// 反校验签名
-			String sign = PayCommonUtil.createSign("UTF-8", parameters);
-			
-			if (sign.equals(map.get("sign"))) {
+			boolean  bVerify = verifyWeChatNotify(map);
+			if (bVerify) {
 				double dPrice = Double.parseDouble(String.valueOf(map.get("total_fee"))) / 100;
 				OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
-				SortedMap<String, String> returnMap = new TreeMap<String, String>();
+			
 				if (goods != null) {
 					
 					int gold = goods.getGift() + goods.getNum();
-					// 加入到玩家A账号
-					
 					String myDefined = String.valueOf(map.get("attach"));// 自定义字段
 					String attach[] = ToolUtils.split(myDefined, "|");
 					String inviteCode = null;
@@ -321,6 +306,9 @@ public class WeChatPayController extends BaseController {
 									addPlayerMoney(player, agent, gold, dPrice, trade, (fetchMoneyRate * dPrice) / 100);
 									returnMap.put("return_code", "SUCCESS");
 									logger.error("返回结果通知::成功" + map.get("attach"));
+								}else{
+									returnMap.put("return_code", "FAIL");
+									logger.error("返回结果通知::没收连上服务器" + map.get("attach"));
 								}
 							} else {
 								returnMap.put("return_code", "FAIL");
@@ -339,20 +327,47 @@ public class WeChatPayController extends BaseController {
 					logger.error(dPrice + ":返回结果通知::玩商品不能充值" + map.get("attach"));
 				}
 				
-				return PayCommonUtil.getRequestXml(returnMap);
+				write.write(PayCommonUtil.getRequestXml(returnMap));
 				
 			} else {
-				SortedMap<String, String> returnMap = new TreeMap<String, String>();
+				
 				returnMap.put("return_code", "FAIL");
 				logger.error("返回结果通知::签名失败" + map.get("attach"));
-				return PayCommonUtil.getRequestXml(returnMap);
+				write.write(PayCommonUtil.getRequestXml(returnMap));
 			}
 			
 		} else {
-			SortedMap<String, String> returnMap = new TreeMap<String, String>();
+			
 			returnMap.put("return_code", "FAIL");
 			logger.error("返回结果通知::return_code fail" + map.get("attach"));
-			return PayCommonUtil.getRequestXml(returnMap);
+			
+		}
+		write.write(PayCommonUtil.getRequestXml(returnMap));
+	}
+	
+	/**
+	 * verifyWeixinNotify:(). <br/>
+	 * TODO().<br/>
+	 * 验证微信
+	 * 
+	 * @author lyh
+	 * @param map
+	 * @return
+	 */
+	public boolean verifyWeChatNotify(Map<String, String> map) {
+		SortedMap<String, String> parameterMap = new TreeMap<String, String>();
+		String sign = (String) map.get("sign");
+		for (Object keyValue : map.keySet()) {
+			if (!keyValue.toString().equals("sign")) {
+				parameterMap.put(keyValue.toString(), map.get(keyValue));
+			}
+			
+		}
+		String createSign = PayCommonUtil.createSign("UTF-8", parameterMap);
+		if (createSign.equals(sign)) {
+			return true;
+		} else {
+			return false;
 		}
 		
 	}

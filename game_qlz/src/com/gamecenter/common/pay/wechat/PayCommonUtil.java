@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
+import java.util.concurrent.ThreadLocalRandom;
 
-import com.gamecenter.common.encrypt.MD5;
-import com.gamecenter.common.properties.WeChatConfig;
+import com.gamecenter.common.MD5;
 
 /**
  * ClassName:PayCommonUtil <br/>
@@ -32,8 +32,8 @@ public class PayCommonUtil {
 				sb.append(k + "=" + v + "&");
 			}
 		}
-		sb.append("key=" + WeChatConfig.KEY);// 最后加密时添加商户密钥，由于key值放在最后，所以不用添加到SortMap里面去，单独处理，编码方式采用UTF-8
-		String sign = MD5.encodeMD5(sb.toString());
+		sb.append("key=" + WeChatAPPUtils.KEY);// 最后加密时添加商户密钥，由于key值放在最后，所以不用添加到SortMap里面去，单独处理，编码方式采用UTF-8
+		String sign =MD5.encodeMD5(sb.toString());
 		return sign.toUpperCase();
 	}
 	
@@ -68,4 +68,23 @@ public class PayCommonUtil {
 		
 		return sb.toString();
 	}
+	
+	
+	    /** 
+		 * getNonceStr:(). <br/> 
+		 * TODO().<br/> 
+		 * 随机字符串，长度要求在32位以内。
+		 * @author lyh 
+		 * @return 
+		 */  
+		public static String getNonceStr(){
+			    String chars="abcdefghijklmnopqrstuvwxyz0123456789";
+				String str="";
+				for (int i=0; i< 32; i++){
+					int rand = Math.abs(ThreadLocalRandom.current().nextInt()%chars.length());
+					str += chars.substring(rand,rand+1) ;
+						//substr($chars,mt_rand(0,strlen($chars)-1),1);
+				}
+				return str;
+		    }
 }
