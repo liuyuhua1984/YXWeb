@@ -8,6 +8,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * ClassName:ServerProperties <br/>
  * Function: TODO (属性加载基类). <br/>
@@ -19,6 +22,7 @@ import java.util.Properties;
  * @see
  */
 public abstract class ServerProperties implements IPropertiesResPath {
+	protected static  Logger logger = LoggerFactory.getLogger(ServerProperties.class);
 	
 	/**
 	 * loadProperties:(). <br/>
@@ -44,9 +48,11 @@ public abstract class ServerProperties implements IPropertiesResPath {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			logger.error(propertiesPath+":读取配置文件异常::"+e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			logger.error(propertiesPath+":读取配置文件异常::"+e);
 		}
 		
 		finally {

@@ -65,8 +65,8 @@ public class HttpClient {
 				con.setRequestMethod("GET");
 			}
 			
-			 con.setRequestProperty("Content-Type",
-			"application/json");
+//			 con.setRequestProperty("Content-Type",
+//			"application/json");
 			//con.setRequestProperty("Content-Length", String.valueOf(data.length));
 			con.setConnectTimeout(30000);// jdk 1.5换成这个,连接超时
 			con.setReadTimeout(30000);// jdk 1.5换成这个,读操作超时

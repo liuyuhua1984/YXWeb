@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gamecenter.common.MD5;
+import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.pay.wechat.PayCommonUtil;
 import com.gamecenter.common.pay.wechat.WeChatAPPUtils;
 
@@ -46,6 +48,7 @@ public class HttpClientTest {
 //		  <trade_type><![CDATA[JSAPI]]></trade_type>
 //		  <transaction_id><![CDATA[1004400740201409030005092168]]></transaction_id>
 //		</xml>
+		
 		String nonceStr = PayCommonUtil.getNonceStr();
 		String attach = "321654|1001";
 		SortedMap<String, String> signParams = new TreeMap<String, String>();
@@ -76,6 +79,39 @@ public class HttpClientTest {
 			e.printStackTrace();
 		}
 	
+	}
+	/** 苹果支付 **/
+	private static final String APPLE_KEY = "XXXXdeeeF#@@$@$!(*&^&#$WREQAPP";
+	@Test
+	public void testAppPay(){
+		String openId = "123456";
+		String price = ""+1;// 元
+		String inviteCode = null;// 有就发没有就不发
+		String receiptData = "ssssssseee";// 凭证
+		String chooseEnv = ""+0;// 测试=0,正式环境=1
+		//String sign = request.getParameter("sign");// md5大写
+		/** 苹果支付 **/
+		StringBuilder sb = new StringBuilder();
+		sb.append("openId=").append(openId);
+		sb.append("&fprice=").append(price);
+		sb.append("&receiptData=").append(receiptData);
+		sb.append("&chooseEnv=").append(chooseEnv);
+		if (!ToolUtils.isStringNull(inviteCode)) {
+			sb.append("&inviteCode=").append(inviteCode);
+		}
+		String str = sb.toString();
+		
+		sb.append("&key=").append(APPLE_KEY);
+		
+		String sign =MD5.encodeMD5(sb.toString()).toUpperCase();
+		str +="&sign="+sign;
+		String result;
+		try {
+			result = HttpClient.send("http://192.168.0.189:8090/game/apple/pay/1001/verify",  true,str.getBytes("utf-8"));
+			logger.error("ssss::"+result);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

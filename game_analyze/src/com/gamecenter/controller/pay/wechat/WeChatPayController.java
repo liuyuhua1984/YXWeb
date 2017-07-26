@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
+import com.gamecenter.common.IdGenerateUtils;
 import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.pay.wechat.CommonUtil;
 import com.gamecenter.common.pay.wechat.PayCommonUtil;
@@ -93,11 +94,11 @@ public class WeChatPayController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/wechat/pay/{serverId}/unifiedorder", method = { RequestMethod.POST })
-	private void generateOrderInfoByWeiXinPay(String orderId, String fprice, String openId, String inviteCode, @PathVariable String serverId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void generateOrderInfoByWeiXinPay(String fprice, String openId, String inviteCode, @PathVariable String serverId, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PrintWriter write = response.getWriter();
 		boolean bCheck = false;
 		int price = Integer.parseInt(fprice);
-		double dPrice = price / 100;
+		double dPrice = ((double) price) / 100;
 		OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
 		SortedMap<String, String> returnMap = new TreeMap<String, String>();
 		if (goods != null) {
@@ -141,6 +142,7 @@ public class WeChatPayController extends BaseController {
 			return;
 		}
 		
+		String orderId = String.valueOf(IdGenerateUtils.makeId());
 		String attach = "" + openId + "|" + serverId;
 		if (!ToolUtils.isStringNull(inviteCode)) {
 			attach += "|" + inviteCode;
@@ -188,12 +190,12 @@ public class WeChatPayController extends BaseController {
 			signParam.put("appid", WeChatConfig.APP_ID);// app_id
 			signParam.put("mch_id", WeChatConfig.MCH_ID);// 微信商户账号
 			signParam.put("prepayid", prepay_id);// 预付订单id
-			signParam.put("package", "Sign=WXPay");// 默认sign=WXPay
+			//signParam.put("package", "Sign=WXPay");// 默认sign=WXPay
 			signParam.put("noncestr", nonceStr);// 自定义不重复的长度不长于32位
 			signParam.put("timestamp", seconds);// 北京时间时间戳
 			String signAgain = PayCommonUtil.createSign("UTF-8", signParam);// 再次生成签名
 			signParams.put("sign", signAgain);
-			weiXinVo.append("&appid=").append(WeChatConfig.APP_ID).append("&mch_id=").append(WeChatConfig.MCH_ID).append("&prepayid=").append(prepay_id).append("&package=Sign=WXPay").append("&noncestr=").append(nonceStr).append("&timestamp=").append(seconds).append("&sign=").append(signAgain);// 拼接参数返回给移动端
+			weiXinVo.append("&appid=").append(WeChatConfig.APP_ID).append("&mch_id=").append(WeChatConfig.MCH_ID).append("&prepayid=").append(prepay_id).append("&noncestr=").append(nonceStr).append("&timestamp=").append(seconds).append("&sign=").append(signAgain);// 拼接参数返回给移动端
 			
 		} else {
 		
