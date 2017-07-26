@@ -195,14 +195,14 @@ public class WeChatPayController extends BaseController {
 			String seconds = String.valueOf(second).substring(0, 10);// （截取前10位）
 			SortedMap<String, String> signParam = new TreeMap<String, String>();
 			signParam.put("appid", WeChatConfig.APP_ID);// app_id
-			signParam.put("mch_id", WeChatConfig.MCH_ID);// 微信商户账号
+			signParam.put("partnerid", WeChatConfig.MCH_ID);// 微信商户账号
 			signParam.put("prepayid", prepay_id);// 预付订单id
-			//signParam.put("package", "Sign=WXPay");// 默认sign=WXPay
+			signParam.put("package", "Sign=WXPay");// 默认sign=WXPay
 			signParam.put("noncestr", nonceStr);// 自定义不重复的长度不长于32位
 			signParam.put("timestamp", seconds);// 北京时间时间戳
 			String signAgain = PayCommonUtil.createSign("UTF-8", signParam);// 再次生成签名
 			signParams.put("sign", signAgain);
-			weiXinVo.append("&appid=").append(WeChatConfig.APP_ID).append("&mch_id=").append(WeChatConfig.MCH_ID).append("&prepayid=").append(prepay_id).append("&noncestr=").append(nonceStr).append("&timestamp=").append(seconds).append("&sign=").append(signAgain);// 拼接参数返回给移动端
+			weiXinVo.append("&appid=").append(WeChatConfig.APP_ID).append("&partnerid=").append(WeChatConfig.MCH_ID).append("&prepayid=").append(prepay_id).append("&noncestr=").append(nonceStr).append("&timestamp=").append(seconds).append("&sign=").append(signAgain);// 拼接参数返回给移动端
 			
 		} else {
 		
@@ -235,7 +235,7 @@ public class WeChatPayController extends BaseController {
 		        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));  
 		        while ((s = in.readLine()) != null){  
 		            sb.append(s);  
-		        }  
+		        }
 		
 		// 释放资源
 		inputStream.close();
