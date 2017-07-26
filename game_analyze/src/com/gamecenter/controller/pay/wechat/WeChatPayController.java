@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
@@ -125,15 +126,21 @@ public class WeChatPayController extends BaseController {
 				if (gameApp != null) {
 					List<OpGameworld> worldList = worldService.getWorldListByAppId(gameApp.getAppid());
 					worldServer = worldList.size() > 0 ? worldList.get(0) : null;
+				}else{
+					logger.error("没有找到world::"+openId);
 				}
 				
 				if (worldServer != null) {
 					OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(openId);
 					if (player != null) {
 						bCheck = true;
+					}else {
+						logger.error("没有找到玩家::"+openId);
 					}
 				}
 			}
+		}else{
+			logger.error(dPrice+":没有找到商品::"+openId);
 		}
 		
 		if (!bCheck) {// 验证没有通过false
@@ -242,10 +249,13 @@ public class WeChatPayController extends BaseController {
 		// JSONObject json = JSONObject.fromObject(map);
 		
 		logger.error(result+":===消息通知的结果："+ "==========================");
-		logger.error("===return_code===" + map.get("return_code"));
-		logger.error("===return_msg===" + map.get("return_msg"));
-		logger.error("===out_trade_no===" + map.get("out_trade_no"));
-		
+		if (map != null){
+			logger.error("===return_code===" + map.get("return_code"));
+			logger.error("===return_msg===" + map.get("return_msg"));
+			logger.error("===out_trade_no===" + map.get("out_trade_no"));
+		}else{
+			map = new HashMap<String, String>();
+		}
 		// 验证签名的过程
 		SortedMap<String, String> returnMap = new TreeMap<String, String>();
 		// 判断是否支付成功
