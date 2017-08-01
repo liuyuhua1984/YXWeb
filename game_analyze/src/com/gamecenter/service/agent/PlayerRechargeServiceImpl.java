@@ -114,10 +114,10 @@ public class PlayerRechargeServiceImpl implements PlayerRechargeService {
 				num = opOperatorRechargeMapper.insertSelective(opOperatorRecharge);
 				RunLog.logDao.info("发货结果:单号(" + billno + ") " + res);
 			} else {
-				RunLog.payLog.error("充值处理异常：" + billno);
+				RunLog.payLog.error(res+"::充值处理异常：" + billno);
 			}
 		} catch (Exception e) {
-			RunLog.payLog.error("充值处理异常：", e);
+			RunLog.payLog.error("充值异常：", e);
 		}
 		if (res.equals("1") && num == 1) {
 			status = 1;

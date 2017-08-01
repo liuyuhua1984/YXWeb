@@ -21,6 +21,7 @@ import com.game.protocol.gm.GmJHPlayerProtocolRequest;
 import com.game.protocol.gm.GmNoticeLeftHttpProtocol;
 import com.gamecenter.common.PlatformToServerConnection;
 import com.gamecenter.common.ToolUtils;
+import com.gamecenter.controller.BaseController;
 import com.gamecenter.model.OpGameapp;
 import com.gamecenter.model.OpGameworld;
 import com.gamecenter.parBean.UserMsg;
@@ -39,7 +40,7 @@ import com.gamecenter.service.appServices.WorldService;
  */
 @Controller
 @RequestMapping("/gmt")
-public class JHController {
+public class JHController extends BaseController {
 	@Resource
 	WorldService worldService;
 	@Resource
@@ -65,7 +66,7 @@ public class JHController {
 		return view;
 	}
 	
-	@RequestMapping("/jh/cat")
+	@RequestMapping("/jh/check")
 	@ResponseBody
 	public ModelMap jhcat(HttpSession session, @RequestParam(value = "name") String name, @RequestParam(value = "appId") String appId, @RequestParam(value = "worldId") String worldId,
 	
@@ -83,17 +84,17 @@ public class JHController {
 			request.setPlayerName(name);
 			OpGameworld opGameworld = worldService.getWorldByWorldId(worldId);
 			if (opGameworld != null) {
+				//logger.error("来了没有没有朋");
 				GmJHPlayerHttpProtocol resp = (GmJHPlayerHttpProtocol) PlatformToServerConnection.sendPlatformToServer(opGameworld.getIp(), opGameworld.getServerurl(), request);
 				if (resp != null) {
 					res = resp.result;
 				}
+				//logger.error("来了没有" + resp.result);
 			}
-			//
-			Cookie cookie = new Cookie(JH_PLYAYER_NAME, name);
-			// cookie.setMaxAge(60*60*1); //设置过期时间,单位是秒,1小时
-			cookie.setPath("/");// 设置路径
-			response.addCookie(cookie);
+			//logger.error("查看玩家QQQQ");
+
 		}
+		
 		ModelMap map = new ModelMap();
 		map.put("res", res);
 		return map;

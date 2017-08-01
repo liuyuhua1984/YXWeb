@@ -186,7 +186,7 @@ public class NoticeLeftController extends BaseController {
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> noticeLeftSave(HttpSession session, @RequestParam(value="file") MultipartFile mFile, @RequestParam(value = "appid") String appid, @RequestParam(value = "wid") String wid, @RequestParam(value = "title") String title) {
+	public Map<String, Object> noticeLeftSave(HttpSession session, @RequestParam(value = "file") MultipartFile mFile, @RequestParam(value = "appid") String appid, @RequestParam(value = "wid") String wid, @RequestParam(value = "title") String title) {
 		String res = "1";
 		UserMsg user = (UserMsg) session.getAttribute("UserMsg");
 		if (user == null) {
@@ -199,36 +199,45 @@ public class NoticeLeftController extends BaseController {
 		// 检查form中是否有enctype="multipart/form-data"
 		boolean bEnter = false;
 		String pathName = "";
-		if (mFile != null && mFile.getSize() > 0) {
-			File fileDir = new File(path);
-			if (!fileDir.isDirectory()){
-				fileDir.mkdirs();
-			}
-			pathName = path + mFile.getOriginalFilename();
-			// 上传
-			try {
+		try {
+			if (mFile != null && mFile.getSize() > 0) {
+			
+				File fileDir = new File(path);
+				if (!fileDir.isDirectory()) {
+					fileDir.mkdirs();
+				}
+				pathName = path + File.separator + mFile.getOriginalFilename();
+				// 上传
 				mFile.transferTo(new File(pathName));
+				
 				bEnter = true;
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+				
 			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 		long endTime = System.currentTimeMillis();
 		System.out.println("方法三的运行时间：" + String.valueOf(endTime - startTime) + "ms");
 		if (bEnter) {
-			String content  = pathName.substring(pathName.indexOf("\\upload"));
+			logger.error("进来了1111111" + path);
+			String content = pathName.substring(pathName.indexOf("\\/upload"));
+			logger.error("进来了.................." + content);
 			OpGmtNoticeLeft notice = new OpGmtNoticeLeft();
 			notice.setAppId(appid);
 			notice.setContent(content);
 			notice.setCreateTime(new Date(System.currentTimeMillis()));
 			notice.setTitle(title);
 			notice.setWorldId(wid);
-			
-			res = noticeLeftService.sendNoticLeft(notice);
-			
+			try {
+				res = noticeLeftService.sendNoticLeft(notice);
+			} catch (Exception e) {
+				logger.error(e.getMessage(), e);
+			}
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
 		

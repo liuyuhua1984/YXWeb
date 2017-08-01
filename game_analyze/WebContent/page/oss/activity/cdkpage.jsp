@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>玩家账号</title>
     <c:import url="/headmsg"></c:import>
     <style type="text/css">
@@ -107,7 +107,7 @@
 
                 <div class="inner-spacer">
 
-                    <table class="table table-striped table-bordered responsive" id="dtable">
+                    <table class="table table-striped table-bordered table-condensed" id="dtable">
                         <thead>
                         <tr>
                             <th style="width :40px;background-color: #ffd700">序号</th>

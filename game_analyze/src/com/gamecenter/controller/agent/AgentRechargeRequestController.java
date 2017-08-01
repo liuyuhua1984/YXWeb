@@ -160,6 +160,7 @@ public class AgentRechargeRequestController {
 						res="-2";
 					}
 				} else {
+					
 					OpAgentList agent = agentListService.findByName(platformName);
 					if (agent.getRemainMoney() == null){
 						agent.setRemainMoney(0);

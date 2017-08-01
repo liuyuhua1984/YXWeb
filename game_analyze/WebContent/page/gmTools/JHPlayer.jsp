@@ -5,7 +5,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>金花</title>
 <%--<c:import url="/head/agent"></c:import>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/common.js?1=2"></script>
@@ -60,8 +60,8 @@
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>--%>
-<script type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"><\/script>')
+<script type="text/javascript" src="${ctxPage}/js/jquery-1.12.4.js"></script>
+<script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/js/jquery-1.12.4.js"><\/script>')
 </script>
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
@@ -185,7 +185,7 @@
 	 --%>
 					<span id="tishi"></span>
 					<div class="form-actions" style="text-align: left;">
-						<button type="submit" class="btn medium btn-danger" onclick="saveMsg()">提交</button>
+						<button type="submit" class="btn medium btn-danger" onclick="saveMsg();">提交</button>
 						<button type="reset" class="btn medium btn-primary">重置</button>
 
 					</div>
@@ -209,7 +209,7 @@
 			var name = $('#name').val();
 			var appId = $('#appid').val();
 			var worldId = $('#wid').val();
-
+	
 			if (name == "") {
 				alert("请完善信息！");
 				return false;
@@ -221,9 +221,9 @@
 				alert("信息还在处理中...");
 			}
 			mark = 1;
-	
+	   //    alert(name);
 			$.ajax({
-				url : "${ctxPage}/gmt/jh/cat",
+				url : "${ctxPage}/gmt/jh/check",
 				type : 'POST',
 				data : {
 					name : name,

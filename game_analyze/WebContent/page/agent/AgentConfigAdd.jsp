@@ -5,7 +5,7 @@
 <html>
 <head>
      <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>添加提成信息</title>
 <%--<c:import url="/head/agent"></c:import>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/common.js?1=2"></script>
@@ -59,8 +59,8 @@
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>--%>
-<script type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.min.js"><\/script>')</script>
+<script type="text/javascript" src="${ctxPage}/js/jquery-1.12.4.js"></script>
+<script>window.jQuery || document.write('<script  type="text/javascript" src="${ctxPage}/js/jquery-1.12.4.js"><\/script>')</script>
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>--%>
 <script type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"></script>
 <script>window.jQuery.ui || document.write('<script  type="text/javascript" src="${ctxPage}/static/js/libs/jquery.ui.min.js"><\/script>')</script>

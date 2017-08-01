@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>活动信息</title>
     <c:import url="/headmsg"></c:import>
 </head>
@@ -120,7 +120,7 @@
 
                 <div class="inner-spacer">
 
-                    <table class="table table-striped table-bordered responsive" id="dtable2">
+                    <table class="table table-striped table-bordered table-condensed" id="dtable2">
                         <thead>
                         <tr>
                             <th style="width :60px">属性</th>
@@ -185,7 +185,7 @@
 
                 <div class="inner-spacer">
 
-                    <table class="table table-striped table-bordered responsive" id="dtable3">
+                    <table class="table table-striped table-bordered table-condensed" id="dtable3">
                         <thead>
                         <tr>
                             <th style="width :60px">属性</th>
