@@ -220,7 +220,6 @@
 						alert('邀请码已过时！');
 					} else if (data.res == "-4") { //名称没有被占用
 						alert('代理名称已存在！');
-	
 					} else if (data.res == "-1") {
 						alert('数据不合法！');
 					} else if (data.res == "-5") {
@@ -238,6 +237,7 @@
 					mark = 0;
 					$("#tishi").html("");
 				}
+				
 			});
 		}
 	
