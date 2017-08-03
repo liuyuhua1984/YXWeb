@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpAgentRequest;
 import com.gamecenter.model.OpAgentRequestExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpAgentRequestMapper {
     long countByExample(OpAgentRequestExample example);

@@ -19,7 +19,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.encrypt.MD5;
 import com.gamecenter.common.pay.apple.ApplePayHttpUtils;
-import com.gamecenter.common.pay.wechat.PayCommonUtil;
 import com.gamecenter.controller.BaseController;
 import com.gamecenter.model.OpAgentConfig;
 import com.gamecenter.model.OpAgentInviteCode;

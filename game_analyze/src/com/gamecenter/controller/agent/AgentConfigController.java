@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentConfig;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.parBean.AgentUser;

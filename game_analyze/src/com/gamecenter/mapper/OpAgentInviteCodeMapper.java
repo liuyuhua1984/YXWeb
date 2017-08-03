@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.model.OpAgentInviteCodeExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpAgentInviteCodeMapper {
     long countByExample(OpAgentInviteCodeExample example);

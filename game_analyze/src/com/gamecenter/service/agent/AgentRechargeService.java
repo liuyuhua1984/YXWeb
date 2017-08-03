@@ -2,7 +2,6 @@ package com.gamecenter.service.agent;
 
 import java.util.List;
 
-import com.gamecenter.mapper.OpAgentRechargeMapper;
 import com.gamecenter.model.OpAgentRecharge;
 
 /** 

@@ -2,14 +2,8 @@ package com.gamecenter.service.agent;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 
-import com.gamecenter.mapper.OpAgentConfigMapper;
-import com.gamecenter.mapper.OpShopMapper;
-import com.gamecenter.model.OpAgentConfig;
-import com.gamecenter.model.OpAgentConfigExample;
 import com.gamecenter.model.OpShop;
 
 /** 

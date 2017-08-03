@@ -1,7 +1,5 @@
 package com.gamecenter.service.agent;
 
-import com.gamecenter.model.OpAgentRecharge;
-
 /** 
  * ClassName:BaseService <br/> 
  * Function: TODO (). <br/> 

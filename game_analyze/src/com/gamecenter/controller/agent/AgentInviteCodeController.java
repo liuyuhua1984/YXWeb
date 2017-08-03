@@ -13,14 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gamecenter.common.IdGenerateUtils;
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
 import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentInviteCode;
-import com.gamecenter.model.OpAgentList;
 import com.gamecenter.parBean.AgentUser;
-import com.gamecenter.parBean.UserMsg;
 import com.gamecenter.service.agent.AgentInviteCodeService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

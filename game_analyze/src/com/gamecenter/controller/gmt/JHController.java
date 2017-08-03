@@ -1,11 +1,8 @@
 package com.gamecenter.controller.gmt;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.game.protocol.gm.GmJHPlayerHttpProtocol;
 import com.game.protocol.gm.GmJHPlayerProtocolRequest;
-import com.game.protocol.gm.GmNoticeLeftHttpProtocol;
 import com.gamecenter.common.PlatformToServerConnection;
 import com.gamecenter.common.ToolUtils;
 import com.gamecenter.controller.BaseController;

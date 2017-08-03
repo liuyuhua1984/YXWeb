@@ -2,10 +2,7 @@ package com.gamecenter.service.gmt;
 
 import java.util.List;
 
-import com.gamecenter.model.OpGmtNotice;
-import com.gamecenter.model.OpGmtNoticeCycle;
 import com.gamecenter.model.OpGmtNoticeLeft;
-import com.gamecenter.parBean.vo.GmtSendNoticeBean;
 import com.gamecenter.service.agent.BaseService;
 
 /**

@@ -4,30 +4,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
-import com.gamecenter.common.IdGenerateUtils;
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
 import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpAgentRecharge;
 import com.gamecenter.model.OpAgentRechargeFetch;
-import com.gamecenter.model.OpGameapp;
-import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpOssQlzPassport;
-import com.gamecenter.model.OpShop;
 import com.gamecenter.parBean.AgentUser;
 import com.gamecenter.service.agent.AgentListService;
 import com.gamecenter.service.agent.AgentRechargeFetchService;

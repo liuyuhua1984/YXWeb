@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpGmtNoticeLeft;
 import com.gamecenter.model.OpGmtNoticeLeftExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpGmtNoticeLeftMapper {
     long countByExample(OpGmtNoticeLeftExample example);
