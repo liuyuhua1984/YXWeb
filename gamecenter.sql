@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-08-03 19:07:56
+Date: 2017-08-04 15:10:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1203,6 +1203,7 @@ CREATE TABLE `op_agent_recharge` (
   `online_pay` int(11) DEFAULT NULL COMMENT '是否在线充值 1为在线充',
   `is_fetch` int(11) DEFAULT '0' COMMENT '是否已提现 ,申请提现为1,已提为2',
   `fetch_money` double(20,2) DEFAULT '0.00' COMMENT '提成',
+  `flag` int(11) DEFAULT '1' COMMENT '充值标志',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
@@ -1210,12 +1211,12 @@ CREATE TABLE `op_agent_recharge` (
 -- ----------------------------
 -- Records of op_agent_recharge
 -- ----------------------------
-INSERT INTO `op_agent_recharge` VALUES ('1', '超级管理员', '1.00', '0', '2017-06-28 09:43:44', 'c:esmj879611060301070336', 'player:879877857940078592', '0', '0', '0.15');
-INSERT INTO `op_agent_recharge` VALUES ('2', 'proxy1', '10.00', '1', '2017-06-28 10:17:37', 'proxy12', 'agent:879886473006940160', '0', '0', '0.00');
-INSERT INTO `op_agent_recharge` VALUES ('3', 'proxy12', '1.00', '0', '2017-06-28 11:03:41', 'c:esmj879611060301070336', 'player:879886984158380032', '0', '2', '0.15');
-INSERT INTO `op_agent_recharge` VALUES ('4', 'proxy12', '5.00', '0', '2017-06-28 11:03:39', 'c:esmj879611060301070336', 'player:879887196549545984', '0', '2', '0.75');
-INSERT INTO `op_agent_recharge` VALUES ('5', '超级管理员', '400.00', '0', '2017-07-11 13:40:26', 'c:esmj879611060301070336', 'test1470654170170', '0', '0', '60.00');
-INSERT INTO `op_agent_recharge` VALUES ('6', 'proxy12', '400.00', '0', '2017-07-11 13:52:37', 'c:esmj879611060301070336', 'test1470654170171', '0', '0', '60.00');
+INSERT INTO `op_agent_recharge` VALUES ('1', '超级管理员', '1.00', '0', '2017-06-28 09:43:44', 'c:esmj879611060301070336', 'player:879877857940078592', '0', '0', '0.15', '1');
+INSERT INTO `op_agent_recharge` VALUES ('2', 'proxy1', '10.00', '1', '2017-06-28 10:17:37', 'proxy12', 'agent:879886473006940160', '0', '0', '0.00', '1');
+INSERT INTO `op_agent_recharge` VALUES ('3', 'proxy12', '1.00', '0', '2017-06-28 11:03:41', 'c:esmj879611060301070336', 'player:879886984158380032', '0', '2', '0.15', '1');
+INSERT INTO `op_agent_recharge` VALUES ('4', 'proxy12', '5.00', '0', '2017-06-28 11:03:39', 'c:esmj879611060301070336', 'player:879887196549545984', '0', '2', '0.75', '1');
+INSERT INTO `op_agent_recharge` VALUES ('5', '超级管理员', '400.00', '0', '2017-07-11 13:40:26', 'c:esmj879611060301070336', 'test1470654170170', '0', '0', '60.00', '1');
+INSERT INTO `op_agent_recharge` VALUES ('6', 'proxy12', '400.00', '0', '2017-07-11 13:52:37', 'c:esmj879611060301070336', 'test1470654170171', '0', '0', '60.00', '1');
 
 -- ----------------------------
 -- Table structure for op_agent_recharge_fetch

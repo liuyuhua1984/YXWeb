@@ -11,8 +11,8 @@
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 		<td class="center"><img width="100" height="30" src="${ctxPage}/${item.content}"></td>
 		<td class="center"><a type="button"  class="btn btn-small"  href ="javascript:void(0);"    onclick='$("#act${item.id}").attr("checked", "checked");doDel(${item.id});'>删除</a></td>
-
 	</tr>
+	
 </c:forEach>
 <tr>
 	<td colspan="11">
