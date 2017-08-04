@@ -12,6 +12,7 @@
     <result column="online_pay" jdbcType="INTEGER" property="onlinePay" />
     <result column="is_fetch" jdbcType="INTEGER" property="isFetch" />
     <result column="fetch_money" jdbcType="DOUBLE" property="fetchMoney" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, agent_name, money, is_agent, create_time, name, trader_order, online_pay, is_fetch, 
-    fetch_money
+    fetch_money, flag
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentRechargeExample" resultMap="BaseResultMap">
     select
@@ -112,12 +113,12 @@
     </selectKey>
     insert into op_agent_recharge (agent_name, money, is_agent, 
       create_time, name, trader_order, 
-      online_pay, is_fetch, fetch_money
-      )
+      online_pay, is_fetch, fetch_money, 
+      flag)
     values (#{agentName,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{isAgent,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{traderOrder,jdbcType=VARCHAR}, 
-      #{onlinePay,jdbcType=INTEGER}, #{isFetch,jdbcType=INTEGER}, #{fetchMoney,jdbcType=DOUBLE}
-      )
+      #{onlinePay,jdbcType=INTEGER}, #{isFetch,jdbcType=INTEGER}, #{fetchMoney,jdbcType=DOUBLE}, 
+      #{flag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentRecharge">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -152,6 +153,9 @@
       <if test="fetchMoney != null">
         fetch_money,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="agentName != null">
@@ -180,6 +184,9 @@
       </if>
       <if test="fetchMoney != null">
         #{fetchMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -222,6 +229,9 @@
       <if test="record.fetchMoney != null">
         fetch_money = #{record.fetchMoney,jdbcType=DOUBLE},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -238,7 +248,8 @@
       trader_order = #{record.traderOrder,jdbcType=VARCHAR},
       online_pay = #{record.onlinePay,jdbcType=INTEGER},
       is_fetch = #{record.isFetch,jdbcType=INTEGER},
-      fetch_money = #{record.fetchMoney,jdbcType=DOUBLE}
+      fetch_money = #{record.fetchMoney,jdbcType=DOUBLE},
+      flag = #{record.flag,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -273,6 +284,9 @@
       <if test="fetchMoney != null">
         fetch_money = #{fetchMoney,jdbcType=DOUBLE},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -286,7 +300,8 @@
       trader_order = #{traderOrder,jdbcType=VARCHAR},
       online_pay = #{onlinePay,jdbcType=INTEGER},
       is_fetch = #{isFetch,jdbcType=INTEGER},
-      fetch_money = #{fetchMoney,jdbcType=DOUBLE}
+      fetch_money = #{fetchMoney,jdbcType=DOUBLE},
+      flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

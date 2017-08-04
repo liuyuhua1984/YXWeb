@@ -48,6 +48,17 @@ public interface AgentRechargeService extends BaseService<OpAgentRecharge>{
 	public List<OpAgentRecharge> getOpAgentRechargeFetchList(String upAgentName,int isFetch,int level);
 	
 	
+	/** 
+	 * getOpAgentRechargeByOrder:(). <br/> 
+	 * TODO().<br/> 
+	 * orderId查找出相应的对象
+	 * @author lyh 
+	 * @param orderId
+	 * @return 
+	 */  
+	public OpAgentRecharge getOpAgentRechargeByOrder(String orderId);
+		
+	
 	
 }
   

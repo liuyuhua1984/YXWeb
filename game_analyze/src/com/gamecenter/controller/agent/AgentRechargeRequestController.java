@@ -247,6 +247,7 @@ public class AgentRechargeRequestController {
 		pay.setCreateTime(new Date(System.currentTimeMillis()));
 		pay.setIsFetch(0);
 		pay.setFetchMoney(fetchMoney);
+		pay.setFlag(1);
 		agentRechargeService.insert(pay);
 	}
 }

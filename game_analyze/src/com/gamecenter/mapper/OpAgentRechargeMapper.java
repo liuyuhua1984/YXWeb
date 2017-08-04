@@ -1,11 +1,9 @@
 package com.gamecenter.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.gamecenter.model.OpAgentRecharge;
 import com.gamecenter.model.OpAgentRechargeExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface OpAgentRechargeMapper {
     long countByExample(OpAgentRechargeExample example);

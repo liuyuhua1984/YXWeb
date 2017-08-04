@@ -225,6 +225,7 @@ public class PlayerRechargeOnline extends BaseController {
 		pay.setCreateTime(new Date(System.currentTimeMillis()));
 		pay.setIsFetch(0);
 		pay.setFetchMoney(fetchMoney);
+		pay.setFlag(1);
 		agentRechargeService.insert(pay);
 	}
 	
