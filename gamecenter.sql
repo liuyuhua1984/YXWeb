@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-08-04 15:10:15
+Date: 2017-08-07 19:05:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1171,22 +1171,24 @@ CREATE TABLE `op_agent_list` (
   `password` varchar(255) DEFAULT NULL COMMENT '代理密码',
   `status` tinyint(4) DEFAULT '1' COMMENT '禁用为0,',
   `blank_card` varchar(255) DEFAULT NULL COMMENT '银行卡',
+  `bind_player_id` varchar(128) DEFAULT '0' COMMENT '绑定的玩家id',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_name`),
   KEY `name` (`name`),
   KEY `invite_code` (`invite_code`),
   KEY `phone` (`phone`),
-  KEY `wechat_code` (`wechat_code`)
+  KEY `wechat_code` (`wechat_code`),
+  KEY `bind_player_id` (`bind_player_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_list
 -- ----------------------------
-INSERT INTO `op_agent_list` VALUES ('1', '超级管理员', '888888', '888888', '2147483137', '0', '超级管理员', '12345678996', '2017-06-28 09:36:43', '888888', '1', null);
-INSERT INTO `op_agent_list` VALUES ('11', 'proxy1', 'paWaxA', '999', '2147483617', '超级管理员', '88888', '15746953659', '2017-06-28 09:59:09', '123456', '1', null);
-INSERT INTO `op_agent_list` VALUES ('12', 'proxy2', 'f9tyhq', '999', '2147483647', '超级管理员', '9876554', '17785246536', '2017-06-28 09:59:12', '123456', '1', null);
-INSERT INTO `op_agent_list` VALUES ('13', 'proxy11', 'toq18a', '1', null, 'proxy1', 'toq18a', '13256487952', '2017-06-28 09:59:18', '123456', '1', null);
-INSERT INTO `op_agent_list` VALUES ('14', 'proxy12', 'UiU7OQ', '1', '9', 'proxy1', 'UiU7OQ', '18745696352', '2017-06-28 09:59:21', '123456', '1', null);
+INSERT INTO `op_agent_list` VALUES ('1', '超级管理员', '888888', '888888', '2147483137', '0', '超级管理员', '12345678996', '2017-06-28 09:36:43', '888888', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('11', 'proxy1', 'paWaxA', '999', '2147483617', '超级管理员', '88888', '15746953659', '2017-06-28 09:59:09', '123456', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('12', 'proxy2', 'f9tyhq', '999', '2147483647', '超级管理员', '9876554', '17785246536', '2017-06-28 09:59:12', '123456', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('13', 'proxy11', 'toq18a', '1', null, 'proxy1', 'toq18a', '13256487952', '2017-06-28 09:59:18', '123456', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('14', 'proxy12', 'UiU7OQ', '1', '9', 'proxy1', 'UiU7OQ', '18745696352', '2017-06-28 09:59:21', '123456', '1', null, '0');
 
 -- ----------------------------
 -- Table structure for op_agent_recharge
@@ -2003,7 +2005,7 @@ CREATE TABLE `op_oss_qlz_login_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_login_log
@@ -2065,6 +2067,7 @@ INSERT INTO `op_oss_qlz_login_log` VALUES ('54', '1001', '192.168.0.65', '2017-0
 INSERT INTO `op_oss_qlz_login_log` VALUES ('55', '1001', '192.168.0.65', '2017-07-04 15:45:00', '3123', '1', 'c:e3OO3zw', '2017-07-04 15:45:00', '1');
 INSERT INTO `op_oss_qlz_login_log` VALUES ('56', '1001', '192.168.0.65', '2017-07-04 15:47:00', '1233', '1', 'c:eSvldzV', '2017-07-04 15:47:00', '1');
 INSERT INTO `op_oss_qlz_login_log` VALUES ('57', '1001', '192.168.0.65', '2017-07-04 15:48:20', '123', '1', 'c:eA6lJdc', '2017-07-04 15:48:20', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('58', '1001', '192.168.0.25', '2017-08-07 18:33:13', '617287071432466026', '1', '无敌', '2017-08-07 18:39:30', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_onlinecur_log
@@ -2077,7 +2080,7 @@ CREATE TABLE `op_oss_qlz_onlinecur_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=1047 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
+) ENGINE=InnoDB AUTO_INCREMENT=1062 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
 
 -- ----------------------------
 -- Records of op_oss_qlz_onlinecur_log
@@ -3128,6 +3131,21 @@ INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1043', '1001', '0', '2017-07-11 
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1044', '1001', '0', '2017-07-11 13:50:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1045', '1001', '0', '2017-07-11 13:51:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1046', '1001', '0', '2017-07-11 13:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1047', '1001', '0', '2017-08-07 18:43:09', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1048', '1001', '0', '2017-08-07 18:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1049', '1001', '0', '2017-08-07 18:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1050', '1001', '0', '2017-08-07 18:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1051', '1001', '0', '2017-08-07 18:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1052', '1001', '0', '2017-08-07 18:56:06', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1053', '1001', '0', '2017-08-07 18:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1054', '1001', '0', '2017-08-07 18:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1055', '1001', '0', '2017-08-07 18:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1056', '1001', '0', '2017-08-07 19:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1057', '1001', '0', '2017-08-07 19:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1058', '1001', '0', '2017-08-07 19:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1059', '1001', '0', '2017-08-07 19:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1060', '1001', '0', '2017-08-07 19:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1061', '1001', '0', '2017-08-07 19:05:01', null);
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_out_log
@@ -3256,38 +3274,41 @@ CREATE TABLE `op_oss_qlz_passport` (
   `sfrom` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
+  `real_name` varchar(255) DEFAULT '' COMMENT '姓名',
+  `card_id` varchar(255) DEFAULT '0' COMMENT '身份证id',
   PRIMARY KEY (`openid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='热血七龙珠账号表';
 
 -- ----------------------------
 -- Records of op_oss_qlz_passport
 -- ----------------------------
-INSERT INTO `op_oss_qlz_passport` VALUES ('123', '1001', 'c:eA6lJdc', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '7', '2017-07-04 14:16:21', '2017-07-04 15:48:20', '2017-07-03 18:33:38', '1', '7', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('123123', '1001', 'c-NpTI6s', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 14:42:53', '2017-07-04 14:42:53', '2017-07-04 14:22:10', '1', '2', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('1233', '1001', 'c:eSvldzV', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '24', '2017-07-04 10:52:39', '2017-07-04 15:47:00', '2017-07-04 10:49:27', '1', '22', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('12333', '1001', 'c-JK01zY', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 15:08:58', '2017-07-04 15:08:58', '2017-07-04 13:40:37', '1', '2', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('124', '1001', 'c-9Xthlt', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-04 14:17:32', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('1241', '1001', 'c:eAWgrLv', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:30:05', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('1412', '1001', 'c:eDyZYrg', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:36:12', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('2', '1001', 'c-buwfVH', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 15:03:51', '2017-07-04 15:03:51', '2017-07-04 14:58:29', '1', '2', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('213', '1001', 'c:eoQc5M3', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:42:48', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('21312', '1001', 'c:ehxZXil', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:45:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('312', '1001', 'c:erdEHwm', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:44:19', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('3123', '1001', 'c:e3OO3zw', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '7', '2017-07-03 18:47:00', '2017-07-04 15:45:00', '2017-07-03 18:35:51', '1', '7', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('321', '1001', 'c:eTw8oy4', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:50:37', '1', '1', '0.00', '0', null, null, null, null, null, '1', '30qbMv');
-INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '110.00', '110.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '10#player:879877857940078592', '1', '0.00', '0', '2017-06-28 09:43:25', '2017-06-28 09:43:25', null, null, null, '1001', 'NVvObb');
-INSERT INTO `op_oss_qlz_passport` VALUES ('4124', '1001', 'c-DMHE5Y', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-04 15:35:35', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('478555hhh', '1001', 'c:ebgbAw6', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:47:17', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('7788', '1001', 'c:e0jOleu', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-30 10:44:16', null, '0', '0.00', '0', null, null, null, null, null, '1', 'FMJS1V');
-INSERT INTO `op_oss_qlz_passport` VALUES ('9852', '1001', 'c:esmj879909164015419392', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-28 11:47:47', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('dasd', '1001', 'c:e29jWRG', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:51:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('dswwwd', '1001', 'c:eoqDPKa', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:50:07', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('jyz', '1001', 'c:ec0OSMt', '1', '10.00', '40.00', null, '0', '1', '192.168.0.65', '7', '2017-06-29 14:47:17', '2017-06-29 15:24:53', '2017-06-29 14:46:57', '1', '6', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('sdsds', '1001', 'c:eNWVvsz', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:25:23', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('sewew', '1001', 'c:e49wvHT', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:00:57', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('wsdewe', '1001', 'c:eisEePF', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:05:58', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('zyj', '1001', 'c:eW2bico', '1', '210.00', '210.00', null, '0', '1', '192.168.0.65', '3', '2017-06-29 14:36:42', '2017-06-29 14:46:13', '2017-06-29 14:33:01', '1', '2', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('123', '1001', 'c:eA6lJdc', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '7', '2017-07-04 14:16:21', '2017-07-04 15:48:20', '2017-07-03 18:33:38', '1', '7', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('123123', '1001', 'c-NpTI6s', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 14:42:53', '2017-07-04 14:42:53', '2017-07-04 14:22:10', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('1233', '1001', 'c:eSvldzV', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '24', '2017-07-04 10:52:39', '2017-07-04 15:47:00', '2017-07-04 10:49:27', '1', '22', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('12333', '1001', 'c-JK01zY', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 15:08:58', '2017-07-04 15:08:58', '2017-07-04 13:40:37', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('124', '1001', 'c-9Xthlt', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-04 14:17:32', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('1241', '1001', 'c:eAWgrLv', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:30:05', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('1412', '1001', 'c:eDyZYrg', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:36:12', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('2', '1001', 'c-buwfVH', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 15:03:51', '2017-07-04 15:03:51', '2017-07-04 14:58:29', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('213', '1001', 'c:eoQc5M3', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:42:48', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('21312', '1001', 'c:ehxZXil', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:45:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('312', '1001', 'c:erdEHwm', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:44:19', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('3123', '1001', 'c:e3OO3zw', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '7', '2017-07-03 18:47:00', '2017-07-04 15:45:00', '2017-07-03 18:35:51', '1', '7', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('321', '1001', 'c:eTw8oy4', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:50:37', '1', '1', '0.00', '0', null, null, null, null, null, '1', '30qbMv', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '110.00', '110.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '10#player:879877857940078592', '1', '0.00', '0', '2017-06-28 09:43:25', '2017-06-28 09:43:25', null, null, null, '1001', 'NVvObb', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('4124', '1001', 'c-DMHE5Y', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-04 15:35:35', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('478555hhh', '1001', 'c:ebgbAw6', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:47:17', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('617287071432466026', '1001', '无敌', '1', '0.00', '0.00', null, '1', '1', '192.168.0.25', '2', '2017-08-07 18:33:13', '2017-08-07 18:33:13', '2017-08-07 18:33:13', null, '0', '0.00', '0', null, null, null, null, null, '1', null, '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('7788', '1001', 'c:e0jOleu', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-30 10:44:16', null, '0', '0.00', '0', null, null, null, null, null, '1', 'FMJS1V', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('9852', '1001', 'c:esmj879909164015419392', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-28 11:47:47', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dasd', '1001', 'c:e29jWRG', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:51:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dswwwd', '1001', 'c:eoqDPKa', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:50:07', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('jyz', '1001', 'c:ec0OSMt', '1', '10.00', '40.00', null, '0', '1', '192.168.0.65', '7', '2017-06-29 14:47:17', '2017-06-29 15:24:53', '2017-06-29 14:46:57', '1', '6', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('sdsds', '1001', 'c:eNWVvsz', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:25:23', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('sewew', '1001', 'c:e49wvHT', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:00:57', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('wsdewe', '1001', 'c:eisEePF', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:05:58', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('zyj', '1001', 'c:eW2bico', '1', '210.00', '210.00', null, '0', '1', '192.168.0.65', '3', '2017-06-29 14:36:42', '2017-06-29 14:46:13', '2017-06-29 14:33:01', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport_reg

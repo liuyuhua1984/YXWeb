@@ -129,6 +129,16 @@ public class OpOssQlzPassport implements Serializable {
     private String inviteCode;
 
     /**
+     * 姓名
+     */
+    private String realName;
+
+    /**
+     * 身份证id
+     */
+    private String cardId;
+
+    /**
      * op_oss_qlz_passport
      */
     private static final long serialVersionUID = 1L;
@@ -333,6 +343,22 @@ public class OpOssQlzPassport implements Serializable {
         this.inviteCode = inviteCode == null ? null : inviteCode.trim();
     }
 
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
+
+    public String getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId == null ? null : cardId.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -364,6 +390,8 @@ public class OpOssQlzPassport implements Serializable {
         sb.append(", sfrom=").append(sfrom);
         sb.append(", appId=").append(appId);
         sb.append(", inviteCode=").append(inviteCode);
+        sb.append(", realName=").append(realName);
+        sb.append(", cardId=").append(cardId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

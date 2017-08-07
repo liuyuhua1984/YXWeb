@@ -14,6 +14,7 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="blank_card" jdbcType="VARCHAR" property="blankCard" />
+    <result column="bind_player_id" jdbcType="VARCHAR" property="bindPlayerId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, invite_code, agent_level, remain_money, parent_name, wechat_code, phone, 
-    create_time, password, status, blank_card
+    create_time, password, status, blank_card, bind_player_id
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentListExample" resultMap="BaseResultMap">
     select
@@ -115,11 +116,13 @@
     insert into op_agent_list (name, invite_code, agent_level, 
       remain_money, parent_name, wechat_code, 
       phone, create_time, password, 
-      status, blank_card)
+      status, blank_card, bind_player_id
+      )
     values (#{name,jdbcType=VARCHAR}, #{inviteCode,jdbcType=VARCHAR}, #{agentLevel,jdbcType=INTEGER}, 
       #{remainMoney,jdbcType=INTEGER}, #{parentName,jdbcType=VARCHAR}, #{wechatCode,jdbcType=VARCHAR}, 
       #{phone,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{password,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT}, #{blankCard,jdbcType=VARCHAR})
+      #{status,jdbcType=TINYINT}, #{blankCard,jdbcType=VARCHAR}, #{bindPlayerId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentList">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -160,6 +163,9 @@
       <if test="blankCard != null">
         blank_card,
       </if>
+      <if test="bindPlayerId != null">
+        bind_player_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -194,6 +200,9 @@
       </if>
       <if test="blankCard != null">
         #{blankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bindPlayerId != null">
+        #{bindPlayerId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -242,6 +251,9 @@
       <if test="record.blankCard != null">
         blank_card = #{record.blankCard,jdbcType=VARCHAR},
       </if>
+      <if test="record.bindPlayerId != null">
+        bind_player_id = #{record.bindPlayerId,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -260,7 +272,8 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       password = #{record.password,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=TINYINT},
-      blank_card = #{record.blankCard,jdbcType=VARCHAR}
+      blank_card = #{record.blankCard,jdbcType=VARCHAR},
+      bind_player_id = #{record.bindPlayerId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -301,6 +314,9 @@
       <if test="blankCard != null">
         blank_card = #{blankCard,jdbcType=VARCHAR},
       </if>
+      <if test="bindPlayerId != null">
+        bind_player_id = #{bindPlayerId,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -316,7 +332,8 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       password = #{password,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
-      blank_card = #{blankCard,jdbcType=VARCHAR}
+      blank_card = #{blankCard,jdbcType=VARCHAR},
+      bind_player_id = #{bindPlayerId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

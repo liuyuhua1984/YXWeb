@@ -27,7 +27,7 @@ require(['jquery', 'dialog'], function ($, dialog) {
 
    // $("#worldid").change(selectMsg);
     $("#search").bind("click", selectMsg);
-
+	//$("#bind_player").bind("click", bindPlayer);
     function selectMsg() {
         getPage(1);
     }

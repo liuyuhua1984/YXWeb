@@ -65,6 +65,11 @@ public class OpAgentList implements Serializable {
     private String blankCard;
 
     /**
+     * 绑定的玩家id
+     */
+    private String bindPlayerId;
+
+    /**
      * op_agent_list
      */
     private static final long serialVersionUID = 1L;
@@ -165,6 +170,14 @@ public class OpAgentList implements Serializable {
         this.blankCard = blankCard == null ? null : blankCard.trim();
     }
 
+    public String getBindPlayerId() {
+        return bindPlayerId;
+    }
+
+    public void setBindPlayerId(String bindPlayerId) {
+        this.bindPlayerId = bindPlayerId == null ? null : bindPlayerId.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -183,6 +196,7 @@ public class OpAgentList implements Serializable {
         sb.append(", password=").append(password);
         sb.append(", status=").append(status);
         sb.append(", blankCard=").append(blankCard);
+        sb.append(", bindPlayerId=").append(bindPlayerId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

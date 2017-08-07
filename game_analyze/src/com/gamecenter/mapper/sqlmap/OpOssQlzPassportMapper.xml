@@ -27,6 +27,8 @@
     <result column="sfrom" jdbcType="VARCHAR" property="sfrom" />
     <result column="app_id" jdbcType="VARCHAR" property="appId" />
     <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -90,7 +92,7 @@
     openid, worldid, rolename, grade, curmoney, totalmoney, career, isonline, status, 
     lastloginip, logincount, fristlogintime, lastlogintime, regtime, info, totalonline, 
     totalconsume, vipgrade, fristpaytime, lastpaytime, optid, guidenum, sfrom, app_id, 
-    invite_code
+    invite_code, real_name, card_id
   </sql>
   <select id="selectByExample" parameterType="com.gamecenter.model.OpOssQlzPassportExample" resultMap="BaseResultMap">
     select
@@ -132,7 +134,8 @@
       totalonline, totalconsume, vipgrade, 
       fristpaytime, lastpaytime, optid, 
       guidenum, sfrom, app_id, 
-      invite_code)
+      invite_code, real_name, card_id
+      )
     values (#{openid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
       #{grade,jdbcType=INTEGER}, #{curmoney,jdbcType=DOUBLE}, #{totalmoney,jdbcType=DOUBLE}, 
       #{career,jdbcType=INTEGER}, #{isonline,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
@@ -141,7 +144,8 @@
       #{totalonline,jdbcType=INTEGER}, #{totalconsume,jdbcType=DOUBLE}, #{vipgrade,jdbcType=INTEGER}, 
       #{fristpaytime,jdbcType=VARCHAR}, #{lastpaytime,jdbcType=VARCHAR}, #{optid,jdbcType=VARCHAR}, 
       #{guidenum,jdbcType=VARCHAR}, #{sfrom,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
-      #{inviteCode,jdbcType=VARCHAR})
+      #{inviteCode,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssQlzPassport">
     insert into op_oss_qlz_passport
@@ -221,6 +225,12 @@
       <if test="inviteCode != null">
         invite_code,
       </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="openid != null">
@@ -297,6 +307,12 @@
       </if>
       <if test="inviteCode != null">
         #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -384,6 +400,12 @@
       <if test="record.inviteCode != null">
         invite_code = #{record.inviteCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.realName != null">
+        real_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardId != null">
+        card_id = #{record.cardId,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -415,7 +437,9 @@
       guidenum = #{record.guidenum,jdbcType=VARCHAR},
       sfrom = #{record.sfrom,jdbcType=VARCHAR},
       app_id = #{record.appId,jdbcType=VARCHAR},
-      invite_code = #{record.inviteCode,jdbcType=VARCHAR}
+      invite_code = #{record.inviteCode,jdbcType=VARCHAR},
+      real_name = #{record.realName,jdbcType=VARCHAR},
+      card_id = #{record.cardId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -495,6 +519,12 @@
       <if test="inviteCode != null">
         invite_code = #{inviteCode,jdbcType=VARCHAR},
       </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
     </set>
     where openid = #{openid,jdbcType=VARCHAR}
   </update>
@@ -523,7 +553,9 @@
       guidenum = #{guidenum,jdbcType=VARCHAR},
       sfrom = #{sfrom,jdbcType=VARCHAR},
       app_id = #{appId,jdbcType=VARCHAR},
-      invite_code = #{inviteCode,jdbcType=VARCHAR}
+      invite_code = #{inviteCode,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      card_id = #{cardId,jdbcType=VARCHAR}
     where openid = #{openid,jdbcType=VARCHAR}
   </update>
   

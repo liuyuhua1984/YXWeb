@@ -13,16 +13,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.game.protocol.gm.GmJHPlayerHttpProtocol;
+import com.game.protocol.gm.GmProxyBindPlayerHttpProtocol;
+import com.game.protocol.gm.GmProxyBindPlayerProtocolRequest;
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
+import com.gamecenter.common.PlatformToServerConnection;
 import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpAgentRecharge;
 import com.gamecenter.model.OpAgentRechargeFetch;
+import com.gamecenter.model.OpGameapp;
+import com.gamecenter.model.OpGameworld;
+import com.gamecenter.model.OpOssQlzPassport;
 import com.gamecenter.parBean.AgentUser;
 import com.gamecenter.service.agent.AgentListService;
 import com.gamecenter.service.agent.AgentRechargeFetchService;
 import com.gamecenter.service.agent.AgentRechargeService;
+import com.gamecenter.service.appServices.AppService;
+import com.gamecenter.service.appServices.WorldService;
+import com.gamecenter.service.dataup.DataUpHandleService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -46,6 +56,14 @@ public class AgentListController {
 	
 	@Autowired
 	private AgentRechargeFetchService agentRechargeFetchService;
+	@Autowired
+	private DataUpHandleService dataUpHandleService;
+	
+	@Autowired
+	private WorldService worldService;
+	
+	@Autowired
+	private AppService appService;
 	
 	/**
 	 * agentList:(). <br/>
@@ -226,4 +244,62 @@ public class AgentListController {
 		return map;
 	}
 	
+	@RequestMapping("/bind/player")
+	public ModelAndView bindPlayer() {
+		return new ModelAndView("/page/agent/AgentBindPlayer");
+	}
+	
+	@RequestMapping("/match/playerId")
+	@ResponseBody
+	public ModelMap matchPlayerId(HttpSession session, @RequestParam(value = "playerId") String playerId) {
+		String res = "-1";
+		ModelMap map = new ModelMap();
+		
+		AgentUser userMsg = (AgentUser) session.getAttribute("AgentUser");
+		long agentId = 0;
+		if (userMsg != null) {
+			agentId = userMsg.getId();
+		}
+		
+		// 找到玩家并匹配
+		OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(playerId);
+		OpAgentList agent = agentListService.findById(agentId);
+		if (agent != null) {
+			if (player != null) {
+				String oldPlayerId = agent.getBindPlayerId();
+				//
+				List<OpGameapp> appList = appService.getAppList();
+				OpGameapp gameApp = appList.size() > 0 ? appList.get(0) : null;
+				OpGameworld worldServer = null;
+				if (gameApp != null) {
+					List<OpGameworld> worldList = worldService.getWorldListByAppId(gameApp.getAppid());
+					worldServer = worldList.size() > 0 ? worldList.get(0) : null;
+				}
+				
+				if (worldServer != null) {
+					GmProxyBindPlayerProtocolRequest request = new GmProxyBindPlayerProtocolRequest();
+					request.setNewPlayerId(playerId);
+					request.setOldPlayerId(oldPlayerId);
+					request.setProxyId("" + agent.getId());
+					request.setServerId(worldServer.getWorldid());
+					GmProxyBindPlayerHttpProtocol resp = (GmProxyBindPlayerHttpProtocol) PlatformToServerConnection.sendPlatformToServer(worldServer.getIp(), worldServer.getServerurl(), request);
+					if (resp != null) {
+						if (resp.getStatus() == 1) {
+							agent.setBindPlayerId(playerId);
+							agentListService.update(agent);
+						}
+						res = "" + resp.getStatus();
+					}
+				}
+			} else {
+				res = "-3";
+			}
+		} else {
+			res = "-2";
+		}
+		
+		map.put("res", res);
+		return map;
+		
+	}
 }

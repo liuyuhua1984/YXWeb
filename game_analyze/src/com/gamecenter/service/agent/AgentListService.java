@@ -95,6 +95,16 @@ public interface AgentListService {
 		 */  
 		OpAgentList findByWechat(String weChat);
 		
+		/** 
+		 * findByPlayerId:(). <br/> 
+		 * TODO().<br/> 
+		 * 用playerId找到对象
+		 * @author lyh 
+		 * @param playerId
+		 * @return 
+		 */  
+		OpAgentList findByPlayerId(String playerId);
+			
 		
 }
   

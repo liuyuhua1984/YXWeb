@@ -93,6 +93,17 @@ public class AgentListServiceImpl implements AgentListService {
 		 }
 		return null;
 	}
+
+	@Override
+	public OpAgentList findByPlayerId(String playerId) {
+		// TODO Auto-generated method stub
+		OpAgentListExample example = new OpAgentListExample();
+		OpAgentListExample.Criteria criteria = example.createCriteria();
+		criteria.andBindPlayerIdEqualTo(playerId);
+		List<OpAgentList> list = maper.selectByExample(example);
+		
+		return list.size() > 0 ? list.get(0) : null;
+	}
 	
 	
 }

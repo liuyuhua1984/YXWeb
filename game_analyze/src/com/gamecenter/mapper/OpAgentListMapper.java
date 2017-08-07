@@ -1,11 +1,9 @@
 package com.gamecenter.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpAgentListExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface OpAgentListMapper {
     long countByExample(OpAgentListExample example);
