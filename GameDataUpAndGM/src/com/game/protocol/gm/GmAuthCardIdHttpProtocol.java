@@ -5,7 +5,7 @@ import com.lyh.dataup.log.DataUpBase;
 
 /**
  * ClassName:GmAddWhiteNameProtocol <br/>
- * Function: TODO ("借绑定玩家"). <br/>
+ * Function: TODO ("实名认证"). <br/>
  * Reason: TODO (). <br/>
  * Date: 2014-6-9 下午3:45:23 <br/>
  * 
@@ -13,13 +13,13 @@ import com.lyh.dataup.log.DataUpBase;
  * @version
  * @see
  */
-public class GmProxyBindPlayerHttpProtocol extends DataUpBase implements IMsgCode {
+public class GmAuthCardIdHttpProtocol extends DataUpBase implements IMsgCode {
 	
 	/****/
 	private static final long serialVersionUID = 1L;
 	
-	public GmProxyBindPlayerHttpProtocol() {
-		super(GM_PROXY_BIND_PLAYER_HTTP_PROTOCOL);
+	public GmAuthCardIdHttpProtocol() {
+		super(GM_AUTH_PLAYER_HTTP_PROTOCOL);
 	}
 	
 	/*** 消息体 status String 状态 -1：失败 ,1：成功 **/

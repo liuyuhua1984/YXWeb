@@ -42,6 +42,10 @@ public class WeChatConfig extends ServerProperties {
 	/**统一订单地址**/  
 	public static final String UNIFIED_ORDER_URL="https://api.mch.weixin.qq.com/pay/unifiedorder";
 	
+	
+	/**渠道号2=九州,0=恩施**/  
+	public static  int CHANNEL = 0;
+	
 	public static void loadWeChatConfigConfig(String path) {
 		
 		Properties GAME_BUNDLE = loadProperties(path + BUNDLE_NAME);
@@ -52,7 +56,7 @@ public class WeChatConfig extends ServerProperties {
 		MCH_ID = GAME_BUNDLE.getProperty("mch_id");
 		KEY = GAME_BUNDLE.getProperty("key");
 		NOTIFY_URL = GAME_BUNDLE.getProperty("notify_url");
-		
+		CHANNEL = Integer.parseInt(GAME_BUNDLE.getProperty("channel"));
 	}
 	
 }

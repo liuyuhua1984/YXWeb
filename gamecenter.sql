@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-08-07 19:05:47
+Date: 2017-08-08 19:11:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `oa_action` (
   `sort` int(11) DEFAULT '0',
   `info` varchar(200) DEFAULT NULL COMMENT '说明',
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_action
@@ -147,6 +147,7 @@ INSERT INTO `oa_action` VALUES ('159', 'json列表', 'getJsonList', '', '0', '')
 INSERT INTO `oa_action` VALUES ('160', '数据列表', 'dataList', '', '0', '');
 INSERT INTO `oa_action` VALUES ('161', '问题反馈', 'playerFeedBack', null, '0', null);
 INSERT INTO `oa_action` VALUES ('162', '金花控制', 'jhPlayControl', null, '0', null);
+INSERT INTO `oa_action` VALUES ('163', '玩法介绍', 'howToPlay', null, '0', null);
 
 -- ----------------------------
 -- Table structure for oa_module
@@ -165,7 +166,7 @@ CREATE TABLE `oa_module` (
   `joinid` varchar(200) DEFAULT NULL,
   `level` int(11) DEFAULT '1',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8 COMMENT='菜单模块表';
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COMMENT='菜单模块表';
 
 -- ----------------------------
 -- Records of oa_module
@@ -239,6 +240,8 @@ INSERT INTO `oa_module` VALUES ('187', '188', '玩家反馈', '/gmt/player/feedb
 INSERT INTO `oa_module` VALUES ('188', '130', '玩家反馈', '', '6', '0', null, null, '1', '130_188', '2');
 INSERT INTO `oa_module` VALUES ('189', '130', '金花控制', '', '7', '0', null, null, '1', '130_189', '2');
 INSERT INTO `oa_module` VALUES ('190', '189', '金花控制', '/gmt/jh/control', '1', '0', null, null, '0', '130_189_190', '3');
+INSERT INTO `oa_module` VALUES ('191', '130', '玩法介绍', null, '8', '0', null, null, '1', '130_191', '2');
+INSERT INTO `oa_module` VALUES ('192', '191', '玩法介绍', '/gmt/how/to/play', '1', '0', null, null, '0', '130_191_192', '3');
 
 -- ----------------------------
 -- Table structure for oa_permit
@@ -250,7 +253,7 @@ CREATE TABLE `oa_permit` (
   `aid` int(11) DEFAULT NULL,
   `info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`permitid`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8 COMMENT='基本权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COMMENT='基本权限表';
 
 -- ----------------------------
 -- Records of oa_permit
@@ -363,6 +366,7 @@ INSERT INTO `oa_permit` VALUES ('159', '156', '159', null);
 INSERT INTO `oa_permit` VALUES ('160', '157', '160', null);
 INSERT INTO `oa_permit` VALUES ('161', '187', '161', null);
 INSERT INTO `oa_permit` VALUES ('162', '190', '162', null);
+INSERT INTO `oa_permit` VALUES ('163', '192', '163', null);
 
 -- ----------------------------
 -- Table structure for oa_permit_detail
@@ -374,11 +378,12 @@ CREATE TABLE `oa_permit_detail` (
   `permitid` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT '1' COMMENT '1:权限组 2：角色',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=1843 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
+) ENGINE=InnoDB AUTO_INCREMENT=1844 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
 
 -- ----------------------------
 -- Records of oa_permit_detail
 -- ----------------------------
+INSERT INTO `oa_permit_detail` VALUES ('184', '18', '163', '2');
 INSERT INTO `oa_permit_detail` VALUES ('872', '16', '131', '2');
 INSERT INTO `oa_permit_detail` VALUES ('873', '16', '85', '2');
 INSERT INTO `oa_permit_detail` VALUES ('874', '16', '128', '2');
@@ -576,6 +581,7 @@ INSERT INTO `oa_permit_detail` VALUES ('1839', '18', '161', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1840', '17', '161', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1841', '17', '162', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1842', '18', '162', '2');
+INSERT INTO `oa_permit_detail` VALUES ('1843', '17', '163', '2');
 
 -- ----------------------------
 -- Table structure for oa_role
@@ -2080,7 +2086,7 @@ CREATE TABLE `op_oss_qlz_onlinecur_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=1062 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
+) ENGINE=InnoDB AUTO_INCREMENT=1064 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
 
 -- ----------------------------
 -- Records of op_oss_qlz_onlinecur_log
@@ -3146,6 +3152,8 @@ INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1058', '1001', '0', '2017-08-07 
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1059', '1001', '0', '2017-08-07 19:03:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1060', '1001', '0', '2017-08-07 19:04:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1061', '1001', '0', '2017-08-07 19:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1062', '1001', '0', '2017-08-07 19:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1063', '1001', '0', '2017-08-07 19:07:01', null);
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_out_log

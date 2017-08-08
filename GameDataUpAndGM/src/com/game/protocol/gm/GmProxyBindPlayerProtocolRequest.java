@@ -21,7 +21,7 @@ public class GmProxyBindPlayerProtocolRequest extends DataUpBase implements IMsg
 	private static final long serialVersionUID = 1L;
 	
 	public GmProxyBindPlayerProtocolRequest() {
-		super(DATAUP_PROXY_BIND_PLAYER_HTTP_PROTOCOL);
+		super(GM_PROXY_BIND_PLAYER_HTTP_PROTOCOL);
 	}
 	
 	/**
