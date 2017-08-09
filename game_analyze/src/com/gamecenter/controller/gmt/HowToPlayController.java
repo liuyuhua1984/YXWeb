@@ -77,7 +77,7 @@ public class HowToPlayController extends BaseController {
 		String worldId =request.getParameter("worldId");
 		String info =request.getParameter("info");
 		
-		String res = "1";
+		String res = "-1";
 		// 发给后端
 		if (!ToolUtils.isStringNull(info)) {
 			GmHowToPlayProtocolRequest req = new GmHowToPlayProtocolRequest();

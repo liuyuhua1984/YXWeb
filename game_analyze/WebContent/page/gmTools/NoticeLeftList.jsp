@@ -17,8 +17,6 @@
 		<a href="${ctxPage}/gmt/notice/left/add" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 添加公告</a>
 	</div>
 
-
-
 	<div class="row-fluid">
 		<article class="span12">
 			<!-- new widget -->

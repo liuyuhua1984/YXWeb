@@ -22,3 +22,5 @@
 /GameDataUpAndGM/.settings
 /GameDataUpAndGM/bin
 /GameDataUpAndGM/target
+/.idea
+/GameDataUpAndGM/.classpath

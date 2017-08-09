@@ -126,7 +126,7 @@
 					<div class="control-group">
 						<label class="control-label" for="qb">选择游戏：</label>
 						<c:choose>
-							<c:when test="${channel} eq '2'">
+							<c:when test="${channel eq '2' }">
 								<div class="controls">
 									<select id="qb" name="qb" class="span12 with-search">
 										<option value="1" selected="selected">麻将</option>
@@ -134,11 +134,11 @@
 									</select>
 								</div>
 							</c:when>
-							<c:when test="${channel} eq '0'">
+							<c:when test="${channel eq '0'} ">
 								<div class="controls">
 									<select id="qb" name="qb"
-										class="span12 with-search>
-										<option value="1"  selected = "selected" >麻将 </option>
+										class="span12 with-search">
+										<option value="1" selected = "selected" >麻将 </option>
 									</select>
 								</div>
 						</c:when>
@@ -212,12 +212,12 @@
 
 function saveMsg() {
 
-	var qb = $('qb').val();
+	var qb = $('#qb').val();
 	var appId = $('#appid').val();
 	var worldId = $('#wid').val();
-	var info = $('#info).val();
+	var info = $('#info').val();
 	
-	if(qb == "" || info == "" ) {
+	if(qb == "" || info == "" || info == null || qb == null ) {
 		alert("请完善信息！");
 		return false;
 	}
@@ -227,7 +227,7 @@ function saveMsg() {
 	if(mark == 1) {
 		alert("信息还在处理中...");
 	}
-	mark = 1; //    alert(name);
+	mark = 1; 
 	$.ajax({
 		url: "${ctxPage}/gmt/how/play/info",
 		type: 'POST',
@@ -264,7 +264,8 @@ $(document).ready(function() {
 			format: 'yyyy-mm-dd'
 		}); //显示时间式化
 	}
-});</script>
+});
+</script>
 
 </body>
 </html>

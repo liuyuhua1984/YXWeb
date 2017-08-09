@@ -44,6 +44,9 @@ public class ModuleServiceImpl implements ModuleService {
 		modules.clear();
 		List<OaModule> oaModules = getModuleDetailList();
 		for (OaModule oaModule : oaModules) {
+			if (oaModule == null || oaModule.getModuleurl() == null){
+				System.err.println(":::"+oaModule);
+			}
 			modules.put(oaModule.getModuleurl(), oaModule);
 		}
 		return true;

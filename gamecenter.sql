@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-08-08 19:11:25
+Date: 2017-08-09 17:58:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -157,7 +157,7 @@ CREATE TABLE `oa_module` (
   `mid` int(11) NOT NULL AUTO_INCREMENT COMMENT '模块id',
   `pid` int(11) DEFAULT '0' COMMENT '父id',
   `modulename` varchar(50) DEFAULT NULL COMMENT '名称',
-  `moduleurl` varchar(200) DEFAULT NULL COMMENT '模块url',
+  `moduleurl` varchar(200) DEFAULT '' COMMENT '模块url',
   `sort` int(11) DEFAULT '1' COMMENT '排序',
   `status` varchar(1) DEFAULT '0' COMMENT '状态0:正常 1:禁用',
   `info` varchar(200) DEFAULT NULL COMMENT '简介',
@@ -240,7 +240,7 @@ INSERT INTO `oa_module` VALUES ('187', '188', '玩家反馈', '/gmt/player/feedb
 INSERT INTO `oa_module` VALUES ('188', '130', '玩家反馈', '', '6', '0', null, null, '1', '130_188', '2');
 INSERT INTO `oa_module` VALUES ('189', '130', '金花控制', '', '7', '0', null, null, '1', '130_189', '2');
 INSERT INTO `oa_module` VALUES ('190', '189', '金花控制', '/gmt/jh/control', '1', '0', null, null, '0', '130_189_190', '3');
-INSERT INTO `oa_module` VALUES ('191', '130', '玩法介绍', null, '8', '0', null, null, '1', '130_191', '2');
+INSERT INTO `oa_module` VALUES ('191', '130', '玩法介绍', '', '8', '0', null, null, '1', '130_191', '2');
 INSERT INTO `oa_module` VALUES ('192', '191', '玩法介绍', '/gmt/how/to/play', '1', '0', null, null, '0', '130_191_192', '3');
 
 -- ----------------------------
@@ -378,7 +378,7 @@ CREATE TABLE `oa_permit_detail` (
   `permitid` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT '1' COMMENT '1:权限组 2：角色',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=1844 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
+) ENGINE=InnoDB AUTO_INCREMENT=1845 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
 
 -- ----------------------------
 -- Records of oa_permit_detail
@@ -582,6 +582,7 @@ INSERT INTO `oa_permit_detail` VALUES ('1840', '17', '161', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1841', '17', '162', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1842', '18', '162', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1843', '17', '163', '2');
+INSERT INTO `oa_permit_detail` VALUES ('1844', '18', '163', '2');
 
 -- ----------------------------
 -- Table structure for oa_role

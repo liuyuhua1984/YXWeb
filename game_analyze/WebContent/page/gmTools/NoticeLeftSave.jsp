@@ -74,16 +74,32 @@
 								<label class="control-label" for="file">公告文件</label>
 
 								<div class="controls">
+								<c:choose>
+									<c:when test="${channel eq '2'}">
+											<textarea class="span12" id="content" name="content" rows="5" placeholder="请填写公告栏内容"></textarea>
+									</c:when>
+									
+									<c:otherwise>
 									<input id="fileData" type="file" name="file" placeholder="选择一张图片" />
 									<%--    <textarea class="span12" id="content" name="content" rows="5"></textarea>--%>
 
 									<p class="help-block">选择一张PNG图片</p>
+									</c:otherwise>
+									</c:choose>
 								</div>
 
 							</div>
 
 							<div class="form-actions" style="text-align: left;">
-								<button type="submit" class="btn medium btn-danger" onclick="saveMsg();">提交</button>
+									<c:choose>
+									<c:when test="${channel eq '2'}">
+									<button type="submit" class="btn medium btn-danger" onclick="saveMsgInfo();">提交</button>
+									</c:when>
+									<c:otherwise>
+									<button type="submit" class="btn medium btn-danger" onclick="saveMsg();">提交</button>
+									</c:otherwise>
+									</c:choose>
+							
 								<button type="reset" class="btn medium btn-primary">重置</button>
 								<span id="tishi"></span>
 							</div>
@@ -93,10 +109,8 @@
 					<!-- end content-->
 				</div>
 				<!-- end wrap div -->
-
 	</div>
-
-
+	
 	<script type="text/javascript">
 		var mark = 0;
 	
@@ -167,8 +181,68 @@
 					}
 				}
 			);
+	}
 	
+	function saveMsgInfo() {
+			var content = $('#content').val();
+			var title = $('#title').val();
+			var wid = $('#wid').val();
+			var appid = $('#appid').val();
+			if (content == "" || content == null) {
+				alert("请正确写内容！");
+				return false;
+			}
 	
+			$("#tishi").html("请等待，信息处理中....");
+	
+			if (mark == 1) {
+				alert("信息还在处理中...");
+			}
+			mark = 1;
+	
+			$.ajax(
+				{
+					url : "${ctxPage}/gmt/notice/left/save/info", //用于文件上传的服务器端请求地址
+					type : 'POST',
+					secureuri : false, //是否需要安全协议，一般设置为false
+				
+					dataType : 'json', //返回值类型 一般设置为json
+					data : {
+						title : title,
+						wid : wid,
+						appid : appid,
+						content : content,
+						//请求参数
+	
+					},
+					success : function(data, status) //服务器成功响应处理函数
+					{
+	
+						//data是服务器返回的数据
+						
+						if (data.res == '1') {
+							alert("操作完成");
+							location.reload();
+						}else{
+							alert("公告有问题");
+						}
+						mark = 0;
+						$("#tishi").html("");
+	
+					},
+					error : function(data, status, e) //服务器响应失败处理函数
+					{
+	
+						//data是服务器返回的数据
+		                console("e::"+e);
+						alert("超时或者系统异常..." + e);
+						mark = 0;
+						$("#tishi").html("");
+	
+					}
+				}
+			);
+			
 		}
 	
 		/**

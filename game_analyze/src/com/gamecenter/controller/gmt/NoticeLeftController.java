@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
 import com.gamecenter.common.Tools;
+import com.gamecenter.common.properties.WeChatConfig;
 import com.gamecenter.controller.BaseController;
 import com.gamecenter.model.OpGameapp;
 import com.gamecenter.model.OpGameworld;
@@ -99,6 +100,7 @@ public class NoticeLeftController extends BaseController {
 		ModelAndView view = new ModelAndView("/page/gmTools/NoticeLeftSave");
 		view.addObject("appList", appList);
 		view.addObject("worldList", worldList);
+		 view.addObject("channel", WeChatConfig.CHANNEL);
 		return view;
 	}
 	
@@ -130,7 +132,7 @@ public class NoticeLeftController extends BaseController {
 		PageTool3 pt = new PageTool3();
 		String pageStr = pt.getPageStringForjs("", page);
 		view.addObject("lists", list);
-		// view.addObject("targetTime", targetTime);
+		 view.addObject("channel", WeChatConfig.CHANNEL);
 		view.addObject("pageTools", pageStr);
 		view.addObject("count", pageInfo.getTotal());
 		return view;
@@ -219,6 +221,44 @@ public class NoticeLeftController extends BaseController {
 			logger.error("进来了1111111" + path);
 			String content = pathName.substring(pathName.indexOf("\\/upload"));
 			logger.error("进来了.................." + content);
+			OpGmtNoticeLeft notice = new OpGmtNoticeLeft();
+			notice.setAppId(appid);
+			notice.setContent(content);
+			notice.setCreateTime(new Date(System.currentTimeMillis()));
+			notice.setTitle(title);
+			notice.setWorldId(wid);
+			try {
+				res = noticeLeftService.sendNoticLeft(notice);
+			} catch (Exception e) {
+				logger.error(e.getMessage(), e);
+			}
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("res", res);
+		return map;
+	}
+	
+	
+	/**
+	 * noticeLeftSave:(). <br/>
+	 * TODO().<br/>
+	 * 
+	 * @author lyh
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/save/info", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> noticeLeftSaveInfo(HttpSession session, @RequestParam(value = "content") String content, @RequestParam(value = "appid") String appid, @RequestParam(value = "wid") String wid, @RequestParam(value = "title") String title) {
+		String res = "1";
+		UserMsg user = (UserMsg) session.getAttribute("UserMsg");
+		if (user == null) {
+			res = "-1";
+		}
+		
+		if (user != null ) {
+
 			OpGmtNoticeLeft notice = new OpGmtNoticeLeft();
 			notice.setAppId(appid);
 			notice.setContent(content);
