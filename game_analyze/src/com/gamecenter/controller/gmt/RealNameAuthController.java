@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.game.protocol.gm.GmAuthCardIdHttpProtocol;
 import com.game.protocol.gm.GmAuthCardIdProtocolRequest;
@@ -54,6 +55,7 @@ public class RealNameAuthController extends BaseController {
 	 * @return 
 	 */  
 	@RequestMapping(value="/auth/real/name",method=RequestMethod.POST)
+	@ResponseBody
 	public Map<String,String> authName(HttpSession session,HttpServletRequest request){
 		Map<String,String> map = new HashMap<String,String>();
 		String playerId = request.getParameter("playerId");

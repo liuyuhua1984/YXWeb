@@ -66,10 +66,13 @@
 			<i class="icon-search"></i>
 		</button>
 	</div>
-	
-			<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
+	  <c:choose>
+	  	<c:when test="${lv eq '1' }">
+		<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 			<a style="margin-top: -7px;" href="${ctxPage}/agent/bind/player" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 绑定玩家</a>
 		</div>
+		</c:when>
+	</c:choose>
 	<%-- 
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<div style="position: absolute;">

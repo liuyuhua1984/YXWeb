@@ -11,7 +11,7 @@
 		<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 		<c:choose>
 		<c:when test="${channel eq '2'}">
-					<td class="center"><input name="info"  value="${ctxPage}/${item.content}" readonly="readonly"></td>
+					<td class="center"><input name="info"  value="${item.content}" readonly="readonly"></td>
 		</c:when>
 		<c:otherwise>
 				<td class="center"><img width="100" height="30" src="${ctxPage}/${item.content}"></td>

@@ -93,6 +93,7 @@ public class AgentListController {
 		// String pageStr = pt.getPageStringForjs("",page);
 		// //view.addObject("lists", list);
 		view.addObject("targetTime", targetTime);
+		view.addObject("lv", userMsg.getLevel());
 		// view.addObject("pageTools", pageStr);
 		// view.addObject("count", pageInfo.getTotal());
 		return view;
