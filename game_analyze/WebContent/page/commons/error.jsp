@@ -7,6 +7,6 @@
     <title></title>
 </head>
 <body>
-       error!
+       ${message}
 </body>
 </html>

@@ -77,5 +77,21 @@ public class HttpClientTest {
 	
 	}
 	
+	@Test
+	public void testAuth(){
+		try {
+			String playerId = "1000220";
+			String realName = "321321";
+			String cardId = "32131233";
+			String requestMsg = "playerId="+playerId+"&realName="+realName+"&cardId="+cardId;
+			//39.108.11.36
+			String result = HttpClient.send("http://39.108.11.36/game/auth/real/name",  true,requestMsg.getBytes("utf-8"));
+			logger.error("ssss::"+result);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
   
