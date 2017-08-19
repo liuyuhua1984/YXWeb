@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpAgentConfig;
 import com.gamecenter.model.OpAgentConfigExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpAgentConfigMapper {
     long countByExample(OpAgentConfigExample example);

@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.alibaba.fastjson.JSON;
 import com.game.protocol.gm.GmNoticeLeftHttpProtocol;
 import com.game.protocol.gm.GmNoticeLeftProtocolRequest;
+import com.game.protocol.gm.GmAuthCardIdHttpProtocol;
+import com.game.protocol.gm.GmAuthCardIdProtocolRequest;
 import com.game.protocol.gm.GmBlockIPHttpProtocol;
 import com.game.protocol.gm.GmBlockIPProtocolRequest;
 import com.game.protocol.gm.GmBlockRoleHttpProtocol;
@@ -22,6 +24,8 @@ import com.game.protocol.gm.GmDisblockRoleHttpProtocol;
 import com.game.protocol.gm.GmDisblockRoleProtocolRequest;
 import com.game.protocol.gm.GmDisblockSayHttpProtocol;
 import com.game.protocol.gm.GmDisblockSayProtocolRequest;
+import com.game.protocol.gm.GmHowToPlayHttpProtocol;
+import com.game.protocol.gm.GmHowToPlayProtocolRequest;
 import com.game.protocol.gm.GmKickRoleHttpProtocol;
 import com.game.protocol.gm.GmKickRoleProtocolRequest;
 import com.game.protocol.gm.GmInviteCodeHttpProtocol;
@@ -34,6 +38,8 @@ import com.game.protocol.gm.GmOnLineNumHttpProtocol;
 import com.game.protocol.gm.GmOnLineNumProtocolRequest;
 import com.game.protocol.gm.GmOpenRewardActivitiesHttpProtocol;
 import com.game.protocol.gm.GmOpenRewardActivitiesProtocolRequest;
+import com.game.protocol.gm.GmProxyBindPlayerHttpProtocol;
+import com.game.protocol.gm.GmProxyBindPlayerProtocolRequest;
 import com.game.protocol.gm.GmQqRechargeHttpProtocol;
 import com.game.protocol.gm.GmQqRechargeProtocolRequest;
 import com.game.protocol.gm.GmRechargeHttpProtocol;
@@ -133,6 +139,15 @@ public class ConvertMapUtils {
 			} else if (head == IMsgCode.GM_CHECK_IS_FINISH_HTTP_PROTOCOL) {
 				/** GM检查任务集市中任务是否完成 */
 				httpMessageMap.put(head, GmCheckIsFinishHttpProtocol.class);
+			}else if (head == IMsgCode.GM_PROXY_BIND_PLAYER_HTTP_PROTOCOL){
+				/** 代理绑定玩家*/
+				httpMessageMap.put(head, GmProxyBindPlayerHttpProtocol.class);
+			}else if (head == IMsgCode.GM_AUTH_PLAYER_HTTP_PROTOCOL){
+				/** 实名认证*/
+				httpMessageMap.put(head, GmAuthCardIdHttpProtocol.class);
+			}else if (head == IMsgCode.GM_HOW_TO_PLAY_HTTP_PROTOCOL){
+				/** 玩法介绍*/
+				httpMessageMap.put(head, GmHowToPlayHttpProtocol.class);
 			}
 			
 			p = httpMessageMap.get(head);
@@ -217,6 +232,15 @@ public class ConvertMapUtils {
 			} else if (head == IMsgCode.GM_CHECK_IS_FINISH_HTTP_PROTOCOL) {
 				/** GM检查任务集市中任务是否完成 */
 				httpRqeustMessageMap.put(head, GmCheckIsFinishProtocolRequest.class);
+			}else if (head == IMsgCode.GM_PROXY_BIND_PLAYER_HTTP_PROTOCOL){
+				/** 代理绑定玩家*/
+				httpRqeustMessageMap.put(head, GmProxyBindPlayerProtocolRequest.class);
+			}else if (head == IMsgCode.GM_AUTH_PLAYER_HTTP_PROTOCOL){
+				/** 实名认证*/
+				httpRqeustMessageMap.put(head, GmAuthCardIdProtocolRequest.class);
+			}else if (head == IMsgCode.GM_HOW_TO_PLAY_HTTP_PROTOCOL){
+				/** 玩法介绍*/
+				httpRqeustMessageMap.put(head, GmHowToPlayProtocolRequest.class);
 			}
 			
 			p = httpRqeustMessageMap.get(head);

@@ -1,8 +1,6 @@
 package com.gamecenter.controller.agent;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,12 +17,8 @@ import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.model.OpAgentList;
-import com.gamecenter.model.OpAgentRequest;
-import com.gamecenter.parBean.AgentUser;
-import com.gamecenter.parBean.UserMsg;
 import com.gamecenter.service.agent.AgentInviteCodeService;
 import com.gamecenter.service.agent.AgentListService;
-import com.gamecenter.service.agent.AgentRequestService;
 
 /**
  * ClassName:AgentController <br/>

@@ -2,7 +2,6 @@ package com.gamecenter.service.agent;
 
 import java.util.List;
 
-import com.gamecenter.mapper.OpAgentRechargeMapper;
 import com.gamecenter.model.OpAgentRecharge;
 
 /** 
@@ -48,6 +47,17 @@ public interface AgentRechargeService extends BaseService<OpAgentRecharge>{
 	 */  
 	public List<OpAgentRecharge> getOpAgentRechargeFetchList(String upAgentName,int isFetch,int level);
 	
+	
+	/** 
+	 * getOpAgentRechargeByOrder:(). <br/> 
+	 * TODO().<br/> 
+	 * orderId查找出相应的对象
+	 * @author lyh 
+	 * @param orderId
+	 * @return 
+	 */  
+	public OpAgentRecharge getOpAgentRechargeByOrder(String orderId);
+		
 	
 	
 }

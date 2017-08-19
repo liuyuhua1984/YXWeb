@@ -143,5 +143,14 @@ public interface IMsgCode {
 	public static final int DATAUP_USE_GOLD_LOG_HTTP_PROTOCOL=0x6237;
 	/**上报注册的玩家**/  
 	public static final int DATAUP_REGISTER_LOG_HTTP_PROTOCOL=0x6238;
+	
+	/**代理绑定玩家**/  
+	public static final int GM_PROXY_BIND_PLAYER_HTTP_PROTOCOL=0x6239;
+	
+	/**玩家实名认证**/  
+	public static final int GM_AUTH_PLAYER_HTTP_PROTOCOL=0x623A;
+	
+	/**玩法介绍**/  
+	public static final int GM_HOW_TO_PLAY_HTTP_PROTOCOL=0x623B;
 }
   

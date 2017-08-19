@@ -1,9 +1,11 @@
 package com.gamecenter.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.gamecenter.model.OpFeedbackQuestion;
 import com.gamecenter.model.OpFeedbackQuestionExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OpFeedbackQuestionMapper {
     long countByExample(OpFeedbackQuestionExample example);

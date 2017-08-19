@@ -126,21 +126,21 @@ public class WeChatPayController extends BaseController {
 				if (gameApp != null) {
 					List<OpGameworld> worldList = worldService.getWorldListByAppId(gameApp.getAppid());
 					worldServer = worldList.size() > 0 ? worldList.get(0) : null;
-				}else{
-					logger.error("没有找到world::"+openId);
+				} else {
+					logger.error("没有找到world::" + openId);
 				}
 				
 				if (worldServer != null) {
 					OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(openId);
 					if (player != null) {
 						bCheck = true;
-					}else {
-						logger.error("没有找到玩家::"+openId);
+					} else {
+						logger.error("没有找到玩家::" + openId);
 					}
 				}
 			}
-		}else{
-			logger.error(dPrice+":没有找到商品::"+openId);
+		} else {
+			logger.error(dPrice + ":没有找到商品::" + openId);
 		}
 		
 		if (!bCheck) {// 验证没有通过false
@@ -225,17 +225,17 @@ public class WeChatPayController extends BaseController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/wechat/pay/notify/return", method = { RequestMethod.POST })
 	public void notifyUrlMsg(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		logger.error("===进来了没有!!!===" );
+		logger.error("===进来了没有!!!===");
 		// 解析结果存储在HashMap
 		InputStream inputStream = request.getInputStream();
 		PrintWriter write = response.getWriter();
 		// 读取输入流
-		   StringBuffer sb  = new StringBuffer() ; 
-		        String s = null;
-		        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));  
-		        while ((s = in.readLine()) != null){  
-		            sb.append(s);  
-		        }
+		StringBuffer sb = new StringBuffer();
+		String s = null;
+		BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+		while ((s = in.readLine()) != null) {
+			sb.append(s);
+		}
 		
 		// 释放资源
 		inputStream.close();
@@ -248,12 +248,12 @@ public class WeChatPayController extends BaseController {
 		
 		// JSONObject json = JSONObject.fromObject(map);
 		
-		logger.error(result+":===消息通知的结果："+ "==========================");
-		if (map != null){
+		logger.error(result + ":===消息通知的结果：" + "==========================");
+		if (map != null) {
 			logger.error("===return_code===" + map.get("return_code"));
 			logger.error("===return_msg===" + map.get("return_msg"));
 			logger.error("===out_trade_no===" + map.get("out_trade_no"));
-		}else{
+		} else {
 			map = new HashMap<String, String>();
 		}
 		// 验证签名的过程
@@ -264,11 +264,11 @@ public class WeChatPayController extends BaseController {
 			/**
 			 * 支付成功之后的业务处理
 			 */
-			boolean  bVerify = verifyWeChatNotify(map);
+			boolean bVerify = verifyWeChatNotify(map);
 			if (bVerify) {
 				double dPrice = Double.parseDouble(String.valueOf(map.get("total_fee"))) / 100;
 				OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
-			
+				
 				if (goods != null) {
 					
 					int gold = goods.getGift() + goods.getNum();
@@ -318,7 +318,7 @@ public class WeChatPayController extends BaseController {
 									addPlayerMoney(player, agent, gold, dPrice, trade, (fetchMoneyRate * dPrice) / 100);
 									returnMap.put("return_code", "SUCCESS");
 									logger.error("返回结果通知::成功" + map.get("attach"));
-								}else{
+								} else {
 									returnMap.put("return_code", "FAIL");
 									logger.error("返回结果通知::没收连上服务器" + map.get("attach"));
 								}
@@ -415,6 +415,7 @@ public class WeChatPayController extends BaseController {
 		pay.setCreateTime(new Date(System.currentTimeMillis()));
 		pay.setIsFetch(0);
 		pay.setFetchMoney(fetchMoney);
+		pay.setFlag(1);
 		agentRechargeService.insert(pay);
 	}
 }

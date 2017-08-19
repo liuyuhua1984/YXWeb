@@ -1,28 +1,18 @@
 package com.gamecenter.service.task;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.spi.LoggerFactory;
 import org.slf4j.Logger;
 
 import com.game.protocol.gm.GmInviteCodeHttpProtocol;
 import com.game.protocol.gm.GmInviteCodeProtocolRequest;
-import com.game.protocol.gm.GmNoticeHttpProtocol;
 import com.gamecenter.common.PlatformToServerConnection;
-import com.gamecenter.common.Tools;
-import com.gamecenter.mapper.OpGmtNoticeCycleMapper;
 import com.gamecenter.mapper.OpOssQlzPassportMapper;
 import com.gamecenter.model.OpGameworld;
-import com.gamecenter.model.OpGmtNoticeCycle;
-import com.gamecenter.model.OpGmtNoticeCycleExample;
 import com.gamecenter.model.OpOssQlzPassport;
 import com.gamecenter.service.appServices.WorldService;
-import com.gamecenter.service.gmt.GmtNoticeService;
 
 public class InviteCodeTask {
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(InviteCodeTask.class);

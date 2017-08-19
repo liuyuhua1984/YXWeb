@@ -1,7 +1,6 @@
 package com.gamecenter.service.agent;
 
 import java.util.List;
-import java.util.Map;
 
 import com.gamecenter.model.OpAgentList;
 
@@ -96,6 +95,16 @@ public interface AgentListService {
 		 */  
 		OpAgentList findByWechat(String weChat);
 		
+		/** 
+		 * findByPlayerId:(). <br/> 
+		 * TODO().<br/> 
+		 * 用playerId找到对象
+		 * @author lyh 
+		 * @param playerId
+		 * @return 
+		 */  
+		OpAgentList findByPlayerId(String playerId);
+			
 		
 }
   

@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import com.gamecenter.common.Tools;
 import com.gamecenter.mapper.OpGmtNoticeCycleMapper;
 import com.gamecenter.model.OpGmtNoticeCycle;
-import com.gamecenter.model.OpGmtNoticeCycleExample;
 import com.gamecenter.service.gmt.GmtNoticeService;
 
 /**

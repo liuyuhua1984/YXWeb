@@ -55,6 +55,7 @@ public class AgentRechargeServiceImpl implements AgentRechargeService {
 		OpAgentRechargeExample  opAgentRechargeExample  = new OpAgentRechargeExample();
 		OpAgentRechargeExample.Criteria criteria = opAgentRechargeExample.createCriteria();
 		criteria.andNameEqualTo(agentName);
+		criteria.andFlagEqualTo(1);
 		return mapper.selectByExample(opAgentRechargeExample);
 	}
 
@@ -64,6 +65,7 @@ public class AgentRechargeServiceImpl implements AgentRechargeService {
 		OpAgentRechargeExample  opAgentRechargeExample  = new OpAgentRechargeExample();
 		OpAgentRechargeExample.Criteria criteria = opAgentRechargeExample.createCriteria();
 		criteria.andAgentNameEqualTo(upAgentName);
+		criteria.andFlagEqualTo(1);
 		return mapper.selectByExample(opAgentRechargeExample);
 	}
 
@@ -74,12 +76,23 @@ public class AgentRechargeServiceImpl implements AgentRechargeService {
 		OpAgentRechargeExample.Criteria criteria = opAgentRechargeExample.createCriteria();
 		criteria.andAgentNameEqualTo(upAgentName);
 		criteria.andIsFetchEqualTo(isFetch);
+		criteria.andFlagEqualTo(1);
 		if (level >= 127){
 			level = 0;
 		}
 		criteria.andIsAgentLessThan((byte)level);
 		
 		return mapper.selectByExample(opAgentRechargeExample);
+	}
+
+	@Override
+	public OpAgentRecharge getOpAgentRechargeByOrder(String orderId) {
+		// TODO Auto-generated method stub
+		OpAgentRechargeExample  opAgentRechargeExample  = new OpAgentRechargeExample();
+		OpAgentRechargeExample.Criteria criteria = opAgentRechargeExample.createCriteria();
+		criteria.andTraderOrderEqualTo(orderId);
+		List<OpAgentRecharge> agentLists = mapper.selectByExample(opAgentRechargeExample);
+		return agentLists.size() > 0 ? agentLists.get(0) : null;
 	}
 
 	

@@ -1,6 +1,5 @@
 package com.gamecenter.controller.agent;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -32,7 +31,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
-import com.gamecenter.common.IdGenerateUtils;
 import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.Tools;
 import com.gamecenter.common.encrypt.Base64;
@@ -49,7 +47,6 @@ import com.gamecenter.model.OpShop;
 import com.gamecenter.service.agent.AgentConfigService;
 import com.gamecenter.service.agent.AgentInviteCodeService;
 import com.gamecenter.service.agent.AgentListService;
-import com.gamecenter.service.agent.AgentRechargeFetchService;
 import com.gamecenter.service.agent.AgentRechargeService;
 import com.gamecenter.service.agent.AgentShopService;
 import com.gamecenter.service.agent.PlayerRechargeService;
@@ -228,6 +225,7 @@ public class PlayerRechargeOnline extends BaseController {
 		pay.setCreateTime(new Date(System.currentTimeMillis()));
 		pay.setIsFetch(0);
 		pay.setFetchMoney(fetchMoney);
+		pay.setFlag(1);
 		agentRechargeService.insert(pay);
 	}
 	

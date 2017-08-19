@@ -4,36 +4,29 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
-import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.Tools;
+import com.gamecenter.common.properties.WeChatConfig;
 import com.gamecenter.controller.BaseController;
-import com.gamecenter.model.OpFeedbackQuestion;
 import com.gamecenter.model.OpGameapp;
 import com.gamecenter.model.OpGameworld;
 import com.gamecenter.model.OpGmtNoticeLeft;
-import com.gamecenter.parBean.AgentUser;
 import com.gamecenter.parBean.UserMsg;
 import com.gamecenter.service.appServices.AppService;
 import com.gamecenter.service.appServices.WorldService;
@@ -107,6 +100,7 @@ public class NoticeLeftController extends BaseController {
 		ModelAndView view = new ModelAndView("/page/gmTools/NoticeLeftSave");
 		view.addObject("appList", appList);
 		view.addObject("worldList", worldList);
+		 view.addObject("channel", WeChatConfig.CHANNEL);
 		return view;
 	}
 	
@@ -138,7 +132,7 @@ public class NoticeLeftController extends BaseController {
 		PageTool3 pt = new PageTool3();
 		String pageStr = pt.getPageStringForjs("", page);
 		view.addObject("lists", list);
-		// view.addObject("targetTime", targetTime);
+		 view.addObject("channel", WeChatConfig.CHANNEL);
 		view.addObject("pageTools", pageStr);
 		view.addObject("count", pageInfo.getTotal());
 		return view;
@@ -227,6 +221,44 @@ public class NoticeLeftController extends BaseController {
 			logger.error("进来了1111111" + path);
 			String content = pathName.substring(pathName.indexOf("\\/upload"));
 			logger.error("进来了.................." + content);
+			OpGmtNoticeLeft notice = new OpGmtNoticeLeft();
+			notice.setAppId(appid);
+			notice.setContent(content);
+			notice.setCreateTime(new Date(System.currentTimeMillis()));
+			notice.setTitle(title);
+			notice.setWorldId(wid);
+			try {
+				res = noticeLeftService.sendNoticLeft(notice);
+			} catch (Exception e) {
+				logger.error(e.getMessage(), e);
+			}
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("res", res);
+		return map;
+	}
+	
+	
+	/**
+	 * noticeLeftSave:(). <br/>
+	 * TODO().<br/>
+	 * 
+	 * @author lyh
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/save/info", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> noticeLeftSaveInfo(HttpSession session, @RequestParam(value = "content") String content, @RequestParam(value = "appid") String appid, @RequestParam(value = "wid") String wid, @RequestParam(value = "title") String title) {
+		String res = "1";
+		UserMsg user = (UserMsg) session.getAttribute("UserMsg");
+		if (user == null) {
+			res = "-1";
+		}
+		
+		if (user != null ) {
+
 			OpGmtNoticeLeft notice = new OpGmtNoticeLeft();
 			notice.setAppId(appid);
 			notice.setContent(content);

@@ -1,27 +1,19 @@
 package com.gamecenter.qqsdk.service.tasks;
 
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-import javax.annotation.Resource;
-
-import org.apache.avro.data.Json;
-
-import com.alibaba.fastjson.JSON;
 import com.game.protocol.gm.GmQqRechargeHttpProtocol;
 import com.game.protocol.gm.GmQqRechargeProtocolRequest;
-import com.gamecenter.common.PlatformToServerConnection;
-import com.gamecenter.common.HttpClient;
 import com.gamecenter.common.MD5;
-import com.gamecenter.common.connect.SendReqToGame;
-import com.gamecenter.common.packets.RechargeForTx_request;
+import com.gamecenter.common.PlatformToServerConnection;
 import com.gamecenter.model.OpGameworld;
 import com.gamecenter.qqsdk.common.com.qq.open.OpenApiV3;
 import com.gamecenter.qqsdk.common.org.json.JSONObject;
 import com.gamecenter.qqsdk.service.PayTxService;
 import com.gamecenter.qqsdk.service.RunLog;
 import com.gamecenter.qqsdk.service.WorldService;
-import com.lyh.dataup.convert.GameConvertData;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * 订单的确认发货 Created by IntelliJ IDEA. User: Administrator Date: 13-8-15 Time: 下午3:38 To change this template use File | Settings | File Templates.

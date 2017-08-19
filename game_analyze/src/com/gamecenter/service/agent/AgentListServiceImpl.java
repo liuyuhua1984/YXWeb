@@ -1,7 +1,6 @@
 package com.gamecenter.service.agent;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,6 +92,17 @@ public class AgentListServiceImpl implements AgentListService {
 			 return list.get(0);
 		 }
 		return null;
+	}
+
+	@Override
+	public OpAgentList findByPlayerId(String playerId) {
+		// TODO Auto-generated method stub
+		OpAgentListExample example = new OpAgentListExample();
+		OpAgentListExample.Criteria criteria = example.createCriteria();
+		criteria.andBindPlayerIdEqualTo(playerId);
+		List<OpAgentList> list = maper.selectByExample(example);
+		
+		return list.size() > 0 ? list.get(0) : null;
 	}
 	
 	

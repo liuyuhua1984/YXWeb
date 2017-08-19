@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50714
+Source Server Version : 50717
 Source Host           : 127.0.0.1:3306
 Source Database       : gamecenter
 
 Target Server Type    : MYSQL
-Target Server Version : 50714
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-07-03 19:00:02
+Date: 2017-08-09 17:58:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `oa_action` (
   `sort` int(11) DEFAULT '0',
   `info` varchar(200) DEFAULT NULL COMMENT '说明',
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_action
@@ -147,6 +147,7 @@ INSERT INTO `oa_action` VALUES ('159', 'json列表', 'getJsonList', '', '0', '')
 INSERT INTO `oa_action` VALUES ('160', '数据列表', 'dataList', '', '0', '');
 INSERT INTO `oa_action` VALUES ('161', '问题反馈', 'playerFeedBack', null, '0', null);
 INSERT INTO `oa_action` VALUES ('162', '金花控制', 'jhPlayControl', null, '0', null);
+INSERT INTO `oa_action` VALUES ('163', '玩法介绍', 'howToPlay', null, '0', null);
 
 -- ----------------------------
 -- Table structure for oa_module
@@ -156,7 +157,7 @@ CREATE TABLE `oa_module` (
   `mid` int(11) NOT NULL AUTO_INCREMENT COMMENT '模块id',
   `pid` int(11) DEFAULT '0' COMMENT '父id',
   `modulename` varchar(50) DEFAULT NULL COMMENT '名称',
-  `moduleurl` varchar(200) DEFAULT NULL COMMENT '模块url',
+  `moduleurl` varchar(200) DEFAULT '' COMMENT '模块url',
   `sort` int(11) DEFAULT '1' COMMENT '排序',
   `status` varchar(1) DEFAULT '0' COMMENT '状态0:正常 1:禁用',
   `info` varchar(200) DEFAULT NULL COMMENT '简介',
@@ -165,7 +166,7 @@ CREATE TABLE `oa_module` (
   `joinid` varchar(200) DEFAULT NULL,
   `level` int(11) DEFAULT '1',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8 COMMENT='菜单模块表';
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COMMENT='菜单模块表';
 
 -- ----------------------------
 -- Records of oa_module
@@ -239,6 +240,8 @@ INSERT INTO `oa_module` VALUES ('187', '188', '玩家反馈', '/gmt/player/feedb
 INSERT INTO `oa_module` VALUES ('188', '130', '玩家反馈', '', '6', '0', null, null, '1', '130_188', '2');
 INSERT INTO `oa_module` VALUES ('189', '130', '金花控制', '', '7', '0', null, null, '1', '130_189', '2');
 INSERT INTO `oa_module` VALUES ('190', '189', '金花控制', '/gmt/jh/control', '1', '0', null, null, '0', '130_189_190', '3');
+INSERT INTO `oa_module` VALUES ('191', '130', '玩法介绍', '', '8', '0', null, null, '1', '130_191', '2');
+INSERT INTO `oa_module` VALUES ('192', '191', '玩法介绍', '/gmt/how/to/play', '1', '0', null, null, '0', '130_191_192', '3');
 
 -- ----------------------------
 -- Table structure for oa_permit
@@ -250,7 +253,7 @@ CREATE TABLE `oa_permit` (
   `aid` int(11) DEFAULT NULL,
   `info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`permitid`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8 COMMENT='基本权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COMMENT='基本权限表';
 
 -- ----------------------------
 -- Records of oa_permit
@@ -363,6 +366,7 @@ INSERT INTO `oa_permit` VALUES ('159', '156', '159', null);
 INSERT INTO `oa_permit` VALUES ('160', '157', '160', null);
 INSERT INTO `oa_permit` VALUES ('161', '187', '161', null);
 INSERT INTO `oa_permit` VALUES ('162', '190', '162', null);
+INSERT INTO `oa_permit` VALUES ('163', '192', '163', null);
 
 -- ----------------------------
 -- Table structure for oa_permit_detail
@@ -374,11 +378,12 @@ CREATE TABLE `oa_permit_detail` (
   `permitid` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT '1' COMMENT '1:权限组 2：角色',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=1843 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
+) ENGINE=InnoDB AUTO_INCREMENT=1845 DEFAULT CHARSET=utf8 COMMENT='权限组、角色';
 
 -- ----------------------------
 -- Records of oa_permit_detail
 -- ----------------------------
+INSERT INTO `oa_permit_detail` VALUES ('184', '18', '163', '2');
 INSERT INTO `oa_permit_detail` VALUES ('872', '16', '131', '2');
 INSERT INTO `oa_permit_detail` VALUES ('873', '16', '85', '2');
 INSERT INTO `oa_permit_detail` VALUES ('874', '16', '128', '2');
@@ -576,6 +581,8 @@ INSERT INTO `oa_permit_detail` VALUES ('1839', '18', '161', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1840', '17', '161', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1841', '17', '162', '2');
 INSERT INTO `oa_permit_detail` VALUES ('1842', '18', '162', '2');
+INSERT INTO `oa_permit_detail` VALUES ('1843', '17', '163', '2');
+INSERT INTO `oa_permit_detail` VALUES ('1844', '18', '163', '2');
 
 -- ----------------------------
 -- Table structure for oa_role
@@ -745,7 +752,7 @@ CREATE TABLE `op_agent_invite_code` (
   PRIMARY KEY (`id`),
   KEY `agent_id` (`agent_id`),
   KEY `invite_code` (`invite_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=716 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=718 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_invite_code
@@ -858,7 +865,7 @@ INSERT INTO `op_agent_invite_code` VALUES ('419', 'dbsgIq', '11', '0', '2017-06-
 INSERT INTO `op_agent_invite_code` VALUES ('420', 'vK65Ie', '11', '0', '2017-06-22 17:20:29', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('421', 'fjeC7r', '11', '0', '2017-06-22 17:20:29', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('422', 'BLW1mW', '11', '0', '2017-06-22 17:20:29', '0');
-INSERT INTO `op_agent_invite_code` VALUES ('423', 'p5BqCH', '11', '0', '2017-06-22 17:20:29', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('423', 'p5BqCH', '11', '0', '2017-06-22 17:20:29', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('424', 'b0E6Sx', '11', '0', '2017-06-22 17:20:29', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('425', 'YAH8g4', '11', '0', '2017-06-22 17:20:29', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('426', 'aTNrCA', '11', '0', '2017-06-22 17:20:29', '0');
@@ -922,7 +929,7 @@ INSERT INTO `op_agent_invite_code` VALUES ('483', 'eizpOQ', '11', '0', '2017-06-
 INSERT INTO `op_agent_invite_code` VALUES ('484', 'RhvJqN', '11', '0', '2017-06-22 17:20:31', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('485', 'W0H9ml', '11', '0', '2017-06-22 17:20:31', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('486', 'n5gOfW', '11', '0', '2017-06-22 17:20:31', '0');
-INSERT INTO `op_agent_invite_code` VALUES ('487', 'nbD7UP', '11', '0', '2017-06-22 17:20:31', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('487', 'nbD7UP', '11', '0', '2017-06-22 17:20:31', '1');
 INSERT INTO `op_agent_invite_code` VALUES ('488', 'HoHlWq', '11', '0', '2017-06-22 17:20:31', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('489', 'K2h0YV', '11', '0', '2017-06-22 17:20:31', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('490', 'XyjNWd', '11', '0', '2017-06-22 17:20:31', '0');
@@ -1151,6 +1158,8 @@ INSERT INTO `op_agent_invite_code` VALUES ('712', 'MpvsTL', '13', '0', '2017-06-
 INSERT INTO `op_agent_invite_code` VALUES ('713', 'D7cEYQ', '13', '0', '2017-06-30 10:45:43', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('714', '0RZ8ep', '13', '0', '2017-06-30 10:45:43', '0');
 INSERT INTO `op_agent_invite_code` VALUES ('715', 'oYKnYt', '13', '0', '2017-06-30 10:45:43', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('716', 'tD4l5Z', '13', '0', '2017-07-04 16:00:08', '0');
+INSERT INTO `op_agent_invite_code` VALUES ('717', 'AV34aK', '13', '0', '2017-07-04 16:00:08', '0');
 
 -- ----------------------------
 -- Table structure for op_agent_list
@@ -1169,22 +1178,24 @@ CREATE TABLE `op_agent_list` (
   `password` varchar(255) DEFAULT NULL COMMENT '代理密码',
   `status` tinyint(4) DEFAULT '1' COMMENT '禁用为0,',
   `blank_card` varchar(255) DEFAULT NULL COMMENT '银行卡',
+  `bind_player_id` varchar(128) DEFAULT '0' COMMENT '绑定的玩家id',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_name`),
   KEY `name` (`name`),
   KEY `invite_code` (`invite_code`),
   KEY `phone` (`phone`),
-  KEY `wechat_code` (`wechat_code`)
+  KEY `wechat_code` (`wechat_code`),
+  KEY `bind_player_id` (`bind_player_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_list
 -- ----------------------------
-INSERT INTO `op_agent_list` VALUES ('1', '超级管理员', '888888', '888888', '2147483637', '0', '超级管理员', '12345678996', '2017-06-28 09:36:43', '888888', '1', null);
-INSERT INTO `op_agent_list` VALUES ('11', 'proxy1', 'paWaxA', '999', '2147483617', '超级管理员', '88888', '15746953659', '2017-06-28 09:59:09', '123456', '1', null);
-INSERT INTO `op_agent_list` VALUES ('12', 'proxy2', 'f9tyhq', '999', '2147483647', '超级管理员', '9876554', '17785246536', '2017-06-28 09:59:12', '123456', '1', null);
-INSERT INTO `op_agent_list` VALUES ('13', 'proxy11', 'toq18a', '1', null, 'proxy1', 'toq18a', '13256487952', '2017-06-28 09:59:18', '123456', '1', null);
-INSERT INTO `op_agent_list` VALUES ('14', 'proxy12', 'UiU7OQ', '1', '9', 'proxy1', 'UiU7OQ', '18745696352', '2017-06-28 09:59:21', '123456', '1', null);
+INSERT INTO `op_agent_list` VALUES ('1', '超级管理员', '888888', '888888', '2147483137', '0', '超级管理员', '12345678996', '2017-06-28 09:36:43', '888888', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('11', 'proxy1', 'paWaxA', '999', '2147483617', '超级管理员', '88888', '15746953659', '2017-06-28 09:59:09', '123456', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('12', 'proxy2', 'f9tyhq', '999', '2147483647', '超级管理员', '9876554', '17785246536', '2017-06-28 09:59:12', '123456', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('13', 'proxy11', 'toq18a', '1', null, 'proxy1', 'toq18a', '13256487952', '2017-06-28 09:59:18', '123456', '1', null, '0');
+INSERT INTO `op_agent_list` VALUES ('14', 'proxy12', 'UiU7OQ', '1', '9', 'proxy1', 'UiU7OQ', '18745696352', '2017-06-28 09:59:21', '123456', '1', null, '0');
 
 -- ----------------------------
 -- Table structure for op_agent_recharge
@@ -1197,21 +1208,24 @@ CREATE TABLE `op_agent_recharge` (
   `is_agent` tinyint(4) DEFAULT '0' COMMENT '是否是代理1为代理',
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请充值时间',
   `name` varchar(255) DEFAULT NULL COMMENT '充值的用户名,或者代理名',
-  `trader_order` varchar(255) DEFAULT NULL COMMENT '交易号',
+  `trader_order` varchar(1024) DEFAULT NULL COMMENT '交易号',
   `online_pay` int(11) DEFAULT NULL COMMENT '是否在线充值 1为在线充',
   `is_fetch` int(11) DEFAULT '0' COMMENT '是否已提现 ,申请提现为1,已提为2',
   `fetch_money` double(20,2) DEFAULT '0.00' COMMENT '提成',
+  `flag` int(11) DEFAULT '1' COMMENT '充值标志',
   PRIMARY KEY (`id`),
   KEY `agent_name` (`agent_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_agent_recharge
 -- ----------------------------
-INSERT INTO `op_agent_recharge` VALUES ('1', '超级管理员', '1.00', '0', '2017-06-28 09:43:44', 'c:esmj879611060301070336', 'player:879877857940078592', '0', '0', '0.15');
-INSERT INTO `op_agent_recharge` VALUES ('2', 'proxy1', '10.00', '1', '2017-06-28 10:17:37', 'proxy12', 'agent:879886473006940160', '0', '0', '0.00');
-INSERT INTO `op_agent_recharge` VALUES ('3', 'proxy12', '1.00', '0', '2017-06-28 11:03:41', 'c:esmj879611060301070336', 'player:879886984158380032', '0', '2', '0.15');
-INSERT INTO `op_agent_recharge` VALUES ('4', 'proxy12', '5.00', '0', '2017-06-28 11:03:39', 'c:esmj879611060301070336', 'player:879887196549545984', '0', '2', '0.75');
+INSERT INTO `op_agent_recharge` VALUES ('1', '超级管理员', '1.00', '0', '2017-06-28 09:43:44', 'c:esmj879611060301070336', 'player:879877857940078592', '0', '0', '0.15', '1');
+INSERT INTO `op_agent_recharge` VALUES ('2', 'proxy1', '10.00', '1', '2017-06-28 10:17:37', 'proxy12', 'agent:879886473006940160', '0', '0', '0.00', '1');
+INSERT INTO `op_agent_recharge` VALUES ('3', 'proxy12', '1.00', '0', '2017-06-28 11:03:41', 'c:esmj879611060301070336', 'player:879886984158380032', '0', '2', '0.15', '1');
+INSERT INTO `op_agent_recharge` VALUES ('4', 'proxy12', '5.00', '0', '2017-06-28 11:03:39', 'c:esmj879611060301070336', 'player:879887196549545984', '0', '2', '0.75', '1');
+INSERT INTO `op_agent_recharge` VALUES ('5', '超级管理员', '400.00', '0', '2017-07-11 13:40:26', 'c:esmj879611060301070336', 'test1470654170170', '0', '0', '60.00', '1');
+INSERT INTO `op_agent_recharge` VALUES ('6', 'proxy12', '400.00', '0', '2017-07-11 13:52:37', 'c:esmj879611060301070336', 'test1470654170171', '0', '0', '60.00', '1');
 
 -- ----------------------------
 -- Table structure for op_agent_recharge_fetch
@@ -1262,13 +1276,43 @@ CREATE TABLE `op_feedback_question` (
   `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `phone` bigint(20) DEFAULT NULL COMMENT '电话号码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_feedback_question
 -- ----------------------------
 INSERT INTO `op_feedback_question` VALUES ('2', '7788', '这是一个好的建议夺读书法枯枯萎栽李斐莉雪枯枯顶替模压 你用针夺顶替枯萎枯萎枯萎枯在无可奈何 顶替村东走西顾革枯无可奈何花落去顶替顶替村阿斯蒂芬 顶替顶替顶替夺模压 工厅阿斯蒂芬要东走西顾械械有顶替柑使用者', '2017-07-03 11:24:26', '15320589662');
 INSERT INTO `op_feedback_question` VALUES ('3', '7788', '这是一个好的建议夺读书法枯枯萎栽李斐莉雪枯枯顶替模压 你用针夺顶替枯萎枯萎枯萎枯在无可奈何 顶替村东走西顾革枯无可奈何花落去顶替顶替村阿斯蒂芬 顶替顶替顶替夺模压 工厅阿斯蒂芬要东走西顾械械有顶替柑使用者', '2017-07-03 11:24:35', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('4', '7788', '这是一个好的建议夺读书法枯枯萎栽李斐莉雪枯枯顶替模压 你用针夺顶替枯萎枯萎枯萎枯在无可奈何 顶替村东走西顾革枯无可奈何花落去顶替顶替村阿斯蒂芬 顶替顶替顶替夺模压 工厅阿斯蒂芬要东走西顾械械有顶替柑使用者', '2017-07-04 11:36:27', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('5', '1231237788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:22:15', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('6', '1231237788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:23:45', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('7', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:26:37', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('8', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:27:24', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('9', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:28:29', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('10', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:36:15', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('11', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:39:40', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('12', '1231237788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:42:59', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('13', '1237788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:46:46', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('14', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:55:47', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('15', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:56:01', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('16', '12337788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:57:29', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('17', '27788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:58:39', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('18', '27788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:59:56', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('19', '27788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 14:59:56', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('20', '27788', 'neirongkuang (UnityEngine.UI.InputField)', '2017-07-04 15:00:14', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('21', '12337788', '123', '2017-07-04 15:02:18', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('22', '27788', '123', '2017-07-04 15:04:00', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('23', '27788', '333333333333', '2017-07-04 15:04:14', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('24', '27788', '12321', '2017-07-04 15:05:28', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('25', '27788', '', '2017-07-04 15:05:49', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('26', '27788', '999', '2017-07-04 15:06:10', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('27', '12337788', '213', '2017-07-04 15:07:36', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('28', '12337788', '312', '2017-07-04 15:07:53', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('29', '123337788', '1233', '2017-07-04 15:09:04', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('30', '1237788', '3213', '2017-07-04 15:29:22', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('31', '1237788', '321', '2017-07-04 15:29:47', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('32', '31237788', '231', '2017-07-04 15:30:33', '15320589662');
+INSERT INTO `op_feedback_question` VALUES ('33', '1237788', '213', '2017-07-04 15:33:44', '15320589662');
 
 -- ----------------------------
 -- Table structure for op_gameapp
@@ -1621,14 +1665,13 @@ CREATE TABLE `op_gmt_notice_left` (
   `world_id` varchar(50) DEFAULT NULL COMMENT '服务器id',
   `title` varchar(50) DEFAULT NULL COMMENT '标题',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of op_gmt_notice_left
 -- ----------------------------
 INSERT INTO `op_gmt_notice_left` VALUES ('34', '\\upload\\img\\commit.png', '2017-07-03 18:08:01', 'game1001', '1001', '公告');
 INSERT INTO `op_gmt_notice_left` VALUES ('36', '\\upload\\img\\commit.png', '2017-07-03 18:27:57', 'game1001', '1001', '公告');
-INSERT INTO `op_gmt_notice_left` VALUES ('37', '\\upload\\img\\10.png', '2017-07-03 18:30:45', 'game1001', '1001', '公告');
 
 -- ----------------------------
 -- Table structure for op_gmt_sendmoney
@@ -1768,7 +1811,7 @@ CREATE TABLE `op_operator_recharge` (
   `res` varchar(100) DEFAULT NULL,
   `info` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_operator_recharge
@@ -1776,6 +1819,8 @@ CREATE TABLE `op_operator_recharge` (
 INSERT INTO `op_operator_recharge` VALUES ('1', '321654', '1001', null, '10.00', 'player:879877857940078592', '1498614203', '1', '2017-06-28 09:43:26', '1', null);
 INSERT INTO `op_operator_recharge` VALUES ('2', '321654', '1001', null, '10.00', 'player:879886984158380032', '1498616379', '1', '2017-06-28 10:19:46', '1', null);
 INSERT INTO `op_operator_recharge` VALUES ('3', '321654', '1001', null, '11.00', 'player:879887196549545984', '1498616429', '1', '2017-06-28 10:20:29', '1', null);
+INSERT INTO `op_operator_recharge` VALUES ('4', '321654', '1001', '500', '400.00', 'test1470654170170', '1499751590', '1', '2017-07-11 13:40:25', '1', null);
+INSERT INTO `op_operator_recharge` VALUES ('5', '321654', '1001', '500', '400.00', 'test1470654170171', '1499752261', '1', '2017-07-11 13:51:14', '1', null);
 
 -- ----------------------------
 -- Table structure for op_operator_world
@@ -1918,7 +1963,7 @@ CREATE TABLE `op_oss_qlz_createrole_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='角色创建上报。。';
 
 -- ----------------------------
 -- Records of op_oss_qlz_createrole_log
@@ -1945,6 +1990,12 @@ INSERT INTO `op_oss_qlz_createrole_log` VALUES ('19', '1001', '192.168.0.65', '2
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('20', '1001', '192.168.0.65', '2017-07-03 18:45:09', '21312', 'c:ehxZXil', '2017-07-03 18:45:09', '1');
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('21', '1001', '192.168.0.65', '2017-07-03 18:50:37', '321', 'c:eTw8oy4', '2017-07-03 18:50:37', '1');
 INSERT INTO `op_oss_qlz_createrole_log` VALUES ('22', '1001', '192.168.0.65', '2017-07-03 18:51:09', 'dasd', 'c:e29jWRG', '2017-07-03 18:51:10', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('23', '1001', '192.168.0.65', '2017-07-04 10:49:27', '1233', 'c:eSvldzV', '2017-07-04 10:49:31', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('24', '1001', '192.168.0.65', '2017-07-04 13:40:37', '12333', 'c-JK01zY', '2017-07-04 13:40:38', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('25', '1001', '192.168.0.65', '2017-07-04 14:17:32', '124', 'c-9Xthlt', '2017-07-04 14:17:32', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('26', '1001', '192.168.0.65', '2017-07-04 14:22:10', '123123', 'c-NpTI6s', '2017-07-04 14:22:10', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('27', '1001', '192.168.0.65', '2017-07-04 14:58:29', '2', 'c-buwfVH', '2017-07-04 14:58:29', '1');
+INSERT INTO `op_oss_qlz_createrole_log` VALUES ('28', '1001', '192.168.0.65', '2017-07-04 15:35:35', '4124', 'c-DMHE5Y', '2017-07-04 15:35:35', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_login_log
@@ -1961,7 +2012,7 @@ CREATE TABLE `op_oss_qlz_login_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_login_log
@@ -1988,6 +2039,42 @@ INSERT INTO `op_oss_qlz_login_log` VALUES ('19', '1001', '192.168.0.65', '2017-0
 INSERT INTO `op_oss_qlz_login_log` VALUES ('20', '1001', '192.168.0.65', '2017-07-03 18:47:00', '3123', '1', 'c:e3OO3zw', '2017-07-03 18:47:10', '1');
 INSERT INTO `op_oss_qlz_login_log` VALUES ('21', '1001', '192.168.0.65', '2017-07-03 18:55:22', '3123', '1', 'c:e3OO3zw', '2017-07-03 18:55:22', '1');
 INSERT INTO `op_oss_qlz_login_log` VALUES ('22', '1001', '192.168.0.65', '2017-07-03 18:57:08', '3123', '1', 'c:e3OO3zw', '2017-07-03 18:57:08', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('23', '1001', '192.168.0.65', '2017-07-04 10:52:39', '1233', '1', 'c:eSvldzV', '2017-07-04 10:52:39', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('24', '1001', '192.168.0.65', '2017-07-04 10:58:03', '1233', '1', 'c:eSvldzV', '2017-07-04 10:58:03', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('25', '1001', '192.168.0.65', '2017-07-04 11:00:43', '1233', '1', 'c:eSvldzV', '2017-07-04 11:00:43', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('26', '1001', '192.168.0.65', '2017-07-04 11:09:07', '1233', '1', 'c:eSvldzV', '2017-07-04 11:09:07', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('27', '1001', '192.168.0.65', '2017-07-04 11:39:11', '3123', '1', 'c:e3OO3zw', '2017-07-04 11:39:11', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('28', '1001', '192.168.0.65', '2017-07-04 11:42:14', '1233', '1', 'c:eSvldzV', '2017-07-04 11:43:23', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('29', '1001', '192.168.0.65', '2017-07-04 11:47:30', '1233', '1', 'c:eSvldzV', '2017-07-04 11:47:30', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('30', '1001', '192.168.0.65', '2017-07-04 11:52:59', '1233', '1', 'c:eSvldzV', '2017-07-04 11:52:59', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('31', '1001', '192.168.0.65', '2017-07-04 11:57:03', '1233', '1', 'c:eSvldzV', '2017-07-04 11:57:03', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('32', '1001', '192.168.0.65', '2017-07-04 12:03:43', '1233', '1', 'c:eSvldzV', '2017-07-04 12:03:43', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('33', '1001', '192.168.0.65', '2017-07-04 13:38:52', '1233', '1', 'c:eSvldzV', '2017-07-04 13:38:52', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('34', '1001', '192.168.0.65', '2017-07-04 13:42:59', '1233', '1', 'c:eSvldzV', '2017-07-04 13:42:59', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('35', '1001', '192.168.0.65', '2017-07-04 13:48:22', '1233', '1', 'c:eSvldzV', '2017-07-04 13:48:22', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('36', '1001', '192.168.0.65', '2017-07-04 14:14:12', '1233', '1', 'c:eSvldzV', '2017-07-04 14:14:12', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('37', '1001', '192.168.0.65', '2017-07-04 14:16:21', '123', '1', 'c:eA6lJdc', '2017-07-04 14:16:21', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('38', '1001', '192.168.0.65', '2017-07-04 14:18:21', '123', '1', 'c:eA6lJdc', '2017-07-04 14:18:21', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('39', '1001', '192.168.0.65', '2017-07-04 14:20:31', '1233', '1', 'c:eSvldzV', '2017-07-04 14:20:31', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('40', '1001', '192.168.0.65', '2017-07-04 14:21:16', '1233', '1', 'c:eSvldzV', '2017-07-04 14:21:16', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('41', '1001', '192.168.0.65', '2017-07-04 14:26:33', '1233', '1', 'c:eSvldzV', '2017-07-04 14:26:33', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('42', '1001', '192.168.0.65', '2017-07-04 14:27:21', '1233', '1', 'c:eSvldzV', '2017-07-04 14:27:21', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('43', '1001', '192.168.0.65', '2017-07-04 14:28:24', '1233', '1', 'c:eSvldzV', '2017-07-04 14:28:24', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('44', '1001', '192.168.0.65', '2017-07-04 14:39:25', '1233', '1', 'c:eSvldzV', '2017-07-04 14:39:26', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('45', '1001', '192.168.0.65', '2017-07-04 14:42:53', '123123', '1', 'c-NpTI6s', '2017-07-04 14:42:53', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('46', '1001', '192.168.0.65', '2017-07-04 14:46:42', '123', '1', 'c:eA6lJdc', '2017-07-04 14:46:42', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('47', '1001', '192.168.0.65', '2017-07-04 14:55:43', '1233', '1', 'c:eSvldzV', '2017-07-04 14:55:44', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('48', '1001', '192.168.0.65', '2017-07-04 15:01:29', '1233', '1', 'c:eSvldzV', '2017-07-04 15:01:29', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('49', '1001', '192.168.0.65', '2017-07-04 15:03:51', '2', '1', 'c-buwfVH', '2017-07-04 15:03:51', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('50', '1001', '192.168.0.65', '2017-07-04 15:07:32', '1233', '1', 'c:eSvldzV', '2017-07-04 15:07:32', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('51', '1001', '192.168.0.65', '2017-07-04 15:08:58', '12333', '1', 'c-JK01zY', '2017-07-04 15:08:58', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('52', '1001', '192.168.0.65', '2017-07-04 15:29:14', '123', '1', 'c:eA6lJdc', '2017-07-04 15:29:15', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('53', '1001', '192.168.0.65', '2017-07-04 15:30:20', '3123', '1', 'c:e3OO3zw', '2017-07-04 15:30:20', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('54', '1001', '192.168.0.65', '2017-07-04 15:33:39', '123', '1', 'c:eA6lJdc', '2017-07-04 15:33:39', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('55', '1001', '192.168.0.65', '2017-07-04 15:45:00', '3123', '1', 'c:e3OO3zw', '2017-07-04 15:45:00', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('56', '1001', '192.168.0.65', '2017-07-04 15:47:00', '1233', '1', 'c:eSvldzV', '2017-07-04 15:47:00', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('57', '1001', '192.168.0.65', '2017-07-04 15:48:20', '123', '1', 'c:eA6lJdc', '2017-07-04 15:48:20', '1');
+INSERT INTO `op_oss_qlz_login_log` VALUES ('58', '1001', '192.168.0.25', '2017-08-07 18:33:13', '617287071432466026', '1', '无敌', '2017-08-07 18:39:30', '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_onlinecur_log
@@ -2000,7 +2087,7 @@ CREATE TABLE `op_oss_qlz_onlinecur_log` (
   `addtime` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=496 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
+) ENGINE=InnoDB AUTO_INCREMENT=1064 DEFAULT CHARSET=utf8 COMMENT='上报实时在线人数   周期5秒\r\n\r\n当前时间  传输是 unix 时间   存储格式是日期格式';
 
 -- ----------------------------
 -- Records of op_oss_qlz_onlinecur_log
@@ -2500,6 +2587,574 @@ INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('492', '1001', '0', '2017-07-03 1
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('493', '1001', '0', '2017-07-03 18:57:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('494', '1001', '0', '2017-07-03 18:58:01', null);
 INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('495', '1001', '0', '2017-07-03 18:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('496', '1001', '0', '2017-07-04 10:34:02', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('497', '1001', '0', '2017-07-04 10:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('498', '1001', '0', '2017-07-04 10:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('499', '1001', '0', '2017-07-04 10:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('500', '1001', '0', '2017-07-04 10:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('501', '1001', '0', '2017-07-04 10:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('502', '1001', '0', '2017-07-04 10:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('503', '1001', '0', '2017-07-04 10:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('504', '1001', '0', '2017-07-04 10:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('505', '1001', '0', '2017-07-04 10:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('506', '1001', '0', '2017-07-04 10:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('507', '1001', '0', '2017-07-04 10:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('508', '1001', '0', '2017-07-04 10:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('509', '1001', '0', '2017-07-04 10:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('510', '1001', '1', '2017-07-04 10:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('511', '1001', '1', '2017-07-04 10:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('512', '1001', '1', '2017-07-04 10:53:03', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('513', '1001', '1', '2017-07-04 10:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('514', '1001', '1', '2017-07-04 10:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('515', '1001', '0', '2017-07-04 10:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('516', '1001', '0', '2017-07-04 10:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('517', '1001', '0', '2017-07-04 10:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('518', '1001', '0', '2017-07-04 10:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('519', '1001', '0', '2017-07-04 11:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('520', '1001', '1', '2017-07-04 11:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('521', '1001', '1', '2017-07-04 11:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('522', '1001', '1', '2017-07-04 11:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('523', '1001', '1', '2017-07-04 11:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('524', '1001', '1', '2017-07-04 11:05:07', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('525', '1001', '1', '2017-07-04 11:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('526', '1001', '1', '2017-07-04 11:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('527', '1001', '1', '2017-07-04 11:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('528', '1001', '0', '2017-07-04 11:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('529', '1001', '1', '2017-07-04 11:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('530', '1001', '1', '2017-07-04 11:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('531', '1001', '1', '2017-07-04 11:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('532', '1001', '1', '2017-07-04 11:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('533', '1001', '1', '2017-07-04 11:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('534', '1001', '1', '2017-07-04 11:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('535', '1001', '1', '2017-07-04 11:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('536', '1001', '1', '2017-07-04 11:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('537', '1001', '1', '2017-07-04 11:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('538', '1001', '1', '2017-07-04 11:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('539', '1001', '1', '2017-07-04 11:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('540', '1001', '1', '2017-07-04 11:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('541', '1001', '1', '2017-07-04 11:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('542', '1001', '1', '2017-07-04 11:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('543', '1001', '1', '2017-07-04 11:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('544', '1001', '1', '2017-07-04 11:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('545', '1001', '1', '2017-07-04 11:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('546', '1001', '1', '2017-07-04 11:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('547', '1001', '1', '2017-07-04 11:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('548', '1001', '1', '2017-07-04 11:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('549', '1001', '1', '2017-07-04 11:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('550', '1001', '1', '2017-07-04 11:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('551', '1001', '1', '2017-07-04 11:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('552', '1001', '1', '2017-07-04 11:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('553', '1001', '1', '2017-07-04 11:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('554', '1001', '1', '2017-07-04 11:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('555', '1001', '1', '2017-07-04 11:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('556', '1001', '1', '2017-07-04 11:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('557', '1001', '1', '2017-07-04 11:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('558', '1001', '0', '2017-07-04 11:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('559', '1001', '1', '2017-07-04 11:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('560', '1001', '1', '2017-07-04 11:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('561', '1001', '1', '2017-07-04 11:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('562', '1001', '0', '2017-07-04 11:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('563', '1001', '0', '2017-07-04 11:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('564', '1001', '1', '2017-07-04 11:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('565', '1001', '1', '2017-07-04 11:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('566', '1001', '1', '2017-07-04 11:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('567', '1001', '1', '2017-07-04 11:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('568', '1001', '1', '2017-07-04 11:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('569', '1001', '1', '2017-07-04 11:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('570', '1001', '1', '2017-07-04 11:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('571', '1001', '0', '2017-07-04 11:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('572', '1001', '0', '2017-07-04 11:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('573', '1001', '0', '2017-07-04 11:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('574', '1001', '0', '2017-07-04 11:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('575', '1001', '0', '2017-07-04 11:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('576', '1001', '0', '2017-07-04 12:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('577', '1001', '0', '2017-07-04 12:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('578', '1001', '0', '2017-07-04 12:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('579', '1001', '0', '2017-07-04 12:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('580', '1001', '1', '2017-07-04 12:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('581', '1001', '1', '2017-07-04 12:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('582', '1001', '1', '2017-07-04 12:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('583', '1001', '1', '2017-07-04 12:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('584', '1001', '1', '2017-07-04 12:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('585', '1001', '1', '2017-07-04 12:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('586', '1001', '1', '2017-07-04 12:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('587', '1001', '1', '2017-07-04 12:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('588', '1001', '1', '2017-07-04 12:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('589', '1001', '1', '2017-07-04 12:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('590', '1001', '1', '2017-07-04 12:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('591', '1001', '1', '2017-07-04 12:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('592', '1001', '1', '2017-07-04 12:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('593', '1001', '1', '2017-07-04 12:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('594', '1001', '1', '2017-07-04 12:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('595', '1001', '1', '2017-07-04 13:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('596', '1001', '1', '2017-07-04 13:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('597', '1001', '1', '2017-07-04 13:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('598', '1001', '1', '2017-07-04 13:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('599', '1001', '1', '2017-07-04 13:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('600', '1001', '1', '2017-07-04 13:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('601', '1001', '1', '2017-07-04 13:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('602', '1001', '1', '2017-07-04 13:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('603', '1001', '1', '2017-07-04 13:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('604', '1001', '1', '2017-07-04 13:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('605', '1001', '1', '2017-07-04 13:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('606', '1001', '1', '2017-07-04 13:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('607', '1001', '1', '2017-07-04 13:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('608', '1001', '1', '2017-07-04 13:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('609', '1001', '1', '2017-07-04 13:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('610', '1001', '1', '2017-07-04 13:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('611', '1001', '1', '2017-07-04 13:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('612', '1001', '1', '2017-07-04 13:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('613', '1001', '1', '2017-07-04 13:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('614', '1001', '1', '2017-07-04 13:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('615', '1001', '1', '2017-07-04 13:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('616', '1001', '1', '2017-07-04 13:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('617', '1001', '1', '2017-07-04 13:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('618', '1001', '1', '2017-07-04 13:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('619', '1001', '1', '2017-07-04 13:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('620', '1001', '1', '2017-07-04 13:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('621', '1001', '1', '2017-07-04 13:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('622', '1001', '1', '2017-07-04 13:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('623', '1001', '1', '2017-07-04 13:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('624', '1001', '1', '2017-07-04 13:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('625', '1001', '0', '2017-07-04 13:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('626', '1001', '0', '2017-07-04 13:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('627', '1001', '0', '2017-07-04 13:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('628', '1001', '0', '2017-07-04 13:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('629', '1001', '0', '2017-07-04 13:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('630', '1001', '0', '2017-07-04 13:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('631', '1001', '0', '2017-07-04 13:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('632', '1001', '0', '2017-07-04 13:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('633', '1001', '0', '2017-07-04 13:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('634', '1001', '1', '2017-07-04 13:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('635', '1001', '0', '2017-07-04 13:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('636', '1001', '0', '2017-07-04 13:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('637', '1001', '0', '2017-07-04 13:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('638', '1001', '1', '2017-07-04 13:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('639', '1001', '0', '2017-07-04 13:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('640', '1001', '0', '2017-07-04 13:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('641', '1001', '0', '2017-07-04 13:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('642', '1001', '0', '2017-07-04 13:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('643', '1001', '0', '2017-07-04 13:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('644', '1001', '1', '2017-07-04 13:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('645', '1001', '1', '2017-07-04 13:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('646', '1001', '1', '2017-07-04 13:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('647', '1001', '1', '2017-07-04 13:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('648', '1001', '1', '2017-07-04 13:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('649', '1001', '0', '2017-07-04 13:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('650', '1001', '0', '2017-07-04 13:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('651', '1001', '0', '2017-07-04 13:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('652', '1001', '0', '2017-07-04 13:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('653', '1001', '0', '2017-07-04 13:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('654', '1001', '0', '2017-07-04 13:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('655', '1001', '0', '2017-07-04 14:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('656', '1001', '0', '2017-07-04 14:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('657', '1001', '0', '2017-07-04 14:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('658', '1001', '0', '2017-07-04 14:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('659', '1001', '0', '2017-07-04 14:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('660', '1001', '0', '2017-07-04 14:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('661', '1001', '0', '2017-07-04 14:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('662', '1001', '0', '2017-07-04 14:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('663', '1001', '0', '2017-07-04 14:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('664', '1001', '0', '2017-07-04 14:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('665', '1001', '0', '2017-07-04 14:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('666', '1001', '0', '2017-07-04 14:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('667', '1001', '0', '2017-07-04 14:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('668', '1001', '0', '2017-07-04 14:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('669', '1001', '0', '2017-07-04 14:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('670', '1001', '1', '2017-07-04 14:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('671', '1001', '1', '2017-07-04 14:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('672', '1001', '0', '2017-07-04 14:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('673', '1001', '1', '2017-07-04 14:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('674', '1001', '0', '2017-07-04 14:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('675', '1001', '0', '2017-07-04 14:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('676', '1001', '0', '2017-07-04 14:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('677', '1001', '0', '2017-07-04 14:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('678', '1001', '1', '2017-07-04 14:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('679', '1001', '0', '2017-07-04 14:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('680', '1001', '0', '2017-07-04 14:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('681', '1001', '0', '2017-07-04 14:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('682', '1001', '0', '2017-07-04 14:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('683', '1001', '0', '2017-07-04 14:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('684', '1001', '1', '2017-07-04 14:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('685', '1001', '1', '2017-07-04 14:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('686', '1001', '1', '2017-07-04 14:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('687', '1001', '1', '2017-07-04 14:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('688', '1001', '1', '2017-07-04 14:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('689', '1001', '1', '2017-07-04 14:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('690', '1001', '1', '2017-07-04 14:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('691', '1001', '1', '2017-07-04 14:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('692', '1001', '1', '2017-07-04 14:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('693', '1001', '1', '2017-07-04 14:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('694', '1001', '0', '2017-07-04 14:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('695', '1001', '1', '2017-07-04 14:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('696', '1001', '1', '2017-07-04 14:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('697', '1001', '1', '2017-07-04 14:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('698', '1001', '1', '2017-07-04 14:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('699', '1001', '1', '2017-07-04 14:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('700', '1001', '1', '2017-07-04 14:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('701', '1001', '1', '2017-07-04 14:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('702', '1001', '0', '2017-07-04 14:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('703', '1001', '0', '2017-07-04 14:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('704', '1001', '0', '2017-07-04 14:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('705', '1001', '0', '2017-07-04 14:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('706', '1001', '0', '2017-07-04 14:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('707', '1001', '0', '2017-07-04 14:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('708', '1001', '0', '2017-07-04 14:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('709', '1001', '0', '2017-07-04 14:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('710', '1001', '0', '2017-07-04 14:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('711', '1001', '1', '2017-07-04 14:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('712', '1001', '1', '2017-07-04 14:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('713', '1001', '1', '2017-07-04 14:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('714', '1001', '1', '2017-07-04 14:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('715', '1001', '1', '2017-07-04 15:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('716', '1001', '1', '2017-07-04 15:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('717', '1001', '1', '2017-07-04 15:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('718', '1001', '1', '2017-07-04 15:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('719', '1001', '1', '2017-07-04 15:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('720', '1001', '1', '2017-07-04 15:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('721', '1001', '1', '2017-07-04 15:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('722', '1001', '1', '2017-07-04 15:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('723', '1001', '1', '2017-07-04 15:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('724', '1001', '1', '2017-07-04 15:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('725', '1001', '0', '2017-07-04 15:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('726', '1001', '0', '2017-07-04 15:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('727', '1001', '0', '2017-07-04 15:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('728', '1001', '0', '2017-07-04 15:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('729', '1001', '0', '2017-07-04 15:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('730', '1001', '0', '2017-07-04 15:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('731', '1001', '0', '2017-07-04 15:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('732', '1001', '0', '2017-07-04 15:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('733', '1001', '0', '2017-07-04 15:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('734', '1001', '0', '2017-07-04 15:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('735', '1001', '0', '2017-07-04 15:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('736', '1001', '0', '2017-07-04 15:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('737', '1001', '0', '2017-07-04 15:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('738', '1001', '0', '2017-07-04 15:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('739', '1001', '0', '2017-07-04 15:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('740', '1001', '0', '2017-07-04 15:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('741', '1001', '1', '2017-07-04 15:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('742', '1001', '1', '2017-07-04 15:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('743', '1001', '0', '2017-07-04 15:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('744', '1001', '0', '2017-07-04 15:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('745', '1001', '1', '2017-07-04 15:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('746', '1001', '0', '2017-07-04 15:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('747', '1001', '1', '2017-07-04 15:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('748', '1001', '0', '2017-07-04 15:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('749', '1001', '0', '2017-07-04 15:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('750', '1001', '0', '2017-07-04 15:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('751', '1001', '0', '2017-07-04 15:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('752', '1001', '0', '2017-07-04 15:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('753', '1001', '0', '2017-07-04 15:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('754', '1001', '0', '2017-07-04 15:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('755', '1001', '0', '2017-07-04 15:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('756', '1001', '1', '2017-07-04 15:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('757', '1001', '0', '2017-07-04 15:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('758', '1001', '1', '2017-07-04 15:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('759', '1001', '1', '2017-07-04 15:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('760', '1001', '0', '2017-07-04 15:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('761', '1001', '0', '2017-07-04 15:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('762', '1001', '0', '2017-07-04 15:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('763', '1001', '0', '2017-07-04 15:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('764', '1001', '0', '2017-07-04 15:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('765', '1001', '0', '2017-07-04 15:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('766', '1001', '0', '2017-07-04 15:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('767', '1001', '0', '2017-07-04 15:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('768', '1001', '0', '2017-07-04 15:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('769', '1001', '0', '2017-07-04 15:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('770', '1001', '0', '2017-07-04 15:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('771', '1001', '0', '2017-07-04 16:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('772', '1001', '0', '2017-07-04 16:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('773', '1001', '0', '2017-07-04 16:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('774', '1001', '0', '2017-07-04 16:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('775', '1001', '0', '2017-07-04 16:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('776', '1001', '0', '2017-07-04 16:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('777', '1001', '0', '2017-07-04 16:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('778', '1001', '0', '2017-07-04 16:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('779', '1001', '0', '2017-07-04 16:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('780', '1001', '0', '2017-07-04 16:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('781', '1001', '0', '2017-07-04 16:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('782', '1001', '0', '2017-07-04 16:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('783', '1001', '0', '2017-07-04 16:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('784', '1001', '0', '2017-07-04 16:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('785', '1001', '0', '2017-07-04 16:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('786', '1001', '0', '2017-07-04 16:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('787', '1001', '0', '2017-07-04 16:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('788', '1001', '0', '2017-07-04 16:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('789', '1001', '0', '2017-07-04 16:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('790', '1001', '0', '2017-07-04 16:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('791', '1001', '0', '2017-07-04 16:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('792', '1001', '0', '2017-07-04 16:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('793', '1001', '0', '2017-07-04 16:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('794', '1001', '0', '2017-07-04 16:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('795', '1001', '0', '2017-07-04 16:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('796', '1001', '0', '2017-07-04 16:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('797', '1001', '0', '2017-07-04 16:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('798', '1001', '0', '2017-07-04 16:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('799', '1001', '0', '2017-07-04 16:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('800', '1001', '0', '2017-07-04 16:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('801', '1001', '0', '2017-07-04 16:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('802', '1001', '0', '2017-07-04 16:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('803', '1001', '0', '2017-07-04 16:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('804', '1001', '0', '2017-07-04 16:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('805', '1001', '0', '2017-07-04 16:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('806', '1001', '0', '2017-07-04 16:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('807', '1001', '0', '2017-07-04 16:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('808', '1001', '0', '2017-07-04 16:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('809', '1001', '0', '2017-07-04 16:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('810', '1001', '0', '2017-07-04 16:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('811', '1001', '0', '2017-07-04 16:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('812', '1001', '0', '2017-07-04 16:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('813', '1001', '0', '2017-07-04 16:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('814', '1001', '0', '2017-07-04 16:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('815', '1001', '0', '2017-07-04 16:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('816', '1001', '0', '2017-07-04 16:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('817', '1001', '0', '2017-07-04 16:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('818', '1001', '0', '2017-07-04 16:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('819', '1001', '0', '2017-07-04 16:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('820', '1001', '0', '2017-07-04 16:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('821', '1001', '0', '2017-07-04 16:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('822', '1001', '0', '2017-07-04 16:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('823', '1001', '0', '2017-07-04 16:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('824', '1001', '0', '2017-07-04 16:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('825', '1001', '0', '2017-07-04 16:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('826', '1001', '0', '2017-07-04 16:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('827', '1001', '0', '2017-07-04 16:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('828', '1001', '0', '2017-07-04 16:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('829', '1001', '0', '2017-07-04 16:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('830', '1001', '0', '2017-07-04 16:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('831', '1001', '0', '2017-07-04 17:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('832', '1001', '0', '2017-07-04 17:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('833', '1001', '0', '2017-07-04 17:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('834', '1001', '0', '2017-07-04 17:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('835', '1001', '0', '2017-07-04 17:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('836', '1001', '0', '2017-07-04 17:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('837', '1001', '0', '2017-07-04 17:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('838', '1001', '0', '2017-07-04 17:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('839', '1001', '0', '2017-07-04 17:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('840', '1001', '0', '2017-07-04 17:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('841', '1001', '0', '2017-07-04 17:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('842', '1001', '0', '2017-07-04 17:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('843', '1001', '0', '2017-07-04 17:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('844', '1001', '0', '2017-07-04 17:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('845', '1001', '0', '2017-07-04 17:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('846', '1001', '0', '2017-07-04 17:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('847', '1001', '0', '2017-07-04 17:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('848', '1001', '0', '2017-07-04 17:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('849', '1001', '0', '2017-07-04 17:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('850', '1001', '0', '2017-07-04 17:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('851', '1001', '0', '2017-07-04 17:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('852', '1001', '0', '2017-07-04 17:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('853', '1001', '0', '2017-07-04 17:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('854', '1001', '0', '2017-07-04 17:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('855', '1001', '0', '2017-07-04 17:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('856', '1001', '0', '2017-07-04 17:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('857', '1001', '0', '2017-07-04 17:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('858', '1001', '0', '2017-07-04 17:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('859', '1001', '0', '2017-07-04 17:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('860', '1001', '0', '2017-07-04 17:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('861', '1001', '0', '2017-07-04 17:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('862', '1001', '0', '2017-07-04 17:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('863', '1001', '0', '2017-07-04 17:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('864', '1001', '0', '2017-07-04 17:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('865', '1001', '0', '2017-07-04 17:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('866', '1001', '0', '2017-07-04 17:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('867', '1001', '0', '2017-07-04 17:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('868', '1001', '0', '2017-07-04 17:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('869', '1001', '0', '2017-07-04 17:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('870', '1001', '0', '2017-07-04 17:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('871', '1001', '0', '2017-07-04 17:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('872', '1001', '0', '2017-07-04 17:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('873', '1001', '0', '2017-07-04 17:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('874', '1001', '0', '2017-07-04 17:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('875', '1001', '0', '2017-07-04 17:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('876', '1001', '0', '2017-07-04 17:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('877', '1001', '0', '2017-07-04 17:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('878', '1001', '0', '2017-07-04 17:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('879', '1001', '0', '2017-07-04 17:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('880', '1001', '0', '2017-07-04 17:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('881', '1001', '0', '2017-07-04 17:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('882', '1001', '0', '2017-07-04 17:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('883', '1001', '0', '2017-07-04 17:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('884', '1001', '0', '2017-07-04 17:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('885', '1001', '0', '2017-07-04 18:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('886', '1001', '0', '2017-07-04 18:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('887', '1001', '0', '2017-07-04 18:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('888', '1001', '0', '2017-07-04 18:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('889', '1001', '0', '2017-07-04 18:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('890', '1001', '0', '2017-07-04 18:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('891', '1001', '0', '2017-07-04 18:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('892', '1001', '0', '2017-07-04 18:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('893', '1001', '0', '2017-07-04 18:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('894', '1001', '0', '2017-07-04 18:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('895', '1001', '0', '2017-07-04 18:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('896', '1001', '0', '2017-07-04 18:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('897', '1001', '0', '2017-07-10 15:47:09', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('898', '1001', '0', '2017-07-10 15:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('899', '1001', '0', '2017-07-10 15:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('900', '1001', '0', '2017-07-10 15:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('901', '1001', '0', '2017-07-10 15:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('902', '1001', '0', '2017-07-10 15:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('903', '1001', '0', '2017-07-10 15:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('904', '1001', '0', '2017-07-10 15:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('905', '1001', '0', '2017-07-10 15:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('906', '1001', '0', '2017-07-10 15:56:45', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('907', '1001', '0', '2017-07-10 15:57:04', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('908', '1001', '0', '2017-07-10 15:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('909', '1001', '0', '2017-07-10 15:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('910', '1001', '0', '2017-07-10 16:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('911', '1001', '0', '2017-07-10 16:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('912', '1001', '0', '2017-07-10 16:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('913', '1001', '0', '2017-07-10 16:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('914', '1001', '0', '2017-07-10 16:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('915', '1001', '0', '2017-07-10 16:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('916', '1001', '0', '2017-07-10 16:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('917', '1001', '0', '2017-07-10 16:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('918', '1001', '0', '2017-07-10 16:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('919', '1001', '0', '2017-07-10 16:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('920', '1001', '0', '2017-07-10 16:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('921', '1001', '0', '2017-07-10 16:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('922', '1001', '0', '2017-07-10 16:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('923', '1001', '0', '2017-07-10 16:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('924', '1001', '0', '2017-07-10 16:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('925', '1001', '0', '2017-07-10 16:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('926', '1001', '0', '2017-07-10 16:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('927', '1001', '0', '2017-07-10 16:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('928', '1001', '0', '2017-07-10 16:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('929', '1001', '0', '2017-07-10 16:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('930', '1001', '0', '2017-07-10 16:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('931', '1001', '0', '2017-07-10 16:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('932', '1001', '0', '2017-07-10 16:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('933', '1001', '0', '2017-07-10 16:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('934', '1001', '0', '2017-07-10 16:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('935', '1001', '0', '2017-07-10 16:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('936', '1001', '0', '2017-07-10 16:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('937', '1001', '0', '2017-07-10 16:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('938', '1001', '0', '2017-07-10 16:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('939', '1001', '0', '2017-07-10 16:34:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('940', '1001', '0', '2017-07-10 16:35:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('941', '1001', '0', '2017-07-10 16:36:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('942', '1001', '0', '2017-07-10 16:37:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('943', '1001', '0', '2017-07-10 16:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('944', '1001', '0', '2017-07-10 16:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('945', '1001', '0', '2017-07-10 16:40:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('946', '1001', '0', '2017-07-10 16:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('947', '1001', '0', '2017-07-10 16:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('948', '1001', '0', '2017-07-10 16:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('949', '1001', '0', '2017-07-10 16:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('950', '1001', '0', '2017-07-10 16:47:21', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('951', '1001', '0', '2017-07-10 16:47:21', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('952', '1001', '0', '2017-07-10 16:47:21', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('953', '1001', '0', '2017-07-10 16:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('954', '1001', '0', '2017-07-10 16:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('955', '1001', '0', '2017-07-10 16:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('956', '1001', '0', '2017-07-10 16:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('957', '1001', '0', '2017-07-10 16:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('958', '1001', '0', '2017-07-10 16:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('959', '1001', '0', '2017-07-10 16:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('960', '1001', '0', '2017-07-10 16:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('961', '1001', '0', '2017-07-10 16:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('962', '1001', '0', '2017-07-10 16:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('963', '1001', '0', '2017-07-10 16:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('964', '1001', '0', '2017-07-10 16:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('965', '1001', '0', '2017-07-10 17:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('966', '1001', '0', '2017-07-10 17:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('967', '1001', '0', '2017-07-10 17:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('968', '1001', '0', '2017-07-10 17:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('969', '1001', '0', '2017-07-10 17:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('970', '1001', '0', '2017-07-10 17:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('971', '1001', '0', '2017-07-10 17:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('972', '1001', '0', '2017-07-10 17:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('973', '1001', '0', '2017-07-10 17:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('974', '1001', '0', '2017-07-10 17:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('975', '1001', '0', '2017-07-10 17:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('976', '1001', '0', '2017-07-10 17:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('977', '1001', '0', '2017-07-10 17:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('978', '1001', '0', '2017-07-10 17:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('979', '1001', '0', '2017-07-10 17:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('980', '1001', '0', '2017-07-10 17:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('981', '1001', '0', '2017-07-10 17:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('982', '1001', '0', '2017-07-10 17:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('983', '1001', '0', '2017-07-10 17:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('984', '1001', '0', '2017-07-10 17:29:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('985', '1001', '0', '2017-07-10 17:30:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('986', '1001', '0', '2017-07-10 17:31:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('987', '1001', '0', '2017-07-10 17:32:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('988', '1001', '0', '2017-07-10 17:33:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('989', '1001', '0', '2017-07-10 17:45:02', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('990', '1001', '0', '2017-07-10 17:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('991', '1001', '0', '2017-07-10 17:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('992', '1001', '0', '2017-07-10 17:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('993', '1001', '0', '2017-07-10 17:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('994', '1001', '0', '2017-07-10 17:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('995', '1001', '0', '2017-07-10 17:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('996', '1001', '0', '2017-07-10 17:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('997', '1001', '0', '2017-07-10 17:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('998', '1001', '0', '2017-07-10 17:54:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('999', '1001', '0', '2017-07-10 17:55:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1000', '1001', '0', '2017-07-10 17:56:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1001', '1001', '0', '2017-07-10 17:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1002', '1001', '0', '2017-07-10 17:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1003', '1001', '0', '2017-07-10 17:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1004', '1001', '0', '2017-07-10 18:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1005', '1001', '0', '2017-07-10 18:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1006', '1001', '0', '2017-07-10 18:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1007', '1001', '0', '2017-07-10 18:07:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1008', '1001', '0', '2017-07-10 18:08:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1009', '1001', '0', '2017-07-10 18:09:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1010', '1001', '0', '2017-07-10 18:10:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1011', '1001', '0', '2017-07-10 18:11:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1012', '1001', '0', '2017-07-10 18:12:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1013', '1001', '0', '2017-07-10 18:13:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1014', '1001', '0', '2017-07-10 18:14:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1015', '1001', '0', '2017-07-10 18:15:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1016', '1001', '0', '2017-07-10 18:16:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1017', '1001', '0', '2017-07-10 18:17:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1018', '1001', '0', '2017-07-10 18:18:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1019', '1001', '0', '2017-07-10 18:19:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1020', '1001', '0', '2017-07-10 18:20:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1021', '1001', '0', '2017-07-10 18:21:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1022', '1001', '0', '2017-07-10 18:22:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1023', '1001', '0', '2017-07-10 18:23:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1024', '1001', '0', '2017-07-10 18:24:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1025', '1001', '0', '2017-07-10 18:25:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1026', '1001', '0', '2017-07-10 18:26:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1027', '1001', '0', '2017-07-10 18:27:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1028', '1001', '0', '2017-07-10 18:28:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1029', '1001', '0', '2017-07-10 19:52:02', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1030', '1001', '0', '2017-07-10 19:53:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1031', '1001', '0', '2017-07-11 13:37:08', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1032', '1001', '0', '2017-07-11 13:38:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1033', '1001', '0', '2017-07-11 13:39:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1034', '1001', '0', '2017-07-11 13:40:17', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1035', '1001', '0', '2017-07-11 13:41:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1036', '1001', '0', '2017-07-11 13:42:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1037', '1001', '0', '2017-07-11 13:43:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1038', '1001', '0', '2017-07-11 13:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1039', '1001', '0', '2017-07-11 13:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1040', '1001', '0', '2017-07-11 13:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1041', '1001', '0', '2017-07-11 13:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1042', '1001', '0', '2017-07-11 13:48:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1043', '1001', '0', '2017-07-11 13:49:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1044', '1001', '0', '2017-07-11 13:50:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1045', '1001', '0', '2017-07-11 13:51:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1046', '1001', '0', '2017-07-11 13:52:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1047', '1001', '0', '2017-08-07 18:43:09', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1048', '1001', '0', '2017-08-07 18:44:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1049', '1001', '0', '2017-08-07 18:45:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1050', '1001', '0', '2017-08-07 18:46:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1051', '1001', '0', '2017-08-07 18:47:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1052', '1001', '0', '2017-08-07 18:56:06', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1053', '1001', '0', '2017-08-07 18:57:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1054', '1001', '0', '2017-08-07 18:58:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1055', '1001', '0', '2017-08-07 18:59:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1056', '1001', '0', '2017-08-07 19:00:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1057', '1001', '0', '2017-08-07 19:01:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1058', '1001', '0', '2017-08-07 19:02:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1059', '1001', '0', '2017-08-07 19:03:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1060', '1001', '0', '2017-08-07 19:04:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1061', '1001', '0', '2017-08-07 19:05:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1062', '1001', '0', '2017-08-07 19:06:01', null);
+INSERT INTO `op_oss_qlz_onlinecur_log` VALUES ('1063', '1001', '0', '2017-08-07 19:07:01', null);
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_out_log
@@ -2519,7 +3174,7 @@ CREATE TABLE `op_oss_qlz_out_log` (
   `guidenum` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_out_log
@@ -2557,6 +3212,46 @@ INSERT INTO `op_oss_qlz_out_log` VALUES ('30', '1001', '192.168.0.65', '2017-07-
 INSERT INTO `op_oss_qlz_out_log` VALUES ('31', '1001', '192.168.0.65', '2017-07-03 18:53:00', 'dasd', '1', '1', 'c:e29jWRG', '2017-07-03 18:53:00', '0', null, '1');
 INSERT INTO `op_oss_qlz_out_log` VALUES ('32', '1001', '192.168.0.65', '2017-07-03 18:55:27', '3123', '1', '1', 'c:e3OO3zw', '2017-07-03 18:55:27', '0', null, '1');
 INSERT INTO `op_oss_qlz_out_log` VALUES ('33', '1001', '192.168.0.65', '2017-07-03 18:57:15', '3123', '1', '1', 'c:e3OO3zw', '2017-07-03 18:57:15', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('34', '1001', '192.168.0.65', '2017-07-04 10:52:30', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 10:52:31', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('35', '1001', '192.168.0.65', '2017-07-04 10:55:14', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 10:55:14', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('36', '1001', '192.168.0.65', '2017-07-04 10:58:32', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 10:58:32', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('37', '1001', '192.168.0.65', '2017-07-04 11:38:18', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 11:38:18', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('38', '1001', '192.168.0.65', '2017-07-04 11:41:50', '3123', '1', '1', 'c:e3OO3zw', '2017-07-04 11:43:23', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('39', '1001', '192.168.0.65', '2017-07-04 11:45:04', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 11:45:04', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('40', '1001', '192.168.0.65', '2017-07-04 11:52:40', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 11:52:40', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('41', '1001', '192.168.0.65', '2017-07-04 11:54:50', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 11:54:50', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('42', '1001', '192.168.0.65', '2017-07-04 11:57:54', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 11:57:54', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('43', '1001', '192.168.0.65', '2017-07-04 13:29:54', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 13:30:01', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('44', '1001', '192.168.0.65', '2017-07-04 13:39:19', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 13:39:19', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('45', '1001', '192.168.0.65', '2017-07-04 13:40:44', '12333', '1', '1', 'c-JK01zY', '2017-07-04 13:40:44', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('46', '1001', '192.168.0.65', '2017-07-04 13:43:50', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 13:43:50', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('47', '1001', '192.168.0.65', '2017-07-04 13:53:08', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 13:53:08', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('48', '1001', '192.168.0.65', '2017-07-04 14:16:11', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:16:12', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('49', '1001', '192.168.0.65', '2017-07-04 14:16:59', '123', '1', '1', 'c:eA6lJdc', '2017-07-04 14:16:59', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('50', '1001', '192.168.0.65', '2017-07-04 14:18:02', '124', '1', '1', 'c-9Xthlt', '2017-07-04 14:18:02', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('51', '1001', '192.168.0.65', '2017-07-04 14:18:33', '123', '1', '1', 'c:eA6lJdc', '2017-07-04 14:18:33', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('52', '1001', '192.168.0.65', '2017-07-04 14:20:54', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:20:54', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('53', '1001', '192.168.0.65', '2017-07-04 14:21:45', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:21:45', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('54', '1001', '192.168.0.65', '2017-07-04 14:23:53', '123123', '1', '1', 'c-NpTI6s', '2017-07-04 14:23:53', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('55', '1001', '192.168.0.65', '2017-07-04 14:26:55', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:26:55', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('56', '1001', '192.168.0.65', '2017-07-04 14:27:53', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:27:53', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('57', '1001', '192.168.0.65', '2017-07-04 14:38:06', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:38:06', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('58', '1001', '192.168.0.65', '2017-07-04 14:42:27', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:42:27', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('59', '1001', '192.168.0.65', '2017-07-04 14:46:14', '123123', '1', '1', 'c-NpTI6s', '2017-07-04 14:46:14', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('60', '1001', '192.168.0.65', '2017-07-04 14:46:49', '123', '1', '1', 'c:eA6lJdc', '2017-07-04 14:46:49', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('61', '1001', '192.168.0.65', '2017-07-04 14:58:03', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 14:58:03', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('62', '1001', '192.168.0.65', '2017-07-04 15:01:13', '2', '1', '1', 'c-buwfVH', '2017-07-04 15:01:13', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('63', '1001', '192.168.0.65', '2017-07-04 15:03:40', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 15:03:40', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('64', '1001', '192.168.0.65', '2017-07-04 15:07:19', '2', '1', '1', 'c-buwfVH', '2017-07-04 15:07:19', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('65', '1001', '192.168.0.65', '2017-07-04 15:08:37', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 15:08:37', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('66', '1001', '192.168.0.65', '2017-07-04 15:09:28', '12333', '1', '1', 'c-JK01zY', '2017-07-04 15:09:28', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('67', '1001', '192.168.0.65', '2017-07-04 15:30:01', '123', '1', '1', 'c:eA6lJdc', '2017-07-04 15:30:02', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('68', '1001', '192.168.0.65', '2017-07-04 15:31:55', '3123', '1', '1', 'c:e3OO3zw', '2017-07-04 15:31:55', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('69', '1001', '192.168.0.65', '2017-07-04 15:34:31', '123', '1', '1', 'c:eA6lJdc', '2017-07-04 15:34:31', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('70', '1001', '192.168.0.65', '2017-07-04 15:36:02', '4124', '1', '1', 'c-DMHE5Y', '2017-07-04 15:36:02', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('71', '1001', '192.168.0.65', '2017-07-04 15:45:13', '3123', '1', '1', 'c:e3OO3zw', '2017-07-04 15:45:13', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('72', '1001', '192.168.0.65', '2017-07-04 15:48:03', '1233', '1', '1', 'c:eSvldzV', '2017-07-04 15:48:03', '0', null, '1');
+INSERT INTO `op_oss_qlz_out_log` VALUES ('73', '1001', '192.168.0.65', '2017-07-04 15:48:39', '123', '1', '1', 'c:eA6lJdc', '2017-07-04 15:48:39', '0', null, '1');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport
@@ -2588,32 +3283,41 @@ CREATE TABLE `op_oss_qlz_passport` (
   `sfrom` varchar(20) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   `invite_code` varchar(255) DEFAULT NULL COMMENT '邀请码',
+  `real_name` varchar(255) DEFAULT '' COMMENT '姓名',
+  `card_id` varchar(255) DEFAULT '0' COMMENT '身份证id',
   PRIMARY KEY (`openid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='热血七龙珠账号表';
 
 -- ----------------------------
 -- Records of op_oss_qlz_passport
 -- ----------------------------
-INSERT INTO `op_oss_qlz_passport` VALUES ('123', '1001', 'c:eA6lJdc', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:33:38', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('1241', '1001', 'c:eAWgrLv', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:30:05', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('1412', '1001', 'c:eDyZYrg', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:36:12', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('213', '1001', 'c:eoQc5M3', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:42:48', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('21312', '1001', 'c:ehxZXil', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:45:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('312', '1001', 'c:erdEHwm', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:44:19', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('3123', '1001', 'c:e3OO3zw', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '4', '2017-07-03 18:47:00', '2017-07-03 18:57:08', '2017-07-03 18:35:51', '1', '4', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('321', '1001', 'c:eTw8oy4', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:50:37', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '110.00', '110.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '10#player:879877857940078592', '1', '0.00', '0', '2017-06-28 09:43:25', '2017-06-28 09:43:25', null, null, null, '1001', 'NVvObb');
-INSERT INTO `op_oss_qlz_passport` VALUES ('478555hhh', '1001', 'c:ebgbAw6', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:47:17', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('7788', '1001', 'c:e0jOleu', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-30 10:44:16', null, '0', '0.00', '0', null, null, null, null, null, '1', 'FMJS1V');
-INSERT INTO `op_oss_qlz_passport` VALUES ('9852', '1001', 'c:esmj879909164015419392', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-28 11:47:47', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('dasd', '1001', 'c:e29jWRG', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:51:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('dswwwd', '1001', 'c:eoqDPKa', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:50:07', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('jyz', '1001', 'c:ec0OSMt', '1', '10.00', '40.00', null, '0', '1', '192.168.0.65', '7', '2017-06-29 14:47:17', '2017-06-29 15:24:53', '2017-06-29 14:46:57', '1', '6', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('sdsds', '1001', 'c:eNWVvsz', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:25:23', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('sewew', '1001', 'c:e49wvHT', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:00:57', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('wsdewe', '1001', 'c:eisEePF', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:05:58', null, '0', '0.00', '0', null, null, null, null, null, '1', '');
-INSERT INTO `op_oss_qlz_passport` VALUES ('zyj', '1001', 'c:eW2bico', '1', '210.00', '210.00', null, '0', '1', '192.168.0.65', '3', '2017-06-29 14:36:42', '2017-06-29 14:46:13', '2017-06-29 14:33:01', '1', '2', '0.00', '0', null, null, null, null, null, '1', '');
+INSERT INTO `op_oss_qlz_passport` VALUES ('123', '1001', 'c:eA6lJdc', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '7', '2017-07-04 14:16:21', '2017-07-04 15:48:20', '2017-07-03 18:33:38', '1', '7', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('123123', '1001', 'c-NpTI6s', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 14:42:53', '2017-07-04 14:42:53', '2017-07-04 14:22:10', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('1233', '1001', 'c:eSvldzV', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '24', '2017-07-04 10:52:39', '2017-07-04 15:47:00', '2017-07-04 10:49:27', '1', '22', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('12333', '1001', 'c-JK01zY', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 15:08:58', '2017-07-04 15:08:58', '2017-07-04 13:40:37', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('124', '1001', 'c-9Xthlt', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-04 14:17:32', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('1241', '1001', 'c:eAWgrLv', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:30:05', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('1412', '1001', 'c:eDyZYrg', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:36:12', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('2', '1001', 'c-buwfVH', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '2', '2017-07-04 15:03:51', '2017-07-04 15:03:51', '2017-07-04 14:58:29', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('213', '1001', 'c:eoQc5M3', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 09:42:48', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('21312', '1001', 'c:ehxZXil', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:45:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('312', '1001', 'c:erdEHwm', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:44:19', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('3123', '1001', 'c:e3OO3zw', '1', '0.00', '0.00', null, '0', '1', '192.168.0.65', '7', '2017-07-03 18:47:00', '2017-07-04 15:45:00', '2017-07-03 18:35:51', '1', '7', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('321', '1001', 'c:eTw8oy4', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:50:37', '1', '1', '0.00', '0', null, null, null, null, null, '1', '30qbMv', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('321654', '1001', 'c:esmj879611060301070336', '1', '110.00', '110.00', null, '1', '1', '192.168.0.189', '5', '2017-06-27 18:09:49', '2017-06-27 19:03:45', '2017-06-27 16:03:24', '10#player:879877857940078592', '1', '0.00', '0', '2017-06-28 09:43:25', '2017-06-28 09:43:25', null, null, null, '1001', 'NVvObb', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('4124', '1001', 'c-DMHE5Y', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-04 15:35:35', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('478555hhh', '1001', 'c:ebgbAw6', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:47:17', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('617287071432466026', '1001', '无敌', '1', '0.00', '0.00', null, '1', '1', '192.168.0.25', '2', '2017-08-07 18:33:13', '2017-08-07 18:33:13', '2017-08-07 18:33:13', null, '0', '0.00', '0', null, null, null, null, null, '1', null, '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('7788', '1001', 'c:e0jOleu', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-30 10:44:16', null, '0', '0.00', '0', null, null, null, null, null, '1', 'FMJS1V', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('9852', '1001', 'c:esmj879909164015419392', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-28 11:47:47', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('987456', '1001', 'c:esmj879629765277908992', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-27 17:17:34', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dasd', '1001', 'c:e29jWRG', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-07-03 18:51:09', '1', '1', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('dswwwd', '1001', 'c:eoqDPKa', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 10:50:07', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('jyz', '1001', 'c:ec0OSMt', '1', '10.00', '40.00', null, '0', '1', '192.168.0.65', '7', '2017-06-29 14:47:17', '2017-06-29 15:24:53', '2017-06-29 14:46:57', '1', '6', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('sdsds', '1001', 'c:eNWVvsz', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:25:23', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('sewew', '1001', 'c:e49wvHT', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:00:57', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('wsdewe', '1001', 'c:eisEePF', '1', '0.00', '0.00', null, '0', '1', null, '1', null, null, '2017-06-29 11:05:58', null, '0', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
+INSERT INTO `op_oss_qlz_passport` VALUES ('zyj', '1001', 'c:eW2bico', '1', '210.00', '210.00', null, '0', '1', '192.168.0.65', '3', '2017-06-29 14:36:42', '2017-06-29 14:46:13', '2017-06-29 14:33:01', '1', '2', '0.00', '0', null, null, null, null, null, '1', '', '', '0');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_passport_reg
@@ -2650,10 +3354,10 @@ CREATE TABLE `op_oss_qlz_recharge_log` (
   `level` int(11) DEFAULT NULL,
   `rolename` varchar(50) DEFAULT NULL,
   `addtime` varchar(20) DEFAULT NULL,
-  `billon` varchar(50) DEFAULT NULL,
+  `billon` varchar(1024) DEFAULT NULL,
   `app_id` varchar(50) DEFAULT NULL COMMENT '应用id',
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of op_oss_qlz_recharge_log
@@ -2667,6 +3371,8 @@ INSERT INTO `op_oss_qlz_recharge_log` VALUES ('6', '1001', 'jyz', '0.00', '10.00
 INSERT INTO `op_oss_qlz_recharge_log` VALUES ('7', '1001', 'jyz', '0.00', '10.00', '10.00', '2017-06-29 14:51:48', '1', '1', 'c:ec0OSMt', '2017-06-29 14:51:48', 'lyh:1498719108595', '1001');
 INSERT INTO `op_oss_qlz_recharge_log` VALUES ('8', '1001', 'jyz', '0.00', '10.00', '10.00', '2017-06-29 14:54:10', '1', '1', 'c:ec0OSMt', '2017-06-29 14:54:10', 'lyh:1498719225932', '1001');
 INSERT INTO `op_oss_qlz_recharge_log` VALUES ('9', '1001', 'jyz', '0.00', '10.00', '10.00', '2017-06-29 15:24:29', '1', '1', 'c:ec0OSMt', '2017-06-29 15:24:30', 'lyh:1498721068814', '1001');
+INSERT INTO `op_oss_qlz_recharge_log` VALUES ('10', '1001', '321654', '131.00', '631.00', '500.00', '2017-07-11 13:40:16', '1', '1', 'c:esmj879611060301070336', '2017-07-11 13:40:25', 'test1470654170170', '1001');
+INSERT INTO `op_oss_qlz_recharge_log` VALUES ('11', '1001', '321654', '631.00', '1131.00', '500.00', '2017-07-11 13:51:14', '1', '1', 'c:esmj879611060301070336', '2017-07-11 13:51:14', 'test1470654170171', '1001');
 
 -- ----------------------------
 -- Table structure for op_oss_qlz_recharge_tx
@@ -2764,7 +3470,7 @@ CREATE TABLE `op_shop` (
 -- ----------------------------
 -- Records of op_shop
 -- ----------------------------
-INSERT INTO `op_shop` VALUES ('1', '6.00', '7', '0', '0', '钻6');
+INSERT INTO `op_shop` VALUES ('1', '0.01', '7', '0', '0', '钻6');
 INSERT INTO `op_shop` VALUES ('2', '12.00', '15', '0', '0', '钻12');
 INSERT INTO `op_shop` VALUES ('3', '24.00', '30', '0', '0', '钻24');
 INSERT INTO `op_shop` VALUES ('4', '48.00', '58', '0', '0', '钻48');

@@ -896,6 +896,76 @@ public class OpAgentListExample {
             addCriterion("blank_card not between", value1, value2, "blankCard");
             return (Criteria) this;
         }
+
+        public Criteria andBindPlayerIdIsNull() {
+            addCriterion("bind_player_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdIsNotNull() {
+            addCriterion("bind_player_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdEqualTo(String value) {
+            addCriterion("bind_player_id =", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdNotEqualTo(String value) {
+            addCriterion("bind_player_id <>", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdGreaterThan(String value) {
+            addCriterion("bind_player_id >", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdGreaterThanOrEqualTo(String value) {
+            addCriterion("bind_player_id >=", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdLessThan(String value) {
+            addCriterion("bind_player_id <", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdLessThanOrEqualTo(String value) {
+            addCriterion("bind_player_id <=", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdLike(String value) {
+            addCriterion("bind_player_id like", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdNotLike(String value) {
+            addCriterion("bind_player_id not like", value, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdIn(List<String> values) {
+            addCriterion("bind_player_id in", values, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdNotIn(List<String> values) {
+            addCriterion("bind_player_id not in", values, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdBetween(String value1, String value2) {
+            addCriterion("bind_player_id between", value1, value2, "bindPlayerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBindPlayerIdNotBetween(String value1, String value2) {
+            addCriterion("bind_player_id not between", value1, value2, "bindPlayerId");
+            return (Criteria) this;
+        }
     }
 
     /**

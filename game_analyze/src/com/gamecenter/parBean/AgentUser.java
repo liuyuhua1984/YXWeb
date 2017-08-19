@@ -20,6 +20,8 @@ public class AgentUser implements Serializable {
 	/**代理名**/  
 	private String agentName;
 
+	private int level;
+	
 	public long getId() {
 		return id;
 	}
@@ -35,6 +37,16 @@ public class AgentUser implements Serializable {
 	public void setAgentName(String agentName) {
 		this.agentName = agentName;
 	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
+	
 	
 }
   

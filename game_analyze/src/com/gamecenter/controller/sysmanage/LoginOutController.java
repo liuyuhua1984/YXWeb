@@ -150,7 +150,7 @@ public class LoginOutController {
 			OpAgentList agent = agentService.findByName(userName);
 			
 			if (agent != null) {
-				saveAgentUser(agent.getId(), userName, response, session);
+				saveAgentUser(agent.getId(), userName,agent.getAgentLevel(), response, session);
 				res = "1";
 			}
 			
@@ -167,7 +167,7 @@ public class LoginOutController {
 	}
 	
 	
-	public void saveAgentUser(long uid, String userName,HttpServletResponse response, HttpSession session) {
+	public void saveAgentUser(long uid, String userName,int lv,HttpServletResponse response, HttpSession session) {
 		String cookieName = "UID_AGENT";
 		Cookie cookie = new Cookie(cookieName, uid + "");
 		// cookie.setMaxAge(60*60*1); //设置过期时间,单位是秒,1小时
@@ -177,7 +177,7 @@ public class LoginOutController {
 		AgentUser userMsg = new AgentUser();
 		userMsg.setAgentName(userName);
 		userMsg.setId(uid);
-
+		userMsg.setLevel(lv);
 		
 		session.setAttribute("AgentUser", userMsg);
 		session.setAttribute("status", "1");

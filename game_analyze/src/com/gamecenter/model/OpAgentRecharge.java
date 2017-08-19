@@ -55,6 +55,11 @@ public class OpAgentRecharge implements Serializable {
     private Double fetchMoney;
 
     /**
+     * 充值标志
+     */
+    private Integer flag;
+
+    /**
      * op_agent_recharge
      */
     private static final long serialVersionUID = 1L;
@@ -139,6 +144,14 @@ public class OpAgentRecharge implements Serializable {
         this.fetchMoney = fetchMoney;
     }
 
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -155,6 +168,7 @@ public class OpAgentRecharge implements Serializable {
         sb.append(", onlinePay=").append(onlinePay);
         sb.append(", isFetch=").append(isFetch);
         sb.append(", fetchMoney=").append(fetchMoney);
+        sb.append(", flag=").append(flag);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
