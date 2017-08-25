@@ -80,6 +80,15 @@ public class AgentInviteCodeServiceImpl implements AgentInviteCodeService{
 		criteria.andIsPutOutEqualTo((byte)0);
 		return mapper.countByExample(opAgentInviteCodeExample);
 	}
+
+	@Override
+	public long getInviteCodeCount() {
+		// TODO Auto-generated method stub
+		
+		OpAgentInviteCodeExample opAgentInviteCodeExample = new OpAgentInviteCodeExample();
+		//OpAgentInviteCodeExample.Criteria criteria = opAgentInviteCodeExample.createCriteria();
+		return mapper.countByExample(opAgentInviteCodeExample);
+	}
 	
 }
   

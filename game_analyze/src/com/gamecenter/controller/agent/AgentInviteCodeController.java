@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
 import com.gamecenter.common.Tools;
+import com.gamecenter.common.properties.WeChatConfig;
 import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.parBean.AgentUser;
 import com.gamecenter.service.agent.AgentInviteCodeService;
@@ -143,12 +144,32 @@ public class AgentInviteCodeController {
 			code.setIsPutOut((byte) 0);
 			code.setIsUse((byte) 0);
 			code.setAgentId(user.getId());
-			// int inviteCode = ThreadLocalRandom.current().nextInt();
 			String inviteCode = "";
-			for (int j = 0; j < 6; j++) {
-				int rNum = ThreadLocalRandom.current().nextInt(0, randomInviteArray.length);
-				inviteCode += randomInviteArray[rNum];
+			// int inviteCode = ThreadLocalRandom.current().nextInt();
+			if (WeChatConfig.CHANNEL == 0){
+				//恩施麻将特殊处理
+				//邀请码的问题，目前邀请码太复杂了，设成4位数字,并从0开始
+				String maxCount = ""+(agentInviteCodeService.getInviteCodeCount()+1);
+				if (maxCount.length() < 4){
+					int cm = 4-maxCount.length();
+					for (int m = 0; m < cm; m++){
+						inviteCode+="0";
+					}
+				}
+				inviteCode+=maxCount;
+//				for (int j = 0; j < 6; j++) {
+//					int rNum = ThreadLocalRandom.current().nextInt(0, randomInviteArray.length);
+//					inviteCode += randomInviteArray[rNum];
+//				}
+			}else{
+				
+				for (int j = 0; j < 6; j++) {
+					int rNum = ThreadLocalRandom.current().nextInt(0, randomInviteArray.length);
+					inviteCode += randomInviteArray[rNum];
+				}
 			}
+		
+			
 			if (agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode) == null) {
 				code.setInviteCode(inviteCode);
 				agentInviteCodeService.insert(code);

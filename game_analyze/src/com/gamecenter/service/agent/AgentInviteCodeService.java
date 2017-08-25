@@ -46,5 +46,13 @@ public interface AgentInviteCodeService extends BaseService<OpAgentInviteCode>{
 	public long  remainInviteCode(long agentId);
 		
 	
+	/** 
+	 * getInviteCodeCount:(). <br/> 
+	 * TODO().<br/> 
+	 * 计数数量
+	 * @author lyh 
+	 * @return 
+	 */  
+	public long getInviteCodeCount();
 }
   
