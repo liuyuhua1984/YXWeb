@@ -149,7 +149,7 @@ public class AgentInviteCodeController {
 			if (WeChatConfig.CHANNEL == 0){
 				//恩施麻将特殊处理
 				//邀请码的问题，目前邀请码太复杂了，设成4位数字,并从0开始
-				String maxCount = ""+agentInviteCodeService.getInviteCodeCount();
+				String maxCount = ""+(agentInviteCodeService.getInviteCodeCount()+1);
 				if (maxCount.length() < 4){
 					int cm = 4-maxCount.length();
 					for (int m = 0; m < cm; m++){
