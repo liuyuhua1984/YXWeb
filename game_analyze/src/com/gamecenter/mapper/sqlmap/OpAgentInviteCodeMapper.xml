@@ -156,6 +156,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  
   <update id="updateByExampleSelective" parameterType="map">
     update op_agent_invite_code
     <set>
