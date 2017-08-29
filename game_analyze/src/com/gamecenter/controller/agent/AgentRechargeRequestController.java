@@ -175,7 +175,7 @@ public class AgentRechargeRequestController {
 						
 						if (worldServer != null) {
 							OpOssQlzPassport player = dataUpHandleService.getPassportByName(payedName, worldServer.getWorldid());
-							if (player != null) {
+							if (player != null && player.getInviteCode() == agent.getInviteCode()) {
 								//
 								double fetchMoneyRate = 0;
 								OpAgentConfig agentConfig =  agentConfigService.findById(1);

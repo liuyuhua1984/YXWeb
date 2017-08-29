@@ -65,11 +65,14 @@
 		</button>
 	</div>
 
+
+		<c:if test="${lv ne '1'}">
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<button id="create" type="button" class="btn btn-large" style="margin-top: -7px;">
 			<i class="icon-play"></i> 生成邀请码
 		</button>
 	</div>
+	</c:if>
 
 	<%--列表--%>
 	<div class="row-fluid">
@@ -78,13 +81,13 @@
 			<div class="jarviswidget" id="widget-id-0">
 				<header>
 					<h2>我的邀请码</h2>
-
 					<div class="jarviswidget-ctrls" role="menu">
 						<a href="javascript:void(0);" id="" class="button-icon jarviswidget-delete-btn"><span class="trashcan-10"></span></a> <a href="#" class="button-icon jarviswidget-edit-btn"><span
 							class="pencil-10 "></span></a> <a href="#" class="button-icon jarviswidget-fullscreen-btn"><span class="fullscreen-10 "></span></a> <a href="#" class="button-icon  cus-book-next"><span
 							class="min-10 "></span></a>
 						<!--<button type="button" class="btn btn-mini"><i class="icon-download-alt"></i></button>-->
 					</div>
+					
 					<span class="jarviswidget-loader"></span>
 
 				</header>
@@ -117,8 +120,6 @@
 	</div>
 	<script type="text/javascript">
 	
-		
-			
 		$(document).ready(function() {
 			if ($('#begintime').length) {
 				$('#begintime').datepicker({
