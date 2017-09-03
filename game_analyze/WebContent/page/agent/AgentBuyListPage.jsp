@@ -4,7 +4,7 @@
 <c:set var="ctxPage" value="${pageContext.request.contextPath}" />
 
 
-<c:for Each items="${lists}" var="item">
+<c:forEach items="${lists}" var="item">
 	<tr>
 		<td style="text-align: center"><input type="checkbox" name="ids" value="${item.id}" id="act${item.id}" /></td>
 
