@@ -63,6 +63,7 @@ public class AgentInviteCodeController {
 		// List<OpAgentInviteCode> list = agentInviteCodeService.getOpAgentInviteCodeList(agentId);
 		// view.addObject("lists", list);
 		view.addObject("targetTime", targetTime);
+		view.addObject("lv",userMsg.getLevel());
 		return view;
 	}
 	

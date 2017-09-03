@@ -52,6 +52,7 @@ public class CreateRoleLog extends DataUpBase {
 	/**邀请码**/  
 	private String inviteCode;
 	
+	
 	public String getInviteCode() {
 		return inviteCode;
 	}
