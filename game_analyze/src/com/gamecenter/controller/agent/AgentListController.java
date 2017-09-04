@@ -19,6 +19,7 @@ import com.game.protocol.gm.GmProxyBindPlayerProtocolRequest;
 import com.gamecenter.common.Page;
 import com.gamecenter.common.PageTool3;
 import com.gamecenter.common.PlatformToServerConnection;
+import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.Tools;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpAgentRecharge;
@@ -92,8 +93,15 @@ public class AgentListController {
 		// PageTool3 pt = new PageTool3();
 		// String pageStr = pt.getPageStringForjs("",page);
 		// //view.addObject("lists", list);
+		OpAgentList opAgent = agentListService.findById(agentId);
+		if (!ToolUtils.isStringNull(opAgent.getInviteCode())){
+			view.addObject("inviteCode",opAgent.getInviteCode());
+		}else{
+			view.addObject("inviteCode","0");
+		}
 		view.addObject("targetTime", targetTime);
 		view.addObject("lv", userMsg.getLevel());
+		
 		// view.addObject("pageTools", pageStr);
 		// view.addObject("count", pageInfo.getTotal());
 		return view;
@@ -250,6 +258,15 @@ public class AgentListController {
 		return new ModelAndView("/page/agent/AgentBindPlayer");
 	}
 	
+	/** 
+	 * matchPlayerId:(). <br/> 
+	 * TODO().<br/> 
+	 * 代理绑定玩家
+	 * @author lyh 
+	 * @param session
+	 * @param playerId
+	 * @return 
+	 */  
 	@RequestMapping("/match/playerId")
 	@ResponseBody
 	public ModelMap matchPlayerId(HttpSession session, @RequestParam(value = "playerId") String playerId) {
@@ -263,7 +280,7 @@ public class AgentListController {
 		}
 		
 		// 找到玩家并匹配
-		OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(playerId);
+		OpOssQlzPassport player = dataUpHandleService.getPassportByPlayerId(Long.parseLong(playerId));
 		OpAgentList agent = agentListService.findById(agentId);
 		if (agent != null) {
 			if (player != null) {

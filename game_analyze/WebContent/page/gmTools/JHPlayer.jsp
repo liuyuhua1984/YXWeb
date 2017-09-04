@@ -123,7 +123,7 @@
 								</div>
 							</div>
 					<div class="control-group">
-						<label class="control-label" for="name">玩家昵称：</label>
+						<label class="control-label" for="name">玩家ID：</label>
 						<%-- 
                             <div class="controls">
                                 <select id="appid" name="appid" class="span12 with-search">
@@ -135,8 +135,8 @@
                             </div> --%>
 
 						<div class="controls">
-							<input type="text" class="span12" id="name" name="name" value="" maxlength="20" />
-								<p class="help-block">请在玩家进入房间后输入玩家昵称</p>
+							<input type="numer" class="span12" id="name" name="name" value="1" />
+								<p class="help-block">请在玩家进入房间后输入玩家Id</p>
 						</div>
 					</div>
 					<%--
@@ -215,6 +215,12 @@
 				return false;
 			}
 	
+		  
+				var reg = /^[1-9]\d*$/;
+		  if (!reg.test(name)){
+		  		alert("请输入玩家id！");
+				return false;
+		  }
 			$("#tishi").html("请等待，信息处理中....");
 	
 			if (mark == 1) {

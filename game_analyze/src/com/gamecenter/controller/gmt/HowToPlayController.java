@@ -62,6 +62,15 @@ public class HowToPlayController extends BaseController {
 		return view;
 	}
 	
+	/** 
+	 * play:(). <br/> 
+	 * TODO().<br/> 
+	 * 游戏 介绍
+	 * @author lyh 
+	 * @param session
+	 * @param request
+	 * @return 
+	 */  
 	@RequestMapping("/how/play/info")
 	@ResponseBody
 	public Map<String,String> play(HttpSession session,HttpServletRequest request){

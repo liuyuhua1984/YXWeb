@@ -129,6 +129,7 @@
                         <tr>
                             <th style="width :100px;background-color: #ffd700">区服</th>
                             <th style="width :100px;background-color: #ffd700">账号</th>
+                            <th style="width :100px;background-color: #ffd700">玩家id</th>
                             <th style="width :100px;background-color: #ffd700">角色名</th>
                             <th class="sortth" style="width:50px;background-color: #ffd700" par="grade" atr='asc'>等级
                                 &nbsp;&nbsp;<b atr='asc'>↑</b><b atr='desc' style="display: none;">↓</b></th>

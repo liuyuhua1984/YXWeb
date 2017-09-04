@@ -68,7 +68,7 @@ public class RealNameAuthController extends BaseController {
 			return map;
 		}
 		
-		OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(playerId);
+		OpOssQlzPassport player = dataUpHandleService.getPassportByPlayerId(Long.parseLong(playerId));
 		if (player == null) {
 			map.put("result", "-2");// 没有此账号
 			return map;

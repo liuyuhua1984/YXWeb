@@ -31,6 +31,9 @@ public class LoginLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
+	/**玩家id**/  
+	private long playerId;
+	
 	/** 角色名 **/
 	private String roleName;
 	
@@ -119,6 +122,14 @@ public class LoginLog extends DataUpBase {
 
 	public void setInviteCode(String inviteCode) {
 		this.inviteCode = inviteCode;
+	}
+
+	public long getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(long playerId) {
+		this.playerId = playerId;
 	}
 	
 }

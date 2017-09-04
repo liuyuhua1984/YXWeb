@@ -1,12 +1,18 @@
 package com.gamecenter.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class OpOssQlzPassport implements Serializable {
     /**
      * 
      */
     private String openid;
+
+    /**
+     * 
+     */
+    private Long playerId;
 
     /**
      * 
@@ -139,6 +145,11 @@ public class OpOssQlzPassport implements Serializable {
     private String cardId;
 
     /**
+     * 邀请时间
+     */
+    private Date inviteTime;
+
+    /**
      * op_oss_qlz_passport
      */
     private static final long serialVersionUID = 1L;
@@ -149,6 +160,14 @@ public class OpOssQlzPassport implements Serializable {
 
     public void setOpenid(String openid) {
         this.openid = openid == null ? null : openid.trim();
+    }
+
+    public Long getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Long playerId) {
+        this.playerId = playerId;
     }
 
     public String getWorldid() {
@@ -359,6 +378,14 @@ public class OpOssQlzPassport implements Serializable {
         this.cardId = cardId == null ? null : cardId.trim();
     }
 
+    public Date getInviteTime() {
+        return inviteTime;
+    }
+
+    public void setInviteTime(Date inviteTime) {
+        this.inviteTime = inviteTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -366,6 +393,7 @@ public class OpOssQlzPassport implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", openid=").append(openid);
+        sb.append(", playerId=").append(playerId);
         sb.append(", worldid=").append(worldid);
         sb.append(", rolename=").append(rolename);
         sb.append(", grade=").append(grade);
@@ -392,6 +420,7 @@ public class OpOssQlzPassport implements Serializable {
         sb.append(", inviteCode=").append(inviteCode);
         sb.append(", realName=").append(realName);
         sb.append(", cardId=").append(cardId);
+        sb.append(", inviteTime=").append(inviteTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

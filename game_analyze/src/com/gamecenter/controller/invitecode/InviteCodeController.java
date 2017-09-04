@@ -1,5 +1,7 @@
 package com.gamecenter.controller.invitecode;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,8 +16,10 @@ import com.game.protocol.gm.GmInviteCodeProtocolRequest;
 import com.gamecenter.common.encrypt.MD5;
 import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.model.OpAgentList;
+import com.gamecenter.model.OpOssQlzPassport;
 import com.gamecenter.service.agent.AgentInviteCodeService;
 import com.gamecenter.service.agent.AgentListService;
+import com.gamecenter.service.dataup.DataUpHandleService;
 import com.gamecenter.service.task.InviteCodeTask;
 
 /**
@@ -35,7 +39,8 @@ public class InviteCodeController {
 	private AgentInviteCodeService agentInviteCodeService;
 	@Autowired
 	private AgentListService agentListService;
-	
+	@Autowired
+	private DataUpHandleService dataUpHandleService;
 	private String KEY = "PINGANBANK_NET_B2C";
 	
 	/**
@@ -70,6 +75,16 @@ public class InviteCodeController {
 			agentInviteCodeService.update(objInviteCode);
 			String md5 = MD5.encodeMD5("openId=" + openId + "&inviteCode=" + inviteCode + "&key=" + KEY);
 			if (sign != null && sign.equals(md5)) {
+				
+				OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(openId);
+				long time = System.currentTimeMillis() + (60*24*3600*1000);
+				if (player.getInviteTime() == null){
+					player.setInviteTime(new Date(time));
+				}else{
+					 player.getInviteTime().setTime(time);
+				}
+				player.setInviteCode(inviteCode);
+				dataUpHandleService.updatePassport(player, "refresh");
 				
 				// 与代理绑定
 				

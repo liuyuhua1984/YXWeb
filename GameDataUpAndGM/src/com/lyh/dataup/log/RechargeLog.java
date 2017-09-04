@@ -31,6 +31,8 @@ public class RechargeLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
+//	/**玩家id**/  
+//	private long playerId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -177,5 +179,13 @@ public class RechargeLog extends DataUpBase {
 	public void setPayTime(long payTime) {
 		this.payTime = payTime;
 	}
+
+//	public long getPlayerId() {
+//		return playerId;
+//	}
+//
+//	public void setPlayerId(long playerId) {
+//		this.playerId = playerId;
+//	}
 	
 }

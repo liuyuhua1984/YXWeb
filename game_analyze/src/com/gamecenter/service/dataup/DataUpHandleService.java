@@ -71,6 +71,17 @@ public interface DataUpHandleService {
 	
 	public List<OpOssQlzPassport> getPassportList(String worldid);
 	
+	
+	/** 
+	 * getPassportByPlayerId:(). <br/> 
+	 * TODO().<br/> 
+	 * 玩家id查找
+	 * @author lyh 
+	 * @param playerId
+	 * @return 
+	 */  
+	public OpOssQlzPassport getPassportByPlayerId(long playerId);
+	
 	/**
 	 * 加载所有的活跃账号(近7天内登录过的)进缓存
 	 * 

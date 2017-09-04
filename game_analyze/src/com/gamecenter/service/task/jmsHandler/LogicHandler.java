@@ -123,6 +123,7 @@ public class LogicHandler implements MessageListener {
 			opOssQlzCreateroleLog.setUserip(obj.getUserIp());
 			opOssQlzCreateroleLog.setTime(Tools.getDateString(new Date(obj.getCreateRoleTime())));
 			opOssQlzCreateroleLog.setAppId(obj.getAppId());
+			
 			dataUpHandleService.addCreateRoleLog(opOssQlzCreateroleLog);
 			
 			// 加账号
@@ -133,6 +134,7 @@ public class LogicHandler implements MessageListener {
 			opOssQlzPassport.setAppId(obj.getAppId());
 			opOssQlzPassport.setInviteCode(obj.getInviteCode());
 			opOssQlzPassport.setRegtime(Tools.getDateString(new Date(obj.getCreateRoleTime())));
+			opOssQlzPassport.setPlayerId(obj.getPlayerId());
 			int num = dataUpHandleService.addPassport(opOssQlzPassport);
 			if (num == 1) {
 				DataUpHandle.passports.put(opOssQlzPassport.getOpenid(), opOssQlzPassport);
@@ -176,6 +178,7 @@ public class LogicHandler implements MessageListener {
 					opOssQlzPassport.setAppId(obj.getAppId());
 					opOssQlzPassport.setRegtime(Tools.getDateString(new Date(obj.getLoginTime())));
 					opOssQlzPassport.setInviteCode(obj.getInviteCode());
+					opOssQlzPassport.setPlayerId(obj.getPlayerId());
 					int num = dataUpHandleService.addPassport(opOssQlzPassport);
 					if (num == 1) {
 						DataUpHandle.passports.put(opOssQlzPassport.getOpenid(), opOssQlzPassport);
@@ -191,6 +194,7 @@ public class LogicHandler implements MessageListener {
 			opOssQlzPassport.setLastloginip(obj.getUserIp());
 			opOssQlzPassport.setLastlogintime(Tools.getDateString(new Date(obj.getLoginTime())));
 			opOssQlzPassport.setAppId(obj.getAppId());
+			opOssQlzPassport.setPlayerId(obj.getPlayerId());
 			if (DataUpHandle.passports.get(opOssQlzPassport.getOpenid()).getFristlogintime() == null) { // 确定首登时间
 				opOssQlzPassport.setFristlogintime(Tools.getDateString(new Date(obj.getLoginTime())));
 			}
@@ -251,6 +255,7 @@ public class LogicHandler implements MessageListener {
 				opOssQlzPassport.setGuidenum(obj.getNewPlayerGuild());
 				opOssQlzPassport.setInfo(timeOnline + ""); // 临时存储
 				opOssQlzPassport.setAppId(obj.getAppId());
+			
 				opOssQlzPassport = dataUpHandleService.updatePassport(opOssQlzPassport, "out");
 				if (opOssQlzPassport != null) {
 					// 更新缓存
@@ -294,6 +299,7 @@ public class LogicHandler implements MessageListener {
 				opOssQlzPassport.setCurmoney((double) obj.getGoldAfter());
 				opOssQlzPassport.setInfo(obj.getGoldAdd() + "#" + obj.getBillOrder()); // 临时存储
 				opOssQlzPassport.setAppId(obj.getAppId());
+			
 				if (obj.getBillOrder() != null && !obj.getBillOrder().contains("lyh")) { // 排除内部充值
 					opOssQlzPassport.setLastpaytime(Tools.getDateString(new Date(obj.getPayTime())));
 					if (DataUpHandle.passports.get(opOssQlzPassport.getOpenid()).getFristpaytime() == null) { // 确定首冲时间

@@ -1,9 +1,11 @@
 package com.gamecenter.controller.pay.wechat;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +23,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.game.protocol.gm.GmInviteCodeProtocolRequest;
+import com.gamecenter.common.HttpClient;
 import com.gamecenter.common.IdGenerateUtils;
 import com.gamecenter.common.ToolUtils;
 import com.gamecenter.common.pay.wechat.CommonUtil;
@@ -46,6 +54,7 @@ import com.gamecenter.service.agent.PlayerRechargeService;
 import com.gamecenter.service.appServices.AppService;
 import com.gamecenter.service.appServices.WorldService;
 import com.gamecenter.service.dataup.DataUpHandleService;
+import com.gamecenter.service.task.InviteCodeTask;
 
 /**
  * ClassName:WeChatPayController <br/>
@@ -59,6 +68,11 @@ import com.gamecenter.service.dataup.DataUpHandleService;
  */
 @Controller
 public class WeChatPayController extends BaseController {
+	
+	/** 恩施公众号app **/
+	public static final String ES_PUBLIC_APPID = "wx903640e0c1782e08";
+	/** 恩施公众号app密钥 **/
+	public static final String ES_PUBLIC_APPSECRET = "ab0e4cb4020bfd78e21b51ccc2d554b1";
 	
 	@Autowired
 	private AgentRechargeService agentRechargeService;
@@ -105,7 +119,6 @@ public class WeChatPayController extends BaseController {
 		if (goods != null) {
 			
 			int gold = goods.getGift() + goods.getNum();
-			
 			OpAgentList agent = null;
 			OpAgentInviteCode agentInviteCode = null;
 			if (ToolUtils.isStringNull(inviteCode)) {
@@ -417,5 +430,120 @@ public class WeChatPayController extends BaseController {
 		pay.setFetchMoney(fetchMoney);
 		pay.setFlag(1);
 		agentRechargeService.insert(pay);
+	}
+	
+	/**
+	 * playerUnbind:(). <br/>
+	 * TODO().<br/>
+	 * 在色众号里解除绑定
+	 * 
+	 * @author lyh
+	 * @param httpSession
+	 * @param request
+	 */
+	@RequestMapping(value = "/player/unbind")
+	public void playerUnbind(HttpSession httpSession, HttpServletRequest request, HttpServletResponse response) {
+		
+		request.getRequestURL();
+	
+		// ES_PUBLIC_APPID
+		
+		// public function getopenid(){
+		// $appid = $this->appId;
+		// $secret = $this->appSecret;
+		// $redirect_url = "http://".$_SERVER['HTTP_HOST']."/";
+		// $openid = $_SESSION['openid'];
+		// if(!$openid){
+		// header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=".urlencode($redirect_url)."&response_type=code&scope=snsapi_base&state=blinq#wechat_redirect");
+		// $code_state =$_REQUEST;
+		// $token = json_decode(file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code={$code_state['code']}&grant_type=authorization_code"), true);
+		// $_SESSION['openid']=$token['openid'];
+		// }
+		//
+		// return $token;
+		// }
+		
+		// request.getRequestURL() http://localhost:8080/CarsiLogCenter_new/idpstat.jsp
+		// request.getRequestURI() /CarsiLogCenter_new/idpstat.jsp
+		// request.getContextPath()/CarsiLogCenter_new
+		// request.getServletPath() /idpstat.jsp
+		//
+		// request.getQueryString()action=idp.sptopn
+		
+		String requestPath = request.getContextPath();
+		String redirect_uri = request.getRequestURL().toString();
+		int index = redirect_uri.indexOf(requestPath);
+		if (index <= 0) {
+			return;
+		}
+		String subRedirectUri = redirect_uri.substring(0, index + requestPath.length()) + "/player/code";
+		
+		try {
+			String url = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + ES_PUBLIC_APPID + "&redirect_uri=" + URLEncoder.encode(subRedirectUri, "utf-8") + "&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
+			response.sendRedirect(url);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * authCode:(). <br/>
+	 * TODO().<br/>
+	 * 
+	 * 
+	 * @author lyh
+	 * @param httpSession
+	 * @param request
+	 */
+	@RequestMapping(value = "/player/code")
+	public ModelAndView authCode(HttpSession httpSession, HttpServletRequest request) {
+		String code = request.getParameter("code");
+		if (ToolUtils.isStringNull(code)) {
+			logger.error("微信code获得失败");
+		}
+		 ModelAndView view = new ModelAndView("/page/commons/error");
+		
+//		access_token 网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同 
+//		expires_in access_token接口调用凭证超时时间，单位（秒）
+//		refresh_token 用户刷新access_token
+//		openid 用户唯一标识，请注意，在未关注公众号时，用户访问公众号的网页，也会产生一个用户和公众号唯一的OpenID
+//		scope 用户授权的作用域，使用逗号（,）分隔 
+//		错误时微信会返回JSON数据包如下（示例为Code无效错误）: {"errcode":40029,"errmsg":"invalid code"
+//		 }
+		String tokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + ES_PUBLIC_APPID + "&secret=" + ES_PUBLIC_APPSECRET + "&code=" + code + "&grant_type=authorization_code";
+		JSONObject json = HttpClient.httpsRequest(tokenUrl, "GET", "");
+		 String weOpenId = String.valueOf(json.get("openid"));
+		if (!ToolUtils.isStringNull(weOpenId)){
+			//查数据库的openId
+			OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(weOpenId);
+			
+			if (player != null && (player.getInviteTime() == null || System.currentTimeMillis() >= player.getInviteTime().getTime())){
+				GmInviteCodeProtocolRequest req = new GmInviteCodeProtocolRequest();
+				req.setInviteCode("");
+				req.setOpenId(weOpenId);
+				if (player.getInviteTime() == null){
+					player.setInviteTime(new Date(0));
+				}else{
+					 player.getInviteTime().setTime(0);
+				}
+				player.setInviteCode("");
+				dataUpHandleService.updatePassport(player, "refresh");
+				
+				InviteCodeTask.inviteCodeList.add(req);
+				 logger.error("player解绑成功");
+				   view.addObject("message", "解绑成功");
+			}else{
+				 logger.error("player解绑失败");
+				 view.addObject("message", "解绑失败,玩家不存在,或时间不足.");
+			}
+		}else{
+			 int errorCode = json.getIntValue("errcode");
+		                String errorMsg = json.getString("errmsg");
+		                logger.error("获取网页授权凭证失败 errcode:{} errmsg:{}", errorCode, errorMsg);
+		                view.addObject("message", "获取网页授权凭证失败::"+errorCode+"::"+errorMsg);
+		}
+		return view;
+		
 	}
 }

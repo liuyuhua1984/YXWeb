@@ -176,6 +176,65 @@ public class OpOssQlzPassportExample extends PageListNum {
 			return (Criteria) this;
 		}
 		
+        public Criteria andPlayerIdIsNull() {
+            addCriterion("player_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdIsNotNull() {
+            addCriterion("player_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdEqualTo(Long value) {
+            addCriterion("player_id =", value, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdNotEqualTo(Long value) {
+            addCriterion("player_id <>", value, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdGreaterThan(Long value) {
+            addCriterion("player_id >", value, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("player_id >=", value, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdLessThan(Long value) {
+            addCriterion("player_id <", value, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdLessThanOrEqualTo(Long value) {
+            addCriterion("player_id <=", value, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdIn(List<Long> values) {
+            addCriterion("player_id in", values, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdNotIn(List<Long> values) {
+            addCriterion("player_id not in", values, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdBetween(Long value1, Long value2) {
+            addCriterion("player_id between", value1, value2, "playerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlayerIdNotBetween(Long value1, Long value2) {
+            addCriterion("player_id not between", value1, value2, "playerId");
+            return (Criteria) this;
+        }
 		public Criteria andWorldidIsNull() {
 			addCriterion("worldid is null");
 			return (Criteria) this;
@@ -1682,6 +1741,216 @@ public class OpOssQlzPassportExample extends PageListNum {
 
         public Criteria andAppIdNotBetween(String value1, String value2) {
             addCriterion("app_id not between", value1, value2, "appId");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeIsNull() {
+            addCriterion("invite_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeIsNotNull() {
+            addCriterion("invite_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeEqualTo(String value) {
+            addCriterion("invite_code =", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeNotEqualTo(String value) {
+            addCriterion("invite_code <>", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeGreaterThan(String value) {
+            addCriterion("invite_code >", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("invite_code >=", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeLessThan(String value) {
+            addCriterion("invite_code <", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeLessThanOrEqualTo(String value) {
+            addCriterion("invite_code <=", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeLike(String value) {
+            addCriterion("invite_code like", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeNotLike(String value) {
+            addCriterion("invite_code not like", value, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeIn(List<String> values) {
+            addCriterion("invite_code in", values, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeNotIn(List<String> values) {
+            addCriterion("invite_code not in", values, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeBetween(String value1, String value2) {
+            addCriterion("invite_code between", value1, value2, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInviteCodeNotBetween(String value1, String value2) {
+            addCriterion("invite_code not between", value1, value2, "inviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameIsNull() {
+            addCriterion("real_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameIsNotNull() {
+            addCriterion("real_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameEqualTo(String value) {
+            addCriterion("real_name =", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameNotEqualTo(String value) {
+            addCriterion("real_name <>", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameGreaterThan(String value) {
+            addCriterion("real_name >", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameGreaterThanOrEqualTo(String value) {
+            addCriterion("real_name >=", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameLessThan(String value) {
+            addCriterion("real_name <", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameLessThanOrEqualTo(String value) {
+            addCriterion("real_name <=", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameLike(String value) {
+            addCriterion("real_name like", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameNotLike(String value) {
+            addCriterion("real_name not like", value, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameIn(List<String> values) {
+            addCriterion("real_name in", values, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameNotIn(List<String> values) {
+            addCriterion("real_name not in", values, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameBetween(String value1, String value2) {
+            addCriterion("real_name between", value1, value2, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealNameNotBetween(String value1, String value2) {
+            addCriterion("real_name not between", value1, value2, "realName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdIsNull() {
+            addCriterion("card_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdIsNotNull() {
+            addCriterion("card_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdEqualTo(String value) {
+            addCriterion("card_id =", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdNotEqualTo(String value) {
+            addCriterion("card_id <>", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdGreaterThan(String value) {
+            addCriterion("card_id >", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdGreaterThanOrEqualTo(String value) {
+            addCriterion("card_id >=", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdLessThan(String value) {
+            addCriterion("card_id <", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdLessThanOrEqualTo(String value) {
+            addCriterion("card_id <=", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdLike(String value) {
+            addCriterion("card_id like", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdNotLike(String value) {
+            addCriterion("card_id not like", value, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdIn(List<String> values) {
+            addCriterion("card_id in", values, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdNotIn(List<String> values) {
+            addCriterion("card_id not in", values, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdBetween(String value1, String value2) {
+            addCriterion("card_id between", value1, value2, "cardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardIdNotBetween(String value1, String value2) {
+            addCriterion("card_id not between", value1, value2, "cardId");
             return (Criteria) this;
         }
     }

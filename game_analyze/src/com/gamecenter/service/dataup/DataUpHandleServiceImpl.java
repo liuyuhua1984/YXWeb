@@ -246,5 +246,16 @@ public class DataUpHandleServiceImpl implements DataUpHandleService {
 		List<OpOssQlzPassport> list = opOssQlzPassportMapper.selectByExample(opOssQlzPassportExample);
 		return list.size() > 0 ?list.get(0) : null;
 	}
+
+	@Override
+	public OpOssQlzPassport getPassportByPlayerId(long playerId) {
+		// TODO Auto-generated method stub
+		OpOssQlzPassportExample  opOssQlzPassportExample = new OpOssQlzPassportExample();
+		OpOssQlzPassportExample.Criteria criteria = opOssQlzPassportExample.createCriteria();
+		criteria.andPlayerIdEqualTo(playerId);
+		
+		List<OpOssQlzPassport> list = opOssQlzPassportMapper.selectByExample(opOssQlzPassportExample);
+		return list.size() > 0 ?list.get(0) : null;
+	}
 	
 }

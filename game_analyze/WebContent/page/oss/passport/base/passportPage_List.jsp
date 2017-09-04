@@ -5,6 +5,7 @@
     <tr class="odd gradeX">
         <td align="center">${item.worldid}</td>
         <td>${item.openid}</td>
+        <td align="center">${item.playerId}</td>
         <td>${item.rolename}</td>
         <td>${item.grade}</td>
         <td>${item.curmoney}</td>

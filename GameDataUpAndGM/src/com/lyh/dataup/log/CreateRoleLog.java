@@ -33,6 +33,8 @@ public class CreateRoleLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
+	/**玩家id**/  
+	private long playerId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -124,6 +126,14 @@ public class CreateRoleLog extends DataUpBase {
 
 	public void setCreateRoleTime(long createRoleTime) {
 		this.createRoleTime = createRoleTime;
+	}
+
+	public long getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(long playerId) {
+		this.playerId = playerId;
 	}
 	
 }

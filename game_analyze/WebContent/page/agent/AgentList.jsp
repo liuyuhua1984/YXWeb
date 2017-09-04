@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>代理列表</title>
 <c:import url="/head/agent"></c:import>
 <script type="text/javascript" src="${ctxPage}/js/artDialog6/lib/require.js" data-main="${ctxPage}/js/agent_list" defer async="true"></script>
@@ -59,20 +59,29 @@
 </head>
 <body>
 
+
 	<div style="margin-top: 10px;margin-left: 3px;">
-		日期：<input type="text" id="begintime" name="begintime" style="width:150px;" value="${targetTime}" />
-		 至<input type="text" id="endtime" name="endtime" style="width:150px;" value="${targetTime}" />
+		日期：<input type="text" id="begintime" name="begintime" style="width:150px;" value="${targetTime}" /> 至<input type="text" id="endtime" name="endtime" style="width:150px;" value="${targetTime}" />
 		<button id="search" type="button" class="btn btn-small" style="margin-top: -7px;">
 			<i class="icon-search"></i>
 		</button>
 	</div>
-	  <c:choose>
-	  	<c:when test="${lv eq '1' }">
-		<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
-			<a style="margin-top: -7px;" href="${ctxPage}/agent/bind/player" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 绑定玩家</a>
-		</div>
-		</c:when>
-	</c:choose>
+
+
+	<div style="position:absolute; height: 40px; width: 200px;margin-left: 440px;top: 10px;">
+
+		<c:choose>
+			<c:when test="${lv eq '1' }">
+
+				<a style="margin-top: -7px;" href="${ctxPage}/agent/bind/player" class="btn btn-large"><span class="plus-10"></span><i class="icon-play"></i> 绑定玩家</a>
+
+			</c:when>
+
+		</c:choose>
+	</div>
+	<c:if test="${inviteCode ne '0' }">
+		<div style="margin-top: 8px;float: left; color:#ff00ff">邀请码:${inviteCode}</div>
+	</c:if>
 	<%-- 
 	<div style="position:absolute; height: 40px; width: 600px;margin-left: 440px;top: 10px;">
 		<div style="position: absolute;">
@@ -96,6 +105,7 @@
 			</div>
 
 		</div>
+		
 	</div>
  --%>
 	<%--列表--%>
@@ -136,11 +146,11 @@
 									<th style="width:200px">注册时间</th>
 									<th style="width:200px">银行卡</th>
 									<th style="width:100px">操作</th>
-									
+
 								</tr>
 							</thead>
 							<tbody id="tbtable">
-						
+
 							</tbody>
 						</table>
 

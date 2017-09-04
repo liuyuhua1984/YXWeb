@@ -28,6 +28,9 @@ public class UseGoldLog extends DataUpBase {
 	/** 用户IP,转化成主机字节序 **/
 	private String userIp;
 	
+//	/**玩家id**/  
+//	private long playerId;
+	
 	/** 用户名 **/
 	private String userName;
 	
@@ -200,5 +203,13 @@ public class UseGoldLog extends DataUpBase {
 	public void setUseGoldTime(long useGoldTime) {
 		this.useGoldTime = useGoldTime;
 	}
+
+//	public long getPlayerId() {
+//		return playerId;
+//	}
+//
+//	public void setPlayerId(long playerId) {
+//		this.playerId = playerId;
+//	}
 	
 }

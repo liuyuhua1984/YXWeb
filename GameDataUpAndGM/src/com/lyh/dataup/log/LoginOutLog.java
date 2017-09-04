@@ -31,6 +31,8 @@ public class LoginOutLog extends DataUpBase {
 	/** 用户名 **/
 	private String userName;
 	
+//	/**玩家id**/  
+//	private long playerId;
 	
 	/** 角色名 **/
 	private String roleName;
@@ -157,5 +159,13 @@ public class LoginOutLog extends DataUpBase {
 	public void setLoginOutTime(long loginOutTime) {
 		this.loginOutTime = loginOutTime;
 	}
+
+//	public long getPlayerId() {
+//		return playerId;
+//	}
+//
+//	public void setPlayerId(long playerId) {
+//		this.playerId = playerId;
+//	}
 	
 }
