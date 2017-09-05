@@ -86,7 +86,8 @@ public class InviteCodeController extends BaseController {
 			if (sign != null && sign.equals(md5)) {
 				
 				OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(openId);
-				long time = System.currentTimeMillis() + (60*24*3600*1000);
+				long tDays= (60*24*3600*1000);
+				long time = System.currentTimeMillis() + tDays;
 				if (player.getInviteTime() == null){
 					player.setInviteTime(new Date(time));
 				}else{
