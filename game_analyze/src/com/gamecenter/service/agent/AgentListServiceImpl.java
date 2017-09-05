@@ -105,6 +105,7 @@ public class AgentListServiceImpl implements AgentListService {
 		return list.size() > 0 ? list.get(0) : null;
 	}
 
+
 	@Override
 	public OpAgentList findByInviteCode(String inviteCode) {
 		// TODO Auto-generated method stub
@@ -117,6 +118,7 @@ public class AgentListServiceImpl implements AgentListService {
 		 }
 		return null;
 	}
+
 	
 	
 }

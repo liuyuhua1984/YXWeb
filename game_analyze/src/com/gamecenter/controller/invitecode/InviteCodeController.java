@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.game.protocol.gm.GmInviteCodeProtocolRequest;
 import com.gamecenter.common.encrypt.MD5;
+
 import com.gamecenter.controller.BaseController;
+
 import com.gamecenter.model.OpAgentInviteCode;
 import com.gamecenter.model.OpAgentList;
 import com.gamecenter.model.OpOssQlzPassport;
@@ -35,6 +37,7 @@ import com.gamecenter.service.task.InviteCodeTask;
  */
 @Controller
 public class InviteCodeController extends BaseController {
+
 	
 	@Autowired
 	private AgentInviteCodeService agentInviteCodeService;
@@ -63,6 +66,7 @@ public class InviteCodeController extends BaseController {
 		String serverId = req.getParameter("serverId");
 		String sign = req.getParameter("sign");// openId=openId&inviteCode=inviteCode&key=KEY
 		
+
 		logger.error("收到inviteCode::"+inviteCode);
 		OpAgentInviteCode objInviteCode = agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode);
 		
@@ -72,6 +76,7 @@ public class InviteCodeController extends BaseController {
 			if (agentList == null || !agentList.getInviteCode().equals(inviteCode) ) {
 				map.put("result", -2);
 				logger.error("收到inviteCode:错误2:");
+
 				return map;
 			}
 			
@@ -101,6 +106,7 @@ public class InviteCodeController extends BaseController {
 				request.setOpenId(openId);
 				request.setServerId(serverId);
 				InviteCodeTask.inviteCodeList.add(request);
+
 				logger.error("收到inviteCode:成功:");
 			} else {
 				logger.error(md5+":收到inviteCode:MD5有问题:"+sign);

@@ -116,6 +116,6 @@ public interface AgentListService {
 		 */  
 		OpAgentList findByInviteCode(String inviteCode);
 		
-		
+
 }
   

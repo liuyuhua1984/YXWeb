@@ -480,7 +480,7 @@ public class WeChatPayController extends BaseController {
 		
 		try {
 
-			String url = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + ES_PUBLIC_APPID + "&redirect_uri=" + URLEncoder.encode(subRedirectUri, "utf-8") + "&response_type=code&scope=snsapi_base&state=blinq#wechat_redirect";
+			String url = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + ES_PUBLIC_APPID + "&redirect_uri=" + URLEncoder.encode(subRedirectUri, "utf-8") + "&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
 			response.sendRedirect(url);
 		} catch (IOException e) {
 			
