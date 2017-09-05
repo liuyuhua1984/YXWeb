@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpGmtSendmoneyPayMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpGmtSendmoneyPay" >
+    <id column="orderid" property="orderid" jdbcType="VARCHAR" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="worldid" property="worldid" jdbcType="VARCHAR" />
+    <result column="passport" property="passport" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="sendid" property="sendid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    orderid, appid, worldid, passport, money, sendid, status, info, addtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpGmtSendmoneyPayExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_gmt_sendmoney_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_gmt_sendmoney_pay
+    where orderid = #{orderid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from op_gmt_sendmoney_pay
+    where orderid = #{orderid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpGmtSendmoneyPayExample" >
+    delete from op_gmt_sendmoney_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpGmtSendmoneyPay" >
+    insert into op_gmt_sendmoney_pay (orderid, appid, worldid, 
+      passport, money, sendid, 
+      status, info, addtime
+      )
+    values (#{orderid,jdbcType=VARCHAR}, #{appid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, 
+      #{passport,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{sendid,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, #{addtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpGmtSendmoneyPay" >
+    insert into op_gmt_sendmoney_pay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="worldid != null" >
+        worldid,
+      </if>
+      <if test="passport != null" >
+        passport,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="sendid != null" >
+        sendid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="passport != null" >
+        #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="sendid != null" >
+        #{sendid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpGmtSendmoneyPayExample" resultType="java.lang.Integer" >
+    select count(*) from op_gmt_sendmoney_pay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_gmt_sendmoney_pay
+    <set >
+      <if test="record.orderid != null" >
+        orderid = #{record.orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldid != null" >
+        worldid = #{record.worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passport != null" >
+        passport = #{record.passport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sendid != null" >
+        sendid = #{record.sendid,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_gmt_sendmoney_pay
+    set orderid = #{record.orderid,jdbcType=VARCHAR},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      worldid = #{record.worldid,jdbcType=VARCHAR},
+      passport = #{record.passport,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=DOUBLE},
+      sendid = #{record.sendid,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR},
+      info = #{record.info,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpGmtSendmoneyPay" >
+    update op_gmt_sendmoney_pay
+    <set >
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        worldid = #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="passport != null" >
+        passport = #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="sendid != null" >
+        sendid = #{sendid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderid = #{orderid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpGmtSendmoneyPay" >
+    update op_gmt_sendmoney_pay
+    set appid = #{appid,jdbcType=VARCHAR},
+      worldid = #{worldid,jdbcType=VARCHAR},
+      passport = #{passport,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      sendid = #{sendid,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=VARCHAR}
+    where orderid = #{orderid,jdbcType=VARCHAR}
+  </update>
+
+
+    <!--分页获取-->
+    <select id="getPageList" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpGmtSendmoneyPayExample" >
+        select t1.*,t2.rolename from (
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from op_gmt_sendmoney_pay
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        ) t1 left join op_oss_qlz_passport t2 on CONCAT(t1.passport,t1.worldid) = t2.openid
+        limit #{beginNum},#{endNum}
+    </select>
+
+    <!--汇总内充金币总数-->
+    <select id="paycount" resultType="java.lang.Double" parameterType="com.gamecenter.model.OpGmtSendmoneyPayExample" >
+        select
+        IFNULL(ROUND(sum(money),2),0) as paycount
+        from op_gmt_sendmoney_pay
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+</mapper>

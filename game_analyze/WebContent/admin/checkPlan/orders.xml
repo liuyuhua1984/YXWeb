@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--By Supcan TreeList -->
+<TreeList>
+    <Properties editAble="true" id="orders">
+    </Properties>
+    <Cols>
+        <Col name="OrderID" width="80" align="center" isKey="true" nullAble="false">订单号</Col>
+        <Col name="Country" width="110" edittype="droplist" droplistID="country">国家</Col>
+        <Col name="CustomerID" width="240" edittype="droptreelist" droplistID="customer">客户</Col>
+        <Col name="OrderDate" width="100" datatype="date" isHide="true">销售日期</Col>
+        <Col name="Freight" width="90" datatype="double" decimal="2">货重</Col>
+        <Col name="ShipCity" width="150" edittype="droptreelist" droplistID="city">城市</Col>
+        <Col name="PassCity" width="200" edittype="droptreelist" droplistID="citys">货运途经城市</Col>
+    </Cols>
+    <DropLists>
+        <DropList id="city" treelist="city.xml" DataCol="city" DisplayCol="city"/>
+        <DropList id="citys" treelist="city.xml" DataCol="city" DisplayCol="city" isMultiSelectAble="true"/>
+        <DropList id="customer" treelist="customer.xml" DataCol="customerid" DisplayCol="companyname"/>
+        <DropList id="country">
+            <item key="1">France</item>
+            <item key="2">Germany</item>
+            <item key="3">Brazil</item>
+            <item key="4">Belgium</item>
+            <item key="8">Switzerland</item>
+            <item key="11">Venezuela</item>
+            <item key="23">Austria</item>
+            <item key="21">Mexico</item>
+            <item key="9">USA</item>
+            <item key="0">Sweden</item>
+            <item key="34">Finland</item>
+        </DropList>
+    </DropLists>
+</TreeList>

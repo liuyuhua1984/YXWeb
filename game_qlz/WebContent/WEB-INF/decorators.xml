@@ -1,0 +1,8 @@
+<decorators defaultdir="/page/layouts">
+
+    <!--装饰规则-->
+    <decorator name="gamePay" page="layout.jsp">
+        <pattern>/page/table</pattern>
+    </decorator>
+
+</decorators>

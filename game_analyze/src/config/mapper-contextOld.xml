@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 系统管理 -->
+    <bean id="oaActionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaActionMapper"/>
+    </bean>
+    <bean id="oaModuleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaModuleMapper"/>
+    </bean>
+    <bean id="oaPermitMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaPermitMapper"/>
+    </bean>
+    <bean id="oaPermitDetailMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaPermitDetailMapper"/>
+    </bean>
+    <bean id="oaRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaRoleMapper"/>
+    </bean>
+    <bean id="oaUserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaUserMapper"/>
+    </bean>
+    <bean id="oaUserPermitMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.sysmanage.mapper.OaUserPermitMapper"/>
+    </bean>
+
+
+    <!--业务对象-->
+    <bean id="opGameappMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGameappMapper"/>
+    </bean>
+    <bean id="opGameappVersionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGameappVersionMapper"/>
+    </bean>
+    <bean id="opGameworldMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGameworldMapper"/>
+    </bean>
+    <bean id="opGmtForbidmsgMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGmtForbidmsgMapper"/>
+    </bean>
+    <bean id="opGmtNoticeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGmtNoticeMapper"/>
+    </bean>
+
+    <bean id="opOssQlzOnlinecurLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzOnlinecurLogMapper"/>
+    </bean>
+
+    <bean id="opGmtNoticeCycleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGmtNoticeCycleMapper"/>
+    </bean>
+
+    <bean id="opGmtSendmoneyLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGmtSendmoneyLogMapper"/>
+    </bean>
+
+    <bean id="opGmtSendmoneyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGmtSendmoneyMapper"/>
+    </bean>
+    <bean id="opGmtSendmoneyPayMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGmtSendmoneyPayMapper"/>
+    </bean>
+
+    <!--游戏日志-->
+    <bean id="opOssQlzLoginLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzLoginLogMapper"/>
+    </bean>
+    <bean id="opOssQlzOutLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzOutLogMapper"/>
+    </bean>
+    <bean id="opOssQlzCreateroleLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzCreateroleLogMapper"/>
+    </bean>
+    <bean id="opOssQlzRechargeLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzRechargeLogMapper"/>
+    </bean>
+    <bean id="opOssQlzConsumeLogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzConsumeLogMapper"/>
+    </bean>
+    <bean id="opOssQlzPassportRegMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzPassportRegMapper"/>
+    </bean>
+    <bean id="opOssQlzPassportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzPassportMapper"/>
+    </bean>
+
+    <bean id="opOssQlzRechargeTxMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssQlzRechargeTxMapper"/>
+    </bean>
+
+    <!--报表-->
+    <bean id="opOssOnlineDayreportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssOnlineDayreportMapper"/>
+    </bean>
+    <bean id="opOssPayDayreportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssPayDayreportMapper"/>
+    </bean>
+    <bean id="opOssUserDayreportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssUserDayreportMapper"/>
+    </bean>
+    <bean id="analyzeDataMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.AnalyzeDataMapper"/>
+    </bean>
+    <bean id="reportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.ReportMapper"/>
+    </bean>
+    <bean id="opOssUserRemainMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssUserRemainMapper"/>
+    </bean>
+
+    <bean id="opOssConsumeDayreportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOssConsumeDayreportMapper"/>
+    </bean>
+
+
+    <!--cdk-->
+    <bean id="opActivityCdkMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpActivityCdkMapper"/>
+    </bean>
+
+    <bean id="opActivityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpActivityMapper"/>
+    </bean>
+
+    <bean id="opActivityUselogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpActivityUselogMapper"/>
+    </bean>
+    <bean id="opGameGoodsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpGameGoodsMapper"/>
+    </bean>
+
+
+    <bean id="opOperatorMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOperatorMapper"/>
+    </bean>
+    <bean id="opOperatorProductMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOperatorProductMapper"/>
+    </bean>
+    <bean id="opOperatorWorldMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="ManagemySqlSessionFactory"/>
+        <property name="mapperInterface" value="com.gamecenter.mapper.OpOperatorWorldMapper"/>
+    </bean>
+
+
+</beans>

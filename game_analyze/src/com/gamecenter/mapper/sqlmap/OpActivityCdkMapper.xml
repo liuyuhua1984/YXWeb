@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpActivityCdkMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpActivityCdk" >
+    <id column="cdkcode" property="cdkcode" jdbcType="VARCHAR" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cdkcode, aid, time, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpActivityCdkExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_activity_cdk
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_activity_cdk
+    where cdkcode = #{cdkcode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from op_activity_cdk
+    where cdkcode = #{cdkcode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpActivityCdkExample" >
+    delete from op_activity_cdk
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpActivityCdk" >
+    insert into op_activity_cdk (cdkcode, aid, time, 
+      status)
+    values (#{cdkcode,jdbcType=VARCHAR}, #{aid,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpActivityCdk" >
+    insert into op_activity_cdk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cdkcode != null" >
+        cdkcode,
+      </if>
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cdkcode != null" >
+        #{cdkcode,jdbcType=VARCHAR},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpActivityCdkExample" resultType="java.lang.Integer" >
+    select count(*) from op_activity_cdk
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_activity_cdk
+    <set >
+      <if test="record.cdkcode != null" >
+        cdkcode = #{record.cdkcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_activity_cdk
+    set cdkcode = #{record.cdkcode,jdbcType=VARCHAR},
+      aid = #{record.aid,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpActivityCdk" >
+    update op_activity_cdk
+    <set >
+      <if test="aid != null" >
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cdkcode = #{cdkcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpActivityCdk" >
+    update op_activity_cdk
+    set aid = #{aid,jdbcType=INTEGER},
+      time = #{time,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where cdkcode = #{cdkcode,jdbcType=VARCHAR}
+  </update>
+
+
+
+    <select id="getPageList" resultType="com.gamecenter.model.OpActivityCdk" parameterType="com.gamecenter.model.OpActivityCdkExample" >
+
+        select t2.*,t3.name from (
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from op_activity_cdk
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        ) t2 left join op_activity t3 on t2.aid = t3.aid
+
+        limit #{beginNum},#{endNum}
+    </select>
+
+</mapper>

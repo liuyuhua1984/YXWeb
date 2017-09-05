@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpOssQlzRechargeTxMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOssQlzRechargeTx" >
+    <id column="did" property="did" jdbcType="INTEGER" />
+    <result column="billno" property="billno" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="ts" property="ts" jdbcType="VARCHAR" />
+    <result column="payitem" property="payitem" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="zoneid" property="zoneid" jdbcType="VARCHAR" />
+    <result column="providetype" property="providetype" jdbcType="VARCHAR" />
+    <result column="amt" property="amt" jdbcType="VARCHAR" />
+    <result column="payamt_coins" property="payamtCoins" jdbcType="VARCHAR" />
+    <result column="pubacct_payamt_coins" property="pubacctPayamtCoins" jdbcType="VARCHAR" />
+    <result column="sig" property="sig" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    did, billno, openid, appid, ts, payitem, token, version, zoneid, providetype, amt, 
+    payamt_coins, pubacct_payamt_coins, sig, addtime, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOssQlzRechargeTxExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_recharge_tx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_recharge_tx
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from op_oss_qlz_recharge_tx
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOssQlzRechargeTxExample" >
+    delete from op_oss_qlz_recharge_tx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpOssQlzRechargeTx" >
+    insert into op_oss_qlz_recharge_tx (did, billno, openid, 
+      appid, ts, payitem, 
+      token, version, zoneid, 
+      providetype, amt, payamt_coins, 
+      pubacct_payamt_coins, sig, addtime, 
+      status)
+    values (#{did,jdbcType=INTEGER}, #{billno,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{appid,jdbcType=VARCHAR}, #{ts,jdbcType=VARCHAR}, #{payitem,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{zoneid,jdbcType=VARCHAR}, 
+      #{providetype,jdbcType=VARCHAR}, #{amt,jdbcType=VARCHAR}, #{payamtCoins,jdbcType=VARCHAR}, 
+      #{pubacctPayamtCoins,jdbcType=VARCHAR}, #{sig,jdbcType=VARCHAR}, #{addtime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssQlzRechargeTx" >
+    insert into op_oss_qlz_recharge_tx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="billno != null" >
+        billno,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="payitem != null" >
+        payitem,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="zoneid != null" >
+        zoneid,
+      </if>
+      <if test="providetype != null" >
+        providetype,
+      </if>
+      <if test="amt != null" >
+        amt,
+      </if>
+      <if test="payamtCoins != null" >
+        payamt_coins,
+      </if>
+      <if test="pubacctPayamtCoins != null" >
+        pubacct_payamt_coins,
+      </if>
+      <if test="sig != null" >
+        sig,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="billno != null" >
+        #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="payitem != null" >
+        #{payitem,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneid != null" >
+        #{zoneid,jdbcType=VARCHAR},
+      </if>
+      <if test="providetype != null" >
+        #{providetype,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        #{amt,jdbcType=VARCHAR},
+      </if>
+      <if test="payamtCoins != null" >
+        #{payamtCoins,jdbcType=VARCHAR},
+      </if>
+      <if test="pubacctPayamtCoins != null" >
+        #{pubacctPayamtCoins,jdbcType=VARCHAR},
+      </if>
+      <if test="sig != null" >
+        #{sig,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpOssQlzRechargeTxExample" resultType="java.lang.Integer" >
+    select count(*) from op_oss_qlz_recharge_tx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_oss_qlz_recharge_tx
+    <set >
+      <if test="record.did != null" >
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.billno != null" >
+        billno = #{record.billno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openid != null" >
+        openid = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ts != null" >
+        ts = #{record.ts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payitem != null" >
+        payitem = #{record.payitem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.token != null" >
+        token = #{record.token,jdbcType=VARCHAR},
+      </if>
+      <if test="record.version != null" >
+        version = #{record.version,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneid != null" >
+        zoneid = #{record.zoneid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.providetype != null" >
+        providetype = #{record.providetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amt != null" >
+        amt = #{record.amt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payamtCoins != null" >
+        payamt_coins = #{record.payamtCoins,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pubacctPayamtCoins != null" >
+        pubacct_payamt_coins = #{record.pubacctPayamtCoins,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sig != null" >
+        sig = #{record.sig,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_oss_qlz_recharge_tx
+    set did = #{record.did,jdbcType=INTEGER},
+      billno = #{record.billno,jdbcType=VARCHAR},
+      openid = #{record.openid,jdbcType=VARCHAR},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      ts = #{record.ts,jdbcType=VARCHAR},
+      payitem = #{record.payitem,jdbcType=VARCHAR},
+      token = #{record.token,jdbcType=VARCHAR},
+      version = #{record.version,jdbcType=VARCHAR},
+      zoneid = #{record.zoneid,jdbcType=VARCHAR},
+      providetype = #{record.providetype,jdbcType=VARCHAR},
+      amt = #{record.amt,jdbcType=VARCHAR},
+      payamt_coins = #{record.payamtCoins,jdbcType=VARCHAR},
+      pubacct_payamt_coins = #{record.pubacctPayamtCoins,jdbcType=VARCHAR},
+      sig = #{record.sig,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOssQlzRechargeTx" >
+    update op_oss_qlz_recharge_tx
+    <set >
+      <if test="billno != null" >
+        billno = #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="payitem != null" >
+        payitem = #{payitem,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneid != null" >
+        zoneid = #{zoneid,jdbcType=VARCHAR},
+      </if>
+      <if test="providetype != null" >
+        providetype = #{providetype,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        amt = #{amt,jdbcType=VARCHAR},
+      </if>
+      <if test="payamtCoins != null" >
+        payamt_coins = #{payamtCoins,jdbcType=VARCHAR},
+      </if>
+      <if test="pubacctPayamtCoins != null" >
+        pubacct_payamt_coins = #{pubacctPayamtCoins,jdbcType=VARCHAR},
+      </if>
+      <if test="sig != null" >
+        sig = #{sig,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOssQlzRechargeTx" >
+    update op_oss_qlz_recharge_tx
+    set billno = #{billno,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      appid = #{appid,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      payitem = #{payitem,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      zoneid = #{zoneid,jdbcType=VARCHAR},
+      providetype = #{providetype,jdbcType=VARCHAR},
+      amt = #{amt,jdbcType=VARCHAR},
+      payamt_coins = #{payamtCoins,jdbcType=VARCHAR},
+      pubacct_payamt_coins = #{pubacctPayamtCoins,jdbcType=VARCHAR},
+      sig = #{sig,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+
+    <!--充值确认-->
+   <update id="payConfirm" parameterType="java.util.HashMap">
+       update op_oss_qlz_recharge_tx set  confirmcount = confirmcount+1, confirmret=${ret} where billno = ${billno}
+   </update>
+</mapper>

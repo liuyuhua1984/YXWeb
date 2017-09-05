@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.RegisterLogMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.RegisterLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="appId" property="appid" jdbcType="BIGINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="serverId" property="serverid" jdbcType="VARCHAR" />
+    <result column="serverIp" property="serverip" jdbcType="VARCHAR" />
+    <result column="userIp" property="userip" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, appId, createTime, serverId, serverIp, userIp, userName
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.RegisterLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from register_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from register_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from register_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.RegisterLogExample" >
+    delete from register_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.RegisterLog" >
+    insert into register_log (id, appId, createTime, 
+      serverId, serverIp, userIp, 
+      userName)
+    values (#{id,jdbcType=BIGINT}, #{appid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{serverid,jdbcType=VARCHAR}, #{serverip,jdbcType=VARCHAR}, #{userip,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.RegisterLog" >
+    insert into register_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appid != null" >
+        appId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="serverid != null" >
+        serverId,
+      </if>
+      <if test="serverip != null" >
+        serverIp,
+      </if>
+      <if test="userip != null" >
+        userIp,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serverid != null" >
+        #{serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="serverip != null" >
+        #{serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="userip != null" >
+        #{userip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.RegisterLogExample" resultType="java.lang.Integer" >
+    select count(*) from register_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update register_log
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.appid != null" >
+        appId = #{record.appid,jdbcType=BIGINT},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.serverid != null" >
+        serverId = #{record.serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverip != null" >
+        serverIp = #{record.serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userip != null" >
+        userIp = #{record.userip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update register_log
+    set id = #{record.id,jdbcType=BIGINT},
+      appId = #{record.appid,jdbcType=BIGINT},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      serverId = #{record.serverid,jdbcType=VARCHAR},
+      serverIp = #{record.serverip,jdbcType=VARCHAR},
+      userIp = #{record.userip,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.RegisterLog" >
+    update register_log
+    <set >
+      <if test="appid != null" >
+        appId = #{appid,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serverid != null" >
+        serverId = #{serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="serverip != null" >
+        serverIp = #{serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="userip != null" >
+        userIp = #{userip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.RegisterLog" >
+    update register_log
+    set appId = #{appid,jdbcType=BIGINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      serverId = #{serverid,jdbcType=VARCHAR},
+      serverIp = #{serverip,jdbcType=VARCHAR},
+      userIp = #{userip,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <!--上报数据提取-->
+    <select id="getLastDate"   resultType="com.gamecenter.model.RegisterLog"  parameterType="java.lang.String" >
+        select * from register_log t1 where (t1.isup = '0' or t1.isup is NULL)  and createTime &lt;= #{time} ORDER BY t1.createTime asc;
+       
+    </select>
+    
+    <update id="act" parameterType="java.util.HashMap">
+          UPDATE register_log set isup = '1' where id in(${ids})
+    </update>
+
+</mapper>

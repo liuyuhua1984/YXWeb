@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpOssConsumeDayreportMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOssConsumeDayreport" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="worldid" property="worldid" jdbcType="VARCHAR" />
+    <result column="optid" property="optid" jdbcType="VARCHAR" />
+    <result column="sfrom" property="sfrom" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="VARCHAR" />
+    <result column="itemtype" property="itemtype" jdbcType="VARCHAR" />
+    <result column="itemname" property="itemname" jdbcType="VARCHAR" />
+    <result column="itemnum" property="itemnum" jdbcType="INTEGER" />
+    <result column="usernum" property="usernum" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, appid, worldid, optid, sfrom, ctime, itemtype, itemname, itemnum, usernum, money
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpOssConsumeDayreportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_oss_consume_dayreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_oss_consume_dayreport
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from op_oss_consume_dayreport
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOssConsumeDayreportExample" >
+    delete from op_oss_consume_dayreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpOssConsumeDayreport" >
+    insert into op_oss_consume_dayreport (id, appid, worldid, 
+      optid, sfrom, ctime, 
+      itemtype, itemname, itemnum, 
+      usernum, money)
+    values (#{id,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, 
+      #{optid,jdbcType=VARCHAR}, #{sfrom,jdbcType=VARCHAR}, #{ctime,jdbcType=VARCHAR}, 
+      #{itemtype,jdbcType=VARCHAR}, #{itemname,jdbcType=VARCHAR}, #{itemnum,jdbcType=INTEGER}, 
+      #{usernum,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssConsumeDayreport" >
+    insert into op_oss_consume_dayreport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="worldid != null" >
+        worldid,
+      </if>
+      <if test="optid != null" >
+        optid,
+      </if>
+      <if test="sfrom != null" >
+        sfrom,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="itemtype != null" >
+        itemtype,
+      </if>
+      <if test="itemname != null" >
+        itemname,
+      </if>
+      <if test="itemnum != null" >
+        itemnum,
+      </if>
+      <if test="usernum != null" >
+        usernum,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="optid != null" >
+        #{optid,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrom != null" >
+        #{sfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=VARCHAR},
+      </if>
+      <if test="itemtype != null" >
+        #{itemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="itemname != null" >
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemnum != null" >
+        #{itemnum,jdbcType=INTEGER},
+      </if>
+      <if test="usernum != null" >
+        #{usernum,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpOssConsumeDayreportExample" resultType="java.lang.Integer" >
+    select count(*) from op_oss_consume_dayreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_oss_consume_dayreport
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldid != null" >
+        worldid = #{record.worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optid != null" >
+        optid = #{record.optid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfrom != null" >
+        sfrom = #{record.sfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null" >
+        ctime = #{record.ctime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemtype != null" >
+        itemtype = #{record.itemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemname != null" >
+        itemname = #{record.itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemnum != null" >
+        itemnum = #{record.itemnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.usernum != null" >
+        usernum = #{record.usernum,jdbcType=INTEGER},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_oss_consume_dayreport
+    set id = #{record.id,jdbcType=INTEGER},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      worldid = #{record.worldid,jdbcType=VARCHAR},
+      optid = #{record.optid,jdbcType=VARCHAR},
+      sfrom = #{record.sfrom,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=VARCHAR},
+      itemtype = #{record.itemtype,jdbcType=VARCHAR},
+      itemname = #{record.itemname,jdbcType=VARCHAR},
+      itemnum = #{record.itemnum,jdbcType=INTEGER},
+      usernum = #{record.usernum,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOssConsumeDayreport" >
+    update op_oss_consume_dayreport
+    <set >
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null" >
+        worldid = #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="optid != null" >
+        optid = #{optid,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrom != null" >
+        sfrom = #{sfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=VARCHAR},
+      </if>
+      <if test="itemtype != null" >
+        itemtype = #{itemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="itemname != null" >
+        itemname = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemnum != null" >
+        itemnum = #{itemnum,jdbcType=INTEGER},
+      </if>
+      <if test="usernum != null" >
+        usernum = #{usernum,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOssConsumeDayreport" >
+    update op_oss_consume_dayreport
+    set appid = #{appid,jdbcType=VARCHAR},
+      worldid = #{worldid,jdbcType=VARCHAR},
+      optid = #{optid,jdbcType=VARCHAR},
+      sfrom = #{sfrom,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=VARCHAR},
+      itemtype = #{itemtype,jdbcType=VARCHAR},
+      itemname = #{itemname,jdbcType=VARCHAR},
+      itemnum = #{itemnum,jdbcType=INTEGER},
+      usernum = #{usernum,jdbcType=INTEGER},
+      money = #{money,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

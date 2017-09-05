@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Supcan Freeform -->
+<freeform>
+    <Fonts>
+        <Font faceName="Consolas"/>
+        <Font/>
+        <Font faceName="微软雅黑" bold="1"/>
+        <Font bold="true"/>
+    </Fonts>
+    <Objects>
+        <!-- 背景图和轮廓线，使用了下面的圆角矩形路径，注意：y1=" -100%"表示上半部分是不显示的 -->
+        <Img x1="0" x2="100%" y1="-100%" y2="100%" pathID="path1" src="./pagerback.png" arrange="stretch"/>
+        <Rect x1="0" x2="100%" y1="-100%" y2="100%" pathID="path1" pathBorder="thick=1;color=#377d8d" thick="0"/>
+
+        <!-- 分页器 -->
+        <pager id="ID0" x1="100" y="0" x2="99%" height="100%" textColor="#0799B7" PageRowsList="10,20,50,100"/>
+
+        <!-- 左侧的2个功能小按钮 -->
+        <input id="IDRefresh" type="button" tip="刷新" x1="20" y1="12" width="20" height="20" icon="./prop.bmp"
+               style="flat,transparent,noMouseHover"/>
+        <input id="IDPrint" type="button" tip="打印预览" x1="50" y1="12" width="20" height="20" icon="./prtsetup.bmp"
+               style="flat,transparent,noMouseHover"/>
+        <input id="IDBuildTreelist" type="button" tip="重建" x1="100" y1="12" width="20" height="20" icon="./prop.bmp"
+               style="flat,transparent,noMouseHover"/>
+
+
+    </Objects>
+    <paths>
+        <path id="path1">
+            <!-- 圆角矩形，圆角直径:30 -->
+            <Rect x="0" y="0" width="100%" height="100%" round="20"/>
+        </path>
+    </paths>
+</freeform>

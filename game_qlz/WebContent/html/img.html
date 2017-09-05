@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #img1, #img2 {
+
+        }
+    </style>
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <script text="text/javascript">
+        const OUT_OPACITY = 0.4;
+        const OVER_OPACITY = 1.0;
+
+        var imgs = new Array();
+        imgs[0] = "1.png";
+        imgs[1] = "2.png";
+        imgs[2] = "3.png";
+
+        var cur = 2;
+        function getPre(cur) {
+            var page = 0;
+            if (cur == 2) {
+                page = 0;
+            } else {
+                page = cur + 1;
+            }
+            return page;
+        }
+        function getBack(cur) {
+            var page = 0;
+            if (cur == 0) {
+                page = 2;
+            } else {
+                page = cur - 1;
+            }
+            return page;
+        }
+
+
+        $(function () {
+//            $("div#miniGallery img").css("opacity", OUT_OPACITY)
+//                    .hover(
+//                    function () {
+//                        $(this).animate({opacity: OVER_OPACITY});
+//                    },
+//                    function () {
+//                        $(this).animate({opacity: OUT_OPACITY});
+//                    }
+//            );
+
+//            $("#img1").css("opacity", OUT_OPACITY);
+//            $("#img2").css("opacity", OUT_OPACITY);
+
+            $("#img3").attr("src", imgs[2]);
+            $("#img2").attr("src", imgs[1]);
+            $("#img1").attr("src", imgs[0]);
+
+
+            $("#bt1").click(function () {
+                $("#img3").hide();
+                cur = getPre(cur);
+                $("#img3").attr("src",imgs[cur]);
+
+                $("#img2").hide();
+                var p = getPre(cur);
+                $("#img2").attr("src",imgs[p]);
+
+                $("#img1").hide();
+                p = getPre(p);
+                $("#img1").attr("src",imgs[p]);
+
+
+                $("#img3").fadeIn("slow");
+                $("#img2").show();
+                $("#img1").show();
+            });
+
+
+            $("#bt2").click(function () {
+                $("#img3").hide();
+                cur = getBack(cur);
+                $("#img3").attr("src",imgs[cur]);
+
+                $("#img2").hide();
+                var p = getBack(cur);
+                $("#img2").attr("src",imgs[p]);
+
+                $("#img1").hide();
+                p = getBack(p);
+                $("#img1").attr("src",imgs[p]);
+
+
+                $("#img3").fadeIn("slow");
+                $("#img2").show();
+                $("#img1").show();
+            });
+        });
+
+
+    </script>
+</head>
+
+<body>
+<div id="miniGallery" style="position:relative; width:781px; height:290px">
+    <img id="img1" src="" style="width: 612px;height: 263px;position:absolute; left:0px; top:14px; opacity:0.4"/>
+    <img id="img2" src="" style="width: 612px;height: 263px; position:absolute; right:0px; top:14px;opacity:0.4"/>
+    <img id="img3" src="" style="width: 676px;height: 290px;position:absolute; left:52px; top:0px; "/>
+
+    <img id="bt1" src="bt1.png" style="position:absolute; right:52px; top:140px;"/>
+    <img id="bt2" src="bt2.png" style="position:absolute; left:48px; top:140px;"/>
+</div>
+</body>
+</html>

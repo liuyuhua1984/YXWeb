@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OpActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpActivity" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="begintime" property="begintime" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="VARCHAR" />
+    <result column="isbing" property="isbing" jdbcType="VARCHAR" />
+    <result column="joincount" property="joincount" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="worldids" property="worldids" jdbcType="VARCHAR" />
+    <result column="cardnum" property="cardnum" jdbcType="INTEGER" />
+    <result column="usenum" property="usenum" jdbcType="INTEGER" />
+    <result column="award" property="award" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    aid, name, content, keyword, begintime, endtime, info, status, addtime, isbing, joincount, 
+    appid, worldids, cardnum, usenum, award
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OpActivityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from op_activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from op_activity
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from op_activity
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpActivityExample" >
+    delete from op_activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpActivity" >
+    insert into op_activity (aid, name, content, 
+      keyword, begintime, endtime, 
+      info, status, addtime, 
+      isbing, joincount, appid, 
+      worldids, cardnum, usenum, 
+      award)
+    values (#{aid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{keyword,jdbcType=VARCHAR}, #{begintime,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR}, 
+      #{info,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{addtime,jdbcType=VARCHAR}, 
+      #{isbing,jdbcType=VARCHAR}, #{joincount,jdbcType=INTEGER}, #{appid,jdbcType=VARCHAR}, 
+      #{worldids,jdbcType=VARCHAR}, #{cardnum,jdbcType=INTEGER}, #{usenum,jdbcType=INTEGER}, 
+      #{award,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpActivity" >
+    insert into op_activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="keyword != null" >
+        keyword,
+      </if>
+      <if test="begintime != null" >
+        begintime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="isbing != null" >
+        isbing,
+      </if>
+      <if test="joincount != null" >
+        joincount,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="worldids != null" >
+        worldids,
+      </if>
+      <if test="cardnum != null" >
+        cardnum,
+      </if>
+      <if test="usenum != null" >
+        usenum,
+      </if>
+      <if test="award != null" >
+        award,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="isbing != null" >
+        #{isbing,jdbcType=VARCHAR},
+      </if>
+      <if test="joincount != null" >
+        #{joincount,jdbcType=INTEGER},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldids != null" >
+        #{worldids,jdbcType=VARCHAR},
+      </if>
+      <if test="cardnum != null" >
+        #{cardnum,jdbcType=INTEGER},
+      </if>
+      <if test="usenum != null" >
+        #{usenum,jdbcType=INTEGER},
+      </if>
+      <if test="award != null" >
+        #{award,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpActivityExample" resultType="java.lang.Integer" >
+    select count(*) from op_activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update op_activity
+    <set >
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword != null" >
+        keyword = #{record.keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.begintime != null" >
+        begintime = #{record.begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endtime != null" >
+        endtime = #{record.endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isbing != null" >
+        isbing = #{record.isbing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.joincount != null" >
+        joincount = #{record.joincount,jdbcType=INTEGER},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldids != null" >
+        worldids = #{record.worldids,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardnum != null" >
+        cardnum = #{record.cardnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.usenum != null" >
+        usenum = #{record.usenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.award != null" >
+        award = #{record.award,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update op_activity
+    set aid = #{record.aid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      keyword = #{record.keyword,jdbcType=VARCHAR},
+      begintime = #{record.begintime,jdbcType=VARCHAR},
+      endtime = #{record.endtime,jdbcType=VARCHAR},
+      info = #{record.info,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=VARCHAR},
+      isbing = #{record.isbing,jdbcType=VARCHAR},
+      joincount = #{record.joincount,jdbcType=INTEGER},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      worldids = #{record.worldids,jdbcType=VARCHAR},
+      cardnum = #{record.cardnum,jdbcType=INTEGER},
+      usenum = #{record.usenum,jdbcType=INTEGER},
+      award = #{record.award,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpActivity" >
+    update op_activity
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        begintime = #{begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+      <if test="isbing != null" >
+        isbing = #{isbing,jdbcType=VARCHAR},
+      </if>
+      <if test="joincount != null" >
+        joincount = #{joincount,jdbcType=INTEGER},
+      </if>
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldids != null" >
+        worldids = #{worldids,jdbcType=VARCHAR},
+      </if>
+      <if test="cardnum != null" >
+        cardnum = #{cardnum,jdbcType=INTEGER},
+      </if>
+      <if test="usenum != null" >
+        usenum = #{usenum,jdbcType=INTEGER},
+      </if>
+      <if test="award != null" >
+        award = #{award,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpActivity" >
+    update op_activity
+    set name = #{name,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      begintime = #{begintime,jdbcType=VARCHAR},
+      endtime = #{endtime,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=VARCHAR},
+      isbing = #{isbing,jdbcType=VARCHAR},
+      joincount = #{joincount,jdbcType=INTEGER},
+      appid = #{appid,jdbcType=VARCHAR},
+      worldids = #{worldids,jdbcType=VARCHAR},
+      cardnum = #{cardnum,jdbcType=INTEGER},
+      usenum = #{usenum,jdbcType=INTEGER},
+      award = #{award,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>

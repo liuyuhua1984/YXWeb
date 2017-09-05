@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamecenter.mapper.OpAgentConfigMapper">
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="one_level" jdbcType="VARCHAR" property="oneLevel" />
+    <result column="two_level" jdbcType="VARCHAR" property="twoLevel" />
+    <result column="three_level" jdbcType="VARCHAR" property="threeLevel" />
+    <result column="none_level" jdbcType="VARCHAR" property="noneLevel" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, one_level, two_level, three_level, none_level
+  </sql>
+  <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentConfigExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from op_agent_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from op_agent_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from op_agent_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpAgentConfigExample">
+    delete from op_agent_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpAgentConfig">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_agent_config (one_level, two_level, three_level, 
+      none_level)
+    values (#{oneLevel,jdbcType=VARCHAR}, #{twoLevel,jdbcType=VARCHAR}, #{threeLevel,jdbcType=VARCHAR}, 
+      #{noneLevel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentConfig">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_agent_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oneLevel != null">
+        one_level,
+      </if>
+      <if test="twoLevel != null">
+        two_level,
+      </if>
+      <if test="threeLevel != null">
+        three_level,
+      </if>
+      <if test="noneLevel != null">
+        none_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oneLevel != null">
+        #{oneLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="twoLevel != null">
+        #{twoLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="threeLevel != null">
+        #{threeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="noneLevel != null">
+        #{noneLevel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpAgentConfigExample" resultType="java.lang.Long">
+    select count(*) from op_agent_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update op_agent_config
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.oneLevel != null">
+        one_level = #{record.oneLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twoLevel != null">
+        two_level = #{record.twoLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.threeLevel != null">
+        three_level = #{record.threeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noneLevel != null">
+        none_level = #{record.noneLevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update op_agent_config
+    set id = #{record.id,jdbcType=BIGINT},
+      one_level = #{record.oneLevel,jdbcType=VARCHAR},
+      two_level = #{record.twoLevel,jdbcType=VARCHAR},
+      three_level = #{record.threeLevel,jdbcType=VARCHAR},
+      none_level = #{record.noneLevel,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpAgentConfig">
+    update op_agent_config
+    <set>
+      <if test="oneLevel != null">
+        one_level = #{oneLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="twoLevel != null">
+        two_level = #{twoLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="threeLevel != null">
+        three_level = #{threeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="noneLevel != null">
+        none_level = #{noneLevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentConfig">
+    update op_agent_config
+    set one_level = #{oneLevel,jdbcType=VARCHAR},
+      two_level = #{twoLevel,jdbcType=VARCHAR},
+      three_level = #{threeLevel,jdbcType=VARCHAR},
+      none_level = #{noneLevel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

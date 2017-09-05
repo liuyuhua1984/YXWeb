@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OaUserMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OaUser" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="passport" property="passport" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="regTime" property="regtime" jdbcType="VARCHAR" />
+    <result column="logincount" property="logincount" jdbcType="INTEGER" />
+    <result column="lastLoginTime" property="lastlogintime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="isonine" property="isonine" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uid, passport, pwd, uname, tel, email, regTime, logincount, lastLoginTime, status, 
+    isonine
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OaUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from oa_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OaUserExample" >
+    delete from oa_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OaUser" >
+    insert into oa_user (uid, passport, pwd, 
+      uname, tel, email, 
+      regTime, logincount, lastLoginTime, 
+      status, isonine)
+    values (#{uid,jdbcType=INTEGER}, #{passport,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{uname,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{regtime,jdbcType=VARCHAR}, #{logincount,jdbcType=INTEGER}, #{lastlogintime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{isonine,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OaUser" >
+    insert into oa_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="passport != null" >
+        passport,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="regtime != null" >
+        regTime,
+      </if>
+      <if test="logincount != null" >
+        logincount,
+      </if>
+      <if test="lastlogintime != null" >
+        lastLoginTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isonine != null" >
+        isonine,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="passport != null" >
+        #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        #{regtime,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="lastlogintime != null" >
+        #{lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isonine != null" >
+        #{isonine,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OaUserExample" resultType="java.lang.Integer" >
+    select count(*) from oa_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update oa_user
+    <set >
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.passport != null" >
+        passport = #{record.passport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwd != null" >
+        pwd = #{record.pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uname != null" >
+        uname = #{record.uname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regtime != null" >
+        regTime = #{record.regtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logincount != null" >
+        logincount = #{record.logincount,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastlogintime != null" >
+        lastLoginTime = #{record.lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isonine != null" >
+        isonine = #{record.isonine,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update oa_user
+    set uid = #{record.uid,jdbcType=INTEGER},
+      passport = #{record.passport,jdbcType=VARCHAR},
+      pwd = #{record.pwd,jdbcType=VARCHAR},
+      uname = #{record.uname,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      regTime = #{record.regtime,jdbcType=VARCHAR},
+      logincount = #{record.logincount,jdbcType=INTEGER},
+      lastLoginTime = #{record.lastlogintime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      isonine = #{record.isonine,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OaUser" >
+    update oa_user
+    <set >
+      <if test="passport != null" >
+        passport = #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        regTime = #{regtime,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        logincount = #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="lastlogintime != null" >
+        lastLoginTime = #{lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isonine != null" >
+        isonine = #{isonine,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OaUser" >
+    update oa_user
+    set passport = #{passport,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      regTime = #{regtime,jdbcType=VARCHAR},
+      logincount = #{logincount,jdbcType=INTEGER},
+      lastLoginTime = #{lastlogintime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      isonine = #{isonine,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

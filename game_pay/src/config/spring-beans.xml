@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 配置自动扫描的包（持久层、业务层、切面） -->
+	<context:annotation-config />
+	<!-- 扫描业务对象 -->
+	<!-- 有多个包用逗号隔开 -->
+	<context:component-scan base-package="com.gamecenter" />
+	<!-- 导入资源文件 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- <value>file:${user.dir}/jdbc.properties</value> <value>file:${user.dir}/jdbclog.properties</value> -->
+				<value>/config/jdbc.properties</value>
+				<!-- <value>/config/redis_cluster.properties</value> -->
+
+			</list>
+		</property>
+	</bean>
+
+	<import resource="classpath*:config/spring-call-job.xml" />
+	<import resource ="classpath*:config/spring-mybatis.xml" />
+
+</beans>

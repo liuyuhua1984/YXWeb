@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.OaModuleMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OaModule" >
+    <id column="mid" property="mid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="modulename" property="modulename" jdbcType="VARCHAR" />
+    <result column="moduleurl" property="moduleurl" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="joinid" property="joinid" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mid, pid, modulename, moduleurl, sort, status, info, icon, type, joinid, level
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.OaModuleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from oa_module
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from oa_module
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_module
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OaModuleExample" >
+    delete from oa_module
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OaModule" >
+    insert into oa_module (mid, pid, modulename, 
+      moduleurl, sort, status, 
+      info, icon, type, joinid, 
+      level)
+    values (#{mid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{modulename,jdbcType=VARCHAR}, 
+      #{moduleurl,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{info,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{joinid,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OaModule" >
+      <selectKey keyProperty="mid" order="AFTER" resultType="java.lang.Integer">
+          SELECT LAST_INSERT_ID() AS mid
+      </selectKey>
+    insert into oa_module
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="modulename != null" >
+        modulename,
+      </if>
+      <if test="moduleurl != null" >
+        moduleurl,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="joinid != null" >
+        joinid,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="modulename != null" >
+        #{modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleurl != null" >
+        #{moduleurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="joinid != null" >
+        #{joinid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OaModuleExample" resultType="java.lang.Integer" >
+    select count(*) from oa_module
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update oa_module
+    <set >
+      <if test="record.mid != null" >
+        mid = #{record.mid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.modulename != null" >
+        modulename = #{record.modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moduleurl != null" >
+        moduleurl = #{record.moduleurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.joinid != null" >
+        joinid = #{record.joinid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.level != null" >
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update oa_module
+    set mid = #{record.mid,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      modulename = #{record.modulename,jdbcType=VARCHAR},
+      moduleurl = #{record.moduleurl,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR},
+      info = #{record.info,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      joinid = #{record.joinid,jdbcType=VARCHAR},
+      level = #{record.level,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OaModule" >
+    update oa_module
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="modulename != null" >
+        modulename = #{modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleurl != null" >
+        moduleurl = #{moduleurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="joinid != null" >
+        joinid = #{joinid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OaModule" >
+    update oa_module
+    set pid = #{pid,jdbcType=INTEGER},
+      modulename = #{modulename,jdbcType=VARCHAR},
+      moduleurl = #{moduleurl,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      joinid = #{joinid,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+
+    <!--获取模块及对应的权限功能列表-->
+    <select id="getModuleActions" resultType="com.gamecenter.model.OaModule">
+        SELECT t11.*,t10.actions from oa_module t11 LEFT JOIN
+        (
+        SELECT t1.mid,GROUP_CONCAT(t1.permitid,',',
+        (SELECT CONCAT(t2.aid,',',t2.actionname,',',t2.actioncode) from oa_action t2 where t2.aid = t1.aid) separator "#") as actions
+        from oa_permit t1 GROUP BY t1.mid
+        ) t10 on t11.mid = t10.mid  order by t11.joinid asc
+    </select>
+
+    <select id="getModelListByPermitIds" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OaModule">
+        SELECT * from oa_module t2 where t2.mid in (SELECT t1.mid from oa_permit t1 where t1.permitid in (${permitIds}) GROUP BY t1.mid)
+    </select>
+
+    <select id="getModelListByMidsByLevel" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OaModule">
+        SELECT * from oa_module t2 where t2.mid in (${mids}) and t2.level = ${level} order by t2.sort asc
+    </select>
+
+    <select id="getModelListByMidsByPid" parameterType="java.util.HashMap" resultType="com.gamecenter.model.OaModule">
+        SELECT * from oa_module t2 where t2.mid in (${mids}) and t2.joinid LIKE ${pid} and t2.`level`>1 order by t2.joinid asc
+    </select>
+
+
+</mapper>

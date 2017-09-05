@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamecenter.mapper.OpAgentInviteCodeMapper">
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpAgentInviteCode">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="agent_id" jdbcType="BIGINT" property="agentId" />
+    <result column="is_use" jdbcType="TINYINT" property="isUse" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_put_out" jdbcType="TINYINT" property="isPutOut" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, invite_code, agent_id, is_use, create_time, is_put_out
+  </sql>
+  <select id="selectByExample" parameterType="com.gamecenter.model.OpAgentInviteCodeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from op_agent_invite_code
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from op_agent_invite_code
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from op_agent_invite_code
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpAgentInviteCodeExample">
+    delete from op_agent_invite_code
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpAgentInviteCode">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_agent_invite_code (invite_code, agent_id, is_use, 
+      create_time, is_put_out)
+    values (#{inviteCode,jdbcType=VARCHAR}, #{agentId,jdbcType=BIGINT}, #{isUse,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{isPutOut,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpAgentInviteCode">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into op_agent_invite_code
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="isUse != null">
+        is_use,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isPutOut != null">
+        is_put_out,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=BIGINT},
+      </if>
+      <if test="isUse != null">
+        #{isUse,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPutOut != null">
+        #{isPutOut,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpAgentInviteCodeExample" resultType="java.lang.Long">
+    select count(*) from op_agent_invite_code
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByExampleSelective" parameterType="map">
+    update op_agent_invite_code
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.inviteCode != null">
+        invite_code = #{record.inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agentId != null">
+        agent_id = #{record.agentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.isUse != null">
+        is_use = #{record.isUse,jdbcType=TINYINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isPutOut != null">
+        is_put_out = #{record.isPutOut,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update op_agent_invite_code
+    set id = #{record.id,jdbcType=BIGINT},
+      invite_code = #{record.inviteCode,jdbcType=VARCHAR},
+      agent_id = #{record.agentId,jdbcType=BIGINT},
+      is_use = #{record.isUse,jdbcType=TINYINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      is_put_out = #{record.isPutOut,jdbcType=TINYINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpAgentInviteCode">
+    update op_agent_invite_code
+    <set>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=BIGINT},
+      </if>
+      <if test="isUse != null">
+        is_use = #{isUse,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPutOut != null">
+        is_put_out = #{isPutOut,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpAgentInviteCode">
+    update op_agent_invite_code
+    set invite_code = #{inviteCode,jdbcType=VARCHAR},
+      agent_id = #{agentId,jdbcType=BIGINT},
+      is_use = #{isUse,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_put_out = #{isPutOut,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

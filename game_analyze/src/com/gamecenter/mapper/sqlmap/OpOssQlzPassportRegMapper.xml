@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamecenter.mapper.OpOssQlzPassportRegMapper">
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.OpOssQlzPassportReg">
+    <id column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="worldid" jdbcType="VARCHAR" property="worldid" />
+    <result column="lastloginip" jdbcType="VARCHAR" property="lastloginip" />
+    <result column="logincount" jdbcType="INTEGER" property="logincount" />
+    <result column="lastlogintime" jdbcType="VARCHAR" property="lastlogintime" />
+    <result column="info" jdbcType="VARCHAR" property="info" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    openid, worldid, lastloginip, logincount, lastlogintime, info, app_id
+  </sql>
+  <select id="selectByExample" parameterType="com.gamecenter.model.OpOssQlzPassportRegExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_passport_reg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from op_oss_qlz_passport_reg
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from op_oss_qlz_passport_reg
+    where openid = #{openid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.OpOssQlzPassportRegExample">
+    delete from op_oss_qlz_passport_reg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.OpOssQlzPassportReg">
+    insert into op_oss_qlz_passport_reg (openid, worldid, lastloginip, 
+      logincount, lastlogintime, info, 
+      app_id)
+    values (#{openid,jdbcType=VARCHAR}, #{worldid,jdbcType=VARCHAR}, #{lastloginip,jdbcType=VARCHAR}, 
+      #{logincount,jdbcType=INTEGER}, #{lastlogintime,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, 
+      #{appId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.OpOssQlzPassportReg">
+    insert into op_oss_qlz_passport_reg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="worldid != null">
+        worldid,
+      </if>
+      <if test="lastloginip != null">
+        lastloginip,
+      </if>
+      <if test="logincount != null">
+        logincount,
+      </if>
+      <if test="lastlogintime != null">
+        lastlogintime,
+      </if>
+      <if test="info != null">
+        info,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="worldid != null">
+        #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastloginip != null">
+        #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null">
+        #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="lastlogintime != null">
+        #{lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.OpOssQlzPassportRegExample" resultType="java.lang.Long">
+    select count(*) from op_oss_qlz_passport_reg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update op_oss_qlz_passport_reg
+    <set>
+      <if test="record.openid != null">
+        openid = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worldid != null">
+        worldid = #{record.worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastloginip != null">
+        lastloginip = #{record.lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logincount != null">
+        logincount = #{record.logincount,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastlogintime != null">
+        lastlogintime = #{record.lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info != null">
+        info = #{record.info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appId != null">
+        app_id = #{record.appId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update op_oss_qlz_passport_reg
+    set openid = #{record.openid,jdbcType=VARCHAR},
+      worldid = #{record.worldid,jdbcType=VARCHAR},
+      lastloginip = #{record.lastloginip,jdbcType=VARCHAR},
+      logincount = #{record.logincount,jdbcType=INTEGER},
+      lastlogintime = #{record.lastlogintime,jdbcType=VARCHAR},
+      info = #{record.info,jdbcType=VARCHAR},
+      app_id = #{record.appId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.OpOssQlzPassportReg">
+    update op_oss_qlz_passport_reg
+    <set>
+      <if test="worldid != null">
+        worldid = #{worldid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastloginip != null">
+        lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null">
+        logincount = #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="lastlogintime != null">
+        lastlogintime = #{lastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where openid = #{openid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.OpOssQlzPassportReg">
+    update op_oss_qlz_passport_reg
+    set worldid = #{worldid,jdbcType=VARCHAR},
+      lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      logincount = #{logincount,jdbcType=INTEGER},
+      lastlogintime = #{lastlogintime,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR}
+    where openid = #{openid,jdbcType=VARCHAR}
+  </update>
+
+    <!--新增登陆次数-->
+    <update id="addLoginCount" parameterType="java.lang.String">
+        update op_oss_qlz_passport_reg t1 set t1.logincount= t1.logincount+1 WHERE t1.openid = #{openid}
+    </update>
+
+</mapper>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gamecenter.mapper.LoginOutLogMapper" >
+  <resultMap id="BaseResultMap" type="com.gamecenter.model.LoginOutLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="appId" property="appid" jdbcType="BIGINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="roleLevel" property="rolelevel" jdbcType="INTEGER" />
+    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="serverId" property="serverid" jdbcType="VARCHAR" />
+    <result column="serverIp" property="serverip" jdbcType="VARCHAR" />
+    <result column="userIp" property="userip" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="newPlayerGuild" property="newplayerguild" jdbcType="VARCHAR" />
+    <result column="vipLevel" property="viplevel" jdbcType="INTEGER" />
+    <result column="isup" property="isup" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, appId, createTime, roleLevel, roleName, serverId, serverIp, userIp, userName, 
+    newPlayerGuild, vipLevel, isup
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gamecenter.model.LoginOutLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from login_out_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from login_out_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from login_out_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamecenter.model.LoginOutLogExample" >
+    delete from login_out_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamecenter.model.LoginOutLog" >
+    insert into login_out_log (id, appId, createTime, 
+      roleLevel, roleName, serverId, 
+      serverIp, userIp, userName, 
+      newPlayerGuild, vipLevel, isup
+      )
+    values (#{id,jdbcType=BIGINT}, #{appid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{rolelevel,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR}, #{serverid,jdbcType=VARCHAR}, 
+      #{serverip,jdbcType=VARCHAR}, #{userip,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{newplayerguild,jdbcType=VARCHAR}, #{viplevel,jdbcType=INTEGER}, #{isup,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamecenter.model.LoginOutLog" >
+    insert into login_out_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appid != null" >
+        appId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="rolelevel != null" >
+        roleLevel,
+      </if>
+      <if test="rolename != null" >
+        roleName,
+      </if>
+      <if test="serverid != null" >
+        serverId,
+      </if>
+      <if test="serverip != null" >
+        serverIp,
+      </if>
+      <if test="userip != null" >
+        userIp,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="newplayerguild != null" >
+        newPlayerGuild,
+      </if>
+      <if test="viplevel != null" >
+        vipLevel,
+      </if>
+      <if test="isup != null" >
+        isup,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rolelevel != null" >
+        #{rolelevel,jdbcType=INTEGER},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="serverid != null" >
+        #{serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="serverip != null" >
+        #{serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="userip != null" >
+        #{userip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="newplayerguild != null" >
+        #{newplayerguild,jdbcType=VARCHAR},
+      </if>
+      <if test="viplevel != null" >
+        #{viplevel,jdbcType=INTEGER},
+      </if>
+      <if test="isup != null" >
+        #{isup,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamecenter.model.LoginOutLogExample" resultType="java.lang.Integer" >
+    select count(*) from login_out_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update login_out_log
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.appid != null" >
+        appId = #{record.appid,jdbcType=BIGINT},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rolelevel != null" >
+        roleLevel = #{record.rolelevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.rolename != null" >
+        roleName = #{record.rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverid != null" >
+        serverId = #{record.serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverip != null" >
+        serverIp = #{record.serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userip != null" >
+        userIp = #{record.userip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newplayerguild != null" >
+        newPlayerGuild = #{record.newplayerguild,jdbcType=VARCHAR},
+      </if>
+      <if test="record.viplevel != null" >
+        vipLevel = #{record.viplevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.isup != null" >
+        isup = #{record.isup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update login_out_log
+    set id = #{record.id,jdbcType=BIGINT},
+      appId = #{record.appid,jdbcType=BIGINT},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      roleLevel = #{record.rolelevel,jdbcType=INTEGER},
+      roleName = #{record.rolename,jdbcType=VARCHAR},
+      serverId = #{record.serverid,jdbcType=VARCHAR},
+      serverIp = #{record.serverip,jdbcType=VARCHAR},
+      userIp = #{record.userip,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      newPlayerGuild = #{record.newplayerguild,jdbcType=VARCHAR},
+      vipLevel = #{record.viplevel,jdbcType=INTEGER},
+      isup = #{record.isup,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamecenter.model.LoginOutLog" >
+    update login_out_log
+    <set >
+      <if test="appid != null" >
+        appId = #{appid,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rolelevel != null" >
+        roleLevel = #{rolelevel,jdbcType=INTEGER},
+      </if>
+      <if test="rolename != null" >
+        roleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="serverid != null" >
+        serverId = #{serverid,jdbcType=VARCHAR},
+      </if>
+      <if test="serverip != null" >
+        serverIp = #{serverip,jdbcType=VARCHAR},
+      </if>
+      <if test="userip != null" >
+        userIp = #{userip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="newplayerguild != null" >
+        newPlayerGuild = #{newplayerguild,jdbcType=VARCHAR},
+      </if>
+      <if test="viplevel != null" >
+        vipLevel = #{viplevel,jdbcType=INTEGER},
+      </if>
+      <if test="isup != null" >
+        isup = #{isup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamecenter.model.LoginOutLog" >
+    update login_out_log
+    set appId = #{appid,jdbcType=BIGINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      roleLevel = #{rolelevel,jdbcType=INTEGER},
+      roleName = #{rolename,jdbcType=VARCHAR},
+      serverId = #{serverid,jdbcType=VARCHAR},
+      serverIp = #{serverip,jdbcType=VARCHAR},
+      userIp = #{userip,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      newPlayerGuild = #{newplayerguild,jdbcType=VARCHAR},
+      vipLevel = #{viplevel,jdbcType=INTEGER},
+      isup = #{isup,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+      <!--上报数据提取-->
+    <select id="getLastDate" resultType="com.gamecenter.model.LoginOutLog" parameterType="java.lang.String">
+        <![CDATA[
+        SELECT * from login_out_log t1 where (t1.isup = '0' or t1.isup is NULL) and createTime<=#{time} ORDER BY t1.createTime asc;
+         ]]>
+    </select>
+    <update id="act" parameterType="java.util.HashMap">
+          UPDATE login_out_log set isup = '1' where id in(${ids})
+    </update>
+</mapper>
