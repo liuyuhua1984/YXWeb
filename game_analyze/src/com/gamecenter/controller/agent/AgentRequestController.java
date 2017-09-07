@@ -46,13 +46,11 @@ public class AgentRequestController {
 		return mav;
 	}
 	
-	
 	@RequestMapping("/proxy")
 	public ModelAndView agentAddPoxy(HttpSession session) {
 		ModelAndView mav = new ModelAndView("/page/agent/AgentAddProxy");
 		return mav;
 	}
-	
 	
 	// @RequestMapping("/request/list")
 	// public ModelAndView getRequestList(HttpSession session) {
@@ -85,38 +83,42 @@ public class AgentRequestController {
 			phone.trim();
 			// 判断邀请码是否服合要求
 			OpAgentInviteCode code = agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode);
-			OpAgentList parentAgent = agentListService.findById(code.getAgentId());
-			if (code != null && parentAgent != null) {
-				if (code.getIsUse() == 1) {
-					res = "-3";// 邀请码已过时
-				} else if (agentListService.findByName(name) != null) {// 名称没有被占用
-					res = "-4";// 代理名称已存在
-				} else if (!Tools.isPhoneLegal(phone)) {
-					res = "-5";// 电话号码不合法
-				} else if (agentListService.findByPhone(Long.parseLong(phone)) != null){
-					res = "-6";// 电话号码已存在,请另外填写
-				}else if (agentListService.findByWechat(weChat) != null){
-					res = "-7";// 微信号已存在,请另外填写
-				}else if (parentAgent.getAgentLevel() <= 1 ){
-					res = "-8";// 
-				}
-				else {
-					code.setIsUse((byte) 1);
-					agentInviteCodeService.update(code);
-					OpAgentList agent = new OpAgentList();
-					agent.setAgentLevel(1);
-					agent.setInviteCode(inviteCode);
-					agent.setName(name);
-					agent.setParentName(parentAgent.getName());
-					agent.setCreateTime(new Date(System.currentTimeMillis()));
-					agent.setPassword(password);
-					agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据
-					agent.setWechatCode(weChat);
-					agent.setBlankCard(blankCard);
-					agent.setRemainMoney(0);
-					agent.setStatus((byte) 1);
-					agentListService.insert(agent);
-					res = "1";
+			if (code != null) {
+				
+				OpAgentList parentAgent = agentListService.findById(code.getAgentId());
+				if (code != null && parentAgent != null) {
+					if (code.getIsUse() == 1) {
+						res = "-3";// 邀请码已过时
+					} else if (agentListService.findByName(name) != null) {// 名称没有被占用
+						res = "-4";// 代理名称已存在
+					} else if (!Tools.isPhoneLegal(phone)) {
+						res = "-5";// 电话号码不合法
+					} else if (agentListService.findByPhone(Long.parseLong(phone)) != null) {
+						res = "-6";// 电话号码已存在,请另外填写
+					} else if (agentListService.findByWechat(weChat) != null) {
+						res = "-7";// 微信号已存在,请另外填写
+					} else if (parentAgent.getAgentLevel() <= 1) {
+						res = "-8";//
+					} else {
+						code.setIsUse((byte) 1);
+						agentInviteCodeService.update(code);
+						OpAgentList agent = new OpAgentList();
+						agent.setAgentLevel(1);
+						agent.setInviteCode(inviteCode);
+						agent.setName(name);
+						agent.setParentName(parentAgent.getName());
+						agent.setCreateTime(new Date(System.currentTimeMillis()));
+						agent.setPassword(password);
+						agent.setPhone(Long.parseLong(phone));// 没有判断 是不是数据
+						agent.setWechatCode(weChat);
+						agent.setBlankCard(blankCard);
+						agent.setRemainMoney(0);
+						agent.setStatus((byte) 1);
+						agentListService.insert(agent);
+						res = "1";
+					}
+				} else {
+					res = "-2";// 邀请码不存在
 				}
 			} else {
 				res = "-2";// 邀请码不存在
@@ -128,15 +130,15 @@ public class AgentRequestController {
 		return map;
 	}
 	
-	
-	/** 
-	 * addAgentProxy:(). <br/> 
-	 * TODO().<br/> 
+	/**
+	 * addAgentProxy:(). <br/>
+	 * TODO().<br/>
 	 * 总代注册
-	 * @author lyh 
+	 * 
+	 * @author lyh
 	 * @param request
-	 * @return 
-	 */  
+	 * @return
+	 */
 	@RequestMapping("/register/proxy")
 	@ResponseBody
 	public Map<String, Object> addAgentProxy(HttpServletRequest request) {
@@ -147,9 +149,9 @@ public class AgentRequestController {
 		String weChat = (String) request.getParameter("weChat");
 		String phone = (String) request.getParameter("phone");
 		String blankCard = (String) request.getParameter("blankCard");
-		if (!ToolUtils.isStringNull(blankCard) &&!ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
+		if (!ToolUtils.isStringNull(blankCard) && !ToolUtils.isStringNull(name) && !ToolUtils.isStringNull(password) && !ToolUtils.isStringNull(inviteCode) && !ToolUtils.isStringNull(weChat) && !ToolUtils.isStringNull(phone)) {
 			
-			//phone.trim();
+			// phone.trim();
 			// 判断邀请码是否服合要求
 			OpAgentInviteCode code = agentInviteCodeService.findOpAgentInviteCodeByCode(inviteCode);
 			OpAgentList parentAgent = agentListService.findById(code.getAgentId());
@@ -160,12 +162,11 @@ public class AgentRequestController {
 					res = "-4";// 代理名称已存在
 				} else if (!Tools.isPhoneLegal(phone)) {
 					res = "-5";// 电话号码不合法
-				} else if (agentListService.findByPhone(Long.parseLong(phone)) != null){
+				} else if (agentListService.findByPhone(Long.parseLong(phone)) != null) {
 					res = "-6";// 电话号码已存在,请另外填写
-				}else if (agentListService.findByWechat(weChat) != null){
+				} else if (agentListService.findByWechat(weChat) != null) {
 					res = "-7";// 微信号已存在,请另外填写
-				}
-				else {
+				} else {
 					code.setIsUse((byte) 1);
 					agentInviteCodeService.update(code);
 					OpAgentList agent = new OpAgentList();
@@ -173,9 +174,9 @@ public class AgentRequestController {
 					agent.setInviteCode(inviteCode);
 					agent.setName(name);
 					String parentName = "";
-					if (parentAgent == null){
+					if (parentAgent == null) {
 						parentName = "无";
-					}else {
+					} else {
 						parentName = parentAgent.getName();
 					}
 					agent.setParentName(parentName);
