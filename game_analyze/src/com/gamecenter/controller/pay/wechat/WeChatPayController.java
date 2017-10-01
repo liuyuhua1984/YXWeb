@@ -117,6 +117,28 @@ public class WeChatPayController extends BaseController {
 		OpShop goods = agentShopService.findShopGoodsByPrice(dPrice, 0);
 		SortedMap<String, String> returnMap = new TreeMap<String, String>();
 		if (goods != null) {
+			//先找人
+			List<OpGameapp> appList = appService.getAppList();
+			OpGameapp gameApp = appList.size() > 0 ? appList.get(0) : null;
+			OpGameworld worldServer = null;
+			OpOssQlzPassport player = null;
+			if (gameApp != null) {
+				List<OpGameworld> worldList = worldService.getWorldListByAppId(gameApp.getAppid());
+				worldServer = worldList.size() > 0 ? worldList.get(0) : null;
+			} else {
+				logger.error("没有找到world::" + openId);
+			}
+			
+			if (worldServer != null) {
+				 player = dataUpHandleService.getPassportByOpenid(openId);
+				if (player != null) {
+					inviteCode = player.getInviteCode();
+					
+				} else {
+					logger.error("没有找到玩家::" + openId);
+				}
+			}
+			
 			
 			int gold = goods.getGift() + goods.getNum();
 			OpAgentList agent = null;
@@ -132,25 +154,8 @@ public class WeChatPayController extends BaseController {
 				agent.setRemainMoney(0);
 			}
 			
-			if (agent != null) {// && agent.getRemainMoney() >= gold在线冲值不要减money
-				List<OpGameapp> appList = appService.getAppList();
-				OpGameapp gameApp = appList.size() > 0 ? appList.get(0) : null;
-				OpGameworld worldServer = null;
-				if (gameApp != null) {
-					List<OpGameworld> worldList = worldService.getWorldListByAppId(gameApp.getAppid());
-					worldServer = worldList.size() > 0 ? worldList.get(0) : null;
-				} else {
-					logger.error("没有找到world::" + openId);
-				}
-				
-				if (worldServer != null) {
-					OpOssQlzPassport player = dataUpHandleService.getPassportByOpenid(openId);
-					if (player != null) {
-						bCheck = true;
-					} else {
-						logger.error("没有找到玩家::" + openId);
-					}
-				}
+			if (agent != null && player != null) {// && agent.getRemainMoney() >= gold在线冲值不要减money
+				bCheck = true;
 			}
 		} else {
 			logger.error(dPrice + ":没有找到商品::" + openId);
@@ -221,7 +226,7 @@ public class WeChatPayController extends BaseController {
 		
 		}
 		write.write(weiXinVo.toString());
-		
+		logger.error("返回给客户端::" + weiXinVo.toString());
 	}
 	
 	// 通知处理类
