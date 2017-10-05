@@ -157,7 +157,7 @@ public class AgentRechargeFetchController {
 			double fMoney = 0;
 			for(OpAgentRecharge recharge : fetchList){
 				recharge.setIsFetch(1);
-				fMoney +=recharge.getMoney();
+				fMoney +=recharge.getFetchMoney();
 				agentRechargeService.update(recharge);
 				rList.add(recharge.getId());
 			}
